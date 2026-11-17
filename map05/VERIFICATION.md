@@ -55,6 +55,10 @@ Każdy test regresyjny odtwarzający usterkę był najpierw RED na starym kodzie
 
 Logi końcowe: `evidence/2026-11-17-browser/tests/`.
 
+### Publikacja
+
+Commit `1359cdeedc7590262e7066891b5ce6b183f9f12f` wysłano na `main` repozytorium `multiplay-pages/mms-planowanie` jako fast-forward `8ce430a..1359cde`, bez force-push. `git ls-remote` i GitHub API potwierdzają zdalny HEAD `1359cde`, drzewo `0b5c59aded1d8c71601394ca9668132bbe1b2ae0` zgodne z lokalnym, 94 zmienione pliki oraz identyczny blob `planner-offline.html` (`011fba1e…`). GitHub ponownie ostrzegł o pliku 66,30 MB (powyżej zalecanych 50 MB, poniżej limitu). Nie użyto LFS, Pages ani wdrożenia.
+
 ### Otwarte i ograniczenia
 
 - REMOVE nadal usuwa cały przydział wraz z `releaseReason`; pełna historia korekt wymaga decyzji o miejscu zapisu (bez zmiany schematu w tym etapie).
