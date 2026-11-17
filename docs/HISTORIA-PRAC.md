@@ -184,6 +184,14 @@ Powstały dokumenty decyzji, architektury, historii, uruchomienia/testów i prze
 
 Publikacja została wykonana: commit implementacji `016347792204fc13d9ea980eb6cb667b3df79dde` trafił na `main`. Niezależny odczyt przez GitHub API potwierdził zgodność HEAD, pełnego drzewa i 123 plików z lokalnym zapisem. Szczegóły są w `evidence/2026-11-17/publication.json`; późniejszy commit dokumentacyjny dopisuje ten dowód. Nie wymuszano historii. GitHub przyjął duży samodzielny plik planera z ostrzeżeniem o zalecanym rozmiarze. Nie wykonano publikacji GitHub Pages.
 
+## 17.11.2026 — Aion UI: prawdziwa przeglądarka i poprawki
+
+Użytkownik polecił kontynuację w zespole Aion UI (Claude Code + Codex): sprawdzić planer w prawdziwej przeglądarce, naprawić wykryte problemy i zostawić zweryfikowaną, udokumentowaną wersję. Start od `8ce430a`, czysty `main`.
+
+Codex niezależnie potwierdził baseline 180/180 i zreprodukował 3 usterki w modelu/DOM (R1–R3). Jego narzędzie przeglądarki w Aion UI było niedostępne; nie obchodził tego. Claude Code uruchomił 10 scenariuszy runbooka w lokalnym Chrome 157 (headless, tymczasowe profile, `playwright-core` spoza repo). Pierwsze przebiegi ujawniły problemy, których testy pamięciowe nie mogły pokazać: białą plamę zasłaniającą ulice przy zbliżeniu (P1) i „okruchy” dróg w widoku całego zakresu. Ujawniły też mylący komunikat przy próbie wyłączenia zajętego okna. Dwa wczesne FAIL okazały się błędami skryptu testowego (przeciąganie od markera, przeniesienie przy pełnych slotach), a nie aplikacji. Opisano to w raporcie, zamiast liczyć je jako usterki.
+
+Pracę podzielono na rozłączne pliki. Codex poprawił model i jego testy (komunikat zajętego okna, zachowanie `releaseReason` przy przeniesieniu). Claude Code poprawił CSS, wybór dróg i fokus/mapę w `planner.mjs` oraz testy UI/mapy, a potem zintegrował zmiany i przebudował artefakt. Każdy test regresyjny odtwarzający usterkę był najpierw RED; dodatkowy test kontrolny wolnych okien był celowo zielony przed i po zmianie. Po integracji: 190/190 testów PASS, build PASS oraz 10/10 scenariuszy w Chrome dla widoku modułowego i offline. Codex wykonał niezależny review końcowego diffu przed publikacją (`evidence/2026-11-17-codex/`). Dowody i tabela scenariuszy: `evidence/2026-11-17-browser/README.md`.
+
 ## Co świadomie pozostaje ograniczeniem prototypu
 
 - 7 adresów pozostaje bez współrzędnych na wyraźne polecenie użytkownika.
@@ -191,7 +199,7 @@ Publikacja została wykonana: commit implementacji `016347792204fc13d9ea980eb6cb
 - Brak startu/powrotu ekipy, potwierdzenia wjazdu na posesję, manewrów, ruchu drogowego i profilu wymiarów konkretnego pojazdu.
 - Syntetyczne zlecenia i normy nie są rzeczywistymi zamówieniami ani zatwierdzonymi regułami regionalnymi.
 - Brak globalnej optymalizacji; generator jest deterministyczną heurystyką z walidacją.
-- Wizualna weryfikacja w prawdziwej przeglądarce nie została w tej sesji wykonana z powodu opisanej polityki narzędzia. Testy pamięciowe nie zastępują tego dowodu.
+- Wizualną weryfikację wykonano 17.11.2026 tylko w Chrome 157 (headless). Inne przeglądarki, tryb z oknem/GPU, dotyk i czytnik ekranu pozostają niesprawdzone.
 - MAP-04 nadal nie ma rzeczywistego benchmarku ORS–OSRM. Lokalny graf nie jest jego pozornym zaliczeniem.
 
 Nie wolno zamykać tych punktów zmianą etykiety na PASS. Następne środowisko ma je świadomie przetestować lub rozwinąć w zatwierdzonym zakresie.

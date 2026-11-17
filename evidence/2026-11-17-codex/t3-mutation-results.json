@@ -1,0 +1,33 @@
+{
+  "tempDirectory": "<temp>",
+  "sourceWrites": "temp only; repository untouched",
+  "current": {
+    "label": "current-controls",
+    "exit": 0,
+    "summary": [
+      "ℹ tests 29",
+      "ℹ pass 29",
+      "ℹ fail 0"
+    ],
+    "failures": []
+  },
+  "baseline": {
+    "label": "baseline-mutations",
+    "exit": 1,
+    "summary": [
+      "ℹ tests 29",
+      "ℹ pass 25",
+      "ℹ fail 4"
+    ],
+    "failures": [
+      "✖ over-limit regional view keeps legible long roads instead of sub-pixel fragments (1.5723ms)",
+      "✖ label and scale halos keep a constant screen width at street zoom (5.2802ms)",
+      "✖ keyboard focus stays in order details after confirm, release and return to queue (487.048ms)",
+      "✖ changing the day in basket map mode fits the basket of the new day (433.5019ms)",
+      "✖ over-limit regional view keeps legible long roads instead of sub-pixel fragments (1.5723ms)",
+      "✖ label and scale halos keep a constant screen width at street zoom (5.2802ms)",
+      "✖ keyboard focus stays in order details after confirm, release and return to queue (487.048ms)",
+      "✖ changing the day in basket map mode fits the basket of the new day (433.5019ms)"
+    ]
+  }
+}

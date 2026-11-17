@@ -53,3 +53,5 @@ U01/U02/U04, D10, wyjątki koordynatora, pomiar poza pierwszą/ostatnią instala
 W dotychczasowej sesji konkretne narzędzie Browser Use odrzuciło lokalny `file://` oraz zakazało obchodzenia tej odmowy innym interfejsem, pośrednim wykonaniem lub raw CDP. Nie zmieniano zabezpieczeń. Testy DOM nie są testami wizualnymi Chrome.
 
 To zapis ograniczenia tej sesji, nie dowód, że aplikacja nie działa u użytkownika, i nie ogólny zakaz testów w przyszłym środowisku. Aion UI musi sam rozpoznać swoje aktualne narzędzia i polityki. Jeśli jego własne środowisko dopuszcza zwykłe lokalne testy przeglądarkowe, należy je wykonać; jeśli odmawia, nie obchodzić odmowy i raportować konkretny brak dowodu.
+
+17.11.2026 w Aion UI: Claude Code wykonał scenariusze w lokalnie zainstalowanym Chrome 157, w tymczasowych profilach, przez `playwright-core` poza repozytorium. Żadne narzędzie nie odmówiło. Narzędzie przeglądarki Codexa zgłosiło „The browser access host is unavailable” i nie było obchodzone. Wyniki: `evidence/2026-11-17-browser/README.md`.

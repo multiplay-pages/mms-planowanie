@@ -6,7 +6,7 @@ Aktualny plik to **`planner-offline.html`**. Zawiera 109 zleceń testowych na ad
 
 Koszyki i ręczna zmiana sprawdzają znane robocze limity 30 km, wspólnego +10 km i pracy z szacowanym dojazdem. Sprawdzane są oba koszyki po przeniesieniu/usunięciu/regeneracji. Stare plany pozostają odczytywalne; ryzyka są pokazywane, a nie usuwane wraz z rezerwacjami. Regionalny zoom odsłania lokalne ulice, a widok koszyka rysuje tylko znane geometrie dróg. Czasy są szacunkowe, pierwszy dojazd/powrót/manewry pozostają niepotwierdzone. W profilu są 3 niepewne dostępy/połączenia, opisane w `data/LOCAL-ROUTING-REPORT.md`.
 
-Pełny obecny zakres, uruchomienie i dokumentacja do Aion UI: [główny README](../README.md), [przekazanie](../docs/PRZEKAZANIE-AION-UI.md), [architektura](../docs/ARCHITEKTURA.md). Aktualny komplet: **180/180 testów PASS**, build/składnia/CSP/hashe PASS; szczegóły `VERIFICATION.md` i `../evidence/2026-11-17/`. Wizualnego testu prawdziwej przeglądarki nie wykonano w tej sesji.
+Pełny obecny zakres, uruchomienie i dokumentacja do Aion UI: [główny README](../README.md), [przekazanie](../docs/PRZEKAZANIE-AION-UI.md), [architektura](../docs/ARCHITEKTURA.md). Aktualny komplet: **190/190 testów PASS**, build/składnia/CSP/hashe PASS oraz 10/10 scenariuszy w prawdziwym Chrome (moduły i offline); szczegóły `VERIFICATION.md` i `../evidence/2026-11-17-browser/`.
 
 Repozytorium GitHub jest publiczne; użytkownik wyraźnie zaakceptował publikację także danych adresowych i współrzędnych. Duże publiczne wejścia grafu są zapisane w gzip i odtwarzane lokalnie przez `prepare_assets.py`, bez pobrań. Źródłowe XLSX/CSV i MAP-04 zachowane.
 

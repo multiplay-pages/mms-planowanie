@@ -1,0 +1,58 @@
+{
+  "baseline": "8ce430af8dd3e8c20fd775c66d78a2b422785004",
+  "findings": [
+    {
+      "id": "release-reason-lost-on-move",
+      "before": "Klient zmienił uzgodniony dzień",
+      "after": null,
+      "exported": false
+    },
+    {
+      "id": "focus-lost-confirm-order",
+      "after": {
+        "tag": "BODY",
+        "id": ""
+      }
+    },
+    {
+      "id": "focus-lost-release-order",
+      "after": {
+        "tag": "BODY",
+        "id": ""
+      }
+    },
+    {
+      "id": "focus-lost-remove-order",
+      "after": {
+        "tag": "BODY",
+        "id": ""
+      }
+    },
+    {
+      "id": "basket-date-change-point-outside-viewport",
+      "first": "TEST-005",
+      "second": "TEST-058",
+      "oldViewport": "281.948 82.766 3.579 2",
+      "newViewport": "281.948 82.766 3.579 2",
+      "newMarker": [
+        454.65479834407694,
+        318.30855015882935
+      ],
+      "outside": true
+    },
+    {
+      "id": "cross-basket-road-atomicity",
+      "result": "PASS",
+      "orders": [
+        "TEST-005",
+        "TEST-006",
+        "TEST-009"
+      ],
+      "actions": [
+        "REMOVE",
+        "ASSIGN"
+      ],
+      "originalUnchanged": true
+    }
+  ]
+}

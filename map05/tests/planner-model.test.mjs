@@ -51,9 +51,43 @@ test('manual moves validate skills, occupied and adjacent slots without mutating
 test('availability reduction rejects occupied slots; surveys share installation capacity',()=>{
   const order=find('POMIAR');let plan=createPlan(scenario);
   plan=act(plan,{type:'ASSIGN',orderId:order.id,teamId:'TEST-02',date,start:0});
-  assert.throws(()=>act(plan,{type:'AVAILABILITY',teamId:'TEST-02',date,slots:[1,2]}),/dostępn/);
+  assert.throws(()=>act(plan,{type:'AVAILABILITY',teamId:'TEST-02',date,slots:[1,2]}),/Nie można wyłączyć okna/);
   assert.throws(()=>act(plan,{type:'ASSIGN',orderId:find('MPL').id,teamId:'TEST-02',date,start:0}),/zajęt/);
   assert.equal(plan.availability.find(a=>a.teamId==='TEST-02'&&a.date===date).slots.length,3);
+});
+
+for(const item of [
+  {name:'single occupied slot',required:1,start:1,slots:[0,2],window:'11:00–14:00',confirmed:false},
+  {name:'first slot of a two-slot visit',required:2,start:0,slots:[1,2],window:'08:00–11:00',confirmed:false},
+  {name:'second slot of a two-slot visit',required:2,start:0,slots:[0,2],window:'11:00–14:00',confirmed:false},
+  {name:'second slot of a confirmed two-slot visit',required:2,start:1,slots:[0,1],window:'14:00–17:00',confirmed:true},
+])test(`closing ${item.name} reports its window, team, date and order without changing the plan`,()=>{
+  const order=find('MPL',item.required),teamId='TEST-02',day='2026-11-19';
+  let plan=act(createPlan(scenario),{type:'ASSIGN',orderId:order.id,teamId,date:day,start:item.start});
+  if(item.confirmed)plan=act(plan,{type:'CONFIRM',orderId:order.id});
+  const original=structuredClone(plan);
+  assert.throws(()=>act(plan,{type:'AVAILABILITY',teamId,date:day,slots:item.slots}),error=>{
+    assert.match(error.message,/Nie można wyłączyć okna/);
+    for(const text of [item.window,teamId,day,order.id])assert.ok(error.message.includes(text),`Missing ${text}: ${error.message}`);
+    assert.match(error.message,/Najpierw przenieś zlecenie lub przywróć je do kolejki/);
+    return true;
+  });
+  assert.deepEqual(plan,original);
+});
+
+test('free windows remain editable when the same slot is occupied on another team or day',()=>{
+  const order=find('MPL');
+  const original=act(createPlan(scenario),{type:'ASSIGN',orderId:order.id,teamId:'TEST-02',date,start:0});
+  const closed=act(original,{type:'AVAILABILITY',teamId:'TEST-02',date,slots:[0,2]});
+  assert.deepEqual(closed.availability.find(a=>a.teamId==='TEST-02'&&a.date===date).slots,[0,2]);
+  const reopened=act(closed,{type:'AVAILABILITY',teamId:'TEST-02',date,slots:[0,1,2]});
+  assert.deepEqual(reopened,original);
+  for(const [teamId,day] of [['TEST-01',date],['TEST-02','2026-11-19']]) {
+    const other=act(original,{type:'AVAILABILITY',teamId,date:day,slots:[1,2]});
+    assert.deepEqual(other.availability.find(a=>a.teamId===teamId&&a.date===day).slots,[1,2]);
+    assert.deepEqual(other.assignments,original.assignments);
+  }
+  assert.deepEqual(original.availability.find(a=>a.teamId==='TEST-02'&&a.date===date).slots,[0,1,2]);
 });
 
 test('regeneration preserves manual and confirmed proposals and protects agreed windows',()=>{
@@ -75,6 +109,20 @@ test('not ready orders stay in queue and cannot be forced into a basket',()=>{
   const order=scenario.orders.find(o=>!o.ready),plan=createPlan(scenario);
   assert.match(explainOrder(scenario,plan,order,date),/gotowoś/);
   assert.throws(()=>act(plan,{type:'ASSIGN',orderId:order.id,teamId:'TEST-02',date,start:0}),/gotowoś/);
+});
+
+test('moving a released confirmation preserves its reason through JSON export and import',()=>{
+  const order=find('MPL'),reason='Zmiana dnia na prośbę klienta';
+  let plan=act(createPlan(scenario),{type:'ASSIGN',orderId:order.id,teamId:'TEST-01',date,start:0});
+  plan=act(plan,{type:'CONFIRM',orderId:order.id});
+  plan=act(plan,{type:'UNCONFIRM',orderId:order.id,reason});
+  const original=structuredClone(plan);
+  const moved=act(plan,{type:'ASSIGN',orderId:order.id,teamId:'TEST-04',date:'2026-11-19',start:1});
+  assert.equal(moved.assignments.find(a=>a.orderId===order.id).releaseReason,reason);
+  const restored=restorePlan(scenario,JSON.stringify(moved));
+  assert.equal(restored.assignments.find(a=>a.orderId===order.id).releaseReason,reason);
+  assert.deepEqual(restored,moved);
+  assert.deepEqual(plan,original);
 });
 
 test('manual removal is held out of regeneration for that day until explicitly included',()=>{

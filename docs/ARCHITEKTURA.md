@@ -51,7 +51,7 @@ Zewnętrzne geokodowanie było oddzielną, jednorazowo zatwierdzoną operacją p
 | `map05/locations.mjs` | Walidacja i połączenie geokodowania; rozróżnienie lokalizacji używalnych i kandydatów. |
 | `map05/routes.mjs` | Walidacja lokalnego snapshotu dróg, dekoder geometrii, ocena całego koszyka. |
 | `map05/map.mjs` | Wspólne rzutowanie Web Mercator i geometria SVG; nie wyznacza tras. |
-| `map05/planner-map.mjs` | Przygotowanie regionalnego podkładu, filtrowanie widoku, poziom szczegółu i leniwe dekodowanie ulic. |
+| `map05/planner-map.mjs` | Przygotowanie regionalnego podkładu, filtrowanie widoku, poziom szczegółu i leniwe dekodowanie ulic. Klasa drogi zależy od zbliżenia. Powyżej limitu (domyślnie 1 600 ścieżek) pomijane są odcinki krótsze niż ~1 px ekranu, a pozostałe sortowane są według klasy i długości. Etykiety i skala w SVG muszą mieć `vector-effect:non-scaling-stroke`, bo viewBox skaluje obwódki. |
 | `map05/planner.mjs` | Powiązanie kontrolek, kolejki, koszyków, szczegółów, dostępności, mapy, historii sesji i importu/eksportu. |
 | `map05/planner.html`, `planner.css` | Struktura i wygląd nowego interfejsu. |
 | `map05/data/import_addresses.py` | Odczyt XLSX, normalizacja i zachowanie wierszy źródłowych/duplikatów. |

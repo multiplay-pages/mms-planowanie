@@ -1,6 +1,6 @@
 # Przekazanie do Aion UI: Claude Code i Codex
 
-Stan: 17.11.2026. To plik startowy następnego etapu. Nie odtwarzaj projektu od zera i nie powtarzaj geokodowania ani pobierania map, jeśli zapisany stan jest zgodny.
+Stan: 17.11.2026, po etapie „prawdziwa przeglądarka” w Aion UI. To plik startowy następnego etapu. Nie odtwarzaj projektu od zera i nie powtarzaj geokodowania ani pobierania map, jeśli zapisany stan jest zgodny.
 
 ## Najpierw przeczytaj
 
@@ -66,11 +66,15 @@ To sposób pracy do przyjęcia w Aion UI, nie deklaracja, że oba narzędzia są
 - Odbiór obejmuje rzeczywiste wyniki poleceń, listę plików, ryzyka i niezależny review. Nie nazywaj zielonego testu jednostkowego wizualną weryfikacją.
 - Na końcu jedna osoba/agent sprawdza pełny diff, źródła/hashe, build i stan gałęzi. Push bez force i bez równoległych zapisów do tej samej gałęzi.
 
+## Wykonany etap Aion UI (17.11.2026)
+
+Claude Code (lider) i Codex CLI (baseline, reprodukcje, poprawki modelu, review) wykonali wszystkie 10 scenariuszy runbooka w prawdziwym Chrome 157. Sprawdzono widok modułowy przez `serve.py` i zbudowany `planner-offline.html`: 10/10 PASS w każdym wariancie, 0 żądań zewnętrznych, 0 błędów konsoli. Naprawiono 7 usterek. Najważniejsza była P1: biała obwódka etykiet zasłaniała ulice przy zbliżeniu. Poza tym: okruchy dróg w widoku całego zakresu, mylący komunikat zajętego okna, utrata fokusu, mapa koszyka po zmianie dnia, utrata `releaseReason`, za małe cele i teksty. Testy: 190/190 PASS. Szczegóły: `map05/VERIFICATION.md` i `evidence/2026-11-17-browser/README.md`; skrypty do powtórzenia: runbook.
+
+Sprawdzony podział pracy, do powtórzenia: lider = jedyny autor UI/CSS/mapy, buildu, dokumentacji i Git; Codex = wydzielone pliki modelu (`planner-model.mjs` + jego test) w osobnym zadaniu i niezależny review tylko do odczytu. Narzędzie przeglądarki Codexa w Aion UI było niedostępne („browser access host is unavailable”), więc dowody wizualne zbiera agent z działającym Chrome.
+
 ## Najbliższy właściwy etap
 
-Pierwszym otwartym dowodem jest prawdziwy test wizualny/interakcyjny w dozwolonym środowisku desktop i wąsko. W poprzedniej sesji konkretne Browser Use odrzuciło lokalne pliki i zabroniło obejść. To nie jest stały zakaz testów w nowym Aion UI; sprawdź jego aktualne narzędzia i zasady. Jeśli są dozwolone, użyj ich normalnie. Jeśli odmówią, nie próbuj raw CDP/innego renderera jako obejścia.
-
-Do testu użyj aktualnego `planner-offline.html` albo modułowego widoku, a nie starszego `offline.html`. Przejdź checklistę 10 scenariuszy w runbooku, zapisz screenshoty i błędy konsoli/żądania wraz z SHA. Szczególnie sprawdź wydajność dużej regionalnej mapy, etykiety, mobile, klawiaturę i realne pobranie/import JSON.
+Otwarte po tym etapie: Firefox/Edge/Safari, Chrome z oknem/GPU, dotyk, czytnik ekranu i słabszy sprzęt. Do tego zachowanie historii `releaseReason` po REMOVE (decyzja o zapisie historii), zapamiętanie wybranego dnia po odświeżeniu i generalizacja podkładu dla widoku całego zakresu (obecnie główne drogi z przerwami). Po każdej zmianie UI powtórz `evidence/2026-11-17-browser/scripts/scenarios.mjs` dla obu wariantów **i obejrzyj zrzuty**.
 
 Następne możliwe zadania, wymagające świadomego doboru zakresu:
 

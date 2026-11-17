@@ -1,0 +1,335 @@
+{
+  "url": "http://127.0.0.1:8765/",
+  "chrome": "157.0.8103.79",
+  "results": [
+    {
+      "id": "S1",
+      "title": "Desktop: kolejka, koszyki, 102 punkty, 7 nieustalonych i 6 uwag PNA jawne",
+      "expected": "kolejka 109, 102 markery, 6 przerywanych, panel uwag 13 (7+6), brak błędów konsoli",
+      "actual": "kolejka 109; markery 102; przerywane 6; panel uwag 13 (wpisy z „brak/nieustal”: 1); load 2159 ms",
+      "status": "PASS",
+      "evidence": [
+        "S1-served-desktop-full.png",
+        "S1-served-map-overview.png"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Adres poza Opolem (TEST-003, Knurów): wybrany adres, przybliżenie, przesunięcie, powrót do całego zakresu",
+      "expected": "po „Wybrany adres” lokalne ulice i etykiety Knurowa; przeciąganie zmienia widok; „Cały zakres” = 0 0 680 380 i 102 punkty; czasy reakcji < 1 s",
+      "actual": "obwódki tekstów: stała szerokość ekranowa; wybrany: 392 odcinków, 32 nazw ulic, miasta [] (47 ms); +: 257 odc. (46 ms); przeciąganie 435.617 303.068 2.863 1.6 → 435.095 302.894 2.863 1.6; 6×−: 1259 odc. (340 ms); kółko: scrollY 1309→1309; cały zakres: 0 0 680 380, 102 punktów (143 ms)",
+      "status": "PASS",
+      "evidence": [
+        "S2-served-selected-knurow.png",
+        "S2-served-zoomed-out-panned.png"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Dzień 19.11, wyłączony slot TEST-01 14–17, filtry typu/wyszukiwanie, generowanie",
+      "expected": "generator nie używa wyłączonego slotu; kolejka niezależna od dnia; powody nieprzydzielenia widoczne przy zleceniach",
+      "actual": "kolejka przed 109; sloty: Zlecenia w koszykach 0 potwierdzonych okien; MPL 55 / 109; szukaj TEST-01 → 10 / 109; miejscowości 80; po generowaniu 12 przydziałów (290 ms), kolejka 97 (na 18.11: 97); TEST-01 slot 3 użyty: false; 4 różnych powodów; komunikat: notice success: Plan 2026-11-19: 12 zleceń w koszykach. W kolejce ogółem: 97. Powody pozostawienia w kolejce widoczne przy zleceniach. Wyniki lokalnych dróg i s",
+      "status": "PASS",
+      "evidence": [
+        "S3-served-after-generate.png",
+        "S3-served-reasons.json"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Mapa koszyka TEST-02",
+      "expected": "trasa ze znanych odcinków, kolejność wizyt, wyniki 30 km/+10 km/okien; brak dorysowanych prostych i „0 km” dla braków",
+      "actual": "2 odcinków trasy, 3 markerów (koszyk 3); 138 ms; po przybliżeniu i przesunięciu w bok w widoku 0 markerów; po zmianie dnia 19→18→19 markery w widoku: [true,true,true]; podsumowanie: TEST-02: TEST-025 → TEST-062 → TEST-039. Droga między wizytami: 25,6 km; czas: 39 min (szacunek). Bez dojazdu do pierwszej wizyty i powrotu. Manewry przy posesji niezweryfikowane.; kontrole: 30 km: w limicie | +10 km: nie dotyczy | Dojazd + praca: nieocenione | Między wizytami: 25,6 km · 39 min (szacunek)",
+      "status": "PASS",
+      "evidence": [
+        "S4-served-basket-TEST-02.png",
+        "S4-served-basket-TEST-02-card.png"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Przeniesienie automatu, cofnięcie, powrót do kolejki, cofnięcie, wyłączenie zajętego slotu, błędny przydział",
+      "expected": "przeniesienie zapisuje MANUAL; cofnięcie przywraca; usunięcie → kolejka + wykluczenie dnia; zajęty slot nie wyłącza się; błędna operacja nie zmienia planu",
+      "actual": "otwarcie TEST-01 14–17: notice success: Zmieniono dostępność testowej ekipy., wolne/otwarte Zlecenia w koszykach; zlecenie TEST-025 TEST-02/0 → {\"team\":\"TEST-02\",\"slot\":\"0\",\"day\":\"2026-11-20\",\"origin\":\"MANUAL\"} (próby: TEST-01/2026-11-19/2: notice error: Przekroczono 30 km drogami między instalacjami (łącznie z pomiarami). ; TEST-05/2026-11-19/2: notice error: Slot jest zajęty przez inne zlecenie (wspólny zasób instalacji i pomiarów). ; TEST-02/2026-11-20/0: notice success: Zapisano ręczną propozycję. Generator zachowa tę korektę.); cofnięcie → TEST-02/0; usunięcie: true, w kolejce 1, przycisk włączenia generatora 1; cofnięcie → TEST-02/0; zajęty slot: zaznaczony=true, plan bez zmian=true, notice error: Nie można wyłączyć okna 08:00–11:00 ekipy TEST-01 (2026-11-19): zajmuje je TEST-013. Najpierw przenieś zlecenie lub przywróć j; błędny przydział: plan bez zmian · notice error: Slot jest zajęty przez inne zlecenie (wspólny zasób instalacji i pomiarów).",
+      "status": "PASS",
+      "evidence": [
+        "S5-served-after-move.png"
+      ]
+    },
+    {
+      "id": "S6",
+      "title": "Potwierdzenie okna, regeneracja, ochrona, zwolnienie z powodem",
+      "expected": "potwierdzone okno przetrwa regenerację; przenieś/usuń zablokowane; zwolnienie bez powodu odrzucone, z powodem zapisane",
+      "actual": "TEST-013: potwierdzone=true; po regeneracji TEST-01/0 confirmed=true; przyciski przenieś/usuń disabled=true/true; bez powodu: notice error: Podaj powód zwolnienia potwierdzenia (3–400 znaków).; nadal potwierdzone=true; po powodzie confirmed=false, reason=\"Test przeglądarki S6\", origin=MANUAL",
+      "status": "PASS",
+      "evidence": [
+        "S6-served-released.png"
+      ]
+    },
+    {
+      "id": "S7",
+      "title": "Rzeczywiste pobranie JSON, import w czystym profilu, odświeżenie",
+      "expected": "plik pobrany = stan planu; po odświeżeniu plan zachowany; import w czystym profilu odtwarza plan; plik z innym datasetId odrzucony bez zmian",
+      "actual": "pobrano S7-served-mms-plan-2026-11-19.json (4236 B), zgodny=true; po reload zgodny=true (0 przycisków w koszykach); czysty profil: 0 przydziałów → import 13 (notice success: Wczytano i zweryfikowano plan lokalny. Poprzedni stan można cofnąć.); zły plik: notice error: Nie wczytano planu: Plan dotyczy innego zbioru adresów., bez zmian=true",
+      "status": "PASS",
+      "evidence": [
+        "S7-served-mms-plan-2026-11-19.json",
+        "S7-served-imported-clean-profile.png"
+      ]
+    },
+    {
+      "id": "S9",
+      "title": "Klawiatura: skip link, Tab/Shift+Tab, Enter/spacja, klawisze mapy, fokus, dialog",
+      "expected": "pełna obsługa bez myszy; fokus zachowany po renderze; Escape zamyka dialog i wraca na przycisk",
+      "actual": "pierwszy Tab: \"Przejdź do kolejki\" → queue; Tab do zlecenia TEST-001, Shift+Tab → queue-search; Enter na zleceniu: fokus TEST-004, aria-pressed=true, szczegóły \"TEST-004 POMIAR\"; mapa + 0 0 680 380→68 38 544 304, ← →-13.6 38 544 304, Home → 0 0 680 380; spacja na markerze TEST-001 → \"TEST-001 MPL\", fokus po: TEST-001; checkbox fokus: TEST-03/1; fokus w szczegółach: po potwierdzeniu: release-reason, po zwolnieniu: confirm-order, po powrocie do kolejki: remove-order [notice error: Zmiana tworzy lub zwiększa naruszenie w koszyku TEST-01 (2026-11-19): Przekroczono 30 km drogami między instalacjami (łącznie z pomiarami).]; dialog open=true, fokus w dialogu=cancel-reset, Esc zamknięty=true, fokus po=reset-plan; obrys fokusu: solid 3px none",
+      "status": "PASS",
+      "evidence": [
+        "S9-served-focus-generate.png"
+      ]
+    },
+    {
+      "id": "S8",
+      "title": "Wąski ekran 390×844 i 768×1024",
+      "expected": "brak poziomego przewijania strony, panele pionowo, tabela przewijana w kontenerze, czytelne teksty",
+      "actual": "390px: scrollWidth 390/390; wystające []; małe cele [\"A#\",\"INPUT#\",\"INPUT#\",\"INPUT#\",\"INPUT#\",\"INPUT#\",\"INPUT#\",\"INPUT#\",\"INPUT#\",\"INPUT#\"]; min font 10px [\"P.eyebrow:10px\",\"SPAN.order-sub:10px\",\"SPAN.reason:10px\",\"SPAN.tag amber:10px\",\"SMALL.:10px\",\"SPAN.check PASS:10px\",\"SPAN.check NOT_APPLICABLE:10px\",\"SPAN.check UNASSESSED:10px\",\"SPAN.tag:10px\"]; tabela 620/327 || 768px: scrollWidth 768/768; wystające []; małe cele [\"A#\",\"INPUT#\",\"INPUT#\",\"INPUT#\",\"INPUT#\",\"INPUT#\",\"INPUT#\",\"INPUT#\",\"INPUT#\",\"INPUT#\"]; min font 10px [\"P.eyebrow:10px\",\"SPAN.order-sub:10px\",\"SPAN.reason:10px\",\"SPAN.tag amber:10px\",\"SMALL.:10px\",\"SPAN.check PASS:10px\",\"SPAN.check NOT_APPLICABLE:10px\",\"SPAN.check UNASSESSED:10px\",\"SPAN.tag:10px\"]; tabela 682/682",
+      "status": "PASS",
+      "evidence": [
+        "S8-served-390x844-full.png",
+        "S8-served-768x1024-full.png"
+      ]
+    },
+    {
+      "id": "S10",
+      "title": "Konsola, błędy strony, żądania sieciowe",
+      "expected": "0 błędów konsoli i strony, 0 nieudanych żądań, 0 żądań poza 127.0.0.1",
+      "actual": "konsola error/warning 0 []; pageerror 0 []; failed 0 []; zewnętrzne 0 []; wszystkich żądań 51",
+      "status": "PASS",
+      "evidence": []
+    }
+  ],
+  "log": {
+    "console": [],
+    "pageErrors": [],
+    "failed": [],
+    "external": [],
+    "requests": [
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:8765/"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:8765/planner.css"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:8765/planner.mjs"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:8765/planner-model.mjs"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:8765/map.mjs"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:8765/locations.mjs"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:8765/routes.mjs"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:8765/planner-map.mjs"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:8765/data/addresses.json"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:8765/favicon.svg"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:8765/data/uug-geocoding.json"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:8765/data/local-routes.json"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:8765/basemap/planner-compact.json"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:8765/"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:8765/planner.css"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:8765/planner.mjs"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:8765/planner-model.mjs"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:8765/map.mjs"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:8765/locations.mjs"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:8765/routes.mjs"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:8765/planner-map.mjs"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:8765/data/addresses.json"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:8765/favicon.svg"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:8765/data/uug-geocoding.json"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:8765/data/local-routes.json"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:8765/basemap/planner-compact.json"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:8765/",
+        "profile": "import"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:8765/planner.css",
+        "profile": "import"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:8765/planner.mjs",
+        "profile": "import"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:8765/planner-model.mjs",
+        "profile": "import"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:8765/map.mjs",
+        "profile": "import"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:8765/locations.mjs",
+        "profile": "import"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:8765/routes.mjs",
+        "profile": "import"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:8765/planner-map.mjs",
+        "profile": "import"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:8765/data/addresses.json",
+        "profile": "import"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:8765/data/uug-geocoding.json",
+        "profile": "import"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:8765/favicon.svg",
+        "profile": "import"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:8765/data/local-routes.json",
+        "profile": "import"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:8765/basemap/planner-compact.json",
+        "profile": "import"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:8765/"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:8765/planner.css"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:8765/planner.mjs"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:8765/planner-model.mjs"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:8765/map.mjs"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:8765/locations.mjs"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:8765/routes.mjs"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:8765/planner-map.mjs"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:8765/data/addresses.json"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:8765/data/uug-geocoding.json"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:8765/data/local-routes.json"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:8765/basemap/planner-compact.json"
+      }
+    ]
+  }
+}

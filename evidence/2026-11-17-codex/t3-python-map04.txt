@@ -1,0 +1,29 @@
+test_each_region_contains_separate_mpl_bsa_and_measurement_cases (test_fixtures.SyntheticFixtureTests.test_each_region_contains_separate_mpl_bsa_and_measurement_cases) ... ok
+test_fixture_has_repeatable_seed_and_only_synthetic_jobs (test_fixtures.SyntheticFixtureTests.test_fixture_has_repeatable_seed_and_only_synthetic_jobs) ... ok
+test_knu_windows_are_marked_as_test_only (test_fixtures.SyntheticFixtureTests.test_knu_windows_are_marked_as_test_only) ... ok
+test_no_real_address_field_is_present (test_fixtures.SyntheticFixtureTests.test_no_real_address_field_is_present) ... ok
+test_unverified_bsa_term_is_flagged_for_manual_acceptance (test_fixtures.SyntheticFixtureTests.test_unverified_bsa_term_is_flagged_for_manual_acceptance) ... ok
+test_capacity_requires_qualified_non_conflicting_matching (test_rules.CapacityAndOverrideTests.test_capacity_requires_qualified_non_conflicting_matching) ... ok
+test_d_minus_one_assignment_preserves_confirmed_window (test_rules.CapacityAndOverrideTests.test_d_minus_one_assignment_preserves_confirmed_window) ... ok
+test_non_overlapping_reservations_can_share_one_team (test_rules.CapacityAndOverrideTests.test_non_overlapping_reservations_can_share_one_team) ... ok
+test_risky_travel_can_be_overridden_only_with_audit_record (test_rules.CapacityAndOverrideTests.test_risky_travel_can_be_overridden_only_with_audit_record) ... ok
+test_two_slot_job_requires_adjacent_slots_of_one_team (test_rules.CapacityAndOverrideTests.test_two_slot_job_requires_adjacent_slots_of_one_team) ... ok
+test_fixture_adapter_returns_repeatable_provider_labeled_results (test_rules.FixtureRoutingAdapterTests.test_fixture_adapter_returns_repeatable_provider_labeled_results) ... ok
+test_10000_meters_extra_is_accepted (test_rules.MeasurementDeltaTests.test_10000_meters_extra_is_accepted) ... ok
+test_10001_meters_extra_is_over_limit (test_rules.MeasurementDeltaTests.test_10001_meters_extra_is_over_limit) ... ok
+test_after_last_measurement_without_end_point_is_unknown (test_rules.MeasurementDeltaTests.test_after_last_measurement_without_end_point_is_unknown) ... ok
+test_measurement_before_first_install_uses_team_start_as_baseline (test_rules.MeasurementDeltaTests.test_measurement_before_first_install_uses_team_start_as_baseline) ... ok
+test_multiple_measurements_share_one_total_extra_limit (test_rules.MeasurementDeltaTests.test_multiple_measurements_share_one_total_extra_limit) ... ok
+test_30000_meters_is_accepted (test_rules.RouteDistanceTests.test_30000_meters_is_accepted) ... ok
+test_30001_meters_is_over_limit (test_rules.RouteDistanceTests.test_30001_meters_is_over_limit) ... ok
+test_measurement_route_counts_actual_legs_between_installations (test_rules.RouteDistanceTests.test_measurement_route_counts_actual_legs_between_installations) ... ok
+test_missing_route_is_unknown_not_zero (test_rules.RouteDistanceTests.test_missing_route_is_unknown_not_zero) ... ok
+test_continuous_schedule_detects_overlap (test_rules.ScheduleTests.test_continuous_schedule_detects_overlap) ... ok
+test_one_worker_cannot_overlap_measurement_and_installation (test_rules.ScheduleTests.test_one_worker_cannot_overlap_measurement_and_installation) ... ok
+test_return_after_last_install_is_not_counted (test_rules.ScheduleTests.test_return_after_last_install_is_not_counted) ... ok
+test_three_hour_window_includes_drive_and_work (test_rules.ScheduleTests.test_three_hour_window_includes_drive_and_work) ... ok
+
+----------------------------------------------------------------------
+Ran 24 tests in 0.007s
+
+OK

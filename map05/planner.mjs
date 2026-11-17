@@ -85,6 +85,7 @@ function perform(action,message) {
 function renderPlanner() {
   const active=document.activeElement,focusId=active?.id,focusOrder=active?.dataset?.order;
   const focusContainer=active?.closest('#queue-list, #baskets, #planner-map, #location-review')?.id;
+  const focusInDetails=Boolean(active?.closest('#order-details'));
   const queue=queueOrders(scenario,plan),visible=queue.filter(matches),day=onDay();
   const open=scenario.teams.reduce((sum,team)=>sum+slotsFor(team.id).length,0);
   const occupied=day.reduce((sum,a)=>sum+orderById(a.orderId).slotsRequired,0);
@@ -114,6 +115,9 @@ function renderPlanner() {
   if(mapFrame)renderMapMarkers();
   if(focusOrder&&focusContainer)$(focusContainer)?.querySelector(`[data-order="${focusOrder}"]`)?.focus();
   else if(focusId)$(focusId)?.focus();
+  // Confirm, release and return-to-queue replace the activated button; keep keyboard users in the details panel.
+  if(focusInDetails&&!$('order-details').contains(document.activeElement))
+    ['release-reason','confirm-order','assign-order','remove-order'].map(id=>$(id)).find(node=>node&&!node.disabled)?.focus();
 }
 
 function renderOrderDetails() {
@@ -293,6 +297,8 @@ for(const [id,key] of [['city-filter','city'],['kind-filter','kind']])$(id).addE
 $('planning-date').addEventListener('change',event=>{
   if(!/^\d{4}-\d{2}-\d{2}$/.test(event.target.value)) {event.target.value=state.date;showMessage('Wybierz poprawny dzień.',true);return;}
   state.date=event.target.value;renderPlanner();
+  // The basket map follows the selected day; otherwise the previous day's zoom can hide every visit.
+  if(state.mapMode==='basket')fitCurrentMap();
 });
 $('queue-search').addEventListener('input',event=>{state.query=event.target.value;state.mapMode='scope';renderPlanner();fitCurrentMap();});
 $('availability').addEventListener('change',event=>{

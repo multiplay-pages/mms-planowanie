@@ -1,6 +1,69 @@
 # MAP-05 — weryfikacja, aktualizacja 17.11.2026
 
-**STATUS AKTUALNY: zaimplementowano regionalny podkład i lokalne drogi, ocenę koszyków oraz kontrolę obu dotkniętych koszyków po zmianach. 180/180 testów PASS; build/składnia/CSP/źródła PASS. 102 pozycje (96 pełnych zgodności, 6 uwag PNA); 7 pozostaje bez pozycji na polecenie użytkownika. Stare plany/ID zachowane. Wizualny test prawdziwej przeglądarki nadal NIE WYKONANY w tej sesji z powodu opisanej polityki narzędzia; nie deklarujemy pełnego browser E2E ani gotowości produkcyjnej. Repozytorium i dane przeznaczono do publicznej publikacji po wyraźnej zgodzie użytkownika. Starsze etapy poniżej są historyczne.**
+**STATUS AKTUALNY (Aion UI, 17.11.2026, etap „prawdziwa przeglądarka”): 10/10 scenariuszy runbooka PASS w prawdziwym Chrome 157 — zarówno modułowy widok przez `serve.py`, jak i zbudowany `planner-offline.html` przez `file://`. Wykryto i naprawiono 7 usterek, w tym P1 wizualne zasłonięcie ulic przy zbliżeniu. Testy: npm 86/86, Python map05 80/80, map04 24/24 — łącznie 190/190 PASS; build PASS. 0 żądań poza loopback/`file:`, 0 błędów konsoli. Nie testowano innych przeglądarek, trybu z oknem/GPU, urządzeń dotykowych ani czytnika ekranu. Prototyp nie jest gotowy produkcyjnie. Sekcje poniżej nowej są historyczne.**
+
+## 17.11.2026 — Aion UI: weryfikacja w prawdziwej przeglądarce i poprawki
+
+Zespół: Claude Code (lider, integracja, przebieg przeglądarkowy, dokumentacja, Git) i Codex CLI (niezależny baseline, reprodukcje, poprawki modelu w wydzielonych plikach, review). Baza: `8ce430af8dd3e8c20fd775c66d78a2b422785004`. Commit i potwierdzenie zdalne tego etapu są odnotowane w `docs/HISTORIA-PRAC.md` oraz w Git.
+
+**Narzędzia.** Claude Code: pliki, PowerShell/Bash, Git 2.54, Python 3.12.10, Node 26.13.0/npm 11.20.0 i lokalny Chrome 157.0.8103.79. Brak narzędzia MCP przeglądarki, więc Chrome sterowano przez `playwright-core` 1.65.1 zainstalowany poza repo, bez pobierania przeglądarek. Nie była to próba obejścia odmowy, bo żadne narzędzie nie odmówiło. Codex: pliki, terminal, Git, Python, Node; jego narzędzie przeglądarki zwróciło „The browser access host is unavailable” i zgodnie z zasadami nie było obchodzone. Codex wykonał więc 0 testów wizualnych.
+
+**Baseline przed zmianami (Codex, `8ce430a`):** npm 76/76, map05 80/80, map04 24/24 — 180/180 PASS. Logi: `evidence/2026-11-17-codex/`.
+
+### Scenariusze przeglądarkowe
+
+Pełna tabela oczekiwane/rzeczywiste/status/dowód: [`evidence/2026-11-17-browser/README.md`](../evidence/2026-11-17-browser/README.md). Dane maszynowe: `results-served.json`, `results-offline.json`.
+
+| # | Zakres | served | offline |
+| --- | --- | --- | --- |
+| S1 | Desktop: kolejka 109, 102 punkty, 6 uwag PNA, panel 13 | PASS | PASS |
+| S2 | Knurów: wybrany adres, zoom, drag, kółko, cały zakres | PASS | PASS |
+| S3 | Dzień, wyłączony slot, filtry, wyszukiwanie, generowanie, powody | PASS | PASS |
+| S4 | Mapa koszyka: droga 25,6 km, kolejność, kontrole; zmiana dnia | PASS | PASS |
+| S5 | Pojemność, przeniesienie, cofnij, wróć do kolejki, zajęty slot, atomowość | PASS | PASS |
+| S6 | Potwierdzenie, regeneracja, ochrona, zwolnienie z powodem | PASS | PASS |
+| S7 | Rzeczywiste pobranie JSON, import w czystym profilu, odświeżenie, obcy plik | PASS | PASS |
+| S8 | 390×844 i 768×1024 | PASS | PASS |
+| S9 | Klawiatura i fokus, dialog | PASS | PASS |
+| S10 | Konsola/sieć w obu profilach: 0 błędów, 0 zewnętrznych | PASS (51 żądań loopback) | PASS (4 żądania `file:`) |
+
+W S9 przeglądarka pokazała też w praktyce ochronę regresji A→B→C. Usunięcie środkowej wizyty TEST-013 z koszyka TEST-01 zostało odrzucone komunikatem „Zmiana tworzy lub zwiększa naruszenie… Przekroczono 30 km”, a plan pozostał bez zmian.
+
+### Usterki i poprawki
+
+| ID | Waga | Usterka | Poprawka | Pliki | Test regresji |
+| --- | --- | --- | --- | --- | --- |
+| B1 | P1 | Przy zbliżeniu biała obwódka etykiet ulic i skali (3px bez `non-scaling-stroke`) rosła ~240× i zasłaniała ulice | `vector-effect:non-scaling-stroke` | `planner.css` | `planner-map.test.mjs`: halos stałej szerokości |
+| B2 | P2 | Widok całego zakresu rysował ~672 losowe odcinki o medianie 0,4 px („okruchy”) | Przy limicie: pomija < ~1 px ekranu, sortuje klasa → długość | `planner-map.mjs` | `planner-map.test.mjs`: długie drogi zamiast fragmentów |
+| B3 | P2 | Odmowa wyłączenia zajętego okna z mylącym „slot jest wyłączony…” | Komunikat z oknem, ekipą, dniem i zleceniem | `planner-model.mjs` (Codex) | `planner-model.test.mjs`, `planner-ui.test.mjs` |
+| B4 | P2 | Fokus spadał na BODY po Potwierdź/Zwolnij/Wróć do kolejki | Fokus wraca do kontrolki w szczegółach | `planner.mjs` | `planner-ui.test.mjs` |
+| B5 | P3 | Zmiana dnia w trybie „Mapa” koszyka zostawiała stary widok | Dopasowanie po zmianie dnia | `planner.mjs` | `planner-ui.test.mjs` |
+| B6 | P2 | Przeniesienie po zwolnieniu potwierdzenia gubiło `releaseReason` | Powód przenoszony do nowego przydziału | `planner-model.mjs` (Codex) | `planner-model.test.mjs` |
+| B7 | P3 | Przycisk „Mapa” 20 px, podsumowanie dróg 8,3 px | min. 24×44 px, teksty 10–11 px | `planner.css` | `planner-map.test.mjs` (24 px), S8 |
+
+Każdy test regresyjny odtwarzający usterkę był najpierw RED na starym kodzie (B3/B6: `evidence/2026-11-17-codex/t2-red.txt`; B1/B2/B4/B5/B7: przebieg lidera przed poprawką), potem GREEN. Dodatkowy test kontrolny wolnych okien był celowo PASS przed i po zmianie. Niezależnie Codex podstawił wyłącznie bazowe `planner.mjs`/`planner-map.mjs`/`planner.css`: 4 nowe testy UI/mapy FAIL, reszta PASS. Ten sam skrypt Chrome na artefakcie bazowym daje FAIL w S2/S4/S5/S9. Nie zmieniono schematu planu (`schemaVersion` 1), `datasetId`, ID zleceń, danych źródłowych, fixture MAP-04, silnika dróg ani reguł 30 km/+10 km. `offline.html` (starszy demonstrator) nie zmienił się w buildzie.
+
+### Polecenia i wyniki końcowe
+
+| Polecenie | Wynik |
+| --- | --- |
+| `npm test` (w `map05`) | **86/86 PASS** (76 + 10 nowych) |
+| `npm run build` (w `map05`) | PASS; `offline.html` bez zmian; `planner-offline.html` 69 522 757 B, SHA256 `694d833853c7db48b2844e1192bb5ad59d079efd2cfa15132204607420e648fe` |
+| `python -X utf8 -m unittest discover -s map05/tests -p test_*.py -v` | **80/80 PASS** (w tym CSP/hashe osadzonego HTML) |
+| `python -X utf8 -m unittest discover -s map04/tests -v` | **24/24 PASS** |
+| Scenariusze Chrome (served + offline) | **10/10 + 10/10 PASS** |
+
+Logi końcowe: `evidence/2026-11-17-browser/tests/`.
+
+### Otwarte i ograniczenia
+
+- REMOVE nadal usuwa cały przydział wraz z `releaseReason`; pełna historia korekt wymaga decyzji o miejscu zapisu (bez zmiany schematu w tym etapie).
+- Widok całego zakresu pokazuje główne drogi z przerwami, bo kompaktowy podkład składa się z krótkich odcinków OSM, a limit to 1 600 ścieżek. Szczegóły pojawiają się po zbliżeniu; generalizacja dróg wymagałaby nowego przetworzenia podkładu.
+- Po odświeżeniu strony dzień planowania wraca do 18.11.2026; plan pozostaje zachowany.
+- Wynik „Dojazd + praca: nieocenione” przy koszykach wynika z braku startu ekip i zatwierdzonych norm. To świadome ograniczenie, nie usterka UI.
+- NOT TESTED: Firefox/Safari/Edge, Chrome z oknem/GPU, dotyk, czytnik ekranu, słabszy sprzęt.
+
+---
 
 ## 17.11.2026 — regionalna mapa, lokalny routing i przekazanie do Aion UI
 

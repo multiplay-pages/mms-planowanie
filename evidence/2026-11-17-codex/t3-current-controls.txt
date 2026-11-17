@@ -1,0 +1,37 @@
+✔ regional street detail keeps nearby vertices distinct when zoomed in (1.1347ms)
+✔ viewport detail shows local streets around a selected point beyond the old Opole extract (1.195ms)
+✔ wide-view detail is bounded and does not substitute local streets for major roads (8.9896ms)
+✔ over-limit regional view keeps legible long roads instead of sub-pixel fragments (0.8085ms)
+✔ label and scale halos keep a constant screen width at street zoom (5.2373ms)
+✔ compact regional map decodes the same public road without duplicating all points upfront (0.6118ms)
+✔ planner shows 109 addresses, independent queue and honest map status (344.1565ms)
+✔ generate, manual move, remove and undo form a consistent flow (960.796ms)
+✔ availability controls affect capacity and reject removing occupied slots (696.9758ms)
+✔ confirmed visit cannot be moved or removed and regeneration keeps it (1887.3383ms)
+✔ filter scopes generation and unready orders have a visible reason (811.305ms)
+✔ local persistence restores and invalid stored plan is reported (1690.5453ms)
+✔ map zoom, arrows, keyboard and fit change viewport without fake markers (432.387ms)
+✔ reset is reviewable, reversible and never alters source addresses (852.8147ms)
+✔ selection preserves keyboard focus in queue and baskets (891.7911ms)
+✔ manual return to queue survives regeneration and can be explicitly released (1541.6183ms)
+✔ file import replaces only a valid matching plan and can be undone (716.8572ms)
+✔ geocoded planner plots 46 matches and exposes 63 review candidates without false markers (268.6633ms)
+✔ map markers follow filters, synchronize selection and fit a basket without drawing routes (1120.939ms)
+✔ existing local baskets load unchanged after adding the coordinate layer (730.3493ms)
+✔ foreign coordinate layer is rejected while the saved resource plan remains usable (543.9202ms)
+✔ external formatted address is displayed as text without markup execution (238.1642ms)
+✔ GUGiK map distinguishes 6 postal notes from 96 exact points and 7 unresolved replies (484.5599ms)
+✔ switching Geoapify to GUGiK keeps saved assignments and manual exclusions unchanged (1333.1987ms)
+✔ local road assessment is visible on baskets and their map with no external request (768.4938ms)
+✔ regional map fits a single address at street scale and updates local detail (284.1815ms)
+✔ keyboard focus stays in order details after confirm, release and return to queue (705.1214ms)
+✔ changing the day in basket map mode fits the basket of the new day (401.1412ms)
+✔ review control: renders do not steal focus from filters, generator, map basket or availability (429.0171ms)
+ℹ tests 29
+ℹ suites 0
+ℹ pass 29
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 19153.739

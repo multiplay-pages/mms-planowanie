@@ -52,7 +52,7 @@ python -X utf8 -m unittest discover -s map05/tests -p test_*.py -v
 python -X utf8 -m unittest discover -s map04/tests -v
 ```
 
-Stan 17.11.2026: **180/180 testów PASS** (76 JavaScript, 80 Python MAP-05, 24 Python MAP-04), build oraz kontrola składni/CSP/hashy poprawne. Logi: [evidence/2026-11-17](evidence/2026-11-17). Testy UI są pamięciowe, bez renderera. Wizualny test prawdziwej przeglądarki pozostaje otwarty z powodu udokumentowanej odmowy narzędzia poprzedniej sesji; nie jest zastąpiony liczbą testów.
+Stan 17.11.2026 (etap Aion UI): **190/190 testów PASS** (86 JavaScript, 80 Python MAP-05, 24 Python MAP-04), build oraz kontrola składni/CSP/hashy poprawne. **10/10 scenariuszy runbooka PASS w prawdziwym Chrome 157** dla widoku modułowego i `planner-offline.html`; dowody, zrzuty i usterki naprawione w tym etapie: [evidence/2026-11-17-browser](evidence/2026-11-17-browser/README.md). Inne przeglądarki, dotyk i czytnik ekranu nie były testowane.
 
 ## Dane i publikacja
 

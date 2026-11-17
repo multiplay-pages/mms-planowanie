@@ -1,0 +1,37 @@
+✔ 109 unique source addresses remain separate from synthetic orders and no coordinates are invented (1.0658ms)
+✔ queue is independent of planning date; new days have no implied capacity (86.5702ms)
+✔ generator uses actual slots, qualifications and unique shared resources across days (285.9113ms)
+✔ manual moves validate skills, occupied and adjacent slots without mutating original (1.2668ms)
+✔ availability reduction rejects occupied slots; surveys share installation capacity (0.547ms)
+✔ closing single occupied slot reports its window, team, date and order without changing the plan (1.281ms)
+✔ closing first slot of a two-slot visit reports its window, team, date and order without changing the plan (0.4178ms)
+✔ closing second slot of a two-slot visit reports its window, team, date and order without changing the plan (0.6372ms)
+✔ closing second slot of a confirmed two-slot visit reports its window, team, date and order without changing the plan (0.8438ms)
+✔ free windows remain editable when the same slot is occupied on another team or day (0.9227ms)
+✔ regeneration preserves manual and confirmed proposals and protects agreed windows (232.3084ms)
+✔ not ready orders stay in queue and cannot be forced into a basket (1.0366ms)
+✔ moving a released confirmation preserves its reason through JSON export and import (1.9089ms)
+✔ manual removal is held out of regeneration for that day until explicitly included (435.3237ms)
+✔ roundtrip validates dataset, shape, duplicate orders and conflicts on import (99.5828ms)
+✔ manual correction rejects a known 30001m road violation without mutating the saved plan (43.6956ms)
+✔ generator skips a known road violation and explains it independently of slot capacity (28.9428ms)
+✔ travel plus synthetic work cannot exceed the allotted window by a second (24.5813ms)
+✔ new road assessment annotates existing manual or confirmed plans without deleting them on import (12.5801ms)
+✔ seven intentionally unlocated addresses remain in the queue with a geographic reason (15.4072ms)
+✔ manual move and return to queue cannot introduce a new road violation in the source basket (16.4503ms)
+✔ scoped regeneration cannot move an automatic bridge visit and break protected source visits (14.8016ms)
+✔ an existing legacy violation can still be repaired by removing an offending endpoint (12.423ms)
+✔ local route layer rejects foreign identities coordinates negative values and broken segment references (2.663ms)
+✔ 30km applies to the full road chain via a measurement and includes the boundary (1.1264ms)
+✔ multiple measurements share one extra-distance budget across the basket (0.2934ms)
+✔ missing start end or disconnected road remains unassessed without zero-distance claims (0.3047ms)
+✔ travel and synthetic service share the allotted window and first commute remains unknown (0.277ms)
+✔ polyline segments decode in the correct direction and gaps are not synthesized (0.7319ms)
+ℹ tests 29
+ℹ suites 0
+ℹ pass 29
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1253.8445

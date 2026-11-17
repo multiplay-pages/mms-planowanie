@@ -1,0 +1,66 @@
+[
+  {
+    "w": 390,
+    "h": 844,
+    "scrollW": 390,
+    "innerW": 390,
+    "over": [],
+    "small": [
+      "A#",
+      "INPUT#",
+      "INPUT#",
+      "INPUT#",
+      "INPUT#",
+      "INPUT#",
+      "INPUT#",
+      "INPUT#",
+      "INPUT#",
+      "INPUT#"
+    ],
+    "minFont": 10,
+    "tiny": [
+      "P.eyebrow:10px",
+      "SPAN.order-sub:10px",
+      "SPAN.reason:10px",
+      "SPAN.tag amber:10px",
+      "SMALL.:10px",
+      "SPAN.check PASS:10px",
+      "SPAN.check NOT_APPLICABLE:10px",
+      "SPAN.check UNASSESSED:10px",
+      "SPAN.tag:10px"
+    ],
+    "tableScroll": "620/327"
+  },
+  {
+    "w": 768,
+    "h": 1024,
+    "scrollW": 768,
+    "innerW": 768,
+    "over": [],
+    "small": [
+      "A#",
+      "INPUT#",
+      "INPUT#",
+      "INPUT#",
+      "INPUT#",
+      "INPUT#",
+      "INPUT#",
+      "INPUT#",
+      "INPUT#",
+      "INPUT#"
+    ],
+    "minFont": 10,
+    "tiny": [
+      "P.eyebrow:10px",
+      "SPAN.order-sub:10px",
+      "SPAN.reason:10px",
+      "SPAN.tag amber:10px",
+      "SMALL.:10px",
+      "SPAN.check PASS:10px",
+      "SPAN.check NOT_APPLICABLE:10px",
+      "SPAN.check UNASSESSED:10px",
+      "SPAN.tag:10px"
+    ],
+    "tableScroll": "682/682"
+  }
+]

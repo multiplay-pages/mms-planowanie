@@ -1,0 +1,175 @@
+✔ 109 unique source addresses remain separate from synthetic orders and no coordinates are invented (1.1735ms)
+✔ queue is independent of planning date; new days have no implied capacity (142.1535ms)
+✔ generator uses actual slots, qualifications and unique shared resources across days (453.215ms)
+✔ manual moves validate skills, occupied and adjacent slots without mutating original (1.4022ms)
+✖ availability reduction rejects occupied slots; surveys share installation capacity (0.9181ms)
+✖ closing single occupied slot reports its window, team, date and order without changing the plan (0.7678ms)
+✖ closing first slot of a two-slot visit reports its window, team, date and order without changing the plan (0.4373ms)
+✖ closing second slot of a two-slot visit reports its window, team, date and order without changing the plan (0.3725ms)
+✖ closing second slot of a confirmed two-slot visit reports its window, team, date and order without changing the plan (0.6202ms)
+✔ free windows remain editable when the same slot is occupied on another team or day (1.4866ms)
+✔ regeneration preserves manual and confirmed proposals and protects agreed windows (357.2448ms)
+✔ not ready orders stay in queue and cannot be forced into a basket (0.2973ms)
+✖ moving a released confirmation preserves its reason through JSON export and import (2.108ms)
+✔ manual removal is held out of regeneration for that day until explicitly included (515.3336ms)
+✔ roundtrip validates dataset, shape, duplicate orders and conflicts on import (106.7548ms)
+ℹ tests 15
+ℹ suites 0
+ℹ pass 9
+ℹ fail 6
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1717.0193
+
+✖ failing tests:
+
+test at map05\tests\planner-model.test.mjs:51:1
+✖ availability reduction rejects occupied slots; surveys share installation capacity (0.9181ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /Nie można wyłączyć okna/. Input:
+  
+  'Error: Brak dostępności: slot jest wyłączony lub nie został podany.'
+  
+      at TestContext.<anonymous> (file:///<repo>/map05/tests/planner-model.test.mjs:54:10)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: Error: Brak dostępności: slot jest wyłączony lub nie został podany.
+        at fail (file:///<repo>/map05/planner-model.mjs:6:28)
+        at validatePlan (file:///<repo>/map05/planner-model.mjs:80:30)
+        at applyAction (file:///<repo>/map05/planner-model.mjs:217:3)
+        at act (file:///<repo>/map05/tests/planner-model.test.mjs:8:26)
+        at file:///<repo>/map05/tests/planner-model.test.mjs:54:21
+        at getActual (node:assert:580:5)
+        at strict.throws (node:assert:728:24)
+        at TestContext.<anonymous> (file:///<repo>/map05/tests/planner-model.test.mjs:54:10)
+        at Test.runInAsyncScope (node:async_hooks:226:14)
+        at Test.run (node:internal/test_runner/test:1402:25),
+    expected: /Nie można wyłączyć okna/,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at map05\tests\planner-model.test.mjs:64:3
+✖ closing single occupied slot reports its window, team, date and order without changing the plan (0.7678ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /Nie można wyłączyć okna/. Input:
+  
+  'Brak dostępności: slot jest wyłączony lub nie został podany.'
+  
+      at Object.<anonymous> (file:///<repo>/map05/tests/planner-model.test.mjs:70:12)
+      at expectedException (node:assert:547:17)
+      at expectsError (node:assert:672:21)
+      at strict.throws (node:assert:728:3)
+      at TestContext.<anonymous> (file:///<repo>/map05/tests/planner-model.test.mjs:69:10)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'Brak dostępności: slot jest wyłączony lub nie został podany.',
+    expected: /Nie można wyłączyć okna/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at map05\tests\planner-model.test.mjs:64:3
+✖ closing first slot of a two-slot visit reports its window, team, date and order without changing the plan (0.4373ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /Nie można wyłączyć okna/. Input:
+  
+  'Brak dostępności: slot jest wyłączony lub nie został podany.'
+  
+      at Object.<anonymous> (file:///<repo>/map05/tests/planner-model.test.mjs:70:12)
+      at expectedException (node:assert:547:17)
+      at expectsError (node:assert:672:21)
+      at strict.throws (node:assert:728:3)
+      at TestContext.<anonymous> (file:///<repo>/map05/tests/planner-model.test.mjs:69:10)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'Brak dostępności: slot jest wyłączony lub nie został podany.',
+    expected: /Nie można wyłączyć okna/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at map05\tests\planner-model.test.mjs:64:3
+✖ closing second slot of a two-slot visit reports its window, team, date and order without changing the plan (0.3725ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /Nie można wyłączyć okna/. Input:
+  
+  'Brak dostępności: slot jest wyłączony lub nie został podany.'
+  
+      at Object.<anonymous> (file:///<repo>/map05/tests/planner-model.test.mjs:70:12)
+      at expectedException (node:assert:547:17)
+      at expectsError (node:assert:672:21)
+      at strict.throws (node:assert:728:3)
+      at TestContext.<anonymous> (file:///<repo>/map05/tests/planner-model.test.mjs:69:10)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'Brak dostępności: slot jest wyłączony lub nie został podany.',
+    expected: /Nie można wyłączyć okna/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at map05\tests\planner-model.test.mjs:64:3
+✖ closing second slot of a confirmed two-slot visit reports its window, team, date and order without changing the plan (0.6202ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /Nie można wyłączyć okna/. Input:
+  
+  'Brak dostępności: slot jest wyłączony lub nie został podany.'
+  
+      at Object.<anonymous> (file:///<repo>/map05/tests/planner-model.test.mjs:70:12)
+      at expectedException (node:assert:547:17)
+      at expectsError (node:assert:672:21)
+      at strict.throws (node:assert:728:3)
+      at TestContext.<anonymous> (file:///<repo>/map05/tests/planner-model.test.mjs:69:10)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'Brak dostępności: slot jest wyłączony lub nie został podany.',
+    expected: /Nie można wyłączyć okna/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at map05\tests\planner-model.test.mjs:114:1
+✖ moving a released confirmation preserves its reason through JSON export and import (2.108ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + undefined
+  - 'Zmiana dnia na prośbę klienta'
+  
+      at TestContext.<anonymous> (file:///<repo>/map05/tests/planner-model.test.mjs:121:10)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: 'Zmiana dnia na prośbę klienta',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

@@ -20,17 +20,11 @@ export function visibleMapFeatures(prepared,viewport,limit=1600) {
   const [x,y,width,height]=viewport,zoom=680/width,maxRank=zoom<4?3:zoom<12?4:zoom<35?5:7;
   const visible=prepared.filter(item=>item.bounds[0]<=x+width&&item.bounds[2]>=x&&item.bounds[1]<=y+height&&item.bounds[3]>=y&&(item.feature.kind!=='road'||item.rank<=maxRank));
   if(visible.length<=limit)return visible;
-  visible.sort((a,b)=>a.rank-b.rank);
-  // Spread detail across the screen when many same-class roads are visible.
-  const counts=new Map(),result=[],perCell=Math.max(1,Math.floor(limit/144));
-  for(const item of visible) {
-    const cx=Math.max(0,Math.min(15,Math.floor(((item.bounds[0]+item.bounds[2])/2-x)/width*16)));
-    const cy=Math.max(0,Math.min(8,Math.floor(((item.bounds[1]+item.bounds[3])/2-y)/height*9))),key=`${cx}/${cy}`;
-    if((counts.get(key)??0)>=perCell)continue;
-    counts.set(key,(counts.get(key)??0)+1);result.push(item);
-    if(result.length>=limit)break;
-  }
-  return result;
+  // Over the limit, pieces shorter than about one screen pixel only draw specks. Keep the
+  // longest roads of the most important classes so the network stays readable.
+  const unit=width/680,size=item=>Math.max(item.bounds[2]-item.bounds[0],item.bounds[3]-item.bounds[1]);
+  const legible=visible.filter(item=>size(item)>=unit);
+  return (legible.length?legible:visible).sort((a,b)=>a.rank-b.rank||size(b)-size(a)).slice(0,limit);
 }
 
 export function mapFeaturePath(item,frame) {

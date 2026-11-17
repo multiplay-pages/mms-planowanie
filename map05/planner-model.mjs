@@ -160,6 +160,12 @@ export function applyAction(scenario,current,action) {
   if(action.type==='AVAILABILITY') {
     const index=plan.availability.findIndex(a=>a.teamId===action.teamId&&a.date===action.date);
     const item={teamId:action.teamId,date:action.date,slots:copy(action.slots)};
+    if(Array.isArray(item.slots))for(const a of plan.assignments.filter(a=>a.teamId===action.teamId&&a.date===action.date)) {
+      const order=orderFor(scenario,a.orderId);
+      for(let slot=a.start;slot<a.start+order.slotsRequired;slot++) {
+        if(!item.slots.includes(slot))fail(`Nie można wyłączyć okna ${scenario.windows[slot].join('–')} ekipy ${a.teamId} (${a.date}): zajmuje je ${a.orderId}. Najpierw przenieś zlecenie lub przywróć je do kolejki.`);
+      }
+    }
     if(index===-1) plan.availability.push(item);else plan.availability[index]=item;
   } else if(action.type==='ASSIGN') {
     const previous=plan.assignments.find(a=>a.orderId===action.orderId);protect(previous);
@@ -167,6 +173,7 @@ export function applyAction(scenario,current,action) {
     plan.assignments=plan.assignments.filter(a=>a.orderId!==action.orderId);
     plan.manualExclusions=plan.manualExclusions.filter(item=>item.orderId!==action.orderId||item.date!==action.date);
     const candidate=proposal(action.orderId,action.teamId,action.date,action.start,'MANUAL');
+    if(previous?.releaseReason!==undefined)candidate.releaseReason=previous.releaseReason;
     plan.assignments.push(candidate);validatePlan(scenario,plan);checkRoadCandidate(scenario,plan,candidate);
   } else if(action.type==='REMOVE') {
     const a=assignment();protect(a);

@@ -1,5 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import {readFile} from 'node:fs/promises';
 import {createMapFrame,projectMapPoint,mapGeometryPath} from '../map.mjs';
 import {prepareMapFeatures,visibleMapFeatures,mapFeaturePath} from '../planner-map.mjs';
 
@@ -26,6 +27,26 @@ test('wide-view detail is bounded and does not substitute local streets for majo
   const visible=visibleMapFeatures(prepareMapFeatures({features},frame),[0,0,680,380],300);
   assert.ok(visible.length>0&&visible.length<=300);
   assert.ok(visible.every(item=>item.feature.category==='primary'));
+});
+
+test('over-limit regional view keeps legible long roads instead of sub-pixel fragments',()=>{
+  const frame=createMapFrame([[17.2,49.9],[19,51.5]],680,380);
+  // 400 one-metre motorway pieces would render as specks; 50 long primary roads form the visible network.
+  const specks=Array.from({length:400},(_,index)=>({id:`s${index}`,kind:'road',category:'motorway',name:'',points:[[17.3+index*.003,50.2],[17.30001+index*.003,50.2]]}));
+  const roads=Array.from({length:50},(_,index)=>({id:`r${index}`,kind:'road',category:'primary',name:'',points:[[17.3,50.3+index*.02],[18.9,50.3+index*.02]]}));
+  const visible=visibleMapFeatures(prepareMapFeatures({features:[...specks,...roads]},frame),[0,0,680,380],300);
+  const ids=new Set(visible.map(item=>item.feature.id));
+  assert.ok(visible.length<=300);
+  assert.ok(roads.every(road=>ids.has(road.id)),'every long road must be drawn');
+  assert.ok(visible.every(item=>!item.feature.id.startsWith('s')),'sub-pixel fragments are not drawn when detail is limited');
+});
+
+test('label and scale halos keep a constant screen width at street zoom',async()=>{
+  const css=await readFile(new URL('../planner.css',import.meta.url),'utf8');
+  const rule=selector=>{const match=css.match(new RegExp(`(?:^|})\\s*${selector.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')}\\s*\\{([^}]*)\\}`));assert.ok(match,selector);return match[1];};
+  // A 3px halo without non-scaling-stroke grows with the viewBox zoom and covers the streets.
+  for(const selector of ['.map-road-label','.map-town-label','.map-selected-label','.map-scale text','.map-scale line'])assert.match(rule(selector),/vector-effect:\s*non-scaling-stroke/,selector);
+  assert.match(rule('.basket-head button'),/min-height:\s*(2[4-9]|[3-9]\d)px/,'basket map button meets a 24px target');
 });
 
 test('compact regional map decodes the same public road without duplicating all points upfront',()=>{

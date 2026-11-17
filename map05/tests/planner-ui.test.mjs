@@ -58,7 +58,7 @@ test('availability controls affect capacity and reject removing occupied slots',
   ui.click('#generate');const assigned=ui.$('#baskets [data-order]');
   const team=assigned.dataset.team,start=assigned.dataset.start;
   ui.change(`[data-availability="${team}"][data-slot="${start}"]`,false);
-  assert.match(ui.$('#message').textContent,/Brak dostępności/);
+  assert.match(ui.$('#message').textContent,/Nie można wyłączyć okna .* zajmuje je TEST-/);
   assert.equal(ui.$(`[data-availability="${team}"][data-slot="${start}"]`).checked,true);
 });
 test('confirmed visit cannot be moved or removed and regeneration keeps it',async t=>{
@@ -243,3 +243,33 @@ test('regional map fits a single address at street scale and updates local detai
   assert.doesNotMatch(ui.$('#map-note').textContent,/wyłącznie wycinek Opola/);
 });
 const scenarioOrder=addressId=>modelApi.createScenario(dataset,uug).orders.find(o=>o.addressId===addressId);
+
+test('keyboard focus stays in order details after confirm, release and return to queue',async t=>{
+  const ui=await mount(t,{geocoding:uug});
+  ui.click('#queue-list [data-order="TEST-002"]');ui.change('#assignment-team','TEST-02');ui.change('#assignment-slot','0');ui.submit();
+  for(const selector of ['#confirm-order','#release-order','#remove-order']) {
+    if(selector==='#release-order')ui.$('#release-reason').value='Korekta testowa';
+    ui.$(selector).focus();ui.click(selector);
+    const active=ui.window.document.activeElement;
+    assert.notEqual(active.tagName,'BODY',`${selector} must not drop focus to the page`);
+    assert.ok(ui.$('#order-details').contains(active),`${selector} keeps focus in the order details`);
+  }
+  assert.equal(ui.window.document.activeElement.id,'assign-order');
+});
+
+test('changing the day in basket map mode fits the basket of the new day',async t=>{
+  const scenario=modelApi.createScenario(dataset,uug),located=o=>o.ready&&o.type==='MPL'&&o.slotsRequired===1&&scenario.addresses.find(a=>a.id===o.addressId).coordinates;
+  const candidates=scenario.orders.filter(located),cityOf=o=>scenario.addresses.find(a=>a.id===o.addressId).city;
+  const first=candidates[0],second=candidates.find(o=>cityOf(o)!==cityOf(first)&&Math.abs(scenario.addresses.find(a=>a.id===o.addressId).coordinates[1]-scenario.addresses.find(a=>a.id===first.addressId).coordinates[1])>.3);
+  let plan=modelApi.createPlan(scenario);
+  plan=modelApi.applyAction(scenario,plan,{type:'ASSIGN',orderId:first.id,teamId:'TEST-02',date:'2026-11-18',start:0});
+  plan=modelApi.applyAction(scenario,plan,{type:'ASSIGN',orderId:second.id,teamId:'TEST-02',date:'2026-11-19',start:0});
+  const ui=await mount(t,{geocoding:uug,saved:new Map([[`mms-map05-plan-v1-${scenario.datasetId}`,JSON.stringify(plan)]])});
+  ui.click('[data-basket-map="TEST-02"]');const before=ui.$('#planner-map').getAttribute('viewBox');
+  ui.change('#planning-date','2026-11-19');
+  const [left,top,width,height]=ui.$('#planner-map').getAttribute('viewBox').split(' ').map(Number);
+  const marker=ui.$(`#planner-map [data-order="${second.id}"]`),x=Number(marker.getAttribute('cx')),y=Number(marker.getAttribute('cy'));
+  assert.notEqual(`${left} ${top} ${width} ${height}`,before);
+  assert.ok(x>=left&&x<=left+width&&y>=top&&y<=top+height,'the new day basket is inside the map view');
+  assert.match(ui.$('#map-note').textContent,/Koszyk TEST-02 · 2026-11-19: 1 punktów/);
+});

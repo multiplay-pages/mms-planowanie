@@ -1,0 +1,67 @@
+{
+  "artifact": {
+    "bytes": 69522757,
+    "sha256": "694d833853c7db48b2844e1192bb5ad59d079efd2cfa15132204607420e648fe"
+  },
+  "fileCounts": {
+    "total": 56,
+    "png": 35
+  },
+  "sensitiveMatches": [],
+  "sourceDataChanges": [],
+  "changes": [
+    ""
+  ],
+  "runs": [
+    {
+      "tag": "served",
+      "chrome": "157.0.8103.79",
+      "pass": 10,
+      "total": 10,
+      "missingEvidence": [],
+      "requests": 51,
+      "external": 0,
+      "failed": 0,
+      "console": 0,
+      "pageErrors": 0,
+      "plan": {
+        "keys": [
+          "schemaVersion",
+          "datasetId",
+          "availability",
+          "assignments",
+          "manualExclusions"
+        ],
+        "assignments": 13,
+        "reasons": [
+          "Test przeglądarki S6"
+        ]
+      }
+    },
+    {
+      "tag": "offline",
+      "chrome": "157.0.8103.79",
+      "pass": 10,
+      "total": 10,
+      "missingEvidence": [],
+      "requests": 4,
+      "external": 0,
+      "failed": 0,
+      "console": 0,
+      "pageErrors": 0,
+      "plan": {
+        "keys": [
+          "schemaVersion",
+          "datasetId",
+          "availability",
+          "assignments",
+          "manualExclusions"
+        ],
+        "assignments": 13,
+        "reasons": [
+          "Test przeglądarki S6"
+        ]
+      }
+    }
+  ]
+}

@@ -119,4 +119,21 @@ Nie ma i nie powinno powstać wywołanie OSRM/ORS podczas działania aplikacji. 
 9. Klawiatura: Tab/Shift+Tab, Enter/spacja na punktach, strzałki/+/−/Home na mapie, przywracanie fokusu po zmianach i dialog resetu.
 10. Zapisz dowody: screenshoty desktop/wąsko, błędy konsoli, błędy strony, nieudane żądania, użyty commit/artefakt i zakres testów. Nie uznawaj samego załadowania HTML za pełny PASS.
 
-W poprzednim runtime lokalne testy Browser Use były odrzucone polityką narzędzia. Nowe środowisko musi sprawdzić swoje uprawnione możliwości; nie ma zgody na obchodzenie odmowy. Opisane scenariusze pozostają checklistą przyszłej rzeczywistej weryfikacji, a nie deklaracją, że zostały wykonane.
+Stan 17.11.2026: wszystkie 10 scenariuszy wykonano w prawdziwym Chrome 157 dla widoku modułowego i pliku offline — 10/10 PASS w każdym wariancie. Wyniki, zrzuty i ograniczenia: `evidence/2026-11-17-browser/README.md`. W poprzednim runtime lokalne testy Browser Use były odrzucone polityką narzędzia. Każde nowe środowisko sprawdza własne uprawnione narzędzia; nie ma zgody na obchodzenie odmowy.
+
+### Automatyczne powtórzenie scenariuszy w Chrome
+
+Skrypty są w `evidence/2026-11-17-browser/scripts/`. Wymagają lokalnie zainstalowanego Chrome i pakietu `playwright-core`, zainstalowanego **poza repozytorium**, bez pobierania przeglądarek. Ścieżkę Chrome ustawia `lib.mjs`. Każdy przebieg tworzy nowy tymczasowy profil, więc nie dotyka planu w przeglądarce użytkownika.
+
+```text
+# w osobnym katalogu roboczym, np. %LOCALAPPDATA%\mms-e2e
+npm install playwright-core@1.65.1
+copy <repo>\evidence\2026-11-17-browser\scripts\*.mjs .
+# serwer w drugim terminalu: python -X utf8 map05/serve.py
+set EVID=<katalog wyników>
+node scenarios.mjs http://127.0.0.1:8765/ served
+node scenarios.mjs file:///<repo>/map05/planner-offline.html offline
+node perf.mjs file:///<repo>/map05/planner-offline.html offline
+```
+
+Wynik: `results-<tag>.json` z oczekiwanym/rzeczywistym rezultatem, statusem i dowodem dla każdego scenariusza oraz pełnym logiem konsoli i żądań. Do tego zrzuty PNG. Skrypt rejestruje każde żądanie spoza `127.0.0.1`/`file:` jako błąd S10. Samo przejście skryptu nie zastępuje obejrzenia zrzutów: B1 (zasłonięte ulice) przechodził kontrole liczbowe i był widoczny dopiero na obrazie.

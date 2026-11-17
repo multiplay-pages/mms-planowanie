@@ -1,0 +1,322 @@
+{
+  "loadMs": 2140,
+  "zoom": [
+    {
+      "step": 1,
+      "ms": 61,
+      "vb": "68 38 544 304",
+      "roads": 815,
+      "cats": {
+        "motorway": 151,
+        "motorway_link": 102,
+        "trunk": 54,
+        "trunk_link": 7,
+        "primary": 401,
+        "primary_link": 2,
+        "secondary": 98
+      }
+    },
+    {
+      "step": 2,
+      "ms": 64,
+      "vb": "122.4 68.4 435.2 243.2",
+      "roads": 1016,
+      "cats": {
+        "motorway": 146,
+        "motorway_link": 95,
+        "trunk": 80,
+        "trunk_link": 8,
+        "primary": 452,
+        "primary_link": 2,
+        "secondary": 229,
+        "secondary_link": 4
+      }
+    },
+    {
+      "step": 3,
+      "ms": 46,
+      "vb": "165.92 92.72 348.16 194.56",
+      "roads": 1198,
+      "cats": {
+        "motorway": 133,
+        "motorway_link": 81,
+        "trunk": 88,
+        "trunk_link": 11,
+        "primary": 566,
+        "primary_link": 14,
+        "secondary": 299,
+        "secondary_link": 6
+      }
+    },
+    {
+      "step": 4,
+      "ms": 47,
+      "vb": "200.736 112.176 278.528 155.648",
+      "roads": 1331,
+      "cats": {
+        "motorway": 164,
+        "motorway_link": 68,
+        "trunk": 96,
+        "trunk_link": 7,
+        "primary": 597,
+        "primary_link": 16,
+        "secondary": 377,
+        "secondary_link": 6
+      }
+    },
+    {
+      "step": 5,
+      "ms": 47,
+      "vb": "228.589 127.741 222.822 124.518",
+      "roads": 1168,
+      "cats": {
+        "motorway_link": 58,
+        "motorway": 151,
+        "trunk": 64,
+        "trunk_link": 9,
+        "primary": 445,
+        "primary_link": 26,
+        "secondary": 409,
+        "secondary_link": 6
+      }
+    },
+    {
+      "step": 6,
+      "ms": 47,
+      "vb": "250.871 140.193 178.258 99.615",
+      "roads": 928,
+      "cats": {
+        "motorway_link": 20,
+        "motorway": 90,
+        "trunk": 17,
+        "primary": 385,
+        "primary_link": 26,
+        "secondary": 388,
+        "secondary_link": 2
+      }
+    },
+    {
+      "step": 7,
+      "ms": 46,
+      "vb": "268.697 150.154 142.606 79.692",
+      "roads": 1257,
+      "cats": {
+        "motorway_link": 12,
+        "motorway": 57,
+        "primary": 391,
+        "primary_link": 16,
+        "secondary": 389,
+        "secondary_link": 2,
+        "tertiary": 386,
+        "tertiary_link": 4
+      }
+    },
+    {
+      "step": 8,
+      "ms": 49,
+      "vb": "282.957 158.123 114.085 63.753",
+      "roads": 1073,
+      "cats": {
+        "motorway_link": 12,
+        "motorway": 23,
+        "primary": 323,
+        "primary_link": 33,
+        "secondary": 281,
+        "secondary_link": 4,
+        "tertiary": 396,
+        "tertiary_link": 1
+      }
+    },
+    {
+      "step": 9,
+      "ms": 50,
+      "vb": "294.366 164.499 91.268 51.003",
+      "roads": 991,
+      "cats": {
+        "motorway": 10,
+        "primary": 302,
+        "primary_link": 32,
+        "secondary": 234,
+        "secondary_link": 4,
+        "tertiary": 406,
+        "tertiary_link": 3
+      }
+    },
+    {
+      "step": 10,
+      "ms": 45,
+      "vb": "303.493 169.599 73.014 40.802",
+      "roads": 852,
+      "cats": {
+        "primary": 263,
+        "primary_link": 35,
+        "secondary": 208,
+        "secondary_link": 7,
+        "tertiary": 333,
+        "tertiary_link": 6
+      }
+    },
+    {
+      "step": 11,
+      "ms": 47,
+      "vb": "310.794 173.679 58.412 32.642",
+      "roads": 744,
+      "cats": {
+        "primary": 249,
+        "primary_link": 44,
+        "secondary": 176,
+        "secondary_link": 3,
+        "tertiary": 269,
+        "tertiary_link": 3
+      }
+    },
+    {
+      "step": 12,
+      "ms": 46,
+      "vb": "316.635 176.943 46.729 26.113",
+      "roads": 970,
+      "cats": {
+        "primary": 200,
+        "primary_link": 26,
+        "secondary_link": 7,
+        "secondary": 133,
+        "tertiary": 244,
+        "tertiary_link": 3,
+        "residential": 329,
+        "unclassified": 28
+      }
+    },
+    {
+      "step": 13,
+      "ms": 47,
+      "vb": "321.308 179.555 37.383 20.891",
+      "roads": 779,
+      "cats": {
+        "primary": 149,
+        "primary_link": 14,
+        "secondary_link": 8,
+        "secondary": 102,
+        "tertiary": 184,
+        "tertiary_link": 4,
+        "residential": 293,
+        "unclassified": 25
+      }
+    },
+    {
+      "step": 14,
+      "ms": 47,
+      "vb": "325.047 181.644 29.907 16.713",
+      "roads": 1409,
+      "cats": {
+        "primary": 166,
+        "tertiary": 303,
+        "residential": 772,
+        "secondary": 96,
+        "primary_link": 11,
+        "unclassified": 29,
+        "secondary_link": 8,
+        "tertiary_link": 24
+      }
+    },
+    {
+      "step": 15,
+      "ms": 47,
+      "vb": "328.037 183.315 23.925 13.37",
+      "roads": 586,
+      "cats": {
+        "tertiary": 123,
+        "primary": 85,
+        "primary_link": 10,
+        "residential": 325,
+        "unclassified": 25,
+        "secondary": 10,
+        "secondary_link": 2,
+        "tertiary_link": 6
+      }
+    },
+    {
+      "step": 16,
+      "ms": 46,
+      "vb": "330.43 184.652 19.14 10.696",
+      "roads": 755,
+      "cats": {
+        "primary": 33,
+        "primary_link": 6,
+        "track": 354,
+        "service": 200,
+        "residential": 116,
+        "unclassified": 17,
+        "tertiary": 21,
+        "living_street": 8
+      }
+    }
+  ],
+  "drag": {
+    "steps": 30,
+    "totalMs": 940,
+    "msPerMove": 31,
+    "vb": "261.095 152.022 91.268 51.003",
+    "roads": 966,
+    "cats": {
+      "motorway_link": 8,
+      "motorway": 35,
+      "primary": 302,
+      "primary_link": 39,
+      "secondary_link": 3,
+      "secondary": 239,
+      "tertiary": 338,
+      "tertiary_link": 2
+    }
+  },
+  "overview": {
+    "vb": "0 0 680 380",
+    "roads": 672,
+    "cats": {
+      "motorway": 114,
+      "motorway_link": 129,
+      "trunk": 44,
+      "trunk_link": 7,
+      "primary": 330,
+      "primary_link": 2,
+      "secondary": 46
+    }
+  },
+  "labelHalo": [
+    {
+      "cls": "map-road-label",
+      "ve": "none",
+      "sw": "3px",
+      "box": [
+        114,
+        12
+      ]
+    },
+    {
+      "cls": "map-road-label",
+      "ve": "none",
+      "sw": "3px",
+      "box": [
+        114,
+        12
+      ]
+    },
+    {
+      "cls": "map-road-label",
+      "ve": "none",
+      "sw": "3px",
+      "box": [
+        62,
+        12
+      ]
+    },
+    {
+      "cls": "map-road-label",
+      "ve": "none",
+      "sw": "3px",
+      "box": [
+        24,
+        12
+      ]
+    }
+  ]
+}
