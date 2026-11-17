@@ -1,0 +1,2 @@
+# Only the source workbook importer/tests need this. The app has no Python dependency.
+openpyxl==3.1.5

@@ -1,0 +1,13 @@
+# Pinned data may intentionally retain CRLF; it is not trailing whitespace.
+* text=auto eol=lf whitespace=trailing-space,space-before-tab,cr-at-eol
+*.xlsx -text
+*.csv -text
+*.json -text
+*.gz -text
+*.pbf -text
+*.html text eol=lf
+*.mjs text eol=lf
+*.py text eol=lf
+# Two trailing spaces are a valid Markdown hard line break.
+*.md whitespace=-blank-at-eol,space-before-tab,cr-at-eol
+*.cmd text eol=crlf

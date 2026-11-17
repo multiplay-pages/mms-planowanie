@@ -1,0 +1,21 @@
+feat: add local road planning and detailed Aion UI handoff
+
+Import the working MMS coordinator prototype and preserved MAP-04 experiment.
+Include the independently editable queue, capacity controls, basket generation,
+manual corrections, protected windows and stable local plan persistence.
+
+Use the supplied 109 address catalog, explicit GUGiK match statuses, regional
+OSM background and locally precomputed road paths. Preserve unknown locations
+and road access; no external routing requests or production MMS changes.
+
+Validate newly introduced road violations in both source and destination
+baskets, including scoped regeneration. Preserve readable legacy plans.
+
+Add reproducible compressed public build inputs and complete history,
+architecture, decisions, runbook, test evidence and Claude Code/Codex handoff.
+User explicitly approved public publication including addresses/coordinates.
+
+Validation: 76 JavaScript + 80 MAP-05 Python + 24 MAP-04 Python tests PASS.
+Build, script/style CSP hashes, syntax and original source integrity PASS.
+Real browser visual verification remains unexecuted under the recorded tool
+policy; do not interpret test counts as a production-readiness claim.

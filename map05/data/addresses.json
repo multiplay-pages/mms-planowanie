@@ -1,0 +1,1882 @@
+{
+  "schemaVersion": 1,
+  "source": {
+    "filename": "dane_adresowe-v2.xlsx",
+    "sheet": "Dane adresowe",
+    "range": "A1:G111",
+    "sha256": "f7037869ea5bed2d5c0b05416198feda9619b79351f2056501e3b64a79d3d08c",
+    "coverageBasis": "User-supplied test address list; not independently verified"
+  },
+  "quality": {
+    "sourceRows": 110,
+    "uniqueAddresses": 109,
+    "uniqueBuildings": 109,
+    "cities": 80,
+    "duplicates": [
+      {
+        "row": 107,
+        "sameAsRow": 100,
+        "addressId": "ADR-bbed70da216b"
+      }
+    ],
+    "incompleteRows": [],
+    "withoutStreet": 38,
+    "withoutCoordinates": 109
+  },
+  "addresses": [
+    {
+      "id": "ADR-fd245bb82543",
+      "postcode": "46-070",
+      "city": "Wawelno",
+      "street": "ul. Leśna",
+      "building": "32A",
+      "unit": "",
+      "label": "46-070 Wawelno, ul. Leśna 32A",
+      "sourceLabel": "46-070 Wawelno, ul. Leśna 32A",
+      "sourceRows": [
+        2
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-a857dc6d2a77",
+      "postcode": "46-250",
+      "city": "Wąsice",
+      "street": "ul. Główna",
+      "building": "20",
+      "unit": "",
+      "label": "46-250 Wąsice, ul. Główna 20",
+      "sourceLabel": "46-250 Wąsice, ul. Główna 20",
+      "sourceRows": [
+        3
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-36960b461cd1",
+      "postcode": "44-194",
+      "city": "Knurów",
+      "street": "ul. Mieszka I",
+      "building": "23A",
+      "unit": "9",
+      "label": "44-194 Knurów, ul. Mieszka I 23A/9",
+      "sourceLabel": "44-194 Knurów, ul. Mieszka I 23A/9",
+      "sourceRows": [
+        4
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-6fd98d99cd10",
+      "postcode": "48-155",
+      "city": "Mokre",
+      "street": "",
+      "building": "9",
+      "unit": "",
+      "label": "48-155 Mokre, 9",
+      "sourceLabel": "48-155 Mokre, BRAK ULICY 9",
+      "sourceRows": [
+        5
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-0391711ddff4",
+      "postcode": "46-113",
+      "city": "Wilków",
+      "street": "ul. Długa",
+      "building": "149",
+      "unit": "1",
+      "label": "46-113 Wilków, ul. Długa 149/1",
+      "sourceLabel": "46-113 Wilków, ul. Długa 149/1",
+      "sourceRows": [
+        6
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-197fef0043b4",
+      "postcode": "46-040",
+      "city": "Ozimek",
+      "street": "ul. Juliusza Słowackiego",
+      "building": "3A",
+      "unit": "5",
+      "label": "46-040 Ozimek, ul. Juliusza Słowackiego 3A/5",
+      "sourceLabel": "46-040 Ozimek, ul. Juliusza Słowackiego 3A/5",
+      "sourceRows": [
+        7
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-5063c95d3cc7",
+      "postcode": "47-280",
+      "city": "Grudynia Wielka",
+      "street": "ul. Leśna",
+      "building": "1A",
+      "unit": "5",
+      "label": "47-280 Grudynia Wielka, ul. Leśna 1A/5",
+      "sourceLabel": "47-280 Grudynia Wielka, ul. Leśna 1A/5",
+      "sourceRows": [
+        8
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-441735ef10ac",
+      "postcode": "44-178",
+      "city": "Przyszowice",
+      "street": "ul. Powstańców Śląskich",
+      "building": "91B",
+      "unit": "",
+      "label": "44-178 Przyszowice, ul. Powstańców Śląskich 91B",
+      "sourceLabel": "44-178 Przyszowice, ul. Powstańców Śląskich 91B",
+      "sourceRows": [
+        9
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-e66f408d1b58",
+      "postcode": "46-081",
+      "city": "Dobrzeń Wielki",
+      "street": "ul. Żeromskiego",
+      "building": "48",
+      "unit": "",
+      "label": "46-081 Dobrzeń Wielki, ul. Żeromskiego 48",
+      "sourceLabel": "46-081 Dobrzeń Wielki, ul. Żeromskiego 48",
+      "sourceRows": [
+        10
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-55575010d9a8",
+      "postcode": "46-048",
+      "city": "Radawie",
+      "street": "ul. Opolska",
+      "building": "73",
+      "unit": "",
+      "label": "46-048 Radawie, ul. Opolska 73",
+      "sourceLabel": "46-048 Radawie, ul. Opolska 73",
+      "sourceRows": [
+        11
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-b772bdf5ac69",
+      "postcode": "56-400",
+      "city": "Zimnica",
+      "street": "",
+      "building": "17C",
+      "unit": "",
+      "label": "56-400 Zimnica, 17C",
+      "sourceLabel": "56-400 Zimnica, BRAK ULICY 17C",
+      "sourceRows": [
+        12
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-62050d20bf98",
+      "postcode": "46-243",
+      "city": "Borkowice",
+      "street": "ul. Bogacka",
+      "building": "24",
+      "unit": "",
+      "label": "46-243 Borkowice, ul. Bogacka 24",
+      "sourceLabel": "46-243 Borkowice, ul. Bogacka 24",
+      "sourceRows": [
+        13
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-3094886a5e7a",
+      "postcode": "49-340",
+      "city": "Lewin Brzeski",
+      "street": "ul. Rynek",
+      "building": "25",
+      "unit": "2",
+      "label": "49-340 Lewin Brzeski, ul. Rynek 25/2",
+      "sourceLabel": "49-340 Lewin Brzeski, ul. Rynek 25/2",
+      "sourceRows": [
+        14
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-5b78889d48e4",
+      "postcode": "48-118",
+      "city": "Ściborzyce Małe",
+      "street": "",
+      "building": "40",
+      "unit": "",
+      "label": "48-118 Ściborzyce Małe, 40",
+      "sourceLabel": "48-118 Ściborzyce Małe, BRAK ULICY 40",
+      "sourceRows": [
+        15
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-827e73a91a08",
+      "postcode": "56-400",
+      "city": "Gręboszyce",
+      "street": "",
+      "building": "12B",
+      "unit": "",
+      "label": "56-400 Gręboszyce, 12B",
+      "sourceLabel": "56-400 Gręboszyce, BRAK ULICY 12B",
+      "sourceRows": [
+        16
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-741365bea2ef",
+      "postcode": "46-380",
+      "city": "Dobrodzień",
+      "street": "ul. Powstańców Śląskich",
+      "building": "2B",
+      "unit": "",
+      "label": "46-380 Dobrodzień, ul. Powstańców Śląskich 2B",
+      "sourceLabel": "46-380 Dobrodzień, ul. Powstańców Śląskich 2B",
+      "sourceRows": [
+        17
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-0bc733b69bf6",
+      "postcode": "45-403",
+      "city": "Opole",
+      "street": "ul. Rozmarynowa",
+      "building": "6",
+      "unit": "1",
+      "label": "45-403 Opole, ul. Rozmarynowa 6/1",
+      "sourceLabel": "45-403 Opole, ul. Rozmarynowa 6/1",
+      "sourceRows": [
+        18
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-8f21ba2a4768",
+      "postcode": "46-040",
+      "city": "Ozimek",
+      "street": "ul. 8 Marca",
+      "building": "3B",
+      "unit": "9",
+      "label": "46-040 Ozimek, ul. 8 Marca 3B/9",
+      "sourceLabel": "46-040 Ozimek, ul. 8 Marca 3B/9",
+      "sourceRows": [
+        19
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-aaeeb40da4ce",
+      "postcode": "46-023",
+      "city": "Osowiec",
+      "street": "ul. Dworcowa",
+      "building": "7B",
+      "unit": "2",
+      "label": "46-023 Osowiec, ul. Dworcowa 7B/2",
+      "sourceLabel": "46-023 Osowiec, ul. Dworcowa 7B/2",
+      "sourceRows": [
+        20
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-a3f8cd94e454",
+      "postcode": "45-662",
+      "city": "Opole",
+      "street": "ul. Kredytowa",
+      "building": "19",
+      "unit": "2",
+      "label": "45-662 Opole, ul. Kredytowa 19/2",
+      "sourceLabel": "45-662 Opole, ul. Kredytowa 19/2",
+      "sourceRows": [
+        21
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-8f19ee97f28d",
+      "postcode": "47-325",
+      "city": "Kamień Śląski",
+      "street": "ul. Wapienna",
+      "building": "1",
+      "unit": "",
+      "label": "47-325 Kamień Śląski, ul. Wapienna 1",
+      "sourceLabel": "47-325 Kamień Śląski, ul. Wapienna 1",
+      "sourceRows": [
+        22
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-687567c40bd8",
+      "postcode": "47-180",
+      "city": "Izbicko",
+      "street": "ul. Powstańców Śląskich",
+      "building": "17",
+      "unit": "",
+      "label": "47-180 Izbicko, ul. Powstańców Śląskich 17",
+      "sourceLabel": "47-180 Izbicko, ul. Powstańców Śląskich 17",
+      "sourceRows": [
+        23
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-e4a8e697b2af",
+      "postcode": "46-300",
+      "city": "Wachów",
+      "street": "ul. Pawła Kuczki",
+      "building": "48",
+      "unit": "",
+      "label": "46-300 Wachów, ul. Pawła Kuczki 48",
+      "sourceLabel": "46-300 Wachów, ul. Pawła Kuczki 48",
+      "sourceRows": [
+        24
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-65183f96ac15",
+      "postcode": "48-118",
+      "city": "Lisięcice",
+      "street": "ul. Słowackiego",
+      "building": "32",
+      "unit": "",
+      "label": "48-118 Lisięcice, ul. Słowackiego 32",
+      "sourceLabel": "48-118 Lisięcice, ul. Słowackiego 32",
+      "sourceRows": [
+        25
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-1dcff80dc920",
+      "postcode": "56-410",
+      "city": "Białe Błoto",
+      "street": "",
+      "building": "17D",
+      "unit": "",
+      "label": "56-410 Białe Błoto, 17D",
+      "sourceLabel": "56-410 Białe Błoto, BRAK ULICY 17D",
+      "sourceRows": [
+        26
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-9cfc6e9f7c77",
+      "postcode": "46-042",
+      "city": "Szczedrzyk",
+      "street": "ul. Rybacka",
+      "building": "7",
+      "unit": "",
+      "label": "46-042 Szczedrzyk, ul. Rybacka 7",
+      "sourceLabel": "46-042 Szczedrzyk, ul. Rybacka 7",
+      "sourceRows": [
+        27
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-d64f08786502",
+      "postcode": "45-841",
+      "city": "Opole",
+      "street": "ul. Pisankowa",
+      "building": "9",
+      "unit": "2",
+      "label": "45-841 Opole, ul. Pisankowa 9/2",
+      "sourceLabel": "45-841 Opole, ul. Pisankowa 9/2",
+      "sourceRows": [
+        28
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-939c2c34b499",
+      "postcode": "48-140",
+      "city": "Niekazanice",
+      "street": "",
+      "building": "64",
+      "unit": "",
+      "label": "48-140 Niekazanice, 64",
+      "sourceLabel": "48-140 Niekazanice, BRAK ULICY 64",
+      "sourceRows": [
+        29
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-bd2ca899d2df",
+      "postcode": "45-920",
+      "city": "Opole",
+      "street": "ul. Studzienna",
+      "building": "19E",
+      "unit": "",
+      "label": "45-920 Opole, ul. Studzienna 19E",
+      "sourceLabel": "45-920 Opole, ul. Studzienna 19E",
+      "sourceRows": [
+        30
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-a4f55c4d18d3",
+      "postcode": "46-264",
+      "city": "Krzywiczyny",
+      "street": "ul. Wołczyńska",
+      "building": "54",
+      "unit": "",
+      "label": "46-264 Krzywiczyny, ul. Wołczyńska 54",
+      "sourceLabel": "46-264 Krzywiczyny, ul. Wołczyńska 54",
+      "sourceRows": [
+        31
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-182a9da08a50",
+      "postcode": "47-280",
+      "city": "Grudynia Wielka",
+      "street": "ul. Leśna",
+      "building": "3C",
+      "unit": "2",
+      "label": "47-280 Grudynia Wielka, ul. Leśna 3C/2",
+      "sourceLabel": "47-280 Grudynia Wielka, ul. Leśna 3C/2",
+      "sourceRows": [
+        32
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-0a3827369a2c",
+      "postcode": "56-410",
+      "city": "Białe Błoto",
+      "street": "",
+      "building": "35",
+      "unit": "",
+      "label": "56-410 Białe Błoto, 35",
+      "sourceLabel": "56-410 Białe Błoto, BRAK ULICY 35",
+      "sourceRows": [
+        33
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-b2b9b9fb3759",
+      "postcode": "56-400",
+      "city": "Smolna",
+      "street": "",
+      "building": "131",
+      "unit": "",
+      "label": "56-400 Smolna, 131",
+      "sourceLabel": "56-400 Smolna, BRAK ULICY 131",
+      "sourceRows": [
+        34
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-946dd8d061c2",
+      "postcode": "48-155",
+      "city": "Opawica",
+      "street": "",
+      "building": "7",
+      "unit": "",
+      "label": "48-155 Opawica, 7",
+      "sourceLabel": "48-155 Opawica, BRAK ULICY 7",
+      "sourceRows": [
+        35
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-0ec05aa1bb32",
+      "postcode": "46-030",
+      "city": "Grabice",
+      "street": "ul. Wiejska",
+      "building": "26",
+      "unit": "",
+      "label": "46-030 Grabice, ul. Wiejska 26",
+      "sourceLabel": "46-030 Grabice, ul. Wiejska 26",
+      "sourceRows": [
+        36
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-32fddaeffafa",
+      "postcode": "44-213",
+      "city": "Książenice",
+      "street": "ul. Księdza Pojdy",
+      "building": "100C",
+      "unit": "",
+      "label": "44-213 Książenice, ul. Księdza Pojdy 100C",
+      "sourceLabel": "44-213 Książenice, ul. Księdza Pojdy 100C",
+      "sourceRows": [
+        37
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-69e2569962c9",
+      "postcode": "46-333",
+      "city": "Ligota Oleska",
+      "street": "",
+      "building": "5",
+      "unit": "",
+      "label": "46-333 Ligota Oleska, 5",
+      "sourceLabel": "46-333 Ligota Oleska, BRAK ULICY 5",
+      "sourceRows": [
+        38
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-be0bd65583b1",
+      "postcode": "46-050",
+      "city": "Tarnów Opolski",
+      "street": "ul. 1 Maja",
+      "building": "29G",
+      "unit": "4",
+      "label": "46-050 Tarnów Opolski, ul. 1 Maja 29G/4",
+      "sourceLabel": "46-050 Tarnów Opolski, ul. 1 Maja 29G/4",
+      "sourceRows": [
+        39
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-764a4744faef",
+      "postcode": "56-400",
+      "city": "Sokołowice",
+      "street": "",
+      "building": "100PB",
+      "unit": "",
+      "label": "56-400 Sokołowice, 100PB",
+      "sourceLabel": "56-400 Sokołowice, BRAK ULICY 100PB",
+      "sourceRows": [
+        40
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-9b8662714b0b",
+      "postcode": "56-400",
+      "city": "Zimnica",
+      "street": "",
+      "building": "17B",
+      "unit": "",
+      "label": "56-400 Zimnica, 17B",
+      "sourceLabel": "56-400 Zimnica, BRAK ULICY 17B",
+      "sourceRows": [
+        41
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-1f1d7aa2dd7b",
+      "postcode": "56-400",
+      "city": "Cieśle",
+      "street": "",
+      "building": "39CB",
+      "unit": "",
+      "label": "56-400 Cieśle, 39CB",
+      "sourceLabel": "56-400 Cieśle, BRAK ULICY 39CB",
+      "sourceRows": [
+        42
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-3a1f36a79bbf",
+      "postcode": "46-312",
+      "city": "Kucoby",
+      "street": "ul. Spacerowa",
+      "building": "62",
+      "unit": "",
+      "label": "46-312 Kucoby, ul. Spacerowa 62",
+      "sourceLabel": "46-312 Kucoby, ul. Spacerowa 62",
+      "sourceRows": [
+        43
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-9f5600b90dfc",
+      "postcode": "46-233",
+      "city": "Bogdańczowice",
+      "street": "",
+      "building": "26B",
+      "unit": "",
+      "label": "46-233 Bogdańczowice, 26B",
+      "sourceLabel": "46-233 Bogdańczowice, BRAK ULICY 26B",
+      "sourceRows": [
+        44
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-48129c2deb52",
+      "postcode": "46-220",
+      "city": "Kochłowice",
+      "street": "",
+      "building": "3A",
+      "unit": "",
+      "label": "46-220 Kochłowice, 3A",
+      "sourceLabel": "46-220 Kochłowice, BRAK ULICY 3A",
+      "sourceRows": [
+        45
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-4463950bb22f",
+      "postcode": "46-040",
+      "city": "Krasiejów",
+      "street": "ul. Rzeczna",
+      "building": "10",
+      "unit": "",
+      "label": "46-040 Krasiejów, ul. Rzeczna 10",
+      "sourceLabel": "46-040 Krasiejów, ul. Rzeczna 10",
+      "sourceRows": [
+        46
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-fd10dcc27dfe",
+      "postcode": "46-300",
+      "city": "Borki Wielkie",
+      "street": "ul. Kolonia Kuźnica Borecka",
+      "building": "27A",
+      "unit": "",
+      "label": "46-300 Borki Wielkie, ul. Kolonia Kuźnica Borecka 27A",
+      "sourceLabel": "46-300 Borki Wielkie, ul. Kolonia Kuźnica Borecka 27A",
+      "sourceRows": [
+        47
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-aa9a12e31e3d",
+      "postcode": "47-175",
+      "city": "Kadłub",
+      "street": "ul. Krótka",
+      "building": "17",
+      "unit": "",
+      "label": "47-175 Kadłub, ul. Krótka 17",
+      "sourceLabel": "47-175 Kadłub, ul. Krótka 17",
+      "sourceRows": [
+        48
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-b9c38e48d701",
+      "postcode": "46-080",
+      "city": "Chróścice",
+      "street": "ul. Orzeszkowej",
+      "building": "4",
+      "unit": "",
+      "label": "46-080 Chróścice, ul. Orzeszkowej 4",
+      "sourceLabel": "46-080 Chróścice, ul. Orzeszkowej 4",
+      "sourceRows": [
+        49
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-5f9cbddc0eae",
+      "postcode": "49-345",
+      "city": "Skorogoszcz",
+      "street": "ul. Jakuba Kani",
+      "building": "5",
+      "unit": "12",
+      "label": "49-345 Skorogoszcz, ul. Jakuba Kani 5/12",
+      "sourceLabel": "49-345 Skorogoszcz, ul. Jakuba Kani 5/12",
+      "sourceRows": [
+        50
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-4c610142b186",
+      "postcode": "46-050",
+      "city": "Tarnów Opolski",
+      "street": "ul. Osiedle Zakładowe",
+      "building": "1A",
+      "unit": "6",
+      "label": "46-050 Tarnów Opolski, ul. Osiedle Zakładowe 1A/6",
+      "sourceLabel": "46-050 Tarnów Opolski, ul. Osiedle Zakładowe 1A/6",
+      "sourceRows": [
+        51
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-bb106d3e6064",
+      "postcode": "46-024",
+      "city": "Brynica",
+      "street": "ul. Stawowa",
+      "building": "1A",
+      "unit": "",
+      "label": "46-024 Brynica, ul. Stawowa 1A",
+      "sourceLabel": "46-024 Brynica, ul. Stawowa 1A",
+      "sourceRows": [
+        52
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-9c486e22acf1",
+      "postcode": "46-380",
+      "city": "Rzędowice",
+      "street": "ul. Wolna",
+      "building": "1",
+      "unit": "",
+      "label": "46-380 Rzędowice, ul. Wolna 1",
+      "sourceLabel": "46-380 Rzędowice, ul. Wolna 1",
+      "sourceRows": [
+        53
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-a70e01bb2d22",
+      "postcode": "56-400",
+      "city": "Krzeczyn",
+      "street": "",
+      "building": "3B",
+      "unit": "",
+      "label": "56-400 Krzeczyn, 3B",
+      "sourceLabel": "56-400 Krzeczyn, BRAK ULICY 3B",
+      "sourceRows": [
+        54
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-136c7adc89e1",
+      "postcode": "46-081",
+      "city": "Dobrzeń Wielki",
+      "street": "Osiedle Energetyk",
+      "building": "4A",
+      "unit": "4",
+      "label": "46-081 Dobrzeń Wielki, Osiedle Energetyk 4A/4",
+      "sourceLabel": "46-081 Dobrzeń Wielki, Osiedle Energetyk 4A/4",
+      "sourceRows": [
+        55
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-446013bf569a",
+      "postcode": "46-045",
+      "city": "Turawa",
+      "street": "ul. Kościuszki",
+      "building": "12",
+      "unit": "",
+      "label": "46-045 Turawa, ul. Kościuszki 12",
+      "sourceLabel": "46-045 Turawa, ul. Kościuszki 12",
+      "sourceRows": [
+        56
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-50742c1f67d1",
+      "postcode": "46-312",
+      "city": "Kucoby",
+      "street": "ul. Kiki",
+      "building": "27",
+      "unit": "",
+      "label": "46-312 Kucoby, ul. Kiki 27",
+      "sourceLabel": "46-312 Kucoby, ul. Kiki 27",
+      "sourceRows": [
+        57
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-521bfadcde57",
+      "postcode": "56-400",
+      "city": "Bystre",
+      "street": "ul. Jesienna",
+      "building": "3",
+      "unit": "",
+      "label": "56-400 Bystre, ul. Jesienna 3",
+      "sourceLabel": "56-400 Bystre, ul. Jesienna 3",
+      "sourceRows": [
+        58
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-5a1ce601cd0a",
+      "postcode": "43-178",
+      "city": "Ornontowice",
+      "street": "ul. Akacjowa",
+      "building": "20",
+      "unit": "9",
+      "label": "43-178 Ornontowice, ul. Akacjowa 20/9",
+      "sourceLabel": "43-178 Ornontowice, ul. Akacjowa 20/9",
+      "sourceRows": [
+        59
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-b4e597ab15b5",
+      "postcode": "56-410",
+      "city": "Dobra",
+      "street": "",
+      "building": "66F",
+      "unit": "",
+      "label": "56-410 Dobra, 66F",
+      "sourceLabel": "56-410 Dobra, BRAK ULICY 66F",
+      "sourceRows": [
+        60
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-6708b35973c8",
+      "postcode": "46-310",
+      "city": "Szyszków",
+      "street": "",
+      "building": "35",
+      "unit": "",
+      "label": "46-310 Szyszków, 35",
+      "sourceLabel": "46-310 Szyszków, BRAK ULICY 35",
+      "sourceRows": [
+        61
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-f79ff100cc6d",
+      "postcode": "46-250",
+      "city": "Szum",
+      "street": "",
+      "building": "101",
+      "unit": "",
+      "label": "46-250 Szum, 101",
+      "sourceLabel": "46-250 Szum, BRAK ULICY 101",
+      "sourceRows": [
+        62
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-b62928e7d05c",
+      "postcode": "56-400",
+      "city": "Cieśle",
+      "street": "",
+      "building": "36G",
+      "unit": "",
+      "label": "56-400 Cieśle, 36G",
+      "sourceLabel": "56-400 Cieśle, BRAK ULICY 36G",
+      "sourceRows": [
+        63
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-5b0cbf345d7b",
+      "postcode": "56-400",
+      "city": "Poniatowice",
+      "street": "",
+      "building": "187F",
+      "unit": "",
+      "label": "56-400 Poniatowice, 187F",
+      "sourceLabel": "56-400 Poniatowice, BRAK ULICY 187F",
+      "sourceRows": [
+        64
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-3b5677afde3d",
+      "postcode": "56-400",
+      "city": "Smolna",
+      "street": "",
+      "building": "22C",
+      "unit": "",
+      "label": "56-400 Smolna, 22C",
+      "sourceLabel": "56-400 Smolna, BRAK ULICY 22C",
+      "sourceRows": [
+        65
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-2d1bb8bb481a",
+      "postcode": "56-400",
+      "city": "Sokołowice",
+      "street": "",
+      "building": "100O",
+      "unit": "",
+      "label": "56-400 Sokołowice, 100O",
+      "sourceLabel": "56-400 Sokołowice, BRAK ULICY 100O",
+      "sourceRows": [
+        66
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-53795164e29a",
+      "postcode": "49-200",
+      "city": "Grodków",
+      "street": "ul. Wiejska",
+      "building": "9",
+      "unit": "6",
+      "label": "49-200 Grodków, ul. Wiejska 9/6",
+      "sourceLabel": "49-200 Grodków, ul. Wiejska 9/6",
+      "sourceRows": [
+        67
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-964a172bae21",
+      "postcode": "44-213",
+      "city": "Rybnik",
+      "street": "ul. Arki Bożka",
+      "building": "51I",
+      "unit": "",
+      "label": "44-213 Rybnik, ul. Arki Bożka 51I",
+      "sourceLabel": "44-213 Rybnik, ul. Arki Bożka 51I",
+      "sourceRows": [
+        68
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-8dc52d15f26f",
+      "postcode": "48-120",
+      "city": "Sułków",
+      "street": "",
+      "building": "9A",
+      "unit": "",
+      "label": "48-120 Sułków, 9A",
+      "sourceLabel": "48-120 Sułków, BRAK ULICY 9A",
+      "sourceRows": [
+        69
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-4e34a76c7964",
+      "postcode": "46-211",
+      "city": "Maciejów",
+      "street": "",
+      "building": "39",
+      "unit": "2",
+      "label": "46-211 Maciejów, 39/2",
+      "sourceLabel": "46-211 Maciejów, BRAK ULICY 39/2",
+      "sourceRows": [
+        70
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-93becc20000b",
+      "postcode": "48-155",
+      "city": "Chomiąża",
+      "street": "",
+      "building": "37",
+      "unit": "",
+      "label": "48-155 Chomiąża, 37",
+      "sourceLabel": "48-155 Chomiąża, BRAK ULICY 37",
+      "sourceRows": [
+        71
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-a1289045ff5b",
+      "postcode": "49-340",
+      "city": "Nowa Wieś Mała",
+      "street": "",
+      "building": "8C",
+      "unit": "",
+      "label": "49-340 Nowa Wieś Mała, 8C",
+      "sourceLabel": "49-340 Nowa Wieś Mała, BRAK ULICY 8C",
+      "sourceRows": [
+        72
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-922205fd7122",
+      "postcode": "46-083",
+      "city": "Stare Siołkowice",
+      "street": "ul. Klapacz",
+      "building": "127A",
+      "unit": "",
+      "label": "46-083 Stare Siołkowice, ul. Klapacz 127A",
+      "sourceLabel": "46-083 Stare Siołkowice, ul. Klapacz 127A",
+      "sourceRows": [
+        73
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-837d37a78a3d",
+      "postcode": "56-400",
+      "city": "Boguszyce",
+      "street": "",
+      "building": "22E",
+      "unit": "2",
+      "label": "56-400 Boguszyce, 22E/2",
+      "sourceLabel": "56-400 Boguszyce, BRAK ULICY 22E/2",
+      "sourceRows": [
+        74
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-7b82172961a6",
+      "postcode": "46-275",
+      "city": "Chudoba",
+      "street": "",
+      "building": "169",
+      "unit": "",
+      "label": "46-275 Chudoba, 169",
+      "sourceLabel": "46-275 Chudoba, BRAK ULICY 169",
+      "sourceRows": [
+        75
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-0dc8296b8707",
+      "postcode": "56-400",
+      "city": "Boguszyce",
+      "street": "",
+      "building": "23S",
+      "unit": "",
+      "label": "56-400 Boguszyce, 23S",
+      "sourceLabel": "56-400 Boguszyce, BRAK ULICY 23S",
+      "sourceRows": [
+        76
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-d4a1a941dabe",
+      "postcode": "46-312",
+      "city": "Kucoby",
+      "street": "ul. Leśna",
+      "building": "14",
+      "unit": "",
+      "label": "46-312 Kucoby, ul. Leśna 14",
+      "sourceLabel": "46-312 Kucoby, ul. Leśna 14",
+      "sourceRows": [
+        77
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-dcfc7ae98fa7",
+      "postcode": "49-100",
+      "city": "Brzęczkowice",
+      "street": "",
+      "building": "15A",
+      "unit": "",
+      "label": "49-100 Brzęczkowice, 15A",
+      "sourceLabel": "49-100 Brzęczkowice, BRAK ULICY 15A",
+      "sourceRows": [
+        78
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-9c6fac72133e",
+      "postcode": "56-400",
+      "city": "Ostrowina",
+      "street": "",
+      "building": "105H",
+      "unit": "",
+      "label": "56-400 Ostrowina, 105H",
+      "sourceLabel": "56-400 Ostrowina, BRAK ULICY 105H",
+      "sourceRows": [
+        79
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-913c884174bc",
+      "postcode": "56-400",
+      "city": "Ostrowina",
+      "street": "",
+      "building": "106L",
+      "unit": "",
+      "label": "56-400 Ostrowina, 106L",
+      "sourceLabel": "56-400 Ostrowina, BRAK ULICY 106L",
+      "sourceRows": [
+        80
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-0e83bfe3b79a",
+      "postcode": "44-213",
+      "city": "Rybnik",
+      "street": "ul. Jodłowa",
+      "building": "68",
+      "unit": "",
+      "label": "44-213 Rybnik, ul. Jodłowa 68",
+      "sourceLabel": "44-213 Rybnik, ul. Jodłowa 68",
+      "sourceRows": [
+        81
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-8e2e3b30b3ef",
+      "postcode": "46-380",
+      "city": "Myślina",
+      "street": "ul. Parkingowa",
+      "building": "6",
+      "unit": "",
+      "label": "46-380 Myślina, ul. Parkingowa 6",
+      "sourceLabel": "46-380 Myślina, ul. Parkingowa 6",
+      "sourceRows": [
+        82
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-135c349d85bd",
+      "postcode": "47-120",
+      "city": "Zawadzkie",
+      "street": "ul. Miarki",
+      "building": "7",
+      "unit": "7",
+      "label": "47-120 Zawadzkie, ul. Miarki 7/7",
+      "sourceLabel": "47-120 Zawadzkie, ul. Miarki 7/7",
+      "sourceRows": [
+        83
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-6f85506673c1",
+      "postcode": "46-081",
+      "city": "Dobrzeń Wielki",
+      "street": "Osiedle Energetyk",
+      "building": "9A",
+      "unit": "4",
+      "label": "46-081 Dobrzeń Wielki, Osiedle Energetyk 9A/4",
+      "sourceLabel": "46-081 Dobrzeń Wielki, Osiedle Energetyk 9A/4",
+      "sourceRows": [
+        84
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-e52b281ee3fd",
+      "postcode": "46-250",
+      "city": "Gierałcice",
+      "street": "ul. Opolska",
+      "building": "1",
+      "unit": "",
+      "label": "46-250 Gierałcice, ul. Opolska 1",
+      "sourceLabel": "46-250 Gierałcice, ul. Opolska 1",
+      "sourceRows": [
+        85
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-ab67b8fcb48f",
+      "postcode": "46-312",
+      "city": "Kucoby",
+      "street": "ul. Borecka",
+      "building": "6",
+      "unit": "",
+      "label": "46-312 Kucoby, ul. Borecka 6",
+      "sourceLabel": "46-312 Kucoby, ul. Borecka 6",
+      "sourceRows": [
+        86
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-f8ee8404b91c",
+      "postcode": "46-045",
+      "city": "Kotórz Wielki",
+      "street": "ul. Polna",
+      "building": "23B",
+      "unit": "",
+      "label": "46-045 Kotórz Wielki, ul. Polna 23B",
+      "sourceLabel": "46-045 Kotórz Wielki, ul. Polna 23B",
+      "sourceRows": [
+        87
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-eb89d8745132",
+      "postcode": "46-300",
+      "city": "Borki Małe",
+      "street": "ul. Oleska",
+      "building": "2A",
+      "unit": "",
+      "label": "46-300 Borki Małe, ul. Oleska 2A",
+      "sourceLabel": "46-300 Borki Małe, ul. Oleska 2A",
+      "sourceRows": [
+        88
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-f59d0622e00c",
+      "postcode": "56-400",
+      "city": "Piszkawa",
+      "street": "",
+      "building": "8I",
+      "unit": "",
+      "label": "56-400 Piszkawa, 8I",
+      "sourceLabel": "56-400 Piszkawa, BRAK ULICY 8I",
+      "sourceRows": [
+        89
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-174f4f0202e3",
+      "postcode": "44-178",
+      "city": "Przyszowice",
+      "street": "ul. Bażantów",
+      "building": "13",
+      "unit": "",
+      "label": "44-178 Przyszowice, ul. Bażantów 13",
+      "sourceLabel": "44-178 Przyszowice, ul. Bażantów 13",
+      "sourceRows": [
+        90
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-d64c5f551f6a",
+      "postcode": "45-940",
+      "city": "Opole",
+      "street": "ul. Łączna",
+      "building": "10",
+      "unit": "",
+      "label": "45-940 Opole, ul. Łączna 10",
+      "sourceLabel": "45-940 Opole, ul. Łączna 10",
+      "sourceRows": [
+        91
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-765606dd6eff",
+      "postcode": "44-213",
+      "city": "Książenice",
+      "street": "ul. Powstańców",
+      "building": "64",
+      "unit": "",
+      "label": "44-213 Książenice, ul. Powstańców 64",
+      "sourceLabel": "44-213 Książenice, ul. Powstańców 64",
+      "sourceRows": [
+        92
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-57f5c06f6daa",
+      "postcode": "46-045",
+      "city": "Turawa",
+      "street": "ul. Jagodowa",
+      "building": "1",
+      "unit": "1",
+      "label": "46-045 Turawa, ul. Jagodowa 1/1",
+      "sourceLabel": "46-045 Turawa, ul. Jagodowa 1/1",
+      "sourceRows": [
+        93
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-ba727cca6275",
+      "postcode": "46-324",
+      "city": "Kościeliska",
+      "street": "",
+      "building": "53A",
+      "unit": "",
+      "label": "46-324 Kościeliska, 53A",
+      "sourceLabel": "46-324 Kościeliska, BRAK ULICY 53A",
+      "sourceRows": [
+        94
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-2d1cb38620fa",
+      "postcode": "46-243",
+      "city": "Bogacica",
+      "street": "ul. Wiejska",
+      "building": "43",
+      "unit": "",
+      "label": "46-243 Bogacica, ul. Wiejska 43",
+      "sourceLabel": "46-243 Bogacica, ul. Wiejska 43",
+      "sourceRows": [
+        95
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-44c784791f2a",
+      "postcode": "56-410",
+      "city": "Białe Błoto",
+      "street": "",
+      "building": "31",
+      "unit": "",
+      "label": "56-410 Białe Błoto, 31",
+      "sourceLabel": "56-410 Białe Błoto, BRAK ULICY 31",
+      "sourceRows": [
+        96
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-6414369a5f71",
+      "postcode": "47-316",
+      "city": "Malnia",
+      "street": "ul. Sosnowa",
+      "building": "7",
+      "unit": "",
+      "label": "47-316 Malnia, ul. Sosnowa 7",
+      "sourceLabel": "47-316 Malnia, ul. Sosnowa 7",
+      "sourceRows": [
+        97
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-76359d7b8e90",
+      "postcode": "46-320",
+      "city": "Sołtysy",
+      "street": "",
+      "building": "BN",
+      "unit": "",
+      "label": "46-320 Sołtysy, BN",
+      "sourceLabel": "46-320 Sołtysy, BRAK ULICY BN",
+      "sourceRows": [
+        98
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-c0d8f3ba8093",
+      "postcode": "46-050",
+      "city": "Tarnów Opolski",
+      "street": "ul. Słonecznikowa",
+      "building": "9",
+      "unit": "",
+      "label": "46-050 Tarnów Opolski, ul. Słonecznikowa 9",
+      "sourceLabel": "46-050 Tarnów Opolski, ul. Słonecznikowa 9",
+      "sourceRows": [
+        99
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-bbed70da216b",
+      "postcode": "47-175",
+      "city": "Kadłub",
+      "street": "ul. Zielona",
+      "building": "2",
+      "unit": "",
+      "label": "47-175 Kadłub, ul. Zielona 2",
+      "sourceLabel": "47-175 Kadłub, ul. Zielona 2",
+      "sourceRows": [
+        100,
+        107
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-f030dc0206ef",
+      "postcode": "56-400",
+      "city": "Bystre",
+      "street": "ul. Wiosenna",
+      "building": "5",
+      "unit": "",
+      "label": "56-400 Bystre, ul. Wiosenna 5",
+      "sourceLabel": "56-400 Bystre, ul. Wiosenna 5",
+      "sourceRows": [
+        101
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-89c990e8a99f",
+      "postcode": "49-130",
+      "city": "Szydłów",
+      "street": "ul. Opolska",
+      "building": "24",
+      "unit": "",
+      "label": "49-130 Szydłów, ul. Opolska 24",
+      "sourceLabel": "49-130 Szydłów, ul. Opolska 24",
+      "sourceRows": [
+        102
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-1789b0d12a7d",
+      "postcode": "47-100",
+      "city": "Strzelce Opolskie",
+      "street": "ul. Władysława Łokietka",
+      "building": "3",
+      "unit": "14",
+      "label": "47-100 Strzelce Opolskie, ul. Władysława Łokietka 3/14",
+      "sourceLabel": "47-100 Strzelce Opolskie, ul. Władysława Łokietka 3/14",
+      "sourceRows": [
+        103
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-d72da86d5142",
+      "postcode": "56-410",
+      "city": "Miodary",
+      "street": "",
+      "building": "15A",
+      "unit": "",
+      "label": "56-410 Miodary, 15A",
+      "sourceLabel": "56-410 Miodary, BRAK ULICY 15A",
+      "sourceRows": [
+        104
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-5982c55aa125",
+      "postcode": "47-208",
+      "city": "Dębowa",
+      "street": "ul. Główna",
+      "building": "8A",
+      "unit": "",
+      "label": "47-208 Dębowa, ul. Główna 8A",
+      "sourceLabel": "47-208 Dębowa, ul. Główna 8A",
+      "sourceRows": [
+        105
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-16acd0372783",
+      "postcode": "44-177",
+      "city": "Paniówki",
+      "street": "ul. Gliwicka",
+      "building": "BN3",
+      "unit": "",
+      "label": "44-177 Paniówki, ul. Gliwicka BN3",
+      "sourceLabel": "44-177 Paniówki, ul. Gliwicka BN3",
+      "sourceRows": [
+        106
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-9e92ded0a6ae",
+      "postcode": "46-080",
+      "city": "Chróścice",
+      "street": "ul. Babilas",
+      "building": "30",
+      "unit": "",
+      "label": "46-080 Chróścice, ul. Babilas 30",
+      "sourceLabel": "46-080 Chróścice, ul. Babilas 30",
+      "sourceRows": [
+        108
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-bd29343c65c5",
+      "postcode": "47-100",
+      "city": "Strzelce Opolskie",
+      "street": "ul. Kardynała Stefana Wyszyńskiego",
+      "building": "7",
+      "unit": "24",
+      "label": "47-100 Strzelce Opolskie, ul. Kardynała Stefana Wyszyńskiego 7/24",
+      "sourceLabel": "47-100 Strzelce Opolskie, ul. Kardynała Stefana Wyszyńskiego 7/24",
+      "sourceRows": [
+        109
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-7b90c7c83a16",
+      "postcode": "46-100",
+      "city": "Namysłów",
+      "street": "ul. Kazimierza Pułaskiego",
+      "building": "18",
+      "unit": "2",
+      "label": "46-100 Namysłów, ul. Kazimierza Pułaskiego 18/2",
+      "sourceLabel": "46-100 Namysłów, ul. Kazimierza Pułaskiego 18/2",
+      "sourceRows": [
+        110
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    },
+    {
+      "id": "ADR-9a4a76747c55",
+      "postcode": "46-048",
+      "city": "Zębowice",
+      "street": "ul. Leśna",
+      "building": "BN1",
+      "unit": "",
+      "label": "46-048 Zębowice, ul. Leśna BN1",
+      "sourceLabel": "46-048 Zębowice, ul. Leśna BN1",
+      "sourceRows": [
+        111
+      ],
+      "region": null,
+      "coordinates": null,
+      "coverageStatus": "USER_TEST_LIST",
+      "locationStatus": "MISSING_COORDINATES"
+    }
+  ]
+}

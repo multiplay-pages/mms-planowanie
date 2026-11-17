@@ -1,0 +1,24 @@
+{
+  "date": "2026-11-17",
+  "pythonSyntaxFiles": 35,
+  "javascriptModules": 8,
+  "bundledScriptsSyntax": "PASS",
+  "inlineCspHashes": "PASS",
+  "externalOfflineAssets": 0,
+  "sourceIntegrity": {
+    "dane_adresowe-v2.xlsx": "f7037869ea5bed2d5c0b05416198feda9619b79351f2056501e3b64a79d3d08c",
+    "geocoded_by_geoapify-16.11.2026, 16_49_56.csv": "06b5df049f5aaf2b058cbc6686d503ac64a569b1c6930f9731950aa97b288ae0",
+    "map04/fixtures.json": "1d7cdbb8e6f75a4cd0a2204ca7e5431a487b45c2b7a185d24d91aaf30a2647cd"
+  },
+  "artifacts": {
+    "map05\\offline.html": {
+      "bytes": 1595911,
+      "sha256": "341d8ad4f4a86ea58515c2cadf5c1bdc5c0429924fdcc728326d15b9f0dde933"
+    },
+    "map05\\planner-offline.html": {
+      "bytes": 69521671,
+      "sha256": "5693b0fbf0b516aa4cfc61e1abb1dbc94ece938120d4b73c1475eb1fd794be67"
+    }
+  },
+  "browserVisualVerification": "NOT_EXECUTED_POLICY_BLOCK"
+}

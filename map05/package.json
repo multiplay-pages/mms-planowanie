@@ -1,0 +1,13 @@
+{
+  "name": "map05-local-prototype-tests",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/model.test.mjs tests/map.test.mjs tests/ui.test.mjs tests/planner-model.test.mjs tests/planner-ui.test.mjs tests/locations.test.mjs tests/routes.test.mjs tests/planner-routing.test.mjs tests/planner-map.test.mjs tests/real-routes.test.mjs",
+    "test:planner": "node --test tests/planner-model.test.mjs tests/planner-ui.test.mjs tests/locations.test.mjs tests/routes.test.mjs tests/planner-routing.test.mjs tests/planner-map.test.mjs tests/real-routes.test.mjs",
+    "build": "python build_offline.py && python build_planner.py"
+  },
+  "devDependencies": {
+    "happy-dom": "21.0.3"
+  }
+}

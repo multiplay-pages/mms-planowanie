@@ -1,0 +1,245 @@
+// In-memory DOM integration only: no navigation, network or graphical browser.
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {readFile} from 'node:fs/promises';
+import vm from 'node:vm';
+import {Window} from 'happy-dom';
+import * as modelApi from '../planner-model.mjs';
+import * as mapApi from '../map.mjs';
+import * as locationApi from '../locations.mjs';
+import * as roadApi from '../routes.mjs';
+import * as plannerMapApi from '../planner-map.mjs';
+import {roadFixture} from './road-fixture.mjs';
+const [markup,source,dataset,basemap,geocoding,uug]=await Promise.all([
+  readFile(new URL('../planner.html',import.meta.url),'utf8'),
+  readFile(new URL('../planner.mjs',import.meta.url),'utf8'),
+  readFile(new URL('../data/addresses.json',import.meta.url),'utf8').then(JSON.parse),
+  readFile(new URL('../basemap/data.json',import.meta.url),'utf8').then(JSON.parse),
+  readFile(new URL('../data/geocoding.json',import.meta.url),'utf8').then(JSON.parse),
+  readFile(new URL('../data/uug-geocoding.json',import.meta.url),'utf8').then(JSON.parse),
+]);
+async function mount(t,options={}) {
+  const window=new Window({settings:{enableJavaScriptEvaluation:false,disableJavaScriptFileLoading:true,enableCSSFileLoading:false,enableImageFileLoading:false,enableIframePageLoading:false,navigation:{disableMainFrameNavigation:true,disableChildFrameNavigation:true,disableChildPageNavigation:true,disableFallbackToSetURL:true}}});
+  const requests=[],errors=[];const deny=async url=>{requests.push(String(url));throw Error('No network');};window.fetch=deny;
+  window.document.write(markup.replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi,'').replace(/<link\b[^>]*>/gi,''));
+  for(const [id,value] of [['address-data',dataset],['basemap-data',options.basemap??basemap],['geocoding-data',options.geocoding??null],['routing-data',options.routing??null]]) {const node=window.document.createElement('script');node.id=id;node.type='application/json';node.textContent=JSON.stringify(value);window.document.body.append(node);}
+  const saved=options.saved??new Map();
+  const storage={getItem:key=>saved.get(key)??null,setItem:(key,value)=>{if(options.denyStorage)throw Error('Storage disabled');saved.set(key,value);}};
+  window.addEventListener('error',event=>errors.push(event.error?.message??event.message));
+  vm.runInContext(source.replace(/^import[^\n]*\n/gm,''),vm.createContext({document:window.document,fetch:deny,localStorage:storage,URL,Blob,Intl,console,...modelApi,...mapApi,...locationApi,...roadApi,...plannerMapApi}),{timeout:10000});
+  await new Promise(resolve=>setImmediate(resolve));
+  const $=s=>window.document.querySelector(s),all=s=>[...window.document.querySelectorAll(s)];
+  const click=s=>{assert.ok($(s),s);$(s).dispatchEvent(new window.MouseEvent('click',{bubbles:true,cancelable:true}));};
+  const change=(s,value)=>{const node=$(s);if(node.type==='checkbox')node.checked=value;else node.value=value;node.dispatchEvent(new window.Event('change',{bubbles:true}));};
+  const submit=()=>$('#assignment-form').dispatchEvent(new window.Event('submit',{bubbles:true,cancelable:true}));
+  const ids=()=>all('#queue-list [data-order]').map(n=>n.dataset.order);
+  t.after(async()=>{await window.happyDOM.abort();assert.deepEqual(requests,[]);assert.deepEqual(errors,[]);});
+  return {window,$,all,click,change,submit,ids,saved};
+}
+test('planner shows 109 addresses, independent queue and honest map status',async t=>{
+  const ui=await mount(t);assert.equal(ui.$('#planner').hidden,false);assert.equal(ui.ids().length,109);
+  assert.match(ui.$('#dataset-summary').textContent,/109/);assert.match(ui.$('#located-count').textContent,/0 \/ 109/);
+  assert.equal(ui.all('#planner-map .map-marker').length,0);assert.ok(ui.all('#planner-map .basemap-road path').length>0);
+  ui.change('#planning-date','2026-12-01');assert.equal(ui.ids().length,109);
+  assert.match(ui.$('#metrics').textContent,/0/);
+});
+test('generate, manual move, remove and undo form a consistent flow',async t=>{
+  const ui=await mount(t);ui.click('#generate');const remaining=ui.ids().length;assert.ok(remaining<109);
+  const first=ui.$('#baskets [data-order]');const id=first.dataset.order;ui.click(`#baskets [data-order="${id}"]`);
+  assert.match(ui.$('#order-title').textContent,new RegExp(id));
+  ui.click('#remove-order');assert.equal(ui.ids().length,remaining+1);
+  ui.change('#assignment-team','TEST-02');ui.change('#assignment-date','2026-11-20');ui.change('#assignment-slot','0');ui.submit();
+  assert.equal(ui.ids().length,remaining);assert.match(ui.$('#order-details').textContent,/Ręczna propozycja/);
+  ui.click('#undo');assert.equal(ui.ids().length,remaining+1);
+});
+test('availability controls affect capacity and reject removing occupied slots',async t=>{
+  const ui=await mount(t);ui.change('[data-availability="TEST-01"][data-slot="0"]',false);
+  assert.equal(ui.$('[data-availability="TEST-01"][data-slot="0"]').checked,false);
+  ui.click('#generate');const assigned=ui.$('#baskets [data-order]');
+  const team=assigned.dataset.team,start=assigned.dataset.start;
+  ui.change(`[data-availability="${team}"][data-slot="${start}"]`,false);
+  assert.match(ui.$('#message').textContent,/Brak dostępności/);
+  assert.equal(ui.$(`[data-availability="${team}"][data-slot="${start}"]`).checked,true);
+});
+test('confirmed visit cannot be moved or removed and regeneration keeps it',async t=>{
+  const ui=await mount(t);ui.click('#generate');const id=ui.$('#baskets [data-order]').dataset.order;
+  ui.click(`#baskets [data-order="${id}"]`);ui.click('#confirm-order');
+  assert.equal(ui.$('#remove-order').disabled,true);assert.equal(ui.$('#assign-order').disabled,true);
+  ui.click('#generate');ui.click(`#baskets [data-order="${id}"]`);assert.match(ui.$('#order-details').textContent,/Okno potwierdzone/);
+  ui.click('#release-order');assert.match(ui.$('#message').textContent,/powód/);
+  ui.$('#release-reason').value='Korekta testowa';ui.click('#release-order');assert.equal(ui.$('#remove-order').disabled,false);
+});
+test('filter scopes generation and unready orders have a visible reason',async t=>{
+  const ui=await mount(t);ui.change('#kind-filter','BSA');ui.click('#generate');
+  assert.ok(ui.all('#baskets [data-order]').every(n=>n.textContent.includes('BSA')));
+  ui.change('#kind-filter','ALL');ui.click('#queue-list [data-order="TEST-001"]');
+  assert.match(ui.$('#order-details').textContent,/Brak gotowości/);assert.equal(ui.$('#assign-order').disabled,true);
+});
+test('local persistence restores and invalid stored plan is reported',async t=>{
+  const ui=await mount(t);ui.click('#generate');const ids=ui.ids();
+  const fresh=await mount(t,{saved:ui.saved});assert.deepEqual(fresh.ids(),ids);
+  const saved=new Map([[[...ui.saved.keys()][0],'{}']]);const bad=await mount(t,{saved});
+  assert.equal(bad.ids().length,109);assert.match(bad.$('#message').textContent,/Nie wczytano/);
+  const denied=await mount(t,{denyStorage:true});denied.click('#generate');
+  assert.ok(denied.ids().length<109);assert.match(denied.$('#storage-status').textContent,/Zapisz plan JSON/);
+});
+test('map zoom, arrows, keyboard and fit change viewport without fake markers',async t=>{
+  const ui=await mount(t);const start=ui.$('#planner-map').getAttribute('viewBox');
+  ui.click('[data-map="in"]');assert.notEqual(ui.$('#planner-map').getAttribute('viewBox'),start);
+  const zoom=ui.$('#planner-map').getAttribute('viewBox');ui.click('[data-map="left"]');assert.notEqual(ui.$('#planner-map').getAttribute('viewBox'),zoom);
+  ui.$('#planner-map').dispatchEvent(new ui.window.KeyboardEvent('keydown',{key:'Home',bubbles:true,cancelable:true}));
+  assert.equal(ui.$('#planner-map').getAttribute('viewBox'),start);assert.equal(ui.all('#planner-map .map-marker').length,0);
+});
+test('reset is reviewable, reversible and never alters source addresses',async t=>{
+  const ui=await mount(t);ui.click('#generate');const remaining=ui.ids().length;
+  ui.click('#reset-plan');assert.equal(ui.$('#reset-dialog').open,true);assert.equal(ui.ids().length,remaining);
+  ui.click('#cancel-reset');assert.equal(ui.ids().length,remaining);
+  ui.click('#reset-plan');ui.click('#accept-reset');assert.equal(ui.ids().length,109);
+  ui.click('#undo');assert.equal(ui.ids().length,remaining);
+});
+
+test('selection preserves keyboard focus in queue and baskets',async t=>{
+  const ui=await mount(t);const node=ui.$('#queue-list [data-order="TEST-002"]');node.focus();
+  ui.click('#queue-list [data-order="TEST-002"]');
+  assert.equal(ui.window.document.activeElement.dataset.order,'TEST-002');
+  ui.click('#generate');const id=ui.$('#baskets [data-order]').dataset.order;
+  ui.$(`#baskets [data-order="${id}"]`).focus();ui.click(`#baskets [data-order="${id}"]`);
+  assert.equal(ui.window.document.activeElement.dataset.order,id);
+});
+
+test('manual return to queue survives regeneration and can be explicitly released',async t=>{
+  const ui=await mount(t);ui.click('#generate');const id=ui.$('#baskets [data-order]').dataset.order;
+  ui.click(`#baskets [data-order="${id}"]`);ui.click('#remove-order');
+  assert.ok(ui.ids().includes(id));assert.ok(ui.$('#include-auto'));
+  ui.click('#generate');assert.ok(ui.ids().includes(id));
+  ui.click('#include-auto');ui.click('#generate');assert.ok(!ui.ids().includes(id));
+});
+
+test('file import replaces only a valid matching plan and can be undone',async t=>{
+  const ui=await mount(t);ui.click('#generate');const remaining=ui.ids().length;
+  const scenario=modelApi.createScenario(dataset),empty=modelApi.createPlan(scenario);
+  const input=ui.$('#load-plan');
+  const setFile=text=>Object.defineProperty(input,'files',{value:[{size:text.length,text:async()=>text}],configurable:true});
+  const importFile=async text=>{setFile(text);input.dispatchEvent(new ui.window.Event('change',{bubbles:true}));await Promise.resolve();await Promise.resolve();};
+  await importFile('{"schemaVersion":999}');assert.equal(ui.ids().length,remaining);assert.match(ui.$('#message').textContent,/Nie wczytano/);
+  await importFile(JSON.stringify(empty));assert.equal(ui.ids().length,109);
+  ui.click('#undo');assert.equal(ui.ids().length,remaining);
+});
+
+test('geocoded planner plots 46 matches and exposes 63 review candidates without false markers',async t=>{
+  const ui=await mount(t,{geocoding});
+  assert.equal(ui.$('#planner').hidden,false);
+  assert.match(ui.$('#located-count').textContent,/46 \/ 109/);
+  assert.equal(ui.all('#planner-map .map-marker').length,46);
+  assert.equal(ui.$('#planner-map [data-order="TEST-001"]'),null);
+  assert.equal(ui.all('#location-review [data-order]').length,63);
+  ui.click('#location-review [data-order="TEST-001"]');
+  assert.match(ui.$('#order-details').textContent,/Leśna 32A/);
+  assert.match(ui.$('#order-details').textContent,/Leśna 32,/);
+  assert.match(ui.$('#order-details').textContent,/różny numer budynku/);
+});
+
+test('map markers follow filters, synchronize selection and fit a basket without drawing routes',async t=>{
+  const ui=await mount(t,{geocoding});ui.change('#city-filter','Wąsice');
+  assert.equal(ui.all('#planner-map .map-marker').length,1);
+  ui.click('#planner-map [data-order="TEST-002"]');
+  assert.match(ui.$('#order-title').textContent,/TEST-002/);
+  assert.equal(ui.$('#queue-list [data-order="TEST-002"]').getAttribute('aria-pressed'),'true');
+  ui.click('[data-map="selected"]');assert.notEqual(ui.$('#planner-map').getAttribute('viewBox'),'0 0 680 380');
+  ui.change('#city-filter','ALL');ui.change('#assignment-team','TEST-02');ui.change('#assignment-slot','0');ui.submit();ui.click('#generate');
+  ui.$('[data-basket-map="TEST-02"]').focus();ui.click('[data-basket-map="TEST-02"]');
+  assert.equal(ui.window.document.activeElement.dataset.basketMap,'TEST-02');
+  const basketIds=new Set(ui.all('#baskets [data-team="TEST-02"]').map(n=>n.dataset.order));
+  assert.ok(ui.all('#planner-map .map-marker').length>0);
+  assert.ok(ui.$('#planner-map [data-order="TEST-002"]'));
+  assert.ok(ui.all('#planner-map .map-marker').every(n=>basketIds.has(n.dataset.order)));
+  assert.match(ui.$('#map-note').textContent,/TEST-02/);
+  assert.equal(ui.all('#planner-map .route').length,0);
+  ui.click('[data-map="all"]');assert.equal(ui.all('#planner-map .map-marker').length,46);
+  const marker=ui.all('#planner-map .map-marker').find(n=>n.dataset.order!=='TEST-002'),id=marker.dataset.order;
+  marker.focus();marker.dispatchEvent(new ui.window.KeyboardEvent('keydown',{key:' ',bubbles:true,cancelable:true}));
+  assert.match(ui.$('#order-title').textContent,new RegExp(id));
+  assert.equal(ui.window.document.activeElement.dataset.order,id);
+});
+
+test('existing local baskets load unchanged after adding the coordinate layer',async t=>{
+  const old=await mount(t);old.click('#generate');const remaining=old.ids();
+  const enriched=await mount(t,{saved:old.saved,geocoding});
+  assert.deepEqual(enriched.ids(),remaining);
+  assert.equal(enriched.all('#planner-map .map-marker').length,46);
+});
+
+test('foreign coordinate layer is rejected while the saved resource plan remains usable',async t=>{
+  const ui=await mount(t,{geocoding:{...geocoding,datasetId:'foreign'}});
+  assert.equal(ui.$('#planner').hidden,false);
+  assert.equal(ui.all('#planner-map .map-marker').length,0);
+  assert.match(ui.$('#message').textContent,/Pominięto/);
+  ui.click('#generate');assert.ok(ui.ids().length<109);
+});
+
+test('external formatted address is displayed as text without markup execution',async t=>{
+  const external=structuredClone(geocoding);external.records[0].candidate.formatted='<img src=x onerror=alert(1)>';
+  const ui=await mount(t,{geocoding:external});ui.click('#location-review [data-order="TEST-001"]');
+  assert.match(ui.$('#order-details').textContent,/<img src=x onerror=alert\(1\)>/);
+  assert.equal(ui.$('#order-details img'),null);
+});
+
+test('GUGiK map distinguishes 6 postal notes from 96 exact points and 7 unresolved replies',async t=>{
+  const ui=await mount(t,{geocoding:uug});
+  assert.equal(ui.all('#planner-map .map-marker').length,102);
+  assert.equal(ui.all('#planner-map .postcode-note').length,6);
+  assert.equal(ui.all('#location-review [data-order]').length,13);
+  assert.match(ui.$('#map-note').textContent,/7.*poza mapą/);
+  assert.match(ui.$('#map-note').textContent,/6.*kod/);
+  assert.match(ui.$('#geocoder-source').textContent,/GUGiK/);
+  assert.match(ui.$('#map-desc').textContent,/GUGiK/);
+  ui.click('#planner-map [data-order="TEST-001"]');
+  assert.match(ui.$('#order-details').textContent,/Leśna 32a/);
+  const note=ui.$('#planner-map .postcode-note');
+  assert.match(note.getAttribute('aria-label'),/kod pocztowy/);
+  ui.click(`#planner-map [data-order="${note.dataset.order}"]`);
+  assert.match(ui.$('#order-details').textContent,/kod źródłowy/);
+  const address=dataset.addresses.find(a=>a.id===modelApi.createScenario(dataset).orders.find(o=>o.id===note.dataset.order).addressId);
+  assert.match(ui.$('#order-details').textContent,new RegExp(address.postcode));
+  const unresolved=ui.all('#location-review [data-order]').find(n=>n.textContent.includes('Błąd odpowiedzi'));
+  assert.ok(unresolved);ui.click(`#location-review [data-order="${unresolved.dataset.order}"]`);
+  assert.match(ui.$('#order-details').textContent,/nie oznacza błędu adresu/);
+  assert.equal(ui.$(`#planner-map [data-order="${unresolved.dataset.order}"]`),null);
+});
+
+test('switching Geoapify to GUGiK keeps saved assignments and manual exclusions unchanged',async t=>{
+  const old=await mount(t,{geocoding});old.click('#generate');
+  const id=old.$('#baskets [data-order]').dataset.order;
+  old.click(`#baskets [data-order="${id}"]`);old.click('#remove-order');
+  const before=[...old.saved.entries()];
+  const current=await mount(t,{saved:old.saved,geocoding:uug});
+  assert.deepEqual(current.ids(),old.ids());assert.deepEqual([...current.saved.entries()],before);
+  assert.equal(current.all('#planner-map .map-marker').length,102);
+  current.click('#generate');assert.ok(current.ids().includes(id));
+});
+
+test('local road assessment is visible on baskets and their map with no external request',async t=>{
+  const scenario=modelApi.createScenario(dataset,uug),routing=roadFixture(scenario);
+  const ui=await mount(t,{geocoding:uug,routing});ui.click('#generate');
+  assert.match(ui.$('#routing-status').textContent,/lokaln/i);
+  assert.ok(ui.all('#baskets .road-checks').length>0);
+  assert.match(ui.$('#baskets').textContent,/30 km/);
+  const basket=ui.all('#baskets section').find(node=>new Set([...node.querySelectorAll('[data-order]')].map(n=>n.dataset.order)).size>=2);
+  assert.ok(basket);const button=basket.querySelector('[data-basket-map]');ui.click(`[data-basket-map="${button.dataset.basketMap}"]`);
+  assert.ok(ui.all('#planner-map .basket-route').length>0);
+  assert.match(ui.$('#route-summary').textContent,/km/);
+  assert.match(ui.$('#route-summary').textContent,/szacun|Szacun/);
+  ui.click('[data-map="all"]');assert.equal(ui.all('#planner-map .basket-route').length,0);
+});
+
+test('regional map fits a single address at street scale and updates local detail',async t=>{
+  const address=modelApi.createScenario(dataset,uug).addresses.find(a=>a.city==='Rybnik'&&a.coordinates),[lon,lat]=address.coordinates;
+  const regional={regions:{PLANNER:{bounds:[17.2,49.9,19,51.5],features:[{id:'local',kind:'road',category:'residential',name:'Testowa ulica',points:[[lon-.001,lat],[lon+.001,lat]]}]}}};
+  const ui=await mount(t,{geocoding:uug,basemap:regional});
+  const order=scenarioOrder(address.id);ui.click(`#queue-list [data-order="${order.id}"]`);ui.click('[data-map="selected"]');
+  assert.ok(Number(ui.$('#planner-map').getAttribute('viewBox').split(' ')[2])<5);
+  assert.ok(ui.$('#planner-map [data-feature="local"]'));
+  assert.match(ui.$('#planner-map').textContent,/Testowa ulica/);
+  assert.doesNotMatch(ui.$('#map-note').textContent,/wyłącznie wycinek Opola/);
+});
+const scenarioOrder=addressId=>modelApi.createScenario(dataset,uug).orders.find(o=>o.addressId===addressId);

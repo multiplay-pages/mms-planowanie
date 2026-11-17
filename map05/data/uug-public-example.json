@@ -1,0 +1,30 @@
+{
+  "type": "address",
+  "max results limit": 15,
+  "min accuracy limit": 0.4,
+  "only exact numbers": 1,
+  "found objects": 15,
+  "returned objects": 1,
+  "results": {
+    "1": {
+      "city": "Marki",
+      "citypart": null,
+      "street": "Generała Władysława Andersa",
+      "number": "1",
+      "teryt": "143402",
+      "simc": "0920901",
+      "ulic": "39357",
+      "code": "05-270",
+      "jednostka": "{Polska,mazowieckie,wołomiński,Marki}",
+      "x": "21.1179504639352",
+      "y": "52.3425937034195",
+      "geometry_wkt": "POINT(21.1179504639352 52.3425937034195)",
+      "accuracy": "0.444444",
+      "city_accuracy": "1",
+      "street_part_accuracy": "1",
+      "street_accuracy": "0.285714",
+      "id": 1
+    }
+  },
+  "request time": 0.002288818359375
+}

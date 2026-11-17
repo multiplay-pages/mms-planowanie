@@ -1,0 +1,62 @@
+{
+  "fixture_version": "1.0.0",
+  "seed": 20261115,
+  "synthetic_only": true,
+  "coordinates_note": "Generated synthetic WGS84 points around the two pilot regions; they are not customer addresses or copied from MMS. They may coincide with routable map areas but do not identify a real job.",
+  "assumptions": {
+    "timezone": "Europe/Warsaw",
+    "standard_window_minutes": 180,
+    "opo_windows_status": "business-rule baseline from project; per-day availability remains synthetic",
+    "knu_windows_status": "test parameter only; operating hours not confirmed",
+    "return_after_last_install_included": false,
+    "breaks_tracked": false,
+    "team_assignments_finalized": "D-1",
+    "confirmed_booking_protects": ["service_date", "customer_window", "qualified_pool_capacity"],
+    "customer_points": "synthetic only"
+  },
+  "regions": {
+    "OPO": {
+      "anchor": [17.925, 50.670],
+      "team_count": 3,
+      "windows": [["08:00", "11:00"], ["11:00", "14:00"], ["14:00", "17:00"]],
+      "teams": [
+        {"team_id": "OPO-T1", "qualifications": ["FIBER", "MPL", "SURVEY"], "availability_slots": ["2026-11-18T08:00/11:00", "2026-11-18T11:00/14:00", "2026-11-18T14:00/17:00"]},
+        {"team_id": "OPO-T2", "qualifications": ["FIBER", "MPL", "BSA", "SURVEY"], "availability_slots": ["2026-11-18T08:00/11:00", "2026-11-18T11:00/14:00", "2026-11-18T14:00/17:00"]},
+        {"team_id": "OPO-T3", "qualifications": ["FIBER", "BSA", "SURVEY", "TWO_PERSON"], "availability_slots": ["2026-11-18T08:00/11:00", "2026-11-18T11:00/14:00", "2026-11-18T14:00/17:00"]}
+      ],
+      "jobs": [
+        {"job_id":"OPO-SYN-001","kind":"INSTALL","operator":"MPL","point_id":"OPO-P01","coordinates":[17.9201,50.6682],"window":["08:00","11:00"],"slot_id":"OPO-18-08-T1","occupied":true,"service_minutes":105,"reservation":"CONFIRMED","required_qualifications":["FIBER","MPL"],"slots_required":1,"special_requirements":[]},
+        {"job_id":"OPO-SYN-002","kind":"INSTALL","operator":"BSA","point_id":"OPO-P02","coordinates":[17.9297,50.6724],"window":["08:00","11:00"],"slot_id":"OPO-18-08-T2","occupied":true,"service_minutes":110,"reservation":"CONFIRMED","required_qualifications":["FIBER","BSA"],"slots_required":1,"special_requirements":["BSA_DEADLINE_VERIFIED"]},
+        {"job_id":"OPO-SYN-003","kind":"SURVEY","operator":"POMIAR","point_id":"OPO-P03","coordinates":[17.9340,50.6688],"window":["08:00","11:00"],"slot_id":"OPO-18-08-T3","occupied":true,"service_minutes":45,"reservation":"CONFIRMED","required_qualifications":["SURVEY"],"slots_required":1,"special_requirements":[]},
+        {"job_id":"OPO-SYN-004","kind":"INSTALL","operator":"MPL","point_id":"OPO-P04","coordinates":[17.9385,50.6750],"window":["11:00","14:00"],"slot_id":"OPO-18-11-T1","occupied":false,"service_minutes":120,"reservation":"QUEUE","required_qualifications":["FIBER","MPL"],"slots_required":1,"special_requirements":[]},
+        {"job_id":"OPO-SYN-005","kind":"INSTALL","operator":"BSA","point_id":"OPO-P05","coordinates":[17.9140,50.6755],"window":["11:00","14:00"],"slot_id":"OPO-18-11-T2","occupied":false,"service_minutes":120,"reservation":"QUEUE","required_qualifications":["FIBER","BSA"],"slots_required":1,"special_requirements":["BSA_DEADLINE_VERIFIED"]},
+        {"job_id":"OPO-SYN-006","kind":"SURVEY","operator":"POMIAR","point_id":"OPO-P06","coordinates":[17.9105,50.6672],"window":["11:00","14:00"],"slot_id":"OPO-18-11-T3","occupied":false,"service_minutes":45,"reservation":"QUEUE","required_qualifications":["SURVEY"],"slots_required":1,"special_requirements":[]},
+        {"job_id":"OPO-SYN-007","kind":"INSTALL","operator":"MPL","point_id":"OPO-P07","coordinates":[17.9227,50.6814],"window":["14:00","17:00"],"slot_id":"OPO-18-14-T1","occupied":false,"service_minutes":120,"reservation":"QUEUE","required_qualifications":["FIBER","MPL"],"slots_required":1,"special_requirements":[]},
+        {"job_id":"OPO-SYN-008","kind":"INSTALL","operator":"BSA","point_id":"OPO-P08","coordinates":[17.9410,50.6620],"window":["14:00","17:00"],"slot_id":"OPO-18-14-T2","occupied":false,"service_minutes":135,"reservation":"QUEUE","required_qualifications":["FIBER","BSA","TWO_PERSON"],"slots_required":2,"special_requirements":["WYMAGA_2_OSOB","COORDINATOR_APPROVAL","BSA_DEADLINE_VERIFIED"]},
+        {"job_id":"OPO-SYN-009","kind":"SURVEY","operator":"POMIAR","point_id":"OPO-P09","coordinates":[17.9035,50.6720],"window":["14:00","17:00"],"slot_id":"OPO-18-14-T3","occupied":false,"service_minutes":45,"reservation":"QUEUE","required_qualifications":["SURVEY"],"slots_required":1,"special_requirements":[]},
+        {"job_id":"OPO-SYN-010","kind":"INSTALL","operator":"MPL","point_id":"OPO-P10","coordinates":null,"window":["08:00","11:00"],"slot_id":"OPO-19-08-T1","occupied":false,"service_minutes":120,"reservation":"QUEUE","required_qualifications":["FIBER","MPL"],"slots_required":1,"special_requirements":["LOCATION_MISSING"]},
+        {"job_id":"OPO-SYN-011","kind":"INSTALL","operator":"BSA","point_id":"OPO-P11","coordinates":[17.9470,50.6800],"window":["11:00","14:00"],"slot_id":"OPO-19-11-T2","occupied":false,"service_minutes":120,"reservation":"QUEUE","required_qualifications":["FIBER","BSA"],"slots_required":1,"special_requirements":["BSA_DEADLINE_UNVERIFIED","MANUAL_ACCEPTANCE_REQUIRED"]},
+        {"job_id":"OPO-SYN-012","kind":"SURVEY","operator":"POMIAR","point_id":"OPO-P12","coordinates":[17.9155,50.6580],"window":["14:00","17:00"],"slot_id":"OPO-19-14-T3","occupied":false,"service_minutes":60,"reservation":"QUEUE","required_qualifications":["SURVEY"],"slots_required":1,"special_requirements":["POTENTIAL_SHARED_PERSON"]}
+      ]
+    },
+    "KNU": {
+      "anchor": [18.400, 50.220],
+      "team_count": 2,
+      "windows": [["08:00", "11:00"], ["11:00", "14:00"], ["14:00", "17:00"]],
+      "windows_status": "test parameter only; replace with confirmed Knurów rules before operational use",
+      "teams": [
+        {"team_id": "KNU-T1", "qualifications": ["FIBER", "MPL", "SURVEY"], "availability_slots": ["2026-11-18T08:00/11:00", "2026-11-18T11:00/14:00", "2026-11-18T14:00/17:00"]},
+        {"team_id": "KNU-T2", "qualifications": ["FIBER", "BSA", "SURVEY", "TWO_PERSON"], "availability_slots": ["2026-11-18T08:00/11:00", "2026-11-18T11:00/14:00", "2026-11-18T14:00/17:00"]}
+      ],
+      "jobs": [
+        {"job_id":"KNU-SYN-001","kind":"INSTALL","operator":"MPL","point_id":"KNU-P01","coordinates":[18.3950,50.2180],"window":["08:00","11:00"],"slot_id":"KNU-18-08-T1","occupied":true,"service_minutes":105,"reservation":"CONFIRMED","required_qualifications":["FIBER","MPL"],"slots_required":1,"special_requirements":[]},
+        {"job_id":"KNU-SYN-002","kind":"INSTALL","operator":"BSA","point_id":"KNU-P02","coordinates":[18.4070,50.2235],"window":["08:00","11:00"],"slot_id":"KNU-18-08-T2","occupied":true,"service_minutes":110,"reservation":"CONFIRMED","required_qualifications":["FIBER","BSA"],"slots_required":1,"special_requirements":["BSA_DEADLINE_VERIFIED"]},
+        {"job_id":"KNU-SYN-003","kind":"SURVEY","operator":"POMIAR","point_id":"KNU-P03","coordinates":[18.4115,50.2160],"window":["11:00","14:00"],"slot_id":"KNU-18-11-T1","occupied":false,"service_minutes":45,"reservation":"QUEUE","required_qualifications":["SURVEY"],"slots_required":1,"special_requirements":[]},
+        {"job_id":"KNU-SYN-004","kind":"INSTALL","operator":"MPL","point_id":"KNU-P04","coordinates":[18.3900,50.2280],"window":["11:00","14:00"],"slot_id":"KNU-18-11-T2","occupied":false,"service_minutes":120,"reservation":"QUEUE","required_qualifications":["FIBER","MPL"],"slots_required":1,"special_requirements":[]},
+        {"job_id":"KNU-SYN-005","kind":"INSTALL","operator":"BSA","point_id":"KNU-P05","coordinates":[18.3825,50.2145],"window":["14:00","17:00"],"slot_id":"KNU-18-14-T2","occupied":false,"service_minutes":120,"reservation":"QUEUE","required_qualifications":["FIBER","BSA"],"slots_required":1,"special_requirements":["BSA_DEADLINE_UNVERIFIED","MANUAL_ACCEPTANCE_REQUIRED"]},
+        {"job_id":"KNU-SYN-006","kind":"INSTALL","operator":"MPL","point_id":"KNU-P06","coordinates":[18.4160,50.2290],"window":["14:00","17:00"],"slot_id":"KNU-18-14-T1","occupied":false,"service_minutes":120,"reservation":"QUEUE","required_qualifications":["FIBER","MPL"],"slots_required":1,"special_requirements":[]},
+        {"job_id":"KNU-SYN-007","kind":"SURVEY","operator":"POMIAR","point_id":"KNU-P07","coordinates":null,"window":["11:00","14:00"],"slot_id":"KNU-19-11-T1","occupied":false,"service_minutes":45,"reservation":"QUEUE","required_qualifications":["SURVEY"],"slots_required":1,"special_requirements":["LOCATION_AMBIGUOUS"]}
+      ]
+    }
+  }
+}

@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>MAP-05 · MMS Planowanie 2.0</title>
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="./app.mjs"></script>
+</head>
+<body>
+  <a class="skip" href="#workspace">Przejdź do planowania</a>
+  <header class="topbar">
+    <a class="brand" href="./" aria-label="MMS Planowanie — ekran główny"><span class="brand-icon" aria-hidden="true">m<span>+</span></span><span>MMS <strong>Planowanie 2.0</strong></span></a>
+    <div class="environment"><span class="badge outline">MAKIETA</span><span class="badge outline">DANE SYNTETYCZNE</span><span class="badge amber">TRASY NIEOBLICZONE</span></div>
+    <span class="version">MAP–05 <span aria-hidden="true">/</span> lokalnie</span>
+  </header>
+
+  <main id="workspace" tabindex="-1">
+    <p class="region-notice"><strong>Nowy planer adresowy:</strong> <a href="./planner.html">otwórz kolejkę, generowanie koszyków i edycję slotów dla 109 adresów →</a>. Ten widok zachowano jako starszy demonstrator.</p>
+    <div class="page-heading"><div><p class="eyebrow">STANOWISKO KOORDYNATORA</p><h1>Dzień pracy, w jednym widoku<span>.</span></h1><p class="subtitle">Przeglądaj zlecenia, kwalifikacje i miejsca wymagające decyzji.</p></div><a href="#open-decisions" class="text-link">Otwarte ustalenia <span aria-hidden="true">↗</span></a></div>
+    <div id="loading" class="card loading" role="status">Wczytywanie fixture MAP-04…</div>
+    <div id="failure" class="card error-state" hidden role="alert"><h2>Nie udało się wczytać danych</h2><p id="failure-message"></p><p>Uruchom lokalny serwer zgodnie z README. Makieta wymaga syntetycznego fixture MAP-04.</p><button id="retry" type="button">Spróbuj ponownie</button></div>
+
+    <div id="application" hidden>
+      <section class="toolbar" aria-label="Filtry planu">
+        <div class="region-switch" role="group" aria-label="Region"><button type="button" data-region="OPO" aria-pressed="true">OPO <span>Opole</span></button><button type="button" data-region="KNU" aria-pressed="false">KNU <span>Knurów</span><small>TEST ONLY</small></button></div>
+        <label class="date-label">Dzień demonstracyjny<select id="date-filter"></select></label>
+        <div class="filter-controls"><label>Rodzaj pracy<select id="type-filter"><option value="ALL">Wszystkie rodzaje</option value="MPL">Instalacja MPL</option><option value="BSA">Instalacja BSA</option><option value="POMIAR">Pomiar</option></select></label><label>Status<select id="status-filter"><option value="ALL">Wszystkie statusy</option><option value="CONFIRMED">Potwierdzone okno</option><option value="QUEUE">Do umówienia</option><option value="REVIEW">Wymaga weryfikacji</option></select></label></div>
+      </section>
+      <div id="region-notice" class="region-notice" hidden><strong>KNU · TEST ONLY</strong> Godziny i dostępność są parametrami testowymi. Nie potwierdzają zasad operacyjnych Knurowa.</div>
+      <section class="summary-strip" aria-label="Podsumowanie wybranego widoku" id="summary"></section>
+
+      <div class="board">
+        <section class="card jobs-panel" aria-labelledby="jobs-title">
+          <div class="panel-heading"><div><p class="eyebrow">01 / ZLECENIA</p><h2 id="jobs-title">Lista dnia <span id="job-count" class="count"></span></h2></div><span class="tiny-label">FIXTURE</span></div>
+          <div class="search-wrap"><label class="sr-only" for="search">Szukaj po identyfikatorze zlecenia lub punktu</label><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="Szukaj ID zlecenia lub punktu" autocomplete="off"></div>
+          <div id="job-list" class="job-list"></div>
+          <p class="panel-footnote">Wybierz wpis, aby połączyć szczegóły, punkt i terminarz. <a href="#details">Przejdź do szczegółów ↓</a></p>
+        </section>
+
+        <div class="center-column">
+          <section class="card map-panel" aria-labelledby="map-title">
+            <div class="panel-heading"><div><p class="eyebrow">02 / PRZESTRZEŃ</p><h2 id="map-title">Mapa i zlecenia <span id="map-region" class="muted"></span></h2></div><div class="view-switch" role="group" aria-label="Widok lokalizacji"><button type="button" data-view="points" aria-pressed="true">Mapa</button><button type="button" data-view="list" aria-pressed="false">Współrzędne</button></div></div>
+            <div class="map-notice"><span class="status-dot" aria-hidden="true"></span><span id="map-status">Wczytywanie lokalnego podkładu…</span></div>
+            <div id="point-view" class="point-view"><svg id="point-map" viewBox="0 0 680 420" role="group" aria-labelledby="point-title point-description"><title id="point-title">Mapa z syntetycznymi punktami zleceń</title><desc id="point-description">Rzeczywista geometria OpenStreetMap jako podkład. Zlecenia są syntetyczne. Linie tła nie są wyznaczonymi trasami. Brak wyników routingu i lokalizacji ekip. Punkty można wybierać klawiaturą.</desc></svg><div id="map-attribution" class="map-attribution" hidden><a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">© OpenStreetMap contributors</a> · <a href="https://opendatacommons.org/licenses/odbl/1-0/" target="_blank" rel="noopener noreferrer">ODbL</a> · lokalny wycinek</div></div>
+            <div id="coordinate-view" class="coordinate-view" hidden></div>
+            <div class="map-legend"><span><i class="dot mpl"></i>MPL</span><span><i class="dot bsa"></i>BSA</span><span><i class="dot survey"></i>Pomiar</span><span><i class="dot team"></i>Ekipa bez lokalizacji</span></div>
+            <div id="unlocated" class="unlocated" hidden></div>
+            <div id="team-tray" class="team-tray"></div>
+            <div class="route-metrics"><div><span>Dystans drogowy</span><strong>Brak obliczeń</strong></div><div><span>Czas przejazdu</span><strong>Brak obliczeń</strong></div><div><span>Geometria drogi</span><strong>Niezweryfikowane</strong></div></div>
+          </section>
+
+          <section class="card schedule-panel" aria-labelledby="schedule-title">
+            <div class="panel-heading"><div><p class="eyebrow">03 / ZASOBY</p><h2 id="schedule-title">Terminarz i pula ekip</h2></div><span class="badge light">MODEL ROBOCZY</span></div>
+            <p class="section-note">Wpisy według <code>slot_id</code> fixture. Wskazanie ekipy nie jest końcowym przydziałem D−1.</p>
+            <div id="schedule" class="schedule-scroll" tabindex="0" role="region" aria-label="Terminarz ekip, przewijany poziomo"></div>
+            <div class="schedule-footer"><span><i class="occupancy occupied"></i>Zajętość fixture</span><span><i class="occupancy queued"></i>Kolejka bez rezerwacji</span></div>
+          </section>
+        </div>
+
+        <section id="details" class="card details-panel" aria-labelledby="details-title" tabindex="-1"></section>
+      </div>
+
+      <section class="bottom-grid">
+        <div class="card rules-panel"><p class="eyebrow">BEZ POZORNEJ WYKONALNOŚCI</p><h2>Reguły drogowe <span class="badge light">ROBOCZE</span></h2><div class="rule"><strong>30 km <span>między instalacjami</span></strong><span>Nieocenione — brak routingu</span></div><div class="rule"><strong>+10 km <span>łącznie dla pomiarów</span></strong><span>Nieocenione — brak routingu</span></div><p class="section-note">MAP-04: PARTIAL. Testy reguł 24/24; rzeczywisty benchmark ORS–OSRM nie został wykonany. Wolny slot i kwalifikacje nie dowodzą wykonalności.</p></div>
+        <div id="open-decisions" class="card decisions-panel" tabindex="-1"><p class="eyebrow">DO UZGODNIENIA</p><h2>Decyzje pozostają otwarte</h2><dl><div><dt>D10 / U02=A</dt><dd>Rezerwacja kwalifikowanej puli — demonstracja robocza, bez gwarancji pojemności.</dd></div><div><dt>U01=B / U04=A</dt><dd>Zakres wyjątków koordynatora i zgoda na dwa sloty — warianty niezatwierdzone.</dd></div><div><dt>U03 / czas pracy</dt><dd>Pomiar po ostatniej instalacji, punkt końcowy i normy czasu obsługi — do ustalenia.</dd></div></dl></div>
+      </section>
+      <footer class="page-footer"><span>MAP–05 · demonstrator UX, bez oceny rzeczywistych tras</span><span id="source-label"></span></footer>
+    </div>
+    <p id="announcement" class="sr-only" role="status" aria-live="polite"></p>
+  </main>
+  <dialog id="review-dialog" aria-labelledby="review-title"><form id="review-form"><p class="eyebrow">RĘCZNA WERYFIKACJA / DEMO</p><h2 id="review-title">Przygotuj sprawę do omówienia</h2><p id="review-context"></p><div class="dialog-warning"><strong>Notatka nie jest zgodą ani potwierdzeniem.</strong><p>Nie zmienia okna, ekipy, terminu BSA ani ostrzeżeń. Pozostaje tylko w pamięci tej karty do odświeżenia.</p></div><label for="review-note">Co należy sprawdzić?</label><textarea id="review-note" rows="4" maxlength="600" required placeholder="Np. potwierdzić źródło terminu u opiekuna umowy…"></textarea><div class="dialog-actions"><button id="cancel-review" type="button" class="secondary">Anuluj</button><button type="submit">Dodaj notatkę w sesji</button></div></form></dialog>
+</body>
+</html>

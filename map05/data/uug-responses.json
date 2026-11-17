@@ -1,0 +1,4288 @@
+{
+  "schemaVersion": 1,
+  "datasetId": "f7037869ea5bed2d5c0b05416198feda9619b79351f2056501e3b64a79d3d08c",
+  "source": {
+    "provider": "GUGIK_UUG",
+    "endpoint": "https://services.gugik.gov.pl/uug/",
+    "srid": 4326,
+    "exactNumber": true,
+    "manifestSha256": "ce4b091622b6f7676576d85bf0df7382f2cf9cd9209840d34d98ee0f9a1cfeff"
+  },
+  "records": [
+    {
+      "addressId": "ADR-fd245bb82543",
+      "query": "Wawelno, Leśna 32A",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 1,
+        "results": {
+          "1": {
+            "city": "Wawelno",
+            "citypart": null,
+            "street": "Leśna",
+            "number": "32a",
+            "teryt": "160904",
+            "simc": "0496892",
+            "ulic": "10898",
+            "code": "46-070",
+            "jednostka": "{Polska,opolskie,opolski,Komprachcice}",
+            "x": "17.759760363279",
+            "y": "50.6506511888395",
+            "geometry_wkt": "POINT(17.759760363279 50.6506511888395)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "street_part_accuracy": "1",
+            "street_accuracy": "1",
+            "id": 1
+          }
+        },
+        "request time": 0.0017841299374898275
+      }
+    },
+    {
+      "addressId": "ADR-a857dc6d2a77",
+      "query": "Wąsice, Główna 20",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 1,
+        "results": {
+          "1": {
+            "city": "Wąsice",
+            "citypart": null,
+            "street": "Główna",
+            "number": "20",
+            "teryt": "160404",
+            "simc": "0505303",
+            "ulic": "05635",
+            "code": "46-250",
+            "jednostka": "{Polska,opolskie,kluczborski,Wołczyn}",
+            "x": "18.025487260316",
+            "y": "50.9844583744468",
+            "geometry_wkt": "POINT(18.025487260316 50.9844583744468)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "street_part_accuracy": "1",
+            "street_accuracy": "1",
+            "id": 1
+          }
+        },
+        "request time": 0.0023117661476135254
+      }
+    },
+    {
+      "addressId": "ADR-36960b461cd1",
+      "query": "Knurów, Mieszka I 23A",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 1,
+        "results": {
+          "1": {
+            "city": "Knurów",
+            "citypart": null,
+            "street": "Mieszka I",
+            "number": "23a",
+            "teryt": "240501",
+            "simc": "0940849",
+            "ulic": "12832",
+            "code": "44-194",
+            "jednostka": "{Polska,śląskie,gliwicki,Knurów}",
+            "x": "18.6612518936651",
+            "y": "50.2317681949971",
+            "geometry_wkt": "POINT(18.6612518936651 50.2317681949971)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "street_part_accuracy": "1",
+            "street_accuracy": "1",
+            "id": 1
+          }
+        },
+        "request time": 0.0033069173494974773
+      }
+    },
+    {
+      "addressId": "ADR-6fd98d99cd10",
+      "query": "Mokre 9",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 14,
+        "results": {
+          "1": {
+            "city": "Mokre",
+            "citypart": null,
+            "street": null,
+            "number": "9",
+            "teryt": "040901",
+            "simc": "0083658",
+            "ulic": null,
+            "code": "88-306",
+            "jednostka": "{Polska,kujawsko-pomorskie,mogileński,Dąbrowa}",
+            "x": "17.935920394721",
+            "y": "52.7688045602252",
+            "geometry_wkt": "POINT(17.935920394721 52.7688045602252)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "id": 1
+          },
+          "2": {
+            "city": "Mokre",
+            "citypart": null,
+            "street": null,
+            "number": "9",
+            "teryt": "220204",
+            "simc": "0083167",
+            "ulic": null,
+            "code": "89-650",
+            "jednostka": "{Polska,pomorskie,chojnicki,Czersk}",
+            "x": "17.9517668920368",
+            "y": "53.8385930070463",
+            "geometry_wkt": "POINT(17.9517668920368 53.8385930070463)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "id": 2
+          },
+          "3": {
+            "city": "Mokre",
+            "citypart": null,
+            "street": null,
+            "number": "9",
+            "teryt": "200303",
+            "simc": "0023656",
+            "ulic": null,
+            "code": "17-106",
+            "jednostka": "{Polska,podlaskie,bielski,\"Bielsk Podlaski\"}",
+            "x": "23.1788586783336",
+            "y": "52.6996014681612",
+            "geometry_wkt": "POINT(23.1788586783336 52.6996014681612)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "id": 3
+          },
+          "4": {
+            "city": "Mokre",
+            "citypart": null,
+            "street": null,
+            "number": "9",
+            "teryt": "040804",
+            "simc": "0862256",
+            "ulic": null,
+            "code": "87-610",
+            "jednostka": "{Polska,kujawsko-pomorskie,lipnowski,\"Dobrzyń nad Wisłą\"}",
+            "x": "19.2506869830629",
+            "y": "52.6690602289311",
+            "geometry_wkt": "POINT(19.2506869830629 52.6690602289311)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "id": 4
+          },
+          "5": {
+            "city": "Mokre",
+            "citypart": null,
+            "street": null,
+            "number": "9",
+            "teryt": "301002",
+            "simc": "0284813",
+            "ulic": null,
+            "code": "62-580",
+            "jednostka": "{Polska,wielkopolskie,koniński,Grodziec}",
+            "x": "18.0502554794311",
+            "y": "52.0273837897575",
+            "geometry_wkt": "POINT(18.0502554794311 52.0273837897575)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "id": 5
+          },
+          "6": {
+            "city": "Mokre",
+            "citypart": null,
+            "street": null,
+            "number": "9",
+            "teryt": "320403",
+            "simc": "0779006",
+            "ulic": null,
+            "code": "72-130",
+            "jednostka": "{Polska,zachodniopomorskie,goleniowski,Maszewo}",
+            "x": "15.2108705692691",
+            "y": "53.530381690332",
+            "geometry_wkt": "POINT(15.2108705692691 53.530381690332)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "id": 6
+          },
+          "7": {
+            "city": "Mokre",
+            "citypart": null,
+            "street": null,
+            "number": "9",
+            "teryt": "320907",
+            "simc": "0310953",
+            "ulic": null,
+            "code": "76-004",
+            "jednostka": "{Polska,zachodniopomorskie,koszaliński,Sianów}",
+            "x": "16.4012762383143",
+            "y": "54.1716211724127",
+            "geometry_wkt": "POINT(16.4012762383143 54.1716211724127)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "id": 7
+          },
+          "8": {
+            "city": "Mokre",
+            "citypart": null,
+            "street": null,
+            "number": "9",
+            "teryt": "100906",
+            "simc": "0712769",
+            "ulic": null,
+            "code": "98-354",
+            "jednostka": "{Polska,łódzkie,pajęczański,Siemkowice}",
+            "x": "18.8340546163904",
+            "y": "51.1847194750935",
+            "geometry_wkt": "POINT(18.8340546163904 51.1847194750935)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "id": 8
+          },
+          "9": {
+            "city": "Mokre",
+            "citypart": null,
+            "street": null,
+            "number": "9",
+            "teryt": "261208",
+            "simc": "0274878",
+            "ulic": null,
+            "code": "28-225",
+            "jednostka": "{Polska,świętokrzyskie,staszowski,Szydłów}",
+            "x": "21.0489331233777",
+            "y": "50.5784657469735",
+            "geometry_wkt": "POINT(21.0489331233777 50.5784657469735)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "id": 9
+          },
+          "10": {
+            "city": "Mokre",
+            "citypart": null,
+            "street": null,
+            "number": "9",
+            "teryt": "181707",
+            "simc": "0362654",
+            "ulic": null,
+            "code": "38-540",
+            "jednostka": "{Polska,podkarpackie,sanocki,Zagórz}",
+            "x": "22.169330259676",
+            "y": "49.4457570449952",
+            "geometry_wkt": "POINT(22.169330259676 49.4457570449952)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "id": 10
+          },
+          "11": {
+            "city": "Mokre",
+            "citypart": null,
+            "street": null,
+            "number": "9",
+            "teryt": "180307",
+            "simc": "0839725",
+            "ulic": null,
+            "code": "39-209",
+            "jednostka": "{Polska,podkarpackie,dębicki,Żyraków}",
+            "x": "21.3535402838435",
+            "y": "50.1330242161073",
+            "geometry_wkt": "POINT(21.3535402838435 50.1330242161073)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "id": 11
+          },
+          "12": {
+            "city": "Mokre",
+            "citypart": null,
+            "street": null,
+            "number": "9",
+            "teryt": "062014",
+            "simc": "0906315",
+            "ulic": null,
+            "code": "22-400",
+            "jednostka": "{Polska,lubelskie,zamojski,Zamość}",
+            "x": "23.2066057388999",
+            "y": "50.707835961454",
+            "geometry_wkt": "POINT(23.2066057388999 50.707835961454)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "id": 12
+          },
+          "13": {
+            "city": "Mokre",
+            "citypart": null,
+            "street": null,
+            "number": "9",
+            "teryt": "060113",
+            "simc": "0018610",
+            "ulic": null,
+            "code": "21-533",
+            "jednostka": "{Polska,lubelskie,bialski,Rossosz}",
+            "x": "23.0940630974307",
+            "y": "51.8378923256323",
+            "geometry_wkt": "POINT(23.0940630974307 51.8378923256323)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "id": 13
+          },
+          "14": {
+            "city": "Mokre",
+            "citypart": null,
+            "street": null,
+            "number": "9",
+            "teryt": "160203",
+            "simc": "0494396",
+            "ulic": null,
+            "code": "48-155",
+            "jednostka": "{Polska,opolskie,głubczycki,Głubczyce}",
+            "x": "17.7016569400582",
+            "y": "50.1568889318926",
+            "geometry_wkt": "POINT(17.7016569400582 50.1568889318926)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "id": 14
+          }
+        },
+        "request time": 0.001910249392191569
+      }
+    },
+    {
+      "addressId": "ADR-0391711ddff4",
+      "query": "Wilków, Długa 149",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 1,
+        "results": {
+          "1": {
+            "city": "Wilków",
+            "citypart": null,
+            "street": "Długa",
+            "number": "149",
+            "teryt": "160605",
+            "simc": "0504829",
+            "ulic": "03839",
+            "code": "46-113",
+            "jednostka": "{Polska,opolskie,namysłowski,Wilków}",
+            "x": "17.6759928446772",
+            "y": "51.1280280197668",
+            "geometry_wkt": "POINT(17.6759928446772 51.1280280197668)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "street_part_accuracy": "1",
+            "street_accuracy": "1",
+            "id": 1
+          }
+        },
+        "request time": 0.0022362351417541506
+      }
+    },
+    {
+      "addressId": "ADR-197fef0043b4",
+      "query": "Ozimek, Juliusza Słowackiego 3A",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 1,
+        "results": {
+          "1": {
+            "city": "Ozimek",
+            "citypart": null,
+            "street": "Juliusza Słowackiego",
+            "number": "3A",
+            "teryt": "160908",
+            "simc": "0965849",
+            "ulic": "20291",
+            "code": "46-040",
+            "jednostka": "{Polska,opolskie,opolski,Ozimek}",
+            "x": "18.222163640682",
+            "y": "50.6800151466485",
+            "geometry_wkt": "POINT(18.222163640682 50.6800151466485)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "street_part_accuracy": "1",
+            "street_accuracy": "1",
+            "id": 1
+          }
+        },
+        "request time": 0.006198668479919433
+      }
+    },
+    {
+      "addressId": "ADR-5063c95d3cc7",
+      "query": "Grudynia Wielka, Leśna 1A",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 1,
+        "results": {
+          "1": {
+            "city": "Grudynia Wielka",
+            "citypart": null,
+            "street": "Leśna",
+            "number": "1A",
+            "teryt": "160304",
+            "simc": "0501624",
+            "ulic": "10898",
+            "code": "47-280",
+            "jednostka": "{Polska,opolskie,kędzierzyńsko-kozielski,Pawłowiczki}",
+            "x": "17.9520008477421",
+            "y": "50.2438031752408",
+            "geometry_wkt": "POINT(17.9520008477421 50.2438031752408)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "street_part_accuracy": "1",
+            "street_accuracy": "1",
+            "id": 1
+          }
+        },
+        "request time": 0.0043744325637817385
+      }
+    },
+    {
+      "addressId": "ADR-441735ef10ac",
+      "query": "Przyszowice, Powstańców Śląskich 91B",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 1,
+        "results": {
+          "1": {
+            "city": "Przyszowice",
+            "citypart": null,
+            "street": "Powstańców Śląskich",
+            "number": "91B",
+            "teryt": "240503",
+            "simc": "0214362",
+            "ulic": "17366",
+            "code": "44-178",
+            "jednostka": "{Polska,śląskie,gliwicki,Gierałtowice}",
+            "x": "18.7251424822051",
+            "y": "50.2512300951293",
+            "geometry_wkt": "POINT(18.7251424822051 50.2512300951293)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "street_part_accuracy": "1",
+            "street_accuracy": "1",
+            "id": 1
+          }
+        },
+        "request time": 0.0042285839716593426
+      }
+    },
+    {
+      "addressId": "ADR-e66f408d1b58",
+      "query": "Dobrzeń Wielki, Żeromskiego 48",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 1,
+        "results": {
+          "1": {
+            "city": "Dobrzeń Wielki",
+            "citypart": null,
+            "street": "Żeromskiego",
+            "number": "48",
+            "teryt": "160903",
+            "simc": "0493439",
+            "ulic": "26464",
+            "code": "46-081",
+            "jednostka": "{Polska,opolskie,opolski,\"Dobrzeń Wielki\"}",
+            "x": "17.8517053363317",
+            "y": "50.7791094581421",
+            "geometry_wkt": "POINT(17.8517053363317 50.7791094581421)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "street_part_accuracy": "1",
+            "street_accuracy": "1",
+            "id": 1
+          }
+        },
+        "request time": 0.004101999600728353
+      }
+    },
+    {
+      "addressId": "ADR-55575010d9a8",
+      "query": "Radawie, Opolska 73",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 1,
+        "results": {
+          "1": {
+            "city": "Radawie",
+            "citypart": null,
+            "street": "Opolska",
+            "number": "73",
+            "teryt": "160807",
+            "simc": "0505786",
+            "ulic": "15095",
+            "code": "46-048",
+            "jednostka": "{Polska,opolskie,oleski,Zębowice}",
+            "x": "18.2996396008119",
+            "y": "50.7811608527598",
+            "geometry_wkt": "POINT(18.2996396008119 50.7811608527598)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "street_part_accuracy": "1",
+            "street_accuracy": "1",
+            "id": 1
+          }
+        },
+        "request time": 0.002929834524790446
+      }
+    },
+    {
+      "addressId": "ADR-b772bdf5ac69",
+      "query": "Zimnica 17C",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 1,
+        "results": {
+          "1": {
+            "city": "Zimnica",
+            "citypart": null,
+            "street": null,
+            "number": "17C",
+            "teryt": "021406",
+            "simc": "0879311",
+            "ulic": null,
+            "code": "56-400",
+            "jednostka": "{Polska,dolnośląskie,oleśnicki,Oleśnica}",
+            "x": "17.3940458804043",
+            "y": "51.1534885490648",
+            "geometry_wkt": "POINT(17.3940458804043 51.1534885490648)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "id": 1
+          }
+        },
+        "request time": 0.0022179166475931804
+      }
+    },
+    {
+      "addressId": "ADR-62050d20bf98",
+      "query": "Borkowice, Bogacka 24",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 1,
+        "results": {
+          "1": {
+            "city": "Borkowice",
+            "citypart": null,
+            "street": "Bogacka",
+            "number": "24",
+            "teryt": "160402",
+            "simc": "0496372",
+            "ulic": "01560",
+            "code": "46-243",
+            "jednostka": "{Polska,opolskie,kluczborski,Kluczbork}",
+            "x": "18.148277971358",
+            "y": "50.9536045156518",
+            "geometry_wkt": "POINT(18.148277971358 50.9536045156518)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "street_part_accuracy": "1",
+            "street_accuracy": "1",
+            "id": 1
+          }
+        },
+        "request time": 0.002964329719543457
+      }
+    },
+    {
+      "addressId": "ADR-3094886a5e7a",
+      "query": "Lewin Brzeski, Rynek 25",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 1,
+        "results": {
+          "1": {
+            "city": "Lewin Brzeski",
+            "citypart": null,
+            "street": "Rynek",
+            "number": "25",
+            "teryt": "160104",
+            "simc": "0965720",
+            "ulic": "19253",
+            "code": "49-340",
+            "jednostka": "{Polska,opolskie,brzeski,\"Lewin Brzeski\"}",
+            "x": "17.6164817378619",
+            "y": "50.7491282196604",
+            "geometry_wkt": "POINT(17.6164817378619 50.7491282196604)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "street_part_accuracy": "1",
+            "street_accuracy": "1",
+            "id": 1
+          }
+        },
+        "request time": 0.004095602035522461
+      }
+    },
+    {
+      "addressId": "ADR-5b78889d48e4",
+      "query": "Ściborzyce Małe 40",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 1,
+        "results": {
+          "1": {
+            "city": "Ściborzyce Małe",
+            "citypart": null,
+            "street": null,
+            "number": "40",
+            "teryt": "160203",
+            "simc": "0494539",
+            "ulic": null,
+            "code": "48-118",
+            "jednostka": "{Polska,opolskie,głubczycki,Głubczyce}",
+            "x": "17.7815094078713",
+            "y": "50.2693838227667",
+            "geometry_wkt": "POINT(17.7815094078713 50.2693838227667)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "id": 1
+          }
+        },
+        "request time": 0.002030464013417562
+      }
+    },
+    {
+      "addressId": "ADR-827e73a91a08",
+      "query": "Gręboszyce 12B",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 1,
+        "results": {
+          "1": {
+            "city": "Gręboszyce",
+            "citypart": null,
+            "street": null,
+            "number": "12b",
+            "teryt": "021406",
+            "simc": "0878984",
+            "ulic": null,
+            "code": "56-400",
+            "jednostka": "{Polska,dolnośląskie,oleśnicki,Oleśnica}",
+            "x": "17.4488751123368",
+            "y": "51.1687238586255",
+            "geometry_wkt": "POINT(17.4488751123368 51.1687238586255)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "id": 1
+          }
+        },
+        "request time": 0.0020722150802612305
+      }
+    },
+    {
+      "addressId": "ADR-741365bea2ef",
+      "query": "Dobrodzień, Powstańców Śląskich 2B",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 1,
+        "results": {
+          "1": {
+            "city": "Dobrodzień",
+            "citypart": null,
+            "street": "Powstańców Śląskich",
+            "number": "2B",
+            "teryt": "160801",
+            "simc": "0931454",
+            "ulic": "17366",
+            "code": "46-380",
+            "jednostka": "{Polska,opolskie,oleski,Dobrodzień}",
+            "x": "18.4421714540604",
+            "y": "50.7256127243942",
+            "geometry_wkt": "POINT(18.4421714540604 50.7256127243942)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "street_part_accuracy": "1",
+            "street_accuracy": "1",
+            "id": 1
+          }
+        },
+        "request time": 0.004809315999348958
+      }
+    },
+    {
+      "addressId": "ADR-0bc733b69bf6",
+      "query": "Opole, Rozmarynowa 6",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 1,
+        "results": {
+          "1": {
+            "city": "Opole",
+            "citypart": null,
+            "street": "Rozmarynowa",
+            "number": "6",
+            "teryt": "166101",
+            "simc": "0965016",
+            "ulic": "18955",
+            "code": "45-403",
+            "jednostka": "{Polska,opolskie,Opole,Opole}",
+            "x": "17.9756490857524",
+            "y": "50.6849395282089",
+            "geometry_wkt": "POINT(17.9756490857524 50.6849395282089)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "street_part_accuracy": "1",
+            "street_accuracy": "1",
+            "id": 1
+          }
+        },
+        "request time": 0.0029932339986165363
+      }
+    },
+    {
+      "addressId": "ADR-8f21ba2a4768",
+      "query": "Ozimek, 8 Marca 3B",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 1,
+        "results": {
+          "1": {
+            "city": "Ozimek",
+            "citypart": null,
+            "street": "8 Marca",
+            "number": "3B",
+            "teryt": "160908",
+            "simc": "0965849",
+            "ulic": "12270",
+            "code": "46-040",
+            "jednostka": "{Polska,opolskie,opolski,Ozimek}",
+            "x": "18.2118070275602",
+            "y": "50.6824439037632",
+            "geometry_wkt": "POINT(18.2118070275602 50.6824439037632)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "street_part_accuracy": "1",
+            "street_accuracy": "1",
+            "id": 1
+          }
+        },
+        "request time": 0.0017608324686686197
+      }
+    },
+    {
+      "addressId": "ADR-aaeeb40da4ce",
+      "query": "Osowiec, Dworcowa 7B",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 1,
+        "results": {
+          "1": {
+            "city": "Osowiec",
+            "citypart": null,
+            "street": "Dworcowa",
+            "number": "7b",
+            "teryt": "160913",
+            "simc": "0504210",
+            "ulic": "04434",
+            "code": "46-045",
+            "jednostka": "{Polska,opolskie,opolski,Turawa}",
+            "x": "18.0373501060678",
+            "y": "50.753098850294",
+            "geometry_wkt": "POINT(18.0373501060678 50.753098850294)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "street_part_accuracy": "1",
+            "street_accuracy": "1",
+            "id": 1
+          }
+        },
+        "request time": 0.0030587156613667804
+      }
+    },
+    {
+      "addressId": "ADR-a3f8cd94e454",
+      "query": "Opole, Kredytowa 19",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 2,
+        "results": {
+          "1": {
+            "city": "Opole",
+            "citypart": null,
+            "street": "Kredytowa",
+            "number": "19",
+            "teryt": "166101",
+            "simc": "0965016",
+            "ulic": "09902",
+            "code": "45-662",
+            "jednostka": "{Polska,opolskie,Opole,Opole}",
+            "x": "17.9711991175188",
+            "y": "50.6264579827589",
+            "geometry_wkt": "POINT(17.9711991175188 50.6264579827589)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "street_part_accuracy": "1",
+            "street_accuracy": "1",
+            "id": 1
+          },
+          "2": {
+            "city": "Opole",
+            "citypart": null,
+            "street": "Kresowa",
+            "number": "19",
+            "teryt": "166101",
+            "simc": "0965016",
+            "ulic": "09911",
+            "code": "45-316",
+            "jednostka": "{Polska,opolskie,Opole,Opole}",
+            "x": "17.9675450442515",
+            "y": "50.6791969598812",
+            "geometry_wkt": "POINT(17.9675450442515 50.6791969598812)",
+            "accuracy": "0.636364",
+            "city_accuracy": "1",
+            "street_part_accuracy": "0.384615",
+            "street_accuracy": "0.384615",
+            "id": 2
+          }
+        },
+        "request time": 0.0037821014722188313
+      }
+    },
+    {
+      "addressId": "ADR-8f19ee97f28d",
+      "query": "Kamień Śląski, Wapienna 1",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 1,
+        "results": {
+          "1": {
+            "city": "Kamień Śląski",
+            "citypart": null,
+            "street": "Wapienna",
+            "number": "1",
+            "teryt": "160501",
+            "simc": "0494947",
+            "ulic": "23624",
+            "code": "47-320",
+            "jednostka": "{Polska,opolskie,krapkowicki,Gogolin}",
+            "x": "18.08155270562",
+            "y": "50.5417967026593",
+            "geometry_wkt": "POINT(18.08155270562 50.5417967026593)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "street_part_accuracy": "1",
+            "street_accuracy": "1",
+            "id": 1
+          }
+        },
+        "request time": 0.0030070344607035318
+      }
+    },
+    {
+      "addressId": "ADR-687567c40bd8",
+      "query": "Izbicko, Powstańców Śląskich 17",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 1,
+        "results": {
+          "1": {
+            "city": "Izbicko",
+            "citypart": null,
+            "street": "Powstańców Śląskich",
+            "number": "17",
+            "teryt": "161101",
+            "simc": "0495480",
+            "ulic": "17366",
+            "code": "47-180",
+            "jednostka": "{Polska,opolskie,strzelecki,Izbicko}",
+            "x": "18.1557466369374",
+            "y": "50.5734008379111",
+            "geometry_wkt": "POINT(18.1557466369374 50.5734008379111)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "street_part_accuracy": "1",
+            "street_accuracy": "1",
+            "id": 1
+          }
+        },
+        "request time": 0.004425418376922607
+      }
+    },
+    {
+      "addressId": "ADR-e4a8e697b2af",
+      "query": "Wachów, Pawła Kuczki 48",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 13,
+        "returned objects": 1,
+        "results": {
+          "1": {
+            "city": "Wachów",
+            "citypart": null,
+            "street": "Pawła Kuczki",
+            "number": "48",
+            "teryt": "160803",
+            "simc": "0140385",
+            "ulic": "10329",
+            "code": "46-300",
+            "jednostka": "{Polska,opolskie,oleski,Olesno}",
+            "x": "18.3858339608947",
+            "y": "50.8426504255918",
+            "geometry_wkt": "POINT(18.3858339608947 50.8426504255918)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "street_part_accuracy": "1",
+            "street_accuracy": "1",
+            "id": 1
+          }
+        },
+        "request time": 0.002724949518839518
+      }
+    },
+    {
+      "addressId": "ADR-65183f96ac15",
+      "query": "Lisięcice, Słowackiego 32",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 1,
+        "results": {
+          "1": {
+            "city": "Lisięcice",
+            "citypart": null,
+            "street": "Słowackiego",
+            "number": "32",
+            "teryt": "160203",
+            "simc": "0494344",
+            "ulic": "20286",
+            "code": "48-118",
+            "jednostka": "{Polska,opolskie,głubczycki,Głubczyce}",
+            "x": "17.8761282189444",
+            "y": "50.2649543417683",
+            "geometry_wkt": "POINT(17.8761282189444 50.2649543417683)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "street_part_accuracy": "1",
+            "street_accuracy": "1",
+            "id": 1
+          }
+        },
+        "request time": 0.005420700709025065
+      }
+    },
+    {
+      "addressId": "ADR-1dcff80dc920",
+      "query": "Białe Błoto 17D",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 1,
+        "results": {
+          "1": {
+            "city": "Białe Błoto",
+            "citypart": null,
+            "street": null,
+            "number": "17D",
+            "teryt": "021403",
+            "simc": "0874101",
+            "ulic": null,
+            "code": "56-410",
+            "jednostka": "{Polska,dolnośląskie,oleśnicki,Dobroszyce}",
+            "x": "17.3563284346992",
+            "y": "51.3307507624542",
+            "geometry_wkt": "POINT(17.3563284346992 51.3307507624542)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "id": 1
+          }
+        },
+        "request time": 0.0014756520589192708
+      }
+    },
+    {
+      "addressId": "ADR-9cfc6e9f7c77",
+      "query": "Szczedrzyk, Rybacka 7",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 1,
+        "results": {
+          "1": {
+            "city": "Szczedrzyk",
+            "citypart": null,
+            "street": "Rybacka",
+            "number": "7",
+            "teryt": "160908",
+            "simc": "0501216",
+            "ulic": "19142",
+            "code": "46-042",
+            "jednostka": "{Polska,opolskie,opolski,Ozimek}",
+            "x": "18.1531864673093",
+            "y": "50.7077235167671",
+            "geometry_wkt": "POINT(18.1531864673093 50.7077235167671)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "street_part_accuracy": "1",
+            "street_accuracy": "1",
+            "id": 1
+          }
+        },
+        "request time": 0.002282102902730306
+      }
+    },
+    {
+      "addressId": "ADR-d64f08786502",
+      "query": "Opole, Pisankowa 9",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 11,
+        "returned objects": 5,
+        "results": {
+          "1": {
+            "city": "Opole",
+            "citypart": null,
+            "street": "Pisankowa",
+            "number": "9",
+            "teryt": "166101",
+            "simc": "0965016",
+            "ulic": "16337",
+            "code": "45-841",
+            "jednostka": "{Polska,opolskie,Opole,Opole}",
+            "x": "17.8548227856225",
+            "y": "50.6843812281696",
+            "geometry_wkt": "POINT(17.8548227856225 50.6843812281696)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "street_part_accuracy": "1",
+            "street_accuracy": "1",
+            "id": 1
+          },
+          "2": {
+            "city": "Opole",
+            "citypart": null,
+            "street": "Rumiankowa",
+            "number": "9",
+            "teryt": "166101",
+            "simc": "0965016",
+            "ulic": "19094",
+            "code": "45-470",
+            "jednostka": "{Polska,opolskie,Opole,Opole}",
+            "x": "17.981137921558",
+            "y": "50.6769145604766",
+            "geometry_wkt": "POINT(17.981137921558 50.6769145604766)",
+            "accuracy": "0.541667",
+            "city_accuracy": "1",
+            "street_part_accuracy": "0.333333",
+            "street_accuracy": "0.3125",
+            "id": 2
+          },
+          "3": {
+            "city": "Opole",
+            "citypart": null,
+            "street": "Parkowa",
+            "number": "9",
+            "teryt": "166101",
+            "simc": "0965016",
+            "ulic": "15710",
+            "code": "45-920",
+            "jednostka": "{Polska,opolskie,Opole,Opole}",
+            "x": "17.8848551872561",
+            "y": "50.7342550703546",
+            "geometry_wkt": "POINT(17.8848551872561 50.7342550703546)",
+            "accuracy": "0.545455",
+            "city_accuracy": "1",
+            "street_part_accuracy": "0.285714",
+            "street_accuracy": "0.285714",
+            "id": 3
+          },
+          "4": {
+            "city": "Opole",
+            "citypart": null,
+            "street": "Potokowa",
+            "number": "9",
+            "teryt": "166101",
+            "simc": "0965016",
+            "ulic": "17298",
+            "code": "45-771",
+            "jednostka": "{Polska,opolskie,Opole,Opole}",
+            "x": "17.8956640547158",
+            "y": "50.6507025695212",
+            "geometry_wkt": "POINT(17.8956640547158 50.6507025695212)",
+            "accuracy": "0.521739",
+            "city_accuracy": "1",
+            "street_part_accuracy": "0.266667",
+            "street_accuracy": "0.266667",
+            "id": 4
+          },
+          "5": {
+            "city": "Opole",
+            "citypart": null,
+            "street": "Dożynkowa",
+            "number": "9",
+            "teryt": "166101",
+            "simc": "0965016",
+            "ulic": "04151",
+            "code": "45-679",
+            "jednostka": "{Polska,opolskie,Opole,Opole}",
+            "x": "17.9924442968106",
+            "y": "50.6253749318625",
+            "geometry_wkt": "POINT(17.9924442968106 50.6253749318625)",
+            "accuracy": "0.5",
+            "city_accuracy": "1",
+            "street_part_accuracy": "0.25",
+            "street_accuracy": "0.25",
+            "id": 5
+          }
+        },
+        "request time": 0.003485552469889323
+      }
+    },
+    {
+      "addressId": "ADR-939c2c34b499",
+      "query": "Niekazanice 64",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 1,
+        "results": {
+          "1": {
+            "city": "Niekazanice",
+            "citypart": null,
+            "street": null,
+            "number": "64",
+            "teryt": "160202",
+            "simc": "0491877",
+            "ulic": null,
+            "code": "48-140",
+            "jednostka": "{Polska,opolskie,głubczycki,Branice}",
+            "x": "17.8388044692132",
+            "y": "50.0499977258013",
+            "geometry_wkt": "POINT(17.8388044692132 50.0499977258013)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "id": 1
+          }
+        },
+        "request time": 0.0018988649050394695
+      }
+    },
+    {
+      "addressId": "ADR-bd2ca899d2df",
+      "query": "Opole, Studzienna 19E",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 1,
+        "results": {
+          "1": {
+            "city": "Opole",
+            "citypart": null,
+            "street": "Studzienna",
+            "number": "19E",
+            "teryt": "166101",
+            "simc": "0965016",
+            "ulic": "21425",
+            "code": "45-920",
+            "jednostka": "{Polska,opolskie,Opole,Opole}",
+            "x": "17.9290800420272",
+            "y": "50.7363408252378",
+            "geometry_wkt": "POINT(17.9290800420272 50.7363408252378)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "street_part_accuracy": "1",
+            "street_accuracy": "1",
+            "id": 1
+          }
+        },
+        "request time": 0.002368466059366862
+      }
+    },
+    {
+      "addressId": "ADR-a4f55c4d18d3",
+      "query": "Krzywiczyny, Wołczyńska 54",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 1,
+        "results": {
+          "1": {
+            "city": "Krzywiczyny",
+            "citypart": null,
+            "street": "Wołczyńska",
+            "number": "54",
+            "teryt": "160404",
+            "simc": "0505065",
+            "ulic": "24708",
+            "code": "46-264",
+            "jednostka": "{Polska,opolskie,kluczborski,Wołczyn}",
+            "x": "18.0491770527044",
+            "y": "51.0714488211728",
+            "geometry_wkt": "POINT(18.0491770527044 51.0714488211728)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "street_part_accuracy": "1",
+            "street_accuracy": "1",
+            "id": 1
+          }
+        },
+        "request time": 0.004108599821726481
+      }
+    },
+    {
+      "addressId": "ADR-182a9da08a50",
+      "query": "Grudynia Wielka, Leśna 3C",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 1,
+        "results": {
+          "1": {
+            "city": "Grudynia Wielka",
+            "citypart": null,
+            "street": "Leśna",
+            "number": "3C",
+            "teryt": "160304",
+            "simc": "0501624",
+            "ulic": "10898",
+            "code": "47-280",
+            "jednostka": "{Polska,opolskie,kędzierzyńsko-kozielski,Pawłowiczki}",
+            "x": "17.9525601162004",
+            "y": "50.2444145016168",
+            "geometry_wkt": "POINT(17.9525601162004 50.2444145016168)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "street_part_accuracy": "1",
+            "street_accuracy": "1",
+            "id": 1
+          }
+        },
+        "request time": 0.0032321850458780924
+      }
+    },
+    {
+      "addressId": "ADR-0a3827369a2c",
+      "query": "Białe Błoto 35",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 2,
+        "results": {
+          "1": {
+            "city": "Białe Błoto",
+            "citypart": null,
+            "street": null,
+            "number": "35",
+            "teryt": "142705",
+            "simc": "0574592",
+            "ulic": null,
+            "code": "09-200",
+            "jednostka": "{Polska,mazowieckie,sierpecki,Sierpc}",
+            "x": "19.707103129901",
+            "y": "52.8260504348328",
+            "geometry_wkt": "POINT(19.707103129901 52.8260504348328)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "id": 1
+          },
+          "2": {
+            "city": "Białe Błoto",
+            "citypart": null,
+            "street": null,
+            "number": "35",
+            "teryt": "021403",
+            "simc": "0874101",
+            "ulic": null,
+            "code": "56-410",
+            "jednostka": "{Polska,dolnośląskie,oleśnicki,Dobroszyce}",
+            "x": "17.3570611153533",
+            "y": "51.3363357301529",
+            "geometry_wkt": "POINT(17.3570611153533 51.3363357301529)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "id": 2
+          }
+        },
+        "request time": 0.0015441139539082846
+      }
+    },
+    {
+      "addressId": "ADR-b2b9b9fb3759",
+      "query": "Smolna 131",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 1,
+        "results": {
+          "1": {
+            "city": "Smolna",
+            "citypart": null,
+            "street": null,
+            "number": "131",
+            "teryt": "021406",
+            "simc": "0879200",
+            "ulic": null,
+            "code": "56-400",
+            "jednostka": "{Polska,dolnośląskie,oleśnicki,Oleśnica}",
+            "x": "17.4413726916276",
+            "y": "51.1546332662409",
+            "geometry_wkt": "POINT(17.4413726916276 51.1546332662409)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "id": 1
+          }
+        },
+        "request time": 0.0021982669830322267
+      }
+    },
+    {
+      "addressId": "ADR-946dd8d061c2",
+      "query": "Opawica 7",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 1,
+        "results": {
+          "1": {
+            "city": "Opawica",
+            "citypart": null,
+            "street": null,
+            "number": "7",
+            "teryt": "160203",
+            "simc": "0494433",
+            "ulic": null,
+            "code": "48-155",
+            "jednostka": "{Polska,opolskie,głubczycki,Głubczyce}",
+            "x": "17.6084916895241",
+            "y": "50.1460554322046",
+            "geometry_wkt": "POINT(17.6084916895241 50.1460554322046)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "id": 1
+          }
+        },
+        "request time": 0.0019137978553771973
+      }
+    },
+    {
+      "addressId": "ADR-0ec05aa1bb32",
+      "query": "Grabice, Wiejska 26",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 1,
+        "results": {
+          "1": {
+            "city": "Grabice",
+            "citypart": null,
+            "street": "Wiejska",
+            "number": "26",
+            "teryt": "160906",
+            "simc": "0499229",
+            "ulic": "24048",
+            "code": "46-030",
+            "jednostka": "{Polska,opolskie,opolski,Murów}",
+            "x": "17.982555456521",
+            "y": "50.9078404434238",
+            "geometry_wkt": "POINT(17.982555456521 50.9078404434238)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "street_part_accuracy": "1",
+            "street_accuracy": "1",
+            "id": 1
+          }
+        },
+        "request time": 0.003495935599009196
+      }
+    },
+    {
+      "addressId": "ADR-32fddaeffafa",
+      "query": "Książenice, Księdza Pojdy 100C",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 1,
+        "results": {
+          "1": {
+            "city": "Książenice",
+            "citypart": null,
+            "street": "Księdza Pojdy",
+            "number": "100C",
+            "teryt": "241201",
+            "simc": "0213960",
+            "ulic": "44286",
+            "code": "44-213",
+            "jednostka": "{Polska,śląskie,rybnicki,Czerwionka-Leszczyny}",
+            "x": "18.6018910432021",
+            "y": "50.1584128107557",
+            "geometry_wkt": "POINT(18.6018910432021 50.1584128107557)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "street_part_accuracy": "1",
+            "street_accuracy": "1",
+            "id": 1
+          }
+        },
+        "request time": 0.001575164000193278
+      }
+    },
+    {
+      "addressId": "ADR-69e2569962c9",
+      "query": "Ligota Oleska 5",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 1,
+        "results": {
+          "1": {
+            "city": "Ligota Oleska",
+            "citypart": null,
+            "street": null,
+            "number": "5",
+            "teryt": "160805",
+            "simc": "0144319",
+            "ulic": null,
+            "code": "46-333",
+            "jednostka": "{Polska,opolskie,oleski,Radłów}",
+            "x": "18.5440921730351",
+            "y": "50.9603480775881",
+            "geometry_wkt": "POINT(18.5440921730351 50.9603480775881)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "id": 1
+          }
+        },
+        "request time": 0.0023638327916463216
+      }
+    },
+    {
+      "addressId": "ADR-be0bd65583b1",
+      "query": "Tarnów Opolski, 1 Maja 29G",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 1,
+        "results": {
+          "1": {
+            "city": "Tarnów Opolski",
+            "citypart": null,
+            "street": "1 Maja",
+            "number": "29G",
+            "teryt": "160911",
+            "simc": "0504025",
+            "ulic": "11926",
+            "code": "46-050",
+            "jednostka": "{Polska,opolskie,opolski,\"Tarnów Opolski\"}",
+            "x": "18.0796642198092",
+            "y": "50.584636333619",
+            "geometry_wkt": "POINT(18.0796642198092 50.584636333619)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "street_part_accuracy": "1",
+            "street_accuracy": "1",
+            "id": 1
+          }
+        },
+        "request time": 0.0059182167053222655
+      }
+    },
+    {
+      "addressId": "ADR-764a4744faef",
+      "query": "Sokołowice 100PB",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 1,
+        "results": {
+          "1": {
+            "city": "Sokołowice",
+            "citypart": null,
+            "street": null,
+            "number": "100PB",
+            "teryt": "021406",
+            "simc": "0879216",
+            "ulic": null,
+            "code": "56-400",
+            "jednostka": "{Polska,dolnośląskie,oleśnicki,Oleśnica}",
+            "x": "17.4515479804739",
+            "y": "51.2368727963208",
+            "geometry_wkt": "POINT(17.4515479804739 51.2368727963208)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "id": 1
+          }
+        },
+        "request time": 0.0028938174247741697
+      }
+    },
+    {
+      "addressId": "ADR-9b8662714b0b",
+      "query": "Zimnica 17B",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 1,
+        "results": {
+          "1": {
+            "city": "Zimnica",
+            "citypart": null,
+            "street": null,
+            "number": "17b",
+            "teryt": "021406",
+            "simc": "0879311",
+            "ulic": null,
+            "code": "56-400",
+            "jednostka": "{Polska,dolnośląskie,oleśnicki,Oleśnica}",
+            "x": "17.3936833005365",
+            "y": "51.1537514617212",
+            "geometry_wkt": "POINT(17.3936833005365 51.1537514617212)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "id": 1
+          }
+        },
+        "request time": 0.00161591370900472
+      }
+    },
+    {
+      "addressId": "ADR-1f1d7aa2dd7b",
+      "query": "Cieśle 39CB",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 1,
+        "results": {
+          "1": {
+            "city": "Cieśle",
+            "citypart": null,
+            "street": null,
+            "number": "39CB",
+            "teryt": "021406",
+            "simc": "0878961",
+            "ulic": null,
+            "code": "56-400",
+            "jednostka": "{Polska,dolnośląskie,oleśnicki,Oleśnica}",
+            "x": "17.4683858001441",
+            "y": "51.2224116883104",
+            "geometry_wkt": "POINT(17.4683858001441 51.2224116883104)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "id": 1
+          }
+        },
+        "request time": 0.001214901606241862
+      }
+    },
+    {
+      "addressId": "ADR-3a1f36a79bbf",
+      "query": "Kucoby, Spacerowa 62",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 1,
+        "results": {
+          "1": {
+            "city": "Kucoby",
+            "citypart": null,
+            "street": "Spacerowa",
+            "number": "62",
+            "teryt": "160803",
+            "simc": "0140155",
+            "ulic": "20641",
+            "code": "46-312",
+            "jednostka": "{Polska,opolskie,oleski,Olesno}",
+            "x": "18.6142449044514",
+            "y": "50.8791148731686",
+            "geometry_wkt": "POINT(18.6142449044514 50.8791148731686)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "street_part_accuracy": "1",
+            "street_accuracy": "1",
+            "id": 1
+          }
+        },
+        "request time": 0.00387576421101888
+      }
+    },
+    {
+      "addressId": "ADR-9f5600b90dfc",
+      "query": "Bogdańczowice 26B",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 1,
+        "results": {
+          "1": {
+            "city": "Bogdańczowice",
+            "citypart": null,
+            "street": null,
+            "number": "26B",
+            "teryt": "160402",
+            "simc": "0496366",
+            "ulic": null,
+            "code": "46-233",
+            "jednostka": "{Polska,opolskie,kluczborski,Kluczbork}",
+            "x": "18.2896935676476",
+            "y": "50.9801434336534",
+            "geometry_wkt": "POINT(18.2896935676476 50.9801434336534)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "id": 1
+          }
+        },
+        "request time": 0.00245819886525472
+      }
+    },
+    {
+      "addressId": "ADR-48129c2deb52",
+      "query": "Kochłowice 3A",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 1,
+        "results": {
+          "1": {
+            "city": "Kochłowice",
+            "citypart": null,
+            "street": null,
+            "number": "3A",
+            "teryt": "160401",
+            "simc": "0492322",
+            "ulic": null,
+            "code": "46-220",
+            "jednostka": "{Polska,opolskie,kluczborski,Byczyna}",
+            "x": "18.1833316493399",
+            "y": "51.0786000857345",
+            "geometry_wkt": "POINT(18.1833316493399 51.0786000857345)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "id": 1
+          }
+        },
+        "request time": 0.004129636287689209
+      }
+    },
+    {
+      "addressId": "ADR-4463950bb22f",
+      "query": "Krasiejów, Rzeczna 10",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 2,
+        "results": {
+          "1": {
+            "city": "Krasiejów",
+            "citypart": null,
+            "street": "Rzeczna",
+            "number": "10",
+            "teryt": "160908",
+            "simc": "0501140",
+            "ulic": "19326",
+            "code": "46-040",
+            "jednostka": "{Polska,opolskie,opolski,Ozimek}",
+            "x": "18.2600950216028",
+            "y": "50.6738787393874",
+            "geometry_wkt": "POINT(18.2600950216028 50.6738787393874)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "street_part_accuracy": "1",
+            "street_accuracy": "1",
+            "id": 1
+          },
+          "2": {
+            "city": "Krasiejów",
+            "citypart": null,
+            "street": "Słoneczna",
+            "number": "10",
+            "teryt": "160908",
+            "simc": "0501140",
+            "ulic": "20254",
+            "code": "46-040",
+            "jednostka": "{Polska,opolskie,opolski,Ozimek}",
+            "x": "18.2592423434141",
+            "y": "50.6645881568022",
+            "geometry_wkt": "POINT(18.2592423434141 50.6645881568022)",
+            "accuracy": "0.62963",
+            "city_accuracy": "1",
+            "street_part_accuracy": "0.333333",
+            "street_accuracy": "0.285714",
+            "id": 2
+          }
+        },
+        "request time": 0.004040368398030599
+      }
+    },
+    {
+      "addressId": "ADR-fd10dcc27dfe",
+      "query": "Borki Wielkie, Kolonia Kuźnica Borecka 27A",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 12,
+        "returned objects": 1,
+        "results": {
+          "1": {
+            "city": "Borki Wielkie",
+            "citypart": null,
+            "street": "Kolonia Kuźnica Borecka",
+            "number": "27A",
+            "teryt": "160803",
+            "simc": "0139985",
+            "ulic": "08893",
+            "code": "46-300",
+            "jednostka": "{Polska,opolskie,oleski,Olesno}",
+            "x": "18.556426850285",
+            "y": "50.8538005464806",
+            "geometry_wkt": "POINT(18.556426850285 50.8538005464806)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "street_part_accuracy": "1",
+            "street_accuracy": "1",
+            "id": 1
+          }
+        },
+        "request time": 0.007715280850728353
+      }
+    },
+    {
+      "addressId": "ADR-aa9a12e31e3d",
+      "query": "Kadłub, Krótka 17",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 1,
+        "results": {
+          "1": {
+            "city": "Kadłub",
+            "citypart": null,
+            "street": "Krótka",
+            "number": "17",
+            "teryt": "161105",
+            "simc": "0503132",
+            "ulic": "10009",
+            "code": "47-175",
+            "jednostka": "{Polska,opolskie,strzelecki,\"Strzelce Opolskie\"}",
+            "x": "18.2585483855868",
+            "y": "50.6131344465402",
+            "geometry_wkt": "POINT(18.2585483855868 50.6131344465402)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "street_part_accuracy": "1",
+            "street_accuracy": "1",
+            "id": 1
+          }
+        },
+        "request time": 0.0035459001859029136
+      }
+    },
+    {
+      "addressId": "ADR-b9c38e48d701",
+      "query": "Chróścice, Orzeszkowej 4",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 1,
+        "results": {
+          "1": {
+            "city": "Chróścice",
+            "citypart": null,
+            "street": "Orzeszkowej",
+            "number": "4",
+            "teryt": "160903",
+            "simc": "0493250",
+            "ulic": "15209",
+            "code": "46-080",
+            "jednostka": "{Polska,opolskie,opolski,\"Dobrzeń Wielki\"}",
+            "x": "17.8116881907632",
+            "y": "50.7933858080859",
+            "geometry_wkt": "POINT(17.8116881907632 50.7933858080859)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "street_part_accuracy": "1",
+            "street_accuracy": "1",
+            "id": 1
+          }
+        },
+        "request time": 0.004243417580922445
+      }
+    },
+    {
+      "addressId": "ADR-5f9cbddc0eae",
+      "query": "Skorogoszcz, Jakuba Kani 5",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 8,
+        "returned objects": 1,
+        "results": {
+          "1": {
+            "city": "Skorogoszcz",
+            "citypart": null,
+            "street": "Jakuba Kani",
+            "number": "5",
+            "teryt": "160104",
+            "simc": "0498282",
+            "ulic": "07938",
+            "code": "49-345",
+            "jednostka": "{Polska,opolskie,brzeski,\"Lewin Brzeski\"}",
+            "x": "17.6808209416192",
+            "y": "50.7553503102717",
+            "geometry_wkt": "POINT(17.6808209416192 50.7553503102717)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "street_part_accuracy": "1",
+            "street_accuracy": "1",
+            "id": 1
+          }
+        },
+        "request time": 0.002793284257253011
+      }
+    },
+    {
+      "addressId": "ADR-4c610142b186",
+      "query": "Tarnów Opolski, Osiedle Zakładowe 1A",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 5,
+        "returned objects": 1,
+        "results": {
+          "1": {
+            "city": "Tarnów Opolski",
+            "citypart": null,
+            "street": "Osiedle Zakładowe",
+            "number": "1A",
+            "teryt": "160911",
+            "simc": "0504025",
+            "ulic": "40005",
+            "code": "46-050",
+            "jednostka": "{Polska,opolskie,opolski,\"Tarnów Opolski\"}",
+            "x": "18.0787741959435",
+            "y": "50.5837514613867",
+            "geometry_wkt": "POINT(18.0787741959435 50.5837514613867)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "street_part_accuracy": "1",
+            "street_accuracy": "1",
+            "id": 1
+          }
+        },
+        "request time": 0.0059809009234110515
+      }
+    },
+    {
+      "addressId": "ADR-bb106d3e6064",
+      "query": "Brynica, Stawowa 1A",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 1,
+        "results": {
+          "1": {
+            "city": "Brynica",
+            "citypart": null,
+            "street": "Stawowa",
+            "number": "1A",
+            "teryt": "160905",
+            "simc": "0498951",
+            "ulic": "21101",
+            "code": "46-024",
+            "jednostka": "{Polska,opolskie,opolski,Łubniany}",
+            "x": "17.9258692736374",
+            "y": "50.8074567341971",
+            "geometry_wkt": "POINT(17.9258692736374 50.8074567341971)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "street_part_accuracy": "1",
+            "street_accuracy": "1",
+            "id": 1
+          }
+        },
+        "request time": 0.004008885224660238
+      }
+    },
+    {
+      "addressId": "ADR-9c486e22acf1",
+      "query": "Rzędowice, Wolna 1",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 2,
+        "results": {
+          "1": {
+            "city": "Rzędowice",
+            "citypart": null,
+            "street": "Wolna",
+            "number": "1",
+            "teryt": "160801",
+            "simc": "0131305",
+            "ulic": "24674",
+            "code": "46-380",
+            "jednostka": "{Polska,opolskie,oleski,Dobrodzień}",
+            "x": "18.4615177689604",
+            "y": "50.770786278075",
+            "geometry_wkt": "POINT(18.4615177689604 50.770786278075)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "street_part_accuracy": "1",
+            "street_accuracy": "1",
+            "id": 1
+          },
+          "2": {
+            "city": "Rzędowice",
+            "citypart": null,
+            "street": "Dolna",
+            "number": "1",
+            "teryt": "160801",
+            "simc": "0131305",
+            "ulic": "04034",
+            "code": "46-380",
+            "jednostka": "{Polska,opolskie,oleski,Dobrodzień}",
+            "x": "18.4504954953981",
+            "y": "50.7639360541728",
+            "geometry_wkt": "POINT(18.4504954953981 50.7639360541728)",
+            "accuracy": "0.714286",
+            "city_accuracy": "1",
+            "street_part_accuracy": "0.333333",
+            "street_accuracy": "0.333333",
+            "id": 2
+          }
+        },
+        "request time": 0.005405831336975098
+      }
+    },
+    {
+      "addressId": "ADR-a70e01bb2d22",
+      "query": "Krzeczyn 3B",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 1,
+        "results": {
+          "1": {
+            "city": "Krzeczyn",
+            "citypart": null,
+            "street": null,
+            "number": "3b",
+            "teryt": "021406",
+            "simc": "0879009",
+            "ulic": null,
+            "code": "56-400",
+            "jednostka": "{Polska,dolnośląskie,oleśnicki,Oleśnica}",
+            "x": "17.3396428952868",
+            "y": "51.154399763037",
+            "geometry_wkt": "POINT(17.3396428952868 51.154399763037)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "id": 1
+          }
+        },
+        "request time": 0.002682781219482422
+      }
+    },
+    {
+      "addressId": "ADR-136c7adc89e1",
+      "query": "Dobrzeń Wielki, Osiedle Energetyk 4A",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 3,
+        "returned objects": 1,
+        "results": {
+          "1": {
+            "city": "Dobrzeń Wielki",
+            "citypart": null,
+            "street": "Osiedle Energetyk",
+            "number": "4A",
+            "teryt": "160903",
+            "simc": "0493439",
+            "ulic": "42456",
+            "code": "46-081",
+            "jednostka": "{Polska,opolskie,opolski,\"Dobrzeń Wielki\"}",
+            "x": "17.8534676485877",
+            "y": "50.7642170601287",
+            "geometry_wkt": "POINT(17.8534676485877 50.7642170601287)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "street_part_accuracy": "1",
+            "street_accuracy": "1",
+            "id": 1
+          }
+        },
+        "request time": 0.0037034153938293457
+      }
+    },
+    {
+      "addressId": "ADR-446013bf569a",
+      "query": "Turawa, Kościuszki 12",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 1,
+        "results": {
+          "1": {
+            "city": "Turawa",
+            "citypart": null,
+            "street": "Kościuszki",
+            "number": "12",
+            "teryt": "160913",
+            "simc": "0504255",
+            "ulic": "09572",
+            "code": "46-045",
+            "jednostka": "{Polska,opolskie,opolski,Turawa}",
+            "x": "18.0754394077795",
+            "y": "50.7359280671785",
+            "geometry_wkt": "POINT(18.0754394077795 50.7359280671785)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "street_part_accuracy": "1",
+            "street_accuracy": "1",
+            "id": 1
+          }
+        },
+        "request time": 0.010845951239267985
+      }
+    },
+    {
+      "addressId": "ADR-50742c1f67d1",
+      "query": "Kucoby, Kiki 27",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 1,
+        "results": {
+          "1": {
+            "city": "Kucoby",
+            "citypart": null,
+            "street": "Kiki",
+            "number": "27",
+            "teryt": "160803",
+            "simc": "0140155",
+            "ulic": "08428",
+            "code": "46-312",
+            "jednostka": "{Polska,opolskie,oleski,Olesno}",
+            "x": "18.623814513863",
+            "y": "50.8804499915659",
+            "geometry_wkt": "POINT(18.623814513863 50.8804499915659)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "street_part_accuracy": "1",
+            "street_accuracy": "1",
+            "id": 1
+          }
+        },
+        "request time": 0.0019773205121358236
+      }
+    },
+    {
+      "addressId": "ADR-521bfadcde57",
+      "query": "Bystre, Jesienna 3",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 1,
+        "results": {
+          "1": {
+            "city": "Bystre",
+            "citypart": null,
+            "street": "Jesienna",
+            "number": "3",
+            "teryt": "021406",
+            "simc": "0878949",
+            "ulic": "07499",
+            "code": "56-400",
+            "jednostka": "{Polska,dolnośląskie,oleśnicki,Oleśnica}",
+            "x": "17.3803471826925",
+            "y": "51.1791406086623",
+            "geometry_wkt": "POINT(17.3803471826925 51.1791406086623)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "street_part_accuracy": "1",
+            "street_accuracy": "1",
+            "id": 1
+          }
+        },
+        "request time": 0.0021184682846069336
+      }
+    },
+    {
+      "addressId": "ADR-5a1ce601cd0a",
+      "query": "Ornontowice, Akacjowa 20",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 1,
+        "results": {
+          "1": {
+            "city": "Ornontowice",
+            "citypart": null,
+            "street": "Akacjowa",
+            "number": "20",
+            "teryt": "240804",
+            "simc": "0218437",
+            "ulic": "00157",
+            "code": "43-178",
+            "jednostka": "{Polska,śląskie,mikołowski,Ornontowice}",
+            "x": "18.7743987521654",
+            "y": "50.1723658774231",
+            "geometry_wkt": "POINT(18.7743987521654 50.1723658774231)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "street_part_accuracy": "1",
+            "street_accuracy": "1",
+            "id": 1
+          }
+        },
+        "request time": 0.003164235750834147
+      }
+    },
+    {
+      "addressId": "ADR-b4e597ab15b5",
+      "query": "Dobra 66F",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 1,
+        "results": {
+          "1": {
+            "city": "Dobra",
+            "citypart": null,
+            "street": null,
+            "number": "66F",
+            "teryt": "021403",
+            "simc": "0874124",
+            "ulic": null,
+            "code": "56-410",
+            "jednostka": "{Polska,dolnośląskie,oleśnicki,Dobroszyce}",
+            "x": "17.3208555448536",
+            "y": "51.2451387579708",
+            "geometry_wkt": "POINT(17.3208555448536 51.2451387579708)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "id": 1
+          }
+        },
+        "request time": 0.002224584420522054
+      }
+    },
+    {
+      "addressId": "ADR-6708b35973c8",
+      "query": "Szyszków 35",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 3,
+        "results": {
+          "1": {
+            "city": "Szyszków",
+            "citypart": null,
+            "street": null,
+            "number": "35",
+            "teryt": "160804",
+            "simc": "0143455",
+            "ulic": null,
+            "code": "46-310",
+            "jednostka": "{Polska,opolskie,oleski,Praszka}",
+            "x": "18.438082500533",
+            "y": "51.0232941621436",
+            "geometry_wkt": "POINT(18.438082500533 51.0232941621436)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "id": 1
+          },
+          "2": {
+            "city": "Szyszków",
+            "citypart": null,
+            "street": null,
+            "number": "35",
+            "teryt": "240603",
+            "simc": "0138106",
+            "ulic": null,
+            "code": "42-165",
+            "jednostka": "{Polska,śląskie,kłobucki,Lipie}",
+            "x": "18.8665840161832",
+            "y": "51.0245245605998",
+            "geometry_wkt": "POINT(18.8665840161832 51.0245245605998)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "id": 2
+          },
+          "3": {
+            "city": "Szyszków",
+            "citypart": null,
+            "street": null,
+            "number": "35",
+            "teryt": "060211",
+            "simc": "0896485",
+            "ulic": null,
+            "code": "23-423",
+            "jednostka": "{Polska,lubelskie,biłgorajski,\"Potok Górny\"}",
+            "x": "22.5341341308083",
+            "y": "50.3650658838394",
+            "geometry_wkt": "POINT(22.5341341308083 50.3650658838394)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "id": 3
+          }
+        },
+        "request time": 0.0038247187932332356
+      }
+    },
+    {
+      "addressId": "ADR-f79ff100cc6d",
+      "query": "Szum 101",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 1,
+        "results": {
+          "1": {
+            "city": "Szum",
+            "citypart": null,
+            "street": null,
+            "number": "101",
+            "teryt": "160404",
+            "simc": "0505208",
+            "ulic": null,
+            "code": "46-250",
+            "jednostka": "{Polska,opolskie,kluczborski,Wołczyn}",
+            "x": "18.0178482940733",
+            "y": "50.961672358982",
+            "geometry_wkt": "POINT(18.0178482940733 50.961672358982)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "id": 1
+          }
+        },
+        "request time": 0.001665333906809489
+      }
+    },
+    {
+      "addressId": "ADR-b62928e7d05c",
+      "query": "Cieśle 36G",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 1,
+        "results": {
+          "1": {
+            "city": "Cieśle",
+            "citypart": null,
+            "street": null,
+            "number": "36G",
+            "teryt": "021406",
+            "simc": "0878961",
+            "ulic": null,
+            "code": "56-400",
+            "jednostka": "{Polska,dolnośląskie,oleśnicki,Oleśnica}",
+            "x": "17.4686582971135",
+            "y": "51.2204553950242",
+            "geometry_wkt": "POINT(17.4686582971135 51.2204553950242)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "id": 1
+          }
+        },
+        "request time": 0.0012471675872802734
+      }
+    },
+    {
+      "addressId": "ADR-5b0cbf345d7b",
+      "query": "Poniatowice 187F",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 1,
+        "results": {
+          "1": {
+            "city": "Poniatowice",
+            "citypart": null,
+            "street": null,
+            "number": "187F",
+            "teryt": "021406",
+            "simc": "0879162",
+            "ulic": null,
+            "code": "56-400",
+            "jednostka": "{Polska,dolnośląskie,oleśnicki,Oleśnica}",
+            "x": "17.5147105491786",
+            "y": "51.2340870107395",
+            "geometry_wkt": "POINT(17.5147105491786 51.2340870107395)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "id": 1
+          }
+        },
+        "request time": 0.0035169164339701334
+      }
+    },
+    {
+      "addressId": "ADR-3b5677afde3d",
+      "query": "Smolna 22C",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 1,
+        "results": {
+          "1": {
+            "city": "Smolna",
+            "citypart": null,
+            "street": null,
+            "number": "22c",
+            "teryt": "021406",
+            "simc": "0879200",
+            "ulic": null,
+            "code": "56-400",
+            "jednostka": "{Polska,dolnośląskie,oleśnicki,Oleśnica}",
+            "x": "17.4163958560591",
+            "y": "51.1588021307542",
+            "geometry_wkt": "POINT(17.4163958560591 51.1588021307542)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "id": 1
+          }
+        },
+        "request time": 0.0019258499145507813
+      }
+    },
+    {
+      "addressId": "ADR-2d1bb8bb481a",
+      "query": "Sokołowice 100O",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 1,
+        "results": {
+          "1": {
+            "city": "Sokołowice",
+            "citypart": null,
+            "street": null,
+            "number": "100o",
+            "teryt": "021406",
+            "simc": "0879216",
+            "ulic": null,
+            "code": "56-400",
+            "jednostka": "{Polska,dolnośląskie,oleśnicki,Oleśnica}",
+            "x": "17.4519213680978",
+            "y": "51.2365966257283",
+            "geometry_wkt": "POINT(17.4519213680978 51.2365966257283)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "id": 1
+          }
+        },
+        "request time": 0.002235384782155355
+      }
+    },
+    {
+      "addressId": "ADR-53795164e29a",
+      "query": "Grodków, Wiejska 9",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 1,
+        "results": {
+          "1": {
+            "city": "Grodków",
+            "citypart": null,
+            "street": "Wiejska",
+            "number": "9",
+            "teryt": "160103",
+            "simc": "0965401",
+            "ulic": "24048",
+            "code": "49-200",
+            "jednostka": "{Polska,opolskie,brzeski,Grodków}",
+            "x": "17.3879836955319",
+            "y": "50.7032632975546",
+            "geometry_wkt": "POINT(17.3879836955319 50.7032632975546)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "street_part_accuracy": "1",
+            "street_accuracy": "1",
+            "id": 1
+          }
+        },
+        "request time": 0.004030080636342367
+      }
+    },
+    {
+      "addressId": "ADR-964a172bae21",
+      "query": "Rybnik, Arki Bożka 51I",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 1,
+        "results": {
+          "1": {
+            "city": "Rybnik",
+            "citypart": null,
+            "street": "Arki Bożka",
+            "number": "51I",
+            "teryt": "247301",
+            "simc": "0942765",
+            "ulic": "01940",
+            "code": "44-200",
+            "jednostka": "{Polska,śląskie,Rybnik,Rybnik}",
+            "x": "18.6045116264439",
+            "y": "50.1386774622255",
+            "geometry_wkt": "POINT(18.6045116264439 50.1386774622255)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "street_part_accuracy": "1",
+            "street_accuracy": "1",
+            "id": 1
+          }
+        },
+        "request time": 0.002661434809366862
+      }
+    },
+    {
+      "addressId": "ADR-8dc52d15f26f",
+      "query": "Sułków 9A",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 1,
+        "results": {
+          "1": {
+            "city": "Sułków",
+            "citypart": null,
+            "street": null,
+            "number": "9A",
+            "teryt": "160201",
+            "simc": "0491127",
+            "ulic": null,
+            "code": "48-120",
+            "jednostka": "{Polska,opolskie,głubczycki,Baborów}",
+            "x": "17.9425568094527",
+            "y": "50.1604458349355",
+            "geometry_wkt": "POINT(17.9425568094527 50.1604458349355)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "id": 1
+          }
+        },
+        "request time": 0.0015111168225606282
+      }
+    },
+    {
+      "addressId": "ADR-4e34a76c7964",
+      "query": "Maciejów 39",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 4,
+        "results": {
+          "1": {
+            "city": "Maciejów",
+            "citypart": null,
+            "street": null,
+            "number": "39",
+            "teryt": "101904",
+            "simc": "0721700",
+            "ulic": null,
+            "code": "98-220",
+            "jednostka": "{Polska,łódzkie,zduńskowolski,\"Zduńska Wola\"}",
+            "x": "18.9538231972743",
+            "y": "51.617071616612",
+            "geometry_wkt": "POINT(18.9538231972743 51.617071616612)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "id": 1
+          },
+          "2": {
+            "city": "Maciejów",
+            "citypart": null,
+            "street": null,
+            "number": "39",
+            "teryt": "060610",
+            "simc": "0108111",
+            "ulic": null,
+            "code": "22-304",
+            "jednostka": "{Polska,lubelskie,krasnostawski,\"Siennica Różana\"}",
+            "x": "23.3813981858872",
+            "y": "50.9872276806522",
+            "geometry_wkt": "POINT(23.3813981858872 50.9872276806522)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "id": 2
+          },
+          "3": {
+            "city": "Maciejów",
+            "citypart": null,
+            "street": null,
+            "number": "39",
+            "teryt": "120807",
+            "simc": "0268518",
+            "ulic": null,
+            "code": "32-218",
+            "jednostka": "{Polska,małopolskie,miechowski,Słaboszów}",
+            "x": "20.2035645694895",
+            "y": "50.4000979805296",
+            "geometry_wkt": "POINT(20.2035645694895 50.4000979805296)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "id": 3
+          },
+          "4": {
+            "city": "Maciejów",
+            "citypart": null,
+            "street": null,
+            "number": "39",
+            "teryt": "102009",
+            "simc": "0417088",
+            "ulic": null,
+            "code": "95-002",
+            "jednostka": "{Polska,łódzkie,zgierski,Zgierz}",
+            "x": "19.4579485356034",
+            "y": "51.8794695576146",
+            "geometry_wkt": "POINT(19.4579485356034 51.8794695576146)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "id": 4
+          }
+        },
+        "request time": 0.0025594512621561686
+      }
+    },
+    {
+      "addressId": "ADR-93becc20000b",
+      "query": "Chomiąża 37",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 1,
+        "results": {
+          "1": {
+            "city": "Chomiąża",
+            "citypart": null,
+            "street": null,
+            "number": "37",
+            "teryt": "160203",
+            "simc": "0494143",
+            "ulic": null,
+            "code": "48-155",
+            "jednostka": "{Polska,opolskie,głubczycki,Głubczyce}",
+            "x": "17.6712707432668",
+            "y": "50.1058972044784",
+            "geometry_wkt": "POINT(17.6712707432668 50.1058972044784)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "id": 1
+          }
+        },
+        "request time": 0.0012424667676289877
+      }
+    },
+    {
+      "addressId": "ADR-a1289045ff5b",
+      "query": "Nowa Wieś Mała 8C",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 1,
+        "results": {
+          "1": {
+            "city": "Nowa Wieś Mała",
+            "citypart": null,
+            "street": null,
+            "number": "8C",
+            "teryt": "160104",
+            "simc": "0498218",
+            "ulic": null,
+            "code": "49-340",
+            "jednostka": "{Polska,opolskie,brzeski,\"Lewin Brzeski\"}",
+            "x": "17.5834473955221",
+            "y": "50.7569764340144",
+            "geometry_wkt": "POINT(17.5834473955221 50.7569764340144)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "id": 1
+          }
+        },
+        "request time": 0.006162830193837484
+      }
+    },
+    {
+      "addressId": "ADR-922205fd7122",
+      "query": "Stare Siołkowice, Klapacz 127A",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 1,
+        "results": {
+          "1": {
+            "city": "Stare Siołkowice",
+            "citypart": null,
+            "street": "Klapacz",
+            "number": "127A",
+            "teryt": "160909",
+            "simc": "0502405",
+            "ulic": "08475",
+            "code": "46-083",
+            "jednostka": "{Polska,opolskie,opolski,Popielów}",
+            "x": "17.7666258205427",
+            "y": "50.8258380326186",
+            "geometry_wkt": "POINT(17.7666258205427 50.8258380326186)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "street_part_accuracy": "1",
+            "street_accuracy": "1",
+            "id": 1
+          }
+        },
+        "request time": 0.002800599733988444
+      }
+    },
+    {
+      "addressId": "ADR-837d37a78a3d",
+      "query": "Boguszyce 22E",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 0,
+        "results": null,
+        "request time": 0.001767885684967041
+      }
+    },
+    {
+      "addressId": "ADR-7b82172961a6",
+      "query": "Chudoba 169",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 1,
+        "results": {
+          "1": {
+            "city": "Chudoba",
+            "citypart": null,
+            "street": null,
+            "number": "169",
+            "teryt": "160403",
+            "simc": "0497443",
+            "ulic": null,
+            "code": "46-275",
+            "jednostka": "{Polska,opolskie,kluczborski,\"Lasowice Wielkie\"}",
+            "x": "18.2931191681784",
+            "y": "50.8630257676486",
+            "geometry_wkt": "POINT(18.2931191681784 50.8630257676486)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "id": 1
+          }
+        },
+        "request time": 0.0010487834612528484
+      }
+    },
+    {
+      "addressId": "ADR-0dc8296b8707",
+      "query": "Boguszyce 23S",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 1,
+        "results": {
+          "1": {
+            "city": "Boguszyce",
+            "citypart": null,
+            "street": null,
+            "number": "23S",
+            "teryt": "021406",
+            "simc": "0878872",
+            "ulic": null,
+            "code": "56-400",
+            "jednostka": "{Polska,dolnośląskie,oleśnicki,Oleśnica}",
+            "x": "17.3934176451779",
+            "y": "51.2429310395869",
+            "geometry_wkt": "POINT(17.3934176451779 51.2429310395869)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "id": 1
+          }
+        },
+        "request time": 0.0027015169461568197
+      }
+    },
+    {
+      "addressId": "ADR-d4a1a941dabe",
+      "query": "Kucoby, Leśna 14",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 1,
+        "results": {
+          "1": {
+            "city": "Kucoby",
+            "citypart": null,
+            "street": "Leśna",
+            "number": "14",
+            "teryt": "160803",
+            "simc": "0140155",
+            "ulic": "10898",
+            "code": "46-312",
+            "jednostka": "{Polska,opolskie,oleski,Olesno}",
+            "x": "18.6208261986002",
+            "y": "50.8807535438942",
+            "geometry_wkt": "POINT(18.6208261986002 50.8807535438942)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "street_part_accuracy": "1",
+            "street_accuracy": "1",
+            "id": 1
+          }
+        },
+        "request time": 0.003505229949951172
+      }
+    },
+    {
+      "addressId": "ADR-dcfc7ae98fa7",
+      "query": "Brzęczkowice 15A",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 0,
+        "results": null,
+        "request time": 0.0027147849400838216
+      }
+    },
+    {
+      "addressId": "ADR-9c6fac72133e",
+      "query": "Ostrowina 105H",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 1,
+        "results": {
+          "1": {
+            "city": "Ostrowina",
+            "citypart": null,
+            "street": null,
+            "number": "105h",
+            "teryt": "021406",
+            "simc": "0879140",
+            "ulic": null,
+            "code": "56-400",
+            "jednostka": "{Polska,dolnośląskie,oleśnicki,Oleśnica}",
+            "x": "17.52480908664",
+            "y": "51.277024353658",
+            "geometry_wkt": "POINT(17.52480908664 51.277024353658)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "id": 1
+          }
+        },
+        "request time": 0.0032460331916809083
+      }
+    },
+    {
+      "addressId": "ADR-913c884174bc",
+      "query": "Ostrowina 106L",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 1,
+        "results": {
+          "1": {
+            "city": "Ostrowina",
+            "citypart": null,
+            "street": null,
+            "number": "106l",
+            "teryt": "021406",
+            "simc": "0879140",
+            "ulic": null,
+            "code": "56-400",
+            "jednostka": "{Polska,dolnośląskie,oleśnicki,Oleśnica}",
+            "x": "17.5244666822847",
+            "y": "51.2792329105642",
+            "geometry_wkt": "POINT(17.5244666822847 51.2792329105642)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "id": 1
+          }
+        },
+        "request time": 0.0033855835596720376
+      }
+    },
+    {
+      "addressId": "ADR-0e83bfe3b79a",
+      "query": "Rybnik, Jodłowa 68",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 1,
+        "results": {
+          "1": {
+            "city": "Rybnik",
+            "citypart": null,
+            "street": "Jodłowa",
+            "number": "68",
+            "teryt": "247301",
+            "simc": "0942765",
+            "ulic": "07582",
+            "code": "44-200",
+            "jednostka": "{Polska,śląskie,Rybnik,Rybnik}",
+            "x": "18.5879179612353",
+            "y": "50.1381952205854",
+            "geometry_wkt": "POINT(18.5879179612353 50.1381952205854)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "street_part_accuracy": "1",
+            "street_accuracy": "1",
+            "id": 1
+          }
+        },
+        "request time": 0.0019178152084350585
+      }
+    },
+    {
+      "addressId": "ADR-8e2e3b30b3ef",
+      "query": "Myślina, Parkingowa 6",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 1,
+        "results": {
+          "1": {
+            "city": "Myślina",
+            "citypart": null,
+            "street": "Parkingowa",
+            "number": "6",
+            "teryt": "160801",
+            "simc": "0131222",
+            "ulic": "15707",
+            "code": "46-380",
+            "jednostka": "{Polska,opolskie,oleski,Dobrodzień}",
+            "x": "18.3587543501015",
+            "y": "50.7015103070608",
+            "geometry_wkt": "POINT(18.3587543501015 50.7015103070608)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "street_part_accuracy": "1",
+            "street_accuracy": "1",
+            "id": 1
+          }
+        },
+        "request time": 0.0027660330136617026
+      }
+    },
+    {
+      "addressId": "ADR-135c349d85bd",
+      "query": "Zawadzkie, Miarki 7",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 1,
+        "results": {
+          "1": {
+            "city": "Zawadzkie",
+            "citypart": null,
+            "street": "Miarki",
+            "number": "7",
+            "teryt": "161107",
+            "simc": "0966004",
+            "ulic": "12672",
+            "code": "47-126",
+            "jednostka": "{Polska,opolskie,strzelecki,Zawadzkie}",
+            "x": "18.4831091313273",
+            "y": "50.6032060210964",
+            "geometry_wkt": "POINT(18.4831091313273 50.6032060210964)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "street_part_accuracy": "1",
+            "street_accuracy": "1",
+            "id": 1
+          }
+        },
+        "request time": 0.0031859517097473145
+      }
+    },
+    {
+      "addressId": "ADR-6f85506673c1",
+      "query": "Dobrzeń Wielki, Osiedle Energetyk 9A",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 4,
+        "returned objects": 1,
+        "results": {
+          "1": {
+            "city": "Dobrzeń Wielki",
+            "citypart": null,
+            "street": "Osiedle Energetyk",
+            "number": "9A",
+            "teryt": "160903",
+            "simc": "0493439",
+            "ulic": "42456",
+            "code": "46-081",
+            "jednostka": "{Polska,opolskie,opolski,\"Dobrzeń Wielki\"}",
+            "x": "17.8515692195104",
+            "y": "50.7643911633475",
+            "geometry_wkt": "POINT(17.8515692195104 50.7643911633475)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "street_part_accuracy": "1",
+            "street_accuracy": "1",
+            "id": 1
+          }
+        },
+        "request time": 0.0035737991333007813
+      }
+    },
+    {
+      "addressId": "ADR-e52b281ee3fd",
+      "query": "Gierałcice, Opolska 1",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 1,
+        "results": {
+          "1": {
+            "city": "Gierałcice",
+            "citypart": null,
+            "street": "Opolska",
+            "number": "1",
+            "teryt": "160404",
+            "simc": "0504960",
+            "ulic": "15095",
+            "code": "46-250",
+            "jednostka": "{Polska,opolskie,kluczborski,Wołczyn}",
+            "x": "18.0511281910087",
+            "y": "51.0117692721912",
+            "geometry_wkt": "POINT(18.0511281910087 51.0117692721912)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "street_part_accuracy": "1",
+            "street_accuracy": "1",
+            "id": 1
+          }
+        },
+        "request time": 0.0037543654441833498
+      }
+    },
+    {
+      "addressId": "ADR-ab67b8fcb48f",
+      "query": "Kucoby, Borecka 6",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 13,
+        "returned objects": 1,
+        "results": {
+          "1": {
+            "city": "Kucoby",
+            "citypart": null,
+            "street": "Borecka",
+            "number": "6",
+            "teryt": "160803",
+            "simc": "0140155",
+            "ulic": "01819",
+            "code": "46-312",
+            "jednostka": "{Polska,opolskie,oleski,Olesno}",
+            "x": "18.616868902744",
+            "y": "50.8767797557315",
+            "geometry_wkt": "POINT(18.616868902744 50.8767797557315)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "street_part_accuracy": "1",
+            "street_accuracy": "1",
+            "id": 1
+          }
+        },
+        "request time": 0.001595298449198405
+      }
+    },
+    {
+      "addressId": "ADR-f8ee8404b91c",
+      "query": "Kotórz Wielki, Polna 23B",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 1,
+        "results": {
+          "1": {
+            "city": "Kotórz Wielki",
+            "citypart": null,
+            "street": "Polna",
+            "number": "23B",
+            "teryt": "160913",
+            "simc": "0504172",
+            "ulic": "17011",
+            "code": "46-045",
+            "jednostka": "{Polska,opolskie,opolski,Turawa}",
+            "x": "18.0641048764587",
+            "y": "50.7257739804994",
+            "geometry_wkt": "POINT(18.0641048764587 50.7257739804994)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "street_part_accuracy": "1",
+            "street_accuracy": "1",
+            "id": 1
+          }
+        },
+        "request time": 0.0047815163930257166
+      }
+    },
+    {
+      "addressId": "ADR-eb89d8745132",
+      "query": "Borki Małe, Oleska 2A",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 1,
+        "results": {
+          "1": {
+            "city": "Borki Małe",
+            "citypart": null,
+            "street": "Oleska",
+            "number": "2A",
+            "teryt": "160803",
+            "simc": "0139956",
+            "ulic": "14973",
+            "code": "46-300",
+            "jednostka": "{Polska,opolskie,oleski,Olesno}",
+            "x": "18.4845789806052",
+            "y": "50.877378472315",
+            "geometry_wkt": "POINT(18.4845789806052 50.877378472315)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "street_part_accuracy": "1",
+            "street_accuracy": "1",
+            "id": 1
+          }
+        },
+        "request time": 0.004514582951863607
+      }
+    },
+    {
+      "addressId": "ADR-f59d0622e00c",
+      "query": "Piszkawa 8I",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 1,
+        "results": {
+          "1": {
+            "city": "Piszkawa",
+            "citypart": null,
+            "street": null,
+            "number": "8i",
+            "teryt": "021406",
+            "simc": "0879156",
+            "ulic": null,
+            "code": "56-400",
+            "jednostka": "{Polska,dolnośląskie,oleśnicki,Oleśnica}",
+            "x": "17.3007350980333",
+            "y": "51.1502175504352",
+            "geometry_wkt": "POINT(17.3007350980333 51.1502175504352)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "id": 1
+          }
+        },
+        "request time": 0.0023725191752115887
+      }
+    },
+    {
+      "addressId": "ADR-174f4f0202e3",
+      "query": "Przyszowice, Bażantów 13",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 1,
+        "results": {
+          "1": {
+            "city": "Przyszowice",
+            "citypart": null,
+            "street": "Bażantów",
+            "number": "13",
+            "teryt": "240503",
+            "simc": "0214362",
+            "ulic": "00926",
+            "code": "44-178",
+            "jednostka": "{Polska,śląskie,gliwicki,Gierałtowice}",
+            "x": "18.7430478875888",
+            "y": "50.2274753203144",
+            "geometry_wkt": "POINT(18.7430478875888 50.2274753203144)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "street_part_accuracy": "1",
+            "street_accuracy": "1",
+            "id": 1
+          }
+        },
+        "request time": 0.004918615023295085
+      }
+    },
+    {
+      "addressId": "ADR-d64c5f551f6a",
+      "query": "Opole, Łączna 10",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 3,
+        "results": {
+          "1": {
+            "city": "Opole",
+            "citypart": null,
+            "street": "Łączna",
+            "number": "10",
+            "teryt": "166101",
+            "simc": "0965016",
+            "ulic": "11577",
+            "code": "45-940",
+            "jednostka": "{Polska,opolskie,Opole,Opole}",
+            "x": "17.8738953652358",
+            "y": "50.6525856406709",
+            "geometry_wkt": "POINT(17.8738953652358 50.6525856406709)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "street_part_accuracy": "1",
+            "street_accuracy": "1",
+            "id": 1
+          },
+          "2": {
+            "city": "Opole",
+            "citypart": null,
+            "street": "Boczna",
+            "number": "10",
+            "teryt": "166101",
+            "simc": "0965016",
+            "ulic": "01528",
+            "code": "45-414",
+            "jednostka": "{Polska,opolskie,Opole,Opole}",
+            "x": "17.9796099075089",
+            "y": "50.6734196576174",
+            "geometry_wkt": "POINT(17.9796099075089 50.6734196576174)",
+            "accuracy": "0.6",
+            "city_accuracy": "1",
+            "street_part_accuracy": "0.272727",
+            "street_accuracy": "0.272727",
+            "id": 2
+          },
+          "3": {
+            "city": "Opole",
+            "citypart": null,
+            "street": "Rzeczna",
+            "number": "10",
+            "teryt": "166101",
+            "simc": "0965016",
+            "ulic": "19326",
+            "code": "45-665",
+            "jednostka": "{Polska,opolskie,Opole,Opole}",
+            "x": "17.9747939382664",
+            "y": "50.6196274729117",
+            "geometry_wkt": "POINT(17.9747939382664 50.6196274729117)",
+            "accuracy": "0.571429",
+            "city_accuracy": "1",
+            "street_part_accuracy": "0.25",
+            "street_accuracy": "0.25",
+            "id": 3
+          }
+        },
+        "request time": 0.0037560820579528808
+      }
+    },
+    {
+      "addressId": "ADR-765606dd6eff",
+      "query": "Książenice, Powstańców 64",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 1,
+        "results": {
+          "1": {
+            "city": "Książenice",
+            "citypart": null,
+            "street": "Powstańców",
+            "number": "64",
+            "teryt": "241201",
+            "simc": "0213960",
+            "ulic": "17354",
+            "code": "44-213",
+            "jednostka": "{Polska,śląskie,rybnicki,Czerwionka-Leszczyny}",
+            "x": "18.6133981047685",
+            "y": "50.1549842324353",
+            "geometry_wkt": "POINT(18.6133981047685 50.1549842324353)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "street_part_accuracy": "1",
+            "street_accuracy": "1",
+            "id": 1
+          }
+        },
+        "request time": 0.0038309137026468912
+      }
+    },
+    {
+      "addressId": "ADR-57f5c06f6daa",
+      "query": "Turawa, Jagodowa 1",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 1,
+        "results": {
+          "1": {
+            "city": "Turawa",
+            "citypart": null,
+            "street": "Jagodowa",
+            "number": "1",
+            "teryt": "160913",
+            "simc": "0504255",
+            "ulic": "07059",
+            "code": "46-045",
+            "jednostka": "{Polska,opolskie,opolski,Turawa}",
+            "x": "18.1406623552892",
+            "y": "50.739029472086",
+            "geometry_wkt": "POINT(18.1406623552892 50.739029472086)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "street_part_accuracy": "1",
+            "street_accuracy": "1",
+            "id": 1
+          }
+        },
+        "request time": 0.0032149513562520346
+      }
+    },
+    {
+      "addressId": "ADR-ba727cca6275",
+      "query": "Kościeliska 53A",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 1,
+        "results": {
+          "1": {
+            "city": "Kościeliska",
+            "citypart": null,
+            "street": null,
+            "number": "53A",
+            "teryt": "160805",
+            "simc": "0144294",
+            "ulic": null,
+            "code": "46-324",
+            "jednostka": "{Polska,opolskie,oleski,Radłów}",
+            "x": "18.4990651256426",
+            "y": "50.9768777599303",
+            "geometry_wkt": "POINT(18.4990651256426 50.9768777599303)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "id": 1
+          }
+        },
+        "request time": 0.004841164747873942
+      }
+    },
+    {
+      "addressId": "ADR-2d1cb38620fa",
+      "query": "Bogacica, Wiejska 43",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 1,
+        "results": {
+          "1": {
+            "city": "Bogacica",
+            "citypart": null,
+            "street": "Wiejska",
+            "number": "43",
+            "teryt": "160402",
+            "simc": "0496337",
+            "ulic": "24048",
+            "code": "46-243",
+            "jednostka": "{Polska,opolskie,kluczborski,Kluczbork}",
+            "x": "18.1384364529081",
+            "y": "50.9732194458851",
+            "geometry_wkt": "POINT(18.1384364529081 50.9732194458851)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "street_part_accuracy": "1",
+            "street_accuracy": "1",
+            "id": 1
+          }
+        },
+        "request time": 0.0044211824735005695
+      }
+    },
+    {
+      "addressId": "ADR-44c784791f2a",
+      "query": "Białe Błoto 31",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 2,
+        "results": {
+          "1": {
+            "city": "Białe Błoto",
+            "citypart": null,
+            "street": null,
+            "number": "31",
+            "teryt": "021403",
+            "simc": "0874101",
+            "ulic": null,
+            "code": "56-410",
+            "jednostka": "{Polska,dolnośląskie,oleśnicki,Dobroszyce}",
+            "x": "17.3560892008211",
+            "y": "51.3316663843258",
+            "geometry_wkt": "POINT(17.3560892008211 51.3316663843258)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "id": 1
+          },
+          "2": {
+            "city": "Białe Błoto",
+            "citypart": null,
+            "street": null,
+            "number": "31",
+            "teryt": "142705",
+            "simc": "0574592",
+            "ulic": null,
+            "code": "09-200",
+            "jednostka": "{Polska,mazowieckie,sierpecki,Sierpc}",
+            "x": "19.7213023760869",
+            "y": "52.8259025057783",
+            "geometry_wkt": "POINT(19.7213023760869 52.8259025057783)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "id": 2
+          }
+        },
+        "request time": 0.001925202210744222
+      }
+    },
+    {
+      "addressId": "ADR-6414369a5f71",
+      "query": "Malnia, Sosnowa 7",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 1,
+        "results": {
+          "1": {
+            "city": "Malnia",
+            "citypart": null,
+            "street": "Sosnowa",
+            "number": "7",
+            "teryt": "160501",
+            "simc": "0494982",
+            "ulic": "20598",
+            "code": "47-320",
+            "jednostka": "{Polska,opolskie,krapkowicki,Gogolin}",
+            "x": "17.9712485815685",
+            "y": "50.5198600899053",
+            "geometry_wkt": "POINT(17.9712485815685 50.5198600899053)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "street_part_accuracy": "1",
+            "street_accuracy": "1",
+            "id": 1
+          }
+        },
+        "request time": 0.004368317127227783
+      }
+    },
+    {
+      "addressId": "ADR-76359d7b8e90",
+      "query": "Sołtysy BN",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "city",
+        "found objects": 0,
+        "results": null,
+        "request time": 0.000783232847849528
+      }
+    },
+    {
+      "addressId": "ADR-c0d8f3ba8093",
+      "query": "Tarnów Opolski, Słonecznikowa 9",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 1,
+        "results": {
+          "1": {
+            "city": "Tarnów Opolski",
+            "citypart": null,
+            "street": "Słonecznikowa",
+            "number": "9",
+            "teryt": "160911",
+            "simc": "0504025",
+            "ulic": "20258",
+            "code": "46-050",
+            "jednostka": "{Polska,opolskie,opolski,\"Tarnów Opolski\"}",
+            "x": "18.0899442155995",
+            "y": "50.5761776778435",
+            "geometry_wkt": "POINT(18.0899442155995 50.5761776778435)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "street_part_accuracy": "1",
+            "street_accuracy": "1",
+            "id": 1
+          }
+        },
+        "request time": 0.0059589982032775875
+      }
+    },
+    {
+      "addressId": "ADR-bbed70da216b",
+      "query": "Kadłub, Zielona 2",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 1,
+        "results": {
+          "1": {
+            "city": "Kadłub",
+            "citypart": null,
+            "street": "Zielona",
+            "number": "2",
+            "teryt": "161105",
+            "simc": "0503132",
+            "ulic": "26081",
+            "code": "47-175",
+            "jednostka": "{Polska,opolskie,strzelecki,\"Strzelce Opolskie\"}",
+            "x": "18.2729767926565",
+            "y": "50.6139242722004",
+            "geometry_wkt": "POINT(18.2729767926565 50.6139242722004)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "street_part_accuracy": "1",
+            "street_accuracy": "1",
+            "id": 1
+          }
+        },
+        "request time": 0.003555583953857422
+      }
+    },
+    {
+      "addressId": "ADR-f030dc0206ef",
+      "query": "Bystre, Wiosenna 5",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 1,
+        "results": {
+          "1": {
+            "city": "Bystre",
+            "citypart": null,
+            "street": "Wiosenna",
+            "number": "5",
+            "teryt": "021406",
+            "simc": "0878949",
+            "ulic": "24364",
+            "code": "56-400",
+            "jednostka": "{Polska,dolnośląskie,oleśnicki,Oleśnica}",
+            "x": "17.3751211535226",
+            "y": "51.18169001201",
+            "geometry_wkt": "POINT(17.3751211535226 51.18169001201)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "street_part_accuracy": "1",
+            "street_accuracy": "1",
+            "id": 1
+          }
+        },
+        "request time": 0.002577066421508789
+      }
+    },
+    {
+      "addressId": "ADR-89c990e8a99f",
+      "query": "Szydłów, Opolska 24",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 2,
+        "results": {
+          "1": {
+            "city": "Szydłów",
+            "citypart": null,
+            "street": "Opolska",
+            "number": "24",
+            "teryt": "160912",
+            "simc": "0504083",
+            "ulic": "15095",
+            "code": "49-130",
+            "jednostka": "{Polska,opolskie,opolski,Tułowice}",
+            "x": "17.7220321523069",
+            "y": "50.6046866026642",
+            "geometry_wkt": "POINT(17.7220321523069 50.6046866026642)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "street_part_accuracy": "1",
+            "street_accuracy": "1",
+            "id": 1
+          },
+          "2": {
+            "city": "Szydłów",
+            "citypart": null,
+            "street": "Opatowska",
+            "number": "24",
+            "teryt": "261208",
+            "simc": "0275062",
+            "ulic": "15073",
+            "code": "28-225",
+            "jednostka": "{Polska,świętokrzyskie,staszowski,Szydłów}",
+            "x": "21.0059056411637",
+            "y": "50.5954013883684",
+            "geometry_wkt": "POINT(21.0059056411637 50.5954013883684)",
+            "accuracy": "0.6",
+            "city_accuracy": "1",
+            "street_part_accuracy": "0.142857",
+            "street_accuracy": "0.285714",
+            "id": 2
+          }
+        },
+        "request time": 0.0030736366907755533
+      }
+    },
+    {
+      "addressId": "ADR-1789b0d12a7d",
+      "query": "Strzelce Opolskie, Władysława Łokietka 3",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 2,
+        "results": {
+          "1": {
+            "city": "Strzelce Opolskie",
+            "citypart": null,
+            "street": "Władysława Łokietka",
+            "number": "3",
+            "teryt": "161105",
+            "simc": "0965915",
+            "ulic": "11653",
+            "code": "47-100",
+            "jednostka": "{Polska,opolskie,strzelecki,\"Strzelce Opolskie\"}",
+            "x": "18.2815088763757",
+            "y": "50.5073045023557",
+            "geometry_wkt": "POINT(18.2815088763757 50.5073045023557)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "street_part_accuracy": "1",
+            "street_accuracy": "1",
+            "id": 1
+          },
+          "2": {
+            "city": "Strzelce Opolskie",
+            "citypart": null,
+            "street": "Władysława Broniewskiego",
+            "number": "3",
+            "teryt": "161105",
+            "simc": "0965915",
+            "ulic": "02125",
+            "code": "47-100",
+            "jednostka": "{Polska,opolskie,strzelecki,\"Strzelce Opolskie\"}",
+            "x": "18.3105347898465",
+            "y": "50.5133161392226",
+            "geometry_wkt": "POINT(18.3105347898465 50.5133161392226)",
+            "accuracy": "0.607843",
+            "city_accuracy": "1",
+            "street_part_accuracy": "0.228571",
+            "street_accuracy": "0.363636",
+            "id": 2
+          }
+        },
+        "request time": 0.007116349538167318
+      }
+    },
+    {
+      "addressId": "ADR-d72da86d5142",
+      "query": "Miodary 15A",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 1,
+        "results": {
+          "1": {
+            "city": "Miodary",
+            "citypart": null,
+            "street": null,
+            "number": "15A",
+            "teryt": "021403",
+            "simc": "0874182",
+            "ulic": null,
+            "code": "56-410",
+            "jednostka": "{Polska,dolnośląskie,oleśnicki,Dobroszyce}",
+            "x": "17.4232529772372",
+            "y": "51.2776035034117",
+            "geometry_wkt": "POINT(17.4232529772372 51.2776035034117)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "id": 1
+          }
+        },
+        "request time": 0.0015902320543924968
+      }
+    },
+    {
+      "addressId": "ADR-5982c55aa125",
+      "query": "Dębowa, Główna 8A",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 1,
+        "results": {
+          "1": {
+            "city": "Dębowa",
+            "citypart": null,
+            "street": "Główna",
+            "number": "8A",
+            "teryt": "160306",
+            "simc": "0502782",
+            "ulic": "05635",
+            "code": "47-208",
+            "jednostka": "{Polska,opolskie,kędzierzyńsko-kozielski,\"Reńska Wieś\"}",
+            "x": "18.1611972645979",
+            "y": "50.2997175596289",
+            "geometry_wkt": "POINT(18.1611972645979 50.2997175596289)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "street_part_accuracy": "1",
+            "street_accuracy": "1",
+            "id": 1
+          }
+        },
+        "request time": 0.002220900853474935
+      }
+    },
+    {
+      "addressId": "ADR-16acd0372783",
+      "query": "Paniówki, Gliwicka BN3",
+      "previousAttempts": [
+        {
+          "status": "TRANSPORT_ERROR",
+          "errorType": "JSONDecodeError",
+          "httpStatus": null
+        }
+      ],
+      "status": "TRANSPORT_ERROR",
+      "errorType": "JSONDecodeError",
+      "httpStatus": null
+    },
+    {
+      "addressId": "ADR-9e92ded0a6ae",
+      "query": "Chróścice, Babilas 30",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 10,
+        "returned objects": 1,
+        "results": {
+          "1": {
+            "city": "Chróścice",
+            "citypart": null,
+            "street": "Babilas",
+            "number": "30",
+            "teryt": "160903",
+            "simc": "0493250",
+            "ulic": "00534",
+            "code": "46-080",
+            "jednostka": "{Polska,opolskie,opolski,\"Dobrzeń Wielki\"}",
+            "x": "17.7865203441261",
+            "y": "50.7747099421406",
+            "geometry_wkt": "POINT(17.7865203441261 50.7747099421406)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "street_part_accuracy": "1",
+            "street_accuracy": "1",
+            "id": 1
+          }
+        },
+        "request time": 0.0016940514246622722
+      }
+    },
+    {
+      "addressId": "ADR-bd29343c65c5",
+      "query": "Strzelce Opolskie, Kardynała Stefana Wyszyńskiego 7",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 1,
+        "results": {
+          "1": {
+            "city": "Strzelce Opolskie",
+            "citypart": null,
+            "street": "Kardynała Stefana Wyszyńskiego",
+            "number": "7",
+            "teryt": "161105",
+            "simc": "0965915",
+            "ulic": "35421",
+            "code": "47-100",
+            "jednostka": "{Polska,opolskie,strzelecki,\"Strzelce Opolskie\"}",
+            "x": "18.289520501037",
+            "y": "50.5101279765416",
+            "geometry_wkt": "POINT(18.289520501037 50.5101279765416)",
+            "accuracy": "1",
+            "city_accuracy": "1",
+            "street_part_accuracy": "1",
+            "street_accuracy": "1",
+            "id": 1
+          }
+        },
+        "request time": 0.00968250036239624
+      }
+    },
+    {
+      "addressId": "ADR-7b90c7c83a16",
+      "query": "Namysłów, Kazimierza Pułaskiego 18",
+      "status": "OK",
+      "httpStatus": 200,
+      "data": {
+        "type": "address",
+        "max results limit": 15,
+        "min accuracy limit": 0.4,
+        "only exact numbers": 1,
+        "found objects": 15,
+        "returned objects": 0,
+        "results": null,
+        "request time": 0.0060061494509379065
+      }
+    },
+    {
+      "addressId": "ADR-9a4a76747c55",
+      "query": "Zębowice, Leśna BN1",
+      "previousAttempts": [
+        {
+          "status": "TRANSPORT_ERROR",
+          "errorType": "JSONDecodeError",
+          "httpStatus": null
+        }
+      ],
+      "status": "TRANSPORT_ERROR",
+      "errorType": "JSONDecodeError",
+      "httpStatus": null
+    }
+  ]
+}

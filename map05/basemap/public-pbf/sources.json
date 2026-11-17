@@ -1,0 +1,38 @@
+{
+  "opolskie": {
+    "url": "https://download.geofabrik.de/europe/poland/opolskie-latest.osm.pbf",
+    "filename": "opolskie-latest.osm.pbf",
+    "bytes": 55058819,
+    "md5": "87f8c2d9500373140478b2adbe5b22cb",
+    "sha256": "249a19a9657584e9b0e0ab9455836ced0ed5bfc4286ef2056e6e22a5cdf59e7f",
+    "lastModified": "Tue, 17 Nov 2026 00:48:50 GMT",
+    "retrievedAt": "2026-11-17T09:12:03.024234+00:00"
+  },
+  "slaskie": {
+    "url": "https://download.geofabrik.de/europe/poland/slaskie-latest.osm.pbf",
+    "filename": "slaskie-latest.osm.pbf",
+    "bytes": 186927784,
+    "md5": "9794cdba5d51a046b8b29252cce7b828",
+    "sha256": "080275aa81c31f3b5b4606b7364bc2852712dd059c30c05d5e2544e33b021f54",
+    "lastModified": "Tue, 17 Nov 2026 00:48:57 GMT",
+    "retrievedAt": "2026-11-17T09:12:39.492655+00:00"
+  },
+  "dolnoslaskie": {
+    "url": "https://download.geofabrik.de/europe/poland/dolnoslaskie-latest.osm.pbf",
+    "filename": "dolnoslaskie-latest.osm.pbf",
+    "bytes": 182477436,
+    "md5": "c2aabfb23bafdc3ab2c588afe0aac7ff",
+    "sha256": "06913371584eeab2c5d6977d6e89ea7f3063e5ae932ccf0334cab49c777be790",
+    "lastModified": "Tue, 17 Nov 2026 00:48:26 GMT",
+    "retrievedAt": "2026-11-17T09:13:15.366732+00:00"
+  },
+  "wielkopolskie": {
+    "url": "https://download.geofabrik.de/europe/poland/wielkopolskie-latest.osm.pbf",
+    "filename": "wielkopolskie-latest.osm.pbf",
+    "bytes": 159826466,
+    "md5": "d9be1d82195ae79dc47a875db6912d56",
+    "sha256": "7b95de32b27862d75f79061a45c22788cea36f680866fe24d92d5fc24801278e",
+    "lastModified": "Tue, 17 Nov 2026 00:48:16 GMT",
+    "retrievedAt": "2026-11-17T09:13:44.830942+00:00"
+  }
+}

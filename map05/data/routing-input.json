@@ -1,0 +1,723 @@
+{
+  "schemaVersion": 1,
+  "status": "REJECTED_LOCAL_ONLY",
+  "datasetId": "f7037869ea5bed2d5c0b05416198feda9619b79351f2056501e3b64a79d3d08c",
+  "recipient": "https://router.project-osrm.org",
+  "profile": "driving",
+  "records": [
+    {
+      "addressId": "ADR-fd245bb82543",
+      "coordinates": [
+        17.759760363279,
+        50.6506511888395
+      ]
+    },
+    {
+      "addressId": "ADR-a857dc6d2a77",
+      "coordinates": [
+        18.025487260316,
+        50.9844583744468
+      ]
+    },
+    {
+      "addressId": "ADR-36960b461cd1",
+      "coordinates": [
+        18.6612518936651,
+        50.2317681949971
+      ]
+    },
+    {
+      "addressId": "ADR-6fd98d99cd10",
+      "coordinates": [
+        17.7016569400582,
+        50.1568889318926
+      ]
+    },
+    {
+      "addressId": "ADR-0391711ddff4",
+      "coordinates": [
+        17.6759928446772,
+        51.1280280197668
+      ]
+    },
+    {
+      "addressId": "ADR-197fef0043b4",
+      "coordinates": [
+        18.222163640682,
+        50.6800151466485
+      ]
+    },
+    {
+      "addressId": "ADR-5063c95d3cc7",
+      "coordinates": [
+        17.9520008477421,
+        50.2438031752408
+      ]
+    },
+    {
+      "addressId": "ADR-441735ef10ac",
+      "coordinates": [
+        18.7251424822051,
+        50.2512300951293
+      ]
+    },
+    {
+      "addressId": "ADR-e66f408d1b58",
+      "coordinates": [
+        17.8517053363317,
+        50.7791094581421
+      ]
+    },
+    {
+      "addressId": "ADR-55575010d9a8",
+      "coordinates": [
+        18.2996396008119,
+        50.7811608527598
+      ]
+    },
+    {
+      "addressId": "ADR-b772bdf5ac69",
+      "coordinates": [
+        17.3940458804043,
+        51.1534885490648
+      ]
+    },
+    {
+      "addressId": "ADR-62050d20bf98",
+      "coordinates": [
+        18.148277971358,
+        50.9536045156518
+      ]
+    },
+    {
+      "addressId": "ADR-3094886a5e7a",
+      "coordinates": [
+        17.6164817378619,
+        50.7491282196604
+      ]
+    },
+    {
+      "addressId": "ADR-5b78889d48e4",
+      "coordinates": [
+        17.7815094078713,
+        50.2693838227667
+      ]
+    },
+    {
+      "addressId": "ADR-827e73a91a08",
+      "coordinates": [
+        17.4488751123368,
+        51.1687238586255
+      ]
+    },
+    {
+      "addressId": "ADR-741365bea2ef",
+      "coordinates": [
+        18.4421714540604,
+        50.7256127243942
+      ]
+    },
+    {
+      "addressId": "ADR-0bc733b69bf6",
+      "coordinates": [
+        17.9756490857524,
+        50.6849395282089
+      ]
+    },
+    {
+      "addressId": "ADR-8f21ba2a4768",
+      "coordinates": [
+        18.2118070275602,
+        50.6824439037632
+      ]
+    },
+    {
+      "addressId": "ADR-aaeeb40da4ce",
+      "coordinates": [
+        18.0373501060678,
+        50.753098850294
+      ]
+    },
+    {
+      "addressId": "ADR-a3f8cd94e454",
+      "coordinates": [
+        17.9711991175188,
+        50.6264579827589
+      ]
+    },
+    {
+      "addressId": "ADR-8f19ee97f28d",
+      "coordinates": [
+        18.08155270562,
+        50.5417967026593
+      ]
+    },
+    {
+      "addressId": "ADR-687567c40bd8",
+      "coordinates": [
+        18.1557466369374,
+        50.5734008379111
+      ]
+    },
+    {
+      "addressId": "ADR-e4a8e697b2af",
+      "coordinates": [
+        18.3858339608947,
+        50.8426504255918
+      ]
+    },
+    {
+      "addressId": "ADR-65183f96ac15",
+      "coordinates": [
+        17.8761282189444,
+        50.2649543417683
+      ]
+    },
+    {
+      "addressId": "ADR-1dcff80dc920",
+      "coordinates": [
+        17.3563284346992,
+        51.3307507624542
+      ]
+    },
+    {
+      "addressId": "ADR-9cfc6e9f7c77",
+      "coordinates": [
+        18.1531864673093,
+        50.7077235167671
+      ]
+    },
+    {
+      "addressId": "ADR-d64f08786502",
+      "coordinates": [
+        17.8548227856225,
+        50.6843812281696
+      ]
+    },
+    {
+      "addressId": "ADR-939c2c34b499",
+      "coordinates": [
+        17.8388044692132,
+        50.0499977258013
+      ]
+    },
+    {
+      "addressId": "ADR-bd2ca899d2df",
+      "coordinates": [
+        17.9290800420272,
+        50.7363408252378
+      ]
+    },
+    {
+      "addressId": "ADR-a4f55c4d18d3",
+      "coordinates": [
+        18.0491770527044,
+        51.0714488211728
+      ]
+    },
+    {
+      "addressId": "ADR-182a9da08a50",
+      "coordinates": [
+        17.9525601162004,
+        50.2444145016168
+      ]
+    },
+    {
+      "addressId": "ADR-0a3827369a2c",
+      "coordinates": [
+        17.3570611153533,
+        51.3363357301529
+      ]
+    },
+    {
+      "addressId": "ADR-b2b9b9fb3759",
+      "coordinates": [
+        17.4413726916276,
+        51.1546332662409
+      ]
+    },
+    {
+      "addressId": "ADR-946dd8d061c2",
+      "coordinates": [
+        17.6084916895241,
+        50.1460554322046
+      ]
+    },
+    {
+      "addressId": "ADR-0ec05aa1bb32",
+      "coordinates": [
+        17.982555456521,
+        50.9078404434238
+      ]
+    },
+    {
+      "addressId": "ADR-32fddaeffafa",
+      "coordinates": [
+        18.6018910432021,
+        50.1584128107557
+      ]
+    },
+    {
+      "addressId": "ADR-69e2569962c9",
+      "coordinates": [
+        18.5440921730351,
+        50.9603480775881
+      ]
+    },
+    {
+      "addressId": "ADR-be0bd65583b1",
+      "coordinates": [
+        18.0796642198092,
+        50.584636333619
+      ]
+    },
+    {
+      "addressId": "ADR-764a4744faef",
+      "coordinates": [
+        17.4515479804739,
+        51.2368727963208
+      ]
+    },
+    {
+      "addressId": "ADR-9b8662714b0b",
+      "coordinates": [
+        17.3936833005365,
+        51.1537514617212
+      ]
+    },
+    {
+      "addressId": "ADR-1f1d7aa2dd7b",
+      "coordinates": [
+        17.4683858001441,
+        51.2224116883104
+      ]
+    },
+    {
+      "addressId": "ADR-3a1f36a79bbf",
+      "coordinates": [
+        18.6142449044514,
+        50.8791148731686
+      ]
+    },
+    {
+      "addressId": "ADR-9f5600b90dfc",
+      "coordinates": [
+        18.2896935676476,
+        50.9801434336534
+      ]
+    },
+    {
+      "addressId": "ADR-48129c2deb52",
+      "coordinates": [
+        18.1833316493399,
+        51.0786000857345
+      ]
+    },
+    {
+      "addressId": "ADR-4463950bb22f",
+      "coordinates": [
+        18.2600950216028,
+        50.6738787393874
+      ]
+    },
+    {
+      "addressId": "ADR-fd10dcc27dfe",
+      "coordinates": [
+        18.556426850285,
+        50.8538005464806
+      ]
+    },
+    {
+      "addressId": "ADR-aa9a12e31e3d",
+      "coordinates": [
+        18.2585483855868,
+        50.6131344465402
+      ]
+    },
+    {
+      "addressId": "ADR-b9c38e48d701",
+      "coordinates": [
+        17.8116881907632,
+        50.7933858080859
+      ]
+    },
+    {
+      "addressId": "ADR-5f9cbddc0eae",
+      "coordinates": [
+        17.6808209416192,
+        50.7553503102717
+      ]
+    },
+    {
+      "addressId": "ADR-4c610142b186",
+      "coordinates": [
+        18.0787741959435,
+        50.5837514613867
+      ]
+    },
+    {
+      "addressId": "ADR-bb106d3e6064",
+      "coordinates": [
+        17.9258692736374,
+        50.8074567341971
+      ]
+    },
+    {
+      "addressId": "ADR-9c486e22acf1",
+      "coordinates": [
+        18.4615177689604,
+        50.770786278075
+      ]
+    },
+    {
+      "addressId": "ADR-a70e01bb2d22",
+      "coordinates": [
+        17.3396428952868,
+        51.154399763037
+      ]
+    },
+    {
+      "addressId": "ADR-136c7adc89e1",
+      "coordinates": [
+        17.8534676485877,
+        50.7642170601287
+      ]
+    },
+    {
+      "addressId": "ADR-446013bf569a",
+      "coordinates": [
+        18.0754394077795,
+        50.7359280671785
+      ]
+    },
+    {
+      "addressId": "ADR-50742c1f67d1",
+      "coordinates": [
+        18.623814513863,
+        50.8804499915659
+      ]
+    },
+    {
+      "addressId": "ADR-521bfadcde57",
+      "coordinates": [
+        17.3803471826925,
+        51.1791406086623
+      ]
+    },
+    {
+      "addressId": "ADR-5a1ce601cd0a",
+      "coordinates": [
+        18.7743987521654,
+        50.1723658774231
+      ]
+    },
+    {
+      "addressId": "ADR-b4e597ab15b5",
+      "coordinates": [
+        17.3208555448536,
+        51.2451387579708
+      ]
+    },
+    {
+      "addressId": "ADR-6708b35973c8",
+      "coordinates": [
+        18.438082500533,
+        51.0232941621436
+      ]
+    },
+    {
+      "addressId": "ADR-f79ff100cc6d",
+      "coordinates": [
+        18.0178482940733,
+        50.961672358982
+      ]
+    },
+    {
+      "addressId": "ADR-b62928e7d05c",
+      "coordinates": [
+        17.4686582971135,
+        51.2204553950242
+      ]
+    },
+    {
+      "addressId": "ADR-5b0cbf345d7b",
+      "coordinates": [
+        17.5147105491786,
+        51.2340870107395
+      ]
+    },
+    {
+      "addressId": "ADR-3b5677afde3d",
+      "coordinates": [
+        17.4163958560591,
+        51.1588021307542
+      ]
+    },
+    {
+      "addressId": "ADR-2d1bb8bb481a",
+      "coordinates": [
+        17.4519213680978,
+        51.2365966257283
+      ]
+    },
+    {
+      "addressId": "ADR-53795164e29a",
+      "coordinates": [
+        17.3879836955319,
+        50.7032632975546
+      ]
+    },
+    {
+      "addressId": "ADR-964a172bae21",
+      "coordinates": [
+        18.6045116264439,
+        50.1386774622255
+      ]
+    },
+    {
+      "addressId": "ADR-8dc52d15f26f",
+      "coordinates": [
+        17.9425568094527,
+        50.1604458349355
+      ]
+    },
+    {
+      "addressId": "ADR-93becc20000b",
+      "coordinates": [
+        17.6712707432668,
+        50.1058972044784
+      ]
+    },
+    {
+      "addressId": "ADR-a1289045ff5b",
+      "coordinates": [
+        17.5834473955221,
+        50.7569764340144
+      ]
+    },
+    {
+      "addressId": "ADR-922205fd7122",
+      "coordinates": [
+        17.7666258205427,
+        50.8258380326186
+      ]
+    },
+    {
+      "addressId": "ADR-7b82172961a6",
+      "coordinates": [
+        18.2931191681784,
+        50.8630257676486
+      ]
+    },
+    {
+      "addressId": "ADR-0dc8296b8707",
+      "coordinates": [
+        17.3934176451779,
+        51.2429310395869
+      ]
+    },
+    {
+      "addressId": "ADR-d4a1a941dabe",
+      "coordinates": [
+        18.6208261986002,
+        50.8807535438942
+      ]
+    },
+    {
+      "addressId": "ADR-9c6fac72133e",
+      "coordinates": [
+        17.52480908664,
+        51.277024353658
+      ]
+    },
+    {
+      "addressId": "ADR-913c884174bc",
+      "coordinates": [
+        17.5244666822847,
+        51.2792329105642
+      ]
+    },
+    {
+      "addressId": "ADR-0e83bfe3b79a",
+      "coordinates": [
+        18.5879179612353,
+        50.1381952205854
+      ]
+    },
+    {
+      "addressId": "ADR-8e2e3b30b3ef",
+      "coordinates": [
+        18.3587543501015,
+        50.7015103070608
+      ]
+    },
+    {
+      "addressId": "ADR-135c349d85bd",
+      "coordinates": [
+        18.4831091313273,
+        50.6032060210964
+      ]
+    },
+    {
+      "addressId": "ADR-6f85506673c1",
+      "coordinates": [
+        17.8515692195104,
+        50.7643911633475
+      ]
+    },
+    {
+      "addressId": "ADR-e52b281ee3fd",
+      "coordinates": [
+        18.0511281910087,
+        51.0117692721912
+      ]
+    },
+    {
+      "addressId": "ADR-ab67b8fcb48f",
+      "coordinates": [
+        18.616868902744,
+        50.8767797557315
+      ]
+    },
+    {
+      "addressId": "ADR-f8ee8404b91c",
+      "coordinates": [
+        18.0641048764587,
+        50.7257739804994
+      ]
+    },
+    {
+      "addressId": "ADR-eb89d8745132",
+      "coordinates": [
+        18.4845789806052,
+        50.877378472315
+      ]
+    },
+    {
+      "addressId": "ADR-f59d0622e00c",
+      "coordinates": [
+        17.3007350980333,
+        51.1502175504352
+      ]
+    },
+    {
+      "addressId": "ADR-174f4f0202e3",
+      "coordinates": [
+        18.7430478875888,
+        50.2274753203144
+      ]
+    },
+    {
+      "addressId": "ADR-d64c5f551f6a",
+      "coordinates": [
+        17.8738953652358,
+        50.6525856406709
+      ]
+    },
+    {
+      "addressId": "ADR-765606dd6eff",
+      "coordinates": [
+        18.6133981047685,
+        50.1549842324353
+      ]
+    },
+    {
+      "addressId": "ADR-57f5c06f6daa",
+      "coordinates": [
+        18.1406623552892,
+        50.739029472086
+      ]
+    },
+    {
+      "addressId": "ADR-ba727cca6275",
+      "coordinates": [
+        18.4990651256426,
+        50.9768777599303
+      ]
+    },
+    {
+      "addressId": "ADR-2d1cb38620fa",
+      "coordinates": [
+        18.1384364529081,
+        50.9732194458851
+      ]
+    },
+    {
+      "addressId": "ADR-44c784791f2a",
+      "coordinates": [
+        17.3560892008211,
+        51.3316663843258
+      ]
+    },
+    {
+      "addressId": "ADR-6414369a5f71",
+      "coordinates": [
+        17.9712485815685,
+        50.5198600899053
+      ]
+    },
+    {
+      "addressId": "ADR-c0d8f3ba8093",
+      "coordinates": [
+        18.0899442155995,
+        50.5761776778435
+      ]
+    },
+    {
+      "addressId": "ADR-bbed70da216b",
+      "coordinates": [
+        18.2729767926565,
+        50.6139242722004
+      ]
+    },
+    {
+      "addressId": "ADR-f030dc0206ef",
+      "coordinates": [
+        17.3751211535226,
+        51.18169001201
+      ]
+    },
+    {
+      "addressId": "ADR-89c990e8a99f",
+      "coordinates": [
+        17.7220321523069,
+        50.6046866026642
+      ]
+    },
+    {
+      "addressId": "ADR-1789b0d12a7d",
+      "coordinates": [
+        18.2815088763757,
+        50.5073045023557
+      ]
+    },
+    {
+      "addressId": "ADR-d72da86d5142",
+      "coordinates": [
+        17.4232529772372,
+        51.2776035034117
+      ]
+    },
+    {
+      "addressId": "ADR-5982c55aa125",
+      "coordinates": [
+        18.1611972645979,
+        50.2997175596289
+      ]
+    },
+    {
+      "addressId": "ADR-9e92ded0a6ae",
+      "coordinates": [
+        17.7865203441261,
+        50.7747099421406
+      ]
+    },
+    {
+      "addressId": "ADR-bd29343c65c5",
+      "coordinates": [
+        18.289520501037,
+        50.5101279765416
+      ]
+    }
+  ]
+}

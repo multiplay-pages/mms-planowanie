@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>MMS · Planer instalacji</title>
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./planner.css">
+  <script type="module" src="./planner.mjs"></script>
+</head>
+<body>
+  <a class="skip" href="#queue">Przejdź do kolejki</a>
+  <header><a class="brand" href="./planner.html"><span class="logo">m<span>+</span></span>MMS <strong>Planowanie 2.0</strong></a><div class="tags"><span>PROTOTYP LOKALNY</span><span>RZECZYWISTE ADRESY · TESTOWE ZLECENIA</span></div></header>
+  <main>
+    <div class="heading"><div><p class="eyebrow">STANOWISKO KOORDYNATORA / MAP–05</p><h1>Od kolejki do planu dnia<span>.</span></h1><p>Zaplanuj dostępność, wygeneruj koszyki i popraw przydziały.</p></div><div id="dataset-summary" class="source-chip">Wczytywanie listy adresowej…</div></div>
+    <p id="loading" role="status">Wczytywanie lokalnych danych…</p>
+    <section id="failure" class="notice error" hidden role="alert"><h2>Nie udało się wczytać planera</h2><p id="failure-message"></p></section>
+    <div id="planner" hidden>
+      <section class="toolbar" aria-label="Dzień i zakres planowania">
+        <label>Dzień planowania<input id="planning-date" type="date" required></label>
+        <label>Miejscowość<select id="city-filter"><option value="ALL">Wszystkie miejscowości</option></select></label>
+        <label>Rodzaj pracy<select id="kind-filter"><option value="ALL">Wszystkie rodzaje</option><option value="MPL">Instalacja MPL</option><option value="BSA">Instalacja BSA</option><option value="POMIAR">Pomiar</option></select></label>
+        <button id="generate" class="primary" type="button">Generuj koszyki na ten dzień <span aria-hidden="true">↗</span></button>
+      </section>
+      <p class="scope-note" id="generation-scope"></p>
+      <div id="message" class="notice" role="status" aria-live="polite" hidden></div>
+      <section id="metrics" class="metrics" aria-label="Podsumowanie planowania"></section>
+      <div class="workspace">
+        <section id="queue" class="card queue" tabindex="-1" aria-labelledby="queue-title">
+          <div class="panel-head"><div><p class="eyebrow">01 / DO UMÓWIENIA</p><h2 id="queue-title">Kolejka <span id="queue-count" class="count"></span></h2></div><span class="small muted">BEZ DATY</span></div>
+          <label class="search-label" for="queue-search">Szukaj adresu lub numeru zlecenia</label><input id="queue-search" type="search" placeholder="Miejscowość, ulica, TEST-…" autocomplete="off">
+          <p class="small muted">Zmiana dnia zachowuje kolejkę. Przydzielone propozycje znajdziesz w koszykach.</p>
+          <div id="queue-list" class="queue-list"></div>
+        </section>
+        <div class="middle">
+          <section class="card" aria-labelledby="baskets-title">
+            <div class="panel-head"><div><p class="eyebrow">02 / PLAN DNIA</p><h2 id="baskets-title">Koszyki <span id="basket-day" class="muted"></span></h2></div><span class="tag amber">PROPOZYCJE</span></div>
+            <p id="routing-status" class="notice compact">Wczytywanie lokalnej oceny dróg…</p>
+            <div id="baskets" class="baskets"></div>
+          </section>
+          <section class="card" aria-labelledby="map-title">
+            <div class="panel-head"><div><p class="eyebrow">03 / PRZESTRZEŃ</p><h2 id="map-title">Mapa i lokalizacje</h2></div><span id="located-count" class="tag"></span></div>
+            <p id="map-note" class="small"></p>
+            <div class="map-tools" role="group" aria-label="Sterowanie mapą"><button type="button" data-map="in" aria-label="Przybliż mapę">+</button><button type="button" data-map="out" aria-label="Oddal mapę">−</button><button type="button" data-map="left" aria-label="Przesuń mapę w lewo">←</button><button type="button" data-map="up" aria-label="Przesuń mapę w górę">↑</button><button type="button" data-map="down" aria-label="Przesuń mapę w dół">↓</button><button type="button" data-map="right" aria-label="Przesuń mapę w prawo">→</button><button type="button" data-map="fit">Dopasuj widok</button><button type="button" data-map="all" aria-pressed="true">Cały zakres</button><button type="button" data-map="selected" aria-pressed="false">Wybrany adres</button></div>
+            <div class="map-wrap"><svg id="planner-map" viewBox="0 0 680 380" tabindex="0" role="group" aria-labelledby="map-title map-desc"><desc id="map-desc">Punkty budynków z lokalnej warstwy GUGiK. Nieustalone lokalizacje pozostają poza mapą. Podkład ulic obejmuje wyłącznie wycinek Opola.</desc></svg></div>
+            <div class="map-legend"><span class="key mpl">MPL</span><span class="key bsa">BSA</span><span class="key measurement">Pomiar</span><span>Przerywany obrys: uwaga o kodzie</span><span class="key route">Droga koszyka</span></div>
+            <p id="route-summary" class="small" role="status" aria-live="polite"></p>
+            <p class="attribution">Geokodowanie: <span id="geocoder-source">GUGiK</span> · <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">© OpenStreetMap contributors</a> · ODbL · lokalny podkład bez pobierania kafelków</p>
+            <details class="location-review-panel" open><summary>Uwagi do lokalizacji <span id="location-review-count" class="count"></span></summary><p class="small muted">Porównaj adres źródłowy z odpowiedzią usługi. Punkty z różnym kodem pocztowym mają przerywany obrys; nieustalone lokalizacje pozostają poza mapą. Brak wyniku usługi nie oznacza błędu adresu.</p><div id="location-review"></div></details>
+          </section>
+        </div>
+        <aside id="order-details" class="card details" aria-labelledby="order-title"></aside>
+      </div>
+      <section class="card resources" aria-labelledby="resources-title">
+        <div class="panel-head"><div><p class="eyebrow">04 / DOSTĘPNOŚĆ</p><h2 id="resources-title">Sloty instalacyjne i pomiarowe</h2></div><button id="day-defaults" type="button" class="secondary">Dodaj testową dostępność na ten dzień</button></div>
+        <p class="small muted">Włączaj okna konkretnej ekipy. Instalacje i pomiary zajmują ten sam zasób. Wyłączenie zajętego okna zostanie odrzucone; najpierw przenieś zlecenie. Maksymalnie 3 instalacje w koszyku.</p>
+        <div class="table-scroll" tabindex="0" role="region" aria-label="Dostępność ekip"><table><thead><tr><th scope="col">Umowna ekipa / kwalifikacje</th><th scope="col">08:00–11:00</th><th scope="col">11:00–14:00</th><th scope="col">14:00–17:00</th><th scope="col">Otwarte / zajęte</th></tr></thead><tbody id="availability"></tbody></table></div>
+      </section>
+      <section class="card save-panel" aria-labelledby="save-title"><div><p class="eyebrow">TYLKO NA TYM URZĄDZENIU</p><h2 id="save-title">Zachowaj plan testowy</h2><p id="storage-status" class="small muted"></p></div><div class="save-actions"><button id="undo" type="button" class="secondary" disabled>Cofnij zmianę</button><button id="save-plan" type="button" class="secondary">Zapisz plan JSON</button><label class="file-button">Wczytaj plan JSON<input id="load-plan" type="file" accept=".json,application/json"></label><button id="reset-plan" type="button" class="danger">Wyczyść plan testowy</button></div></section>
+      <footer><p id="source-detail"></p><p>Adresy z listy użytkownika. Typy, gotowość, wiek kolejki, wymagana liczba slotów i ekipy są syntetyczne. Regiony operacyjne, pokrycie i normy nie zostały niezależnie zweryfikowane. Brak zapisu do MMS, kontaktu z klientami i finalnej obsady D−1.</p><a href="./index.html">Starszy demonstrator MAP-04</a></footer>
+    </div>
+  </main>
+  <dialog id="reset-dialog" aria-labelledby="reset-title"><h2 id="reset-title">Wyczyścić lokalny plan testowy?</h2><p>Adresy pozostaną. Przydziały i zmiany dostępności wrócą do scenariusza początkowego. Tę operację można cofnąć.</p><div class="save-actions"><button id="cancel-reset" type="button" class="secondary">Anuluj</button><button id="accept-reset" type="button" class="danger">Wyczyść plan</button></div></dialog>
+</body>
+</html>

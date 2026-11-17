@@ -1,0 +1,18 @@
+[
+  {
+    "path": "basemap/planner-data.json",
+    "archive": "basemap/planner-data.json.gz",
+    "bytes": 83542145,
+    "sha256": "85b14cd35eb1f89e688a1312bcc4618c2b8f0bfe0276d469fe2c2b0ed8a93c9b",
+    "archiveBytes": 21799522,
+    "archiveSha256": "333f6857781e401c79ad3c893d3780a0c24a857d3b788413455c2d655aa76fed"
+  },
+  {
+    "path": "basemap/regional-roads.json",
+    "archive": "basemap/regional-roads.json.gz",
+    "bytes": 129957572,
+    "sha256": "0cf92c890b80ff5fe27b809026d8b3e9fb4cb129ccf8f14c25c605262df798f8",
+    "archiveBytes": 33233952,
+    "archiveSha256": "292266943dc7a8ca85d31e8d7fdbc467d5aa9576e5469a78fe0c527ccbbe9d6c"
+  }
+]

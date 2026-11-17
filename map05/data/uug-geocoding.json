@@ -1,0 +1,5214 @@
+{
+  "schemaVersion": 1,
+  "datasetId": "f7037869ea5bed2d5c0b05416198feda9619b79351f2056501e3b64a79d3d08c",
+  "source": {
+    "provider": "GUGIK_UUG",
+    "method": "GetAddress",
+    "filename": "uug-responses.json",
+    "sha256": "3c02bdf9304a165bcaa263172b6f4102330a5e5c317f30301364cebf79675462",
+    "url": "https://services.gugik.gov.pl/uug/",
+    "srid": 4326
+  },
+  "policy": {
+    "version": 1,
+    "exactNumber": true,
+    "exactLocality": true,
+    "uniqueEligiblePoint": true,
+    "street": "exact-name-or-registry-street-part",
+    "postcodeDifferenceOnlyForSingleReturnedPointInSamePostalArea": true,
+    "sourceAddressesConfirmedBy": "USER_QGIS",
+    "independentlyVerifiedNetworkCoverage": false
+  },
+  "summary": {
+    "total": 109,
+    "matched": 102,
+    "exactMatched": 96,
+    "postcodeNotes": 6,
+    "review": 7,
+    "candidateCoordinates": 103,
+    "reasons": {
+      "POSTCODE_DIFFERENCE": 6,
+      "POSTCODE_MISMATCH": 1,
+      "NO_REGISTER_MATCH": 4,
+      "PROVIDER_UNAVAILABLE": 2
+    }
+  },
+  "records": [
+    {
+      "addressId": "ADR-fd245bb82543",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        17.759760363279,
+        50.6506511888395
+      ],
+      "candidate": {
+        "coordinates": [
+          17.759760363279,
+          50.6506511888395
+        ],
+        "formatted": "Wawelno, Leśna 32a, 46-070",
+        "housenumber": "32a",
+        "street": "Leśna",
+        "city": "Wawelno",
+        "citypart": "",
+        "postcode": "46-070",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "160904",
+          "simc": "0496892",
+          "ulic": "10898"
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "streetPart": 1.0,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": true,
+        "eligibleCount": 1,
+        "returnedCount": 1
+      }
+    },
+    {
+      "addressId": "ADR-a857dc6d2a77",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        18.025487260316,
+        50.9844583744468
+      ],
+      "candidate": {
+        "coordinates": [
+          18.025487260316,
+          50.9844583744468
+        ],
+        "formatted": "Wąsice, Główna 20, 46-250",
+        "housenumber": "20",
+        "street": "Główna",
+        "city": "Wąsice",
+        "citypart": "",
+        "postcode": "46-250",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "160404",
+          "simc": "0505303",
+          "ulic": "05635"
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "streetPart": 1.0,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": true,
+        "eligibleCount": 1,
+        "returnedCount": 1
+      }
+    },
+    {
+      "addressId": "ADR-36960b461cd1",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        18.6612518936651,
+        50.2317681949971
+      ],
+      "candidate": {
+        "coordinates": [
+          18.6612518936651,
+          50.2317681949971
+        ],
+        "formatted": "Knurów, Mieszka I 23a, 44-194",
+        "housenumber": "23a",
+        "street": "Mieszka I",
+        "city": "Knurów",
+        "citypart": "",
+        "postcode": "44-194",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "240501",
+          "simc": "0940849",
+          "ulic": "12832"
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "streetPart": 1.0,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": true,
+        "eligibleCount": 1,
+        "returnedCount": 1
+      }
+    },
+    {
+      "addressId": "ADR-6fd98d99cd10",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        17.7016569400582,
+        50.1568889318926
+      ],
+      "candidate": {
+        "coordinates": [
+          17.7016569400582,
+          50.1568889318926
+        ],
+        "formatted": "Mokre 9, 48-155",
+        "housenumber": "9",
+        "street": "",
+        "city": "Mokre",
+        "citypart": "",
+        "postcode": "48-155",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "160203",
+          "simc": "0494396",
+          "ulic": ""
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": null,
+          "streetPart": null,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": false,
+        "eligibleCount": 1,
+        "returnedCount": 14
+      }
+    },
+    {
+      "addressId": "ADR-0391711ddff4",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        17.6759928446772,
+        51.1280280197668
+      ],
+      "candidate": {
+        "coordinates": [
+          17.6759928446772,
+          51.1280280197668
+        ],
+        "formatted": "Wilków, Długa 149, 46-113",
+        "housenumber": "149",
+        "street": "Długa",
+        "city": "Wilków",
+        "citypart": "",
+        "postcode": "46-113",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "160605",
+          "simc": "0504829",
+          "ulic": "03839"
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "streetPart": 1.0,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": true,
+        "eligibleCount": 1,
+        "returnedCount": 1
+      }
+    },
+    {
+      "addressId": "ADR-197fef0043b4",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        18.222163640682,
+        50.6800151466485
+      ],
+      "candidate": {
+        "coordinates": [
+          18.222163640682,
+          50.6800151466485
+        ],
+        "formatted": "Ozimek, Juliusza Słowackiego 3A, 46-040",
+        "housenumber": "3A",
+        "street": "Juliusza Słowackiego",
+        "city": "Ozimek",
+        "citypart": "",
+        "postcode": "46-040",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "160908",
+          "simc": "0965849",
+          "ulic": "20291"
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "streetPart": 1.0,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": true,
+        "eligibleCount": 1,
+        "returnedCount": 1
+      }
+    },
+    {
+      "addressId": "ADR-5063c95d3cc7",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        17.9520008477421,
+        50.2438031752408
+      ],
+      "candidate": {
+        "coordinates": [
+          17.9520008477421,
+          50.2438031752408
+        ],
+        "formatted": "Grudynia Wielka, Leśna 1A, 47-280",
+        "housenumber": "1A",
+        "street": "Leśna",
+        "city": "Grudynia Wielka",
+        "citypart": "",
+        "postcode": "47-280",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "160304",
+          "simc": "0501624",
+          "ulic": "10898"
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "streetPart": 1.0,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": true,
+        "eligibleCount": 1,
+        "returnedCount": 1
+      }
+    },
+    {
+      "addressId": "ADR-441735ef10ac",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        18.7251424822051,
+        50.2512300951293
+      ],
+      "candidate": {
+        "coordinates": [
+          18.7251424822051,
+          50.2512300951293
+        ],
+        "formatted": "Przyszowice, Powstańców Śląskich 91B, 44-178",
+        "housenumber": "91B",
+        "street": "Powstańców Śląskich",
+        "city": "Przyszowice",
+        "citypart": "",
+        "postcode": "44-178",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "240503",
+          "simc": "0214362",
+          "ulic": "17366"
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "streetPart": 1.0,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": true,
+        "eligibleCount": 1,
+        "returnedCount": 1
+      }
+    },
+    {
+      "addressId": "ADR-e66f408d1b58",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        17.8517053363317,
+        50.7791094581421
+      ],
+      "candidate": {
+        "coordinates": [
+          17.8517053363317,
+          50.7791094581421
+        ],
+        "formatted": "Dobrzeń Wielki, Żeromskiego 48, 46-081",
+        "housenumber": "48",
+        "street": "Żeromskiego",
+        "city": "Dobrzeń Wielki",
+        "citypart": "",
+        "postcode": "46-081",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "160903",
+          "simc": "0493439",
+          "ulic": "26464"
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "streetPart": 1.0,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": true,
+        "eligibleCount": 1,
+        "returnedCount": 1
+      }
+    },
+    {
+      "addressId": "ADR-55575010d9a8",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        18.2996396008119,
+        50.7811608527598
+      ],
+      "candidate": {
+        "coordinates": [
+          18.2996396008119,
+          50.7811608527598
+        ],
+        "formatted": "Radawie, Opolska 73, 46-048",
+        "housenumber": "73",
+        "street": "Opolska",
+        "city": "Radawie",
+        "citypart": "",
+        "postcode": "46-048",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "160807",
+          "simc": "0505786",
+          "ulic": "15095"
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "streetPart": 1.0,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": true,
+        "eligibleCount": 1,
+        "returnedCount": 1
+      }
+    },
+    {
+      "addressId": "ADR-b772bdf5ac69",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        17.3940458804043,
+        51.1534885490648
+      ],
+      "candidate": {
+        "coordinates": [
+          17.3940458804043,
+          51.1534885490648
+        ],
+        "formatted": "Zimnica 17C, 56-400",
+        "housenumber": "17C",
+        "street": "",
+        "city": "Zimnica",
+        "citypart": "",
+        "postcode": "56-400",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "021406",
+          "simc": "0879311",
+          "ulic": ""
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": null,
+          "streetPart": null,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": false,
+        "eligibleCount": 1,
+        "returnedCount": 1
+      }
+    },
+    {
+      "addressId": "ADR-62050d20bf98",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        18.148277971358,
+        50.9536045156518
+      ],
+      "candidate": {
+        "coordinates": [
+          18.148277971358,
+          50.9536045156518
+        ],
+        "formatted": "Borkowice, Bogacka 24, 46-243",
+        "housenumber": "24",
+        "street": "Bogacka",
+        "city": "Borkowice",
+        "citypart": "",
+        "postcode": "46-243",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "160402",
+          "simc": "0496372",
+          "ulic": "01560"
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "streetPart": 1.0,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": true,
+        "eligibleCount": 1,
+        "returnedCount": 1
+      }
+    },
+    {
+      "addressId": "ADR-3094886a5e7a",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        17.6164817378619,
+        50.7491282196604
+      ],
+      "candidate": {
+        "coordinates": [
+          17.6164817378619,
+          50.7491282196604
+        ],
+        "formatted": "Lewin Brzeski, Rynek 25, 49-340",
+        "housenumber": "25",
+        "street": "Rynek",
+        "city": "Lewin Brzeski",
+        "citypart": "",
+        "postcode": "49-340",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "160104",
+          "simc": "0965720",
+          "ulic": "19253"
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "streetPart": 1.0,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": true,
+        "eligibleCount": 1,
+        "returnedCount": 1
+      }
+    },
+    {
+      "addressId": "ADR-5b78889d48e4",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        17.7815094078713,
+        50.2693838227667
+      ],
+      "candidate": {
+        "coordinates": [
+          17.7815094078713,
+          50.2693838227667
+        ],
+        "formatted": "Ściborzyce Małe 40, 48-118",
+        "housenumber": "40",
+        "street": "",
+        "city": "Ściborzyce Małe",
+        "citypart": "",
+        "postcode": "48-118",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "160203",
+          "simc": "0494539",
+          "ulic": ""
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": null,
+          "streetPart": null,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": false,
+        "eligibleCount": 1,
+        "returnedCount": 1
+      }
+    },
+    {
+      "addressId": "ADR-827e73a91a08",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        17.4488751123368,
+        51.1687238586255
+      ],
+      "candidate": {
+        "coordinates": [
+          17.4488751123368,
+          51.1687238586255
+        ],
+        "formatted": "Gręboszyce 12b, 56-400",
+        "housenumber": "12b",
+        "street": "",
+        "city": "Gręboszyce",
+        "citypart": "",
+        "postcode": "56-400",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "021406",
+          "simc": "0878984",
+          "ulic": ""
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": null,
+          "streetPart": null,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": false,
+        "eligibleCount": 1,
+        "returnedCount": 1
+      }
+    },
+    {
+      "addressId": "ADR-741365bea2ef",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        18.4421714540604,
+        50.7256127243942
+      ],
+      "candidate": {
+        "coordinates": [
+          18.4421714540604,
+          50.7256127243942
+        ],
+        "formatted": "Dobrodzień, Powstańców Śląskich 2B, 46-380",
+        "housenumber": "2B",
+        "street": "Powstańców Śląskich",
+        "city": "Dobrodzień",
+        "citypart": "",
+        "postcode": "46-380",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "160801",
+          "simc": "0931454",
+          "ulic": "17366"
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "streetPart": 1.0,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": true,
+        "eligibleCount": 1,
+        "returnedCount": 1
+      }
+    },
+    {
+      "addressId": "ADR-0bc733b69bf6",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        17.9756490857524,
+        50.6849395282089
+      ],
+      "candidate": {
+        "coordinates": [
+          17.9756490857524,
+          50.6849395282089
+        ],
+        "formatted": "Opole, Rozmarynowa 6, 45-403",
+        "housenumber": "6",
+        "street": "Rozmarynowa",
+        "city": "Opole",
+        "citypart": "",
+        "postcode": "45-403",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "166101",
+          "simc": "0965016",
+          "ulic": "18955"
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "streetPart": 1.0,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": true,
+        "eligibleCount": 1,
+        "returnedCount": 1
+      }
+    },
+    {
+      "addressId": "ADR-8f21ba2a4768",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        18.2118070275602,
+        50.6824439037632
+      ],
+      "candidate": {
+        "coordinates": [
+          18.2118070275602,
+          50.6824439037632
+        ],
+        "formatted": "Ozimek, 8 Marca 3B, 46-040",
+        "housenumber": "3B",
+        "street": "8 Marca",
+        "city": "Ozimek",
+        "citypart": "",
+        "postcode": "46-040",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "160908",
+          "simc": "0965849",
+          "ulic": "12270"
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "streetPart": 1.0,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": true,
+        "eligibleCount": 1,
+        "returnedCount": 1
+      }
+    },
+    {
+      "addressId": "ADR-aaeeb40da4ce",
+      "status": "MATCHED_BUILDING_POSTCODE_NOTE",
+      "coordinates": [
+        18.0373501060678,
+        50.753098850294
+      ],
+      "candidate": {
+        "coordinates": [
+          18.0373501060678,
+          50.753098850294
+        ],
+        "formatted": "Osowiec, Dworcowa 7b, 46-045",
+        "housenumber": "7b",
+        "street": "Dworcowa",
+        "city": "Osowiec",
+        "citypart": "",
+        "postcode": "46-045",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "160913",
+          "simc": "0504210",
+          "ulic": "04434"
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "streetPart": 1.0,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [
+        "POSTCODE_DIFFERENCE"
+      ],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": false,
+          "street": true
+        },
+        "streetPartExact": true,
+        "eligibleCount": 1,
+        "returnedCount": 1
+      }
+    },
+    {
+      "addressId": "ADR-a3f8cd94e454",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        17.9711991175188,
+        50.6264579827589
+      ],
+      "candidate": {
+        "coordinates": [
+          17.9711991175188,
+          50.6264579827589
+        ],
+        "formatted": "Opole, Kredytowa 19, 45-662",
+        "housenumber": "19",
+        "street": "Kredytowa",
+        "city": "Opole",
+        "citypart": "",
+        "postcode": "45-662",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "166101",
+          "simc": "0965016",
+          "ulic": "09902"
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "streetPart": 1.0,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": true,
+        "eligibleCount": 1,
+        "returnedCount": 2
+      }
+    },
+    {
+      "addressId": "ADR-8f19ee97f28d",
+      "status": "MATCHED_BUILDING_POSTCODE_NOTE",
+      "coordinates": [
+        18.08155270562,
+        50.5417967026593
+      ],
+      "candidate": {
+        "coordinates": [
+          18.08155270562,
+          50.5417967026593
+        ],
+        "formatted": "Kamień Śląski, Wapienna 1, 47-320",
+        "housenumber": "1",
+        "street": "Wapienna",
+        "city": "Kamień Śląski",
+        "citypart": "",
+        "postcode": "47-320",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "160501",
+          "simc": "0494947",
+          "ulic": "23624"
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "streetPart": 1.0,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [
+        "POSTCODE_DIFFERENCE"
+      ],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": false,
+          "street": true
+        },
+        "streetPartExact": true,
+        "eligibleCount": 1,
+        "returnedCount": 1
+      }
+    },
+    {
+      "addressId": "ADR-687567c40bd8",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        18.1557466369374,
+        50.5734008379111
+      ],
+      "candidate": {
+        "coordinates": [
+          18.1557466369374,
+          50.5734008379111
+        ],
+        "formatted": "Izbicko, Powstańców Śląskich 17, 47-180",
+        "housenumber": "17",
+        "street": "Powstańców Śląskich",
+        "city": "Izbicko",
+        "citypart": "",
+        "postcode": "47-180",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "161101",
+          "simc": "0495480",
+          "ulic": "17366"
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "streetPart": 1.0,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": true,
+        "eligibleCount": 1,
+        "returnedCount": 1
+      }
+    },
+    {
+      "addressId": "ADR-e4a8e697b2af",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        18.3858339608947,
+        50.8426504255918
+      ],
+      "candidate": {
+        "coordinates": [
+          18.3858339608947,
+          50.8426504255918
+        ],
+        "formatted": "Wachów, Pawła Kuczki 48, 46-300",
+        "housenumber": "48",
+        "street": "Pawła Kuczki",
+        "city": "Wachów",
+        "citypart": "",
+        "postcode": "46-300",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "160803",
+          "simc": "0140385",
+          "ulic": "10329"
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "streetPart": 1.0,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": true,
+        "eligibleCount": 1,
+        "returnedCount": 1
+      }
+    },
+    {
+      "addressId": "ADR-65183f96ac15",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        17.8761282189444,
+        50.2649543417683
+      ],
+      "candidate": {
+        "coordinates": [
+          17.8761282189444,
+          50.2649543417683
+        ],
+        "formatted": "Lisięcice, Słowackiego 32, 48-118",
+        "housenumber": "32",
+        "street": "Słowackiego",
+        "city": "Lisięcice",
+        "citypart": "",
+        "postcode": "48-118",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "160203",
+          "simc": "0494344",
+          "ulic": "20286"
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "streetPart": 1.0,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": true,
+        "eligibleCount": 1,
+        "returnedCount": 1
+      }
+    },
+    {
+      "addressId": "ADR-1dcff80dc920",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        17.3563284346992,
+        51.3307507624542
+      ],
+      "candidate": {
+        "coordinates": [
+          17.3563284346992,
+          51.3307507624542
+        ],
+        "formatted": "Białe Błoto 17D, 56-410",
+        "housenumber": "17D",
+        "street": "",
+        "city": "Białe Błoto",
+        "citypart": "",
+        "postcode": "56-410",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "021403",
+          "simc": "0874101",
+          "ulic": ""
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": null,
+          "streetPart": null,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": false,
+        "eligibleCount": 1,
+        "returnedCount": 1
+      }
+    },
+    {
+      "addressId": "ADR-9cfc6e9f7c77",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        18.1531864673093,
+        50.7077235167671
+      ],
+      "candidate": {
+        "coordinates": [
+          18.1531864673093,
+          50.7077235167671
+        ],
+        "formatted": "Szczedrzyk, Rybacka 7, 46-042",
+        "housenumber": "7",
+        "street": "Rybacka",
+        "city": "Szczedrzyk",
+        "citypart": "",
+        "postcode": "46-042",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "160908",
+          "simc": "0501216",
+          "ulic": "19142"
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "streetPart": 1.0,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": true,
+        "eligibleCount": 1,
+        "returnedCount": 1
+      }
+    },
+    {
+      "addressId": "ADR-d64f08786502",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        17.8548227856225,
+        50.6843812281696
+      ],
+      "candidate": {
+        "coordinates": [
+          17.8548227856225,
+          50.6843812281696
+        ],
+        "formatted": "Opole, Pisankowa 9, 45-841",
+        "housenumber": "9",
+        "street": "Pisankowa",
+        "city": "Opole",
+        "citypart": "",
+        "postcode": "45-841",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "166101",
+          "simc": "0965016",
+          "ulic": "16337"
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "streetPart": 1.0,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": true,
+        "eligibleCount": 1,
+        "returnedCount": 5
+      }
+    },
+    {
+      "addressId": "ADR-939c2c34b499",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        17.8388044692132,
+        50.0499977258013
+      ],
+      "candidate": {
+        "coordinates": [
+          17.8388044692132,
+          50.0499977258013
+        ],
+        "formatted": "Niekazanice 64, 48-140",
+        "housenumber": "64",
+        "street": "",
+        "city": "Niekazanice",
+        "citypart": "",
+        "postcode": "48-140",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "160202",
+          "simc": "0491877",
+          "ulic": ""
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": null,
+          "streetPart": null,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": false,
+        "eligibleCount": 1,
+        "returnedCount": 1
+      }
+    },
+    {
+      "addressId": "ADR-bd2ca899d2df",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        17.9290800420272,
+        50.7363408252378
+      ],
+      "candidate": {
+        "coordinates": [
+          17.9290800420272,
+          50.7363408252378
+        ],
+        "formatted": "Opole, Studzienna 19E, 45-920",
+        "housenumber": "19E",
+        "street": "Studzienna",
+        "city": "Opole",
+        "citypart": "",
+        "postcode": "45-920",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "166101",
+          "simc": "0965016",
+          "ulic": "21425"
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "streetPart": 1.0,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": true,
+        "eligibleCount": 1,
+        "returnedCount": 1
+      }
+    },
+    {
+      "addressId": "ADR-a4f55c4d18d3",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        18.0491770527044,
+        51.0714488211728
+      ],
+      "candidate": {
+        "coordinates": [
+          18.0491770527044,
+          51.0714488211728
+        ],
+        "formatted": "Krzywiczyny, Wołczyńska 54, 46-264",
+        "housenumber": "54",
+        "street": "Wołczyńska",
+        "city": "Krzywiczyny",
+        "citypart": "",
+        "postcode": "46-264",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "160404",
+          "simc": "0505065",
+          "ulic": "24708"
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "streetPart": 1.0,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": true,
+        "eligibleCount": 1,
+        "returnedCount": 1
+      }
+    },
+    {
+      "addressId": "ADR-182a9da08a50",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        17.9525601162004,
+        50.2444145016168
+      ],
+      "candidate": {
+        "coordinates": [
+          17.9525601162004,
+          50.2444145016168
+        ],
+        "formatted": "Grudynia Wielka, Leśna 3C, 47-280",
+        "housenumber": "3C",
+        "street": "Leśna",
+        "city": "Grudynia Wielka",
+        "citypart": "",
+        "postcode": "47-280",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "160304",
+          "simc": "0501624",
+          "ulic": "10898"
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "streetPart": 1.0,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": true,
+        "eligibleCount": 1,
+        "returnedCount": 1
+      }
+    },
+    {
+      "addressId": "ADR-0a3827369a2c",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        17.3570611153533,
+        51.3363357301529
+      ],
+      "candidate": {
+        "coordinates": [
+          17.3570611153533,
+          51.3363357301529
+        ],
+        "formatted": "Białe Błoto 35, 56-410",
+        "housenumber": "35",
+        "street": "",
+        "city": "Białe Błoto",
+        "citypart": "",
+        "postcode": "56-410",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "021403",
+          "simc": "0874101",
+          "ulic": ""
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": null,
+          "streetPart": null,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": false,
+        "eligibleCount": 1,
+        "returnedCount": 2
+      }
+    },
+    {
+      "addressId": "ADR-b2b9b9fb3759",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        17.4413726916276,
+        51.1546332662409
+      ],
+      "candidate": {
+        "coordinates": [
+          17.4413726916276,
+          51.1546332662409
+        ],
+        "formatted": "Smolna 131, 56-400",
+        "housenumber": "131",
+        "street": "",
+        "city": "Smolna",
+        "citypart": "",
+        "postcode": "56-400",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "021406",
+          "simc": "0879200",
+          "ulic": ""
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": null,
+          "streetPart": null,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": false,
+        "eligibleCount": 1,
+        "returnedCount": 1
+      }
+    },
+    {
+      "addressId": "ADR-946dd8d061c2",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        17.6084916895241,
+        50.1460554322046
+      ],
+      "candidate": {
+        "coordinates": [
+          17.6084916895241,
+          50.1460554322046
+        ],
+        "formatted": "Opawica 7, 48-155",
+        "housenumber": "7",
+        "street": "",
+        "city": "Opawica",
+        "citypart": "",
+        "postcode": "48-155",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "160203",
+          "simc": "0494433",
+          "ulic": ""
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": null,
+          "streetPart": null,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": false,
+        "eligibleCount": 1,
+        "returnedCount": 1
+      }
+    },
+    {
+      "addressId": "ADR-0ec05aa1bb32",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        17.982555456521,
+        50.9078404434238
+      ],
+      "candidate": {
+        "coordinates": [
+          17.982555456521,
+          50.9078404434238
+        ],
+        "formatted": "Grabice, Wiejska 26, 46-030",
+        "housenumber": "26",
+        "street": "Wiejska",
+        "city": "Grabice",
+        "citypart": "",
+        "postcode": "46-030",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "160906",
+          "simc": "0499229",
+          "ulic": "24048"
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "streetPart": 1.0,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": true,
+        "eligibleCount": 1,
+        "returnedCount": 1
+      }
+    },
+    {
+      "addressId": "ADR-32fddaeffafa",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        18.6018910432021,
+        50.1584128107557
+      ],
+      "candidate": {
+        "coordinates": [
+          18.6018910432021,
+          50.1584128107557
+        ],
+        "formatted": "Książenice, Księdza Pojdy 100C, 44-213",
+        "housenumber": "100C",
+        "street": "Księdza Pojdy",
+        "city": "Książenice",
+        "citypart": "",
+        "postcode": "44-213",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "241201",
+          "simc": "0213960",
+          "ulic": "44286"
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "streetPart": 1.0,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": true,
+        "eligibleCount": 1,
+        "returnedCount": 1
+      }
+    },
+    {
+      "addressId": "ADR-69e2569962c9",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        18.5440921730351,
+        50.9603480775881
+      ],
+      "candidate": {
+        "coordinates": [
+          18.5440921730351,
+          50.9603480775881
+        ],
+        "formatted": "Ligota Oleska 5, 46-333",
+        "housenumber": "5",
+        "street": "",
+        "city": "Ligota Oleska",
+        "citypart": "",
+        "postcode": "46-333",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "160805",
+          "simc": "0144319",
+          "ulic": ""
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": null,
+          "streetPart": null,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": false,
+        "eligibleCount": 1,
+        "returnedCount": 1
+      }
+    },
+    {
+      "addressId": "ADR-be0bd65583b1",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        18.0796642198092,
+        50.584636333619
+      ],
+      "candidate": {
+        "coordinates": [
+          18.0796642198092,
+          50.584636333619
+        ],
+        "formatted": "Tarnów Opolski, 1 Maja 29G, 46-050",
+        "housenumber": "29G",
+        "street": "1 Maja",
+        "city": "Tarnów Opolski",
+        "citypart": "",
+        "postcode": "46-050",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "160911",
+          "simc": "0504025",
+          "ulic": "11926"
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "streetPart": 1.0,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": true,
+        "eligibleCount": 1,
+        "returnedCount": 1
+      }
+    },
+    {
+      "addressId": "ADR-764a4744faef",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        17.4515479804739,
+        51.2368727963208
+      ],
+      "candidate": {
+        "coordinates": [
+          17.4515479804739,
+          51.2368727963208
+        ],
+        "formatted": "Sokołowice 100PB, 56-400",
+        "housenumber": "100PB",
+        "street": "",
+        "city": "Sokołowice",
+        "citypart": "",
+        "postcode": "56-400",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "021406",
+          "simc": "0879216",
+          "ulic": ""
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": null,
+          "streetPart": null,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": false,
+        "eligibleCount": 1,
+        "returnedCount": 1
+      }
+    },
+    {
+      "addressId": "ADR-9b8662714b0b",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        17.3936833005365,
+        51.1537514617212
+      ],
+      "candidate": {
+        "coordinates": [
+          17.3936833005365,
+          51.1537514617212
+        ],
+        "formatted": "Zimnica 17b, 56-400",
+        "housenumber": "17b",
+        "street": "",
+        "city": "Zimnica",
+        "citypart": "",
+        "postcode": "56-400",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "021406",
+          "simc": "0879311",
+          "ulic": ""
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": null,
+          "streetPart": null,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": false,
+        "eligibleCount": 1,
+        "returnedCount": 1
+      }
+    },
+    {
+      "addressId": "ADR-1f1d7aa2dd7b",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        17.4683858001441,
+        51.2224116883104
+      ],
+      "candidate": {
+        "coordinates": [
+          17.4683858001441,
+          51.2224116883104
+        ],
+        "formatted": "Cieśle 39CB, 56-400",
+        "housenumber": "39CB",
+        "street": "",
+        "city": "Cieśle",
+        "citypart": "",
+        "postcode": "56-400",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "021406",
+          "simc": "0878961",
+          "ulic": ""
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": null,
+          "streetPart": null,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": false,
+        "eligibleCount": 1,
+        "returnedCount": 1
+      }
+    },
+    {
+      "addressId": "ADR-3a1f36a79bbf",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        18.6142449044514,
+        50.8791148731686
+      ],
+      "candidate": {
+        "coordinates": [
+          18.6142449044514,
+          50.8791148731686
+        ],
+        "formatted": "Kucoby, Spacerowa 62, 46-312",
+        "housenumber": "62",
+        "street": "Spacerowa",
+        "city": "Kucoby",
+        "citypart": "",
+        "postcode": "46-312",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "160803",
+          "simc": "0140155",
+          "ulic": "20641"
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "streetPart": 1.0,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": true,
+        "eligibleCount": 1,
+        "returnedCount": 1
+      }
+    },
+    {
+      "addressId": "ADR-9f5600b90dfc",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        18.2896935676476,
+        50.9801434336534
+      ],
+      "candidate": {
+        "coordinates": [
+          18.2896935676476,
+          50.9801434336534
+        ],
+        "formatted": "Bogdańczowice 26B, 46-233",
+        "housenumber": "26B",
+        "street": "",
+        "city": "Bogdańczowice",
+        "citypart": "",
+        "postcode": "46-233",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "160402",
+          "simc": "0496366",
+          "ulic": ""
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": null,
+          "streetPart": null,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": false,
+        "eligibleCount": 1,
+        "returnedCount": 1
+      }
+    },
+    {
+      "addressId": "ADR-48129c2deb52",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        18.1833316493399,
+        51.0786000857345
+      ],
+      "candidate": {
+        "coordinates": [
+          18.1833316493399,
+          51.0786000857345
+        ],
+        "formatted": "Kochłowice 3A, 46-220",
+        "housenumber": "3A",
+        "street": "",
+        "city": "Kochłowice",
+        "citypart": "",
+        "postcode": "46-220",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "160401",
+          "simc": "0492322",
+          "ulic": ""
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": null,
+          "streetPart": null,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": false,
+        "eligibleCount": 1,
+        "returnedCount": 1
+      }
+    },
+    {
+      "addressId": "ADR-4463950bb22f",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        18.2600950216028,
+        50.6738787393874
+      ],
+      "candidate": {
+        "coordinates": [
+          18.2600950216028,
+          50.6738787393874
+        ],
+        "formatted": "Krasiejów, Rzeczna 10, 46-040",
+        "housenumber": "10",
+        "street": "Rzeczna",
+        "city": "Krasiejów",
+        "citypart": "",
+        "postcode": "46-040",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "160908",
+          "simc": "0501140",
+          "ulic": "19326"
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "streetPart": 1.0,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": true,
+        "eligibleCount": 1,
+        "returnedCount": 2
+      }
+    },
+    {
+      "addressId": "ADR-fd10dcc27dfe",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        18.556426850285,
+        50.8538005464806
+      ],
+      "candidate": {
+        "coordinates": [
+          18.556426850285,
+          50.8538005464806
+        ],
+        "formatted": "Borki Wielkie, Kolonia Kuźnica Borecka 27A, 46-300",
+        "housenumber": "27A",
+        "street": "Kolonia Kuźnica Borecka",
+        "city": "Borki Wielkie",
+        "citypart": "",
+        "postcode": "46-300",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "160803",
+          "simc": "0139985",
+          "ulic": "08893"
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "streetPart": 1.0,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": true,
+        "eligibleCount": 1,
+        "returnedCount": 1
+      }
+    },
+    {
+      "addressId": "ADR-aa9a12e31e3d",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        18.2585483855868,
+        50.6131344465402
+      ],
+      "candidate": {
+        "coordinates": [
+          18.2585483855868,
+          50.6131344465402
+        ],
+        "formatted": "Kadłub, Krótka 17, 47-175",
+        "housenumber": "17",
+        "street": "Krótka",
+        "city": "Kadłub",
+        "citypart": "",
+        "postcode": "47-175",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "161105",
+          "simc": "0503132",
+          "ulic": "10009"
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "streetPart": 1.0,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": true,
+        "eligibleCount": 1,
+        "returnedCount": 1
+      }
+    },
+    {
+      "addressId": "ADR-b9c38e48d701",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        17.8116881907632,
+        50.7933858080859
+      ],
+      "candidate": {
+        "coordinates": [
+          17.8116881907632,
+          50.7933858080859
+        ],
+        "formatted": "Chróścice, Orzeszkowej 4, 46-080",
+        "housenumber": "4",
+        "street": "Orzeszkowej",
+        "city": "Chróścice",
+        "citypart": "",
+        "postcode": "46-080",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "160903",
+          "simc": "0493250",
+          "ulic": "15209"
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "streetPart": 1.0,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": true,
+        "eligibleCount": 1,
+        "returnedCount": 1
+      }
+    },
+    {
+      "addressId": "ADR-5f9cbddc0eae",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        17.6808209416192,
+        50.7553503102717
+      ],
+      "candidate": {
+        "coordinates": [
+          17.6808209416192,
+          50.7553503102717
+        ],
+        "formatted": "Skorogoszcz, Jakuba Kani 5, 49-345",
+        "housenumber": "5",
+        "street": "Jakuba Kani",
+        "city": "Skorogoszcz",
+        "citypart": "",
+        "postcode": "49-345",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "160104",
+          "simc": "0498282",
+          "ulic": "07938"
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "streetPart": 1.0,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": true,
+        "eligibleCount": 1,
+        "returnedCount": 1
+      }
+    },
+    {
+      "addressId": "ADR-4c610142b186",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        18.0787741959435,
+        50.5837514613867
+      ],
+      "candidate": {
+        "coordinates": [
+          18.0787741959435,
+          50.5837514613867
+        ],
+        "formatted": "Tarnów Opolski, Osiedle Zakładowe 1A, 46-050",
+        "housenumber": "1A",
+        "street": "Osiedle Zakładowe",
+        "city": "Tarnów Opolski",
+        "citypart": "",
+        "postcode": "46-050",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "160911",
+          "simc": "0504025",
+          "ulic": "40005"
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "streetPart": 1.0,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": true,
+        "eligibleCount": 1,
+        "returnedCount": 1
+      }
+    },
+    {
+      "addressId": "ADR-bb106d3e6064",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        17.9258692736374,
+        50.8074567341971
+      ],
+      "candidate": {
+        "coordinates": [
+          17.9258692736374,
+          50.8074567341971
+        ],
+        "formatted": "Brynica, Stawowa 1A, 46-024",
+        "housenumber": "1A",
+        "street": "Stawowa",
+        "city": "Brynica",
+        "citypart": "",
+        "postcode": "46-024",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "160905",
+          "simc": "0498951",
+          "ulic": "21101"
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "streetPart": 1.0,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": true,
+        "eligibleCount": 1,
+        "returnedCount": 1
+      }
+    },
+    {
+      "addressId": "ADR-9c486e22acf1",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        18.4615177689604,
+        50.770786278075
+      ],
+      "candidate": {
+        "coordinates": [
+          18.4615177689604,
+          50.770786278075
+        ],
+        "formatted": "Rzędowice, Wolna 1, 46-380",
+        "housenumber": "1",
+        "street": "Wolna",
+        "city": "Rzędowice",
+        "citypart": "",
+        "postcode": "46-380",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "160801",
+          "simc": "0131305",
+          "ulic": "24674"
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "streetPart": 1.0,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": true,
+        "eligibleCount": 1,
+        "returnedCount": 2
+      }
+    },
+    {
+      "addressId": "ADR-a70e01bb2d22",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        17.3396428952868,
+        51.154399763037
+      ],
+      "candidate": {
+        "coordinates": [
+          17.3396428952868,
+          51.154399763037
+        ],
+        "formatted": "Krzeczyn 3b, 56-400",
+        "housenumber": "3b",
+        "street": "",
+        "city": "Krzeczyn",
+        "citypart": "",
+        "postcode": "56-400",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "021406",
+          "simc": "0879009",
+          "ulic": ""
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": null,
+          "streetPart": null,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": false,
+        "eligibleCount": 1,
+        "returnedCount": 1
+      }
+    },
+    {
+      "addressId": "ADR-136c7adc89e1",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        17.8534676485877,
+        50.7642170601287
+      ],
+      "candidate": {
+        "coordinates": [
+          17.8534676485877,
+          50.7642170601287
+        ],
+        "formatted": "Dobrzeń Wielki, Osiedle Energetyk 4A, 46-081",
+        "housenumber": "4A",
+        "street": "Osiedle Energetyk",
+        "city": "Dobrzeń Wielki",
+        "citypart": "",
+        "postcode": "46-081",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "160903",
+          "simc": "0493439",
+          "ulic": "42456"
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "streetPart": 1.0,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": true,
+        "eligibleCount": 1,
+        "returnedCount": 1
+      }
+    },
+    {
+      "addressId": "ADR-446013bf569a",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        18.0754394077795,
+        50.7359280671785
+      ],
+      "candidate": {
+        "coordinates": [
+          18.0754394077795,
+          50.7359280671785
+        ],
+        "formatted": "Turawa, Kościuszki 12, 46-045",
+        "housenumber": "12",
+        "street": "Kościuszki",
+        "city": "Turawa",
+        "citypart": "",
+        "postcode": "46-045",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "160913",
+          "simc": "0504255",
+          "ulic": "09572"
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "streetPart": 1.0,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": true,
+        "eligibleCount": 1,
+        "returnedCount": 1
+      }
+    },
+    {
+      "addressId": "ADR-50742c1f67d1",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        18.623814513863,
+        50.8804499915659
+      ],
+      "candidate": {
+        "coordinates": [
+          18.623814513863,
+          50.8804499915659
+        ],
+        "formatted": "Kucoby, Kiki 27, 46-312",
+        "housenumber": "27",
+        "street": "Kiki",
+        "city": "Kucoby",
+        "citypart": "",
+        "postcode": "46-312",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "160803",
+          "simc": "0140155",
+          "ulic": "08428"
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "streetPart": 1.0,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": true,
+        "eligibleCount": 1,
+        "returnedCount": 1
+      }
+    },
+    {
+      "addressId": "ADR-521bfadcde57",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        17.3803471826925,
+        51.1791406086623
+      ],
+      "candidate": {
+        "coordinates": [
+          17.3803471826925,
+          51.1791406086623
+        ],
+        "formatted": "Bystre, Jesienna 3, 56-400",
+        "housenumber": "3",
+        "street": "Jesienna",
+        "city": "Bystre",
+        "citypart": "",
+        "postcode": "56-400",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "021406",
+          "simc": "0878949",
+          "ulic": "07499"
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "streetPart": 1.0,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": true,
+        "eligibleCount": 1,
+        "returnedCount": 1
+      }
+    },
+    {
+      "addressId": "ADR-5a1ce601cd0a",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        18.7743987521654,
+        50.1723658774231
+      ],
+      "candidate": {
+        "coordinates": [
+          18.7743987521654,
+          50.1723658774231
+        ],
+        "formatted": "Ornontowice, Akacjowa 20, 43-178",
+        "housenumber": "20",
+        "street": "Akacjowa",
+        "city": "Ornontowice",
+        "citypart": "",
+        "postcode": "43-178",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "240804",
+          "simc": "0218437",
+          "ulic": "00157"
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "streetPart": 1.0,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": true,
+        "eligibleCount": 1,
+        "returnedCount": 1
+      }
+    },
+    {
+      "addressId": "ADR-b4e597ab15b5",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        17.3208555448536,
+        51.2451387579708
+      ],
+      "candidate": {
+        "coordinates": [
+          17.3208555448536,
+          51.2451387579708
+        ],
+        "formatted": "Dobra 66F, 56-410",
+        "housenumber": "66F",
+        "street": "",
+        "city": "Dobra",
+        "citypart": "",
+        "postcode": "56-410",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "021403",
+          "simc": "0874124",
+          "ulic": ""
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": null,
+          "streetPart": null,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": false,
+        "eligibleCount": 1,
+        "returnedCount": 1
+      }
+    },
+    {
+      "addressId": "ADR-6708b35973c8",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        18.438082500533,
+        51.0232941621436
+      ],
+      "candidate": {
+        "coordinates": [
+          18.438082500533,
+          51.0232941621436
+        ],
+        "formatted": "Szyszków 35, 46-310",
+        "housenumber": "35",
+        "street": "",
+        "city": "Szyszków",
+        "citypart": "",
+        "postcode": "46-310",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "160804",
+          "simc": "0143455",
+          "ulic": ""
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": null,
+          "streetPart": null,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": false,
+        "eligibleCount": 1,
+        "returnedCount": 3
+      }
+    },
+    {
+      "addressId": "ADR-f79ff100cc6d",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        18.0178482940733,
+        50.961672358982
+      ],
+      "candidate": {
+        "coordinates": [
+          18.0178482940733,
+          50.961672358982
+        ],
+        "formatted": "Szum 101, 46-250",
+        "housenumber": "101",
+        "street": "",
+        "city": "Szum",
+        "citypart": "",
+        "postcode": "46-250",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "160404",
+          "simc": "0505208",
+          "ulic": ""
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": null,
+          "streetPart": null,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": false,
+        "eligibleCount": 1,
+        "returnedCount": 1
+      }
+    },
+    {
+      "addressId": "ADR-b62928e7d05c",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        17.4686582971135,
+        51.2204553950242
+      ],
+      "candidate": {
+        "coordinates": [
+          17.4686582971135,
+          51.2204553950242
+        ],
+        "formatted": "Cieśle 36G, 56-400",
+        "housenumber": "36G",
+        "street": "",
+        "city": "Cieśle",
+        "citypart": "",
+        "postcode": "56-400",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "021406",
+          "simc": "0878961",
+          "ulic": ""
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": null,
+          "streetPart": null,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": false,
+        "eligibleCount": 1,
+        "returnedCount": 1
+      }
+    },
+    {
+      "addressId": "ADR-5b0cbf345d7b",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        17.5147105491786,
+        51.2340870107395
+      ],
+      "candidate": {
+        "coordinates": [
+          17.5147105491786,
+          51.2340870107395
+        ],
+        "formatted": "Poniatowice 187F, 56-400",
+        "housenumber": "187F",
+        "street": "",
+        "city": "Poniatowice",
+        "citypart": "",
+        "postcode": "56-400",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "021406",
+          "simc": "0879162",
+          "ulic": ""
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": null,
+          "streetPart": null,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": false,
+        "eligibleCount": 1,
+        "returnedCount": 1
+      }
+    },
+    {
+      "addressId": "ADR-3b5677afde3d",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        17.4163958560591,
+        51.1588021307542
+      ],
+      "candidate": {
+        "coordinates": [
+          17.4163958560591,
+          51.1588021307542
+        ],
+        "formatted": "Smolna 22c, 56-400",
+        "housenumber": "22c",
+        "street": "",
+        "city": "Smolna",
+        "citypart": "",
+        "postcode": "56-400",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "021406",
+          "simc": "0879200",
+          "ulic": ""
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": null,
+          "streetPart": null,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": false,
+        "eligibleCount": 1,
+        "returnedCount": 1
+      }
+    },
+    {
+      "addressId": "ADR-2d1bb8bb481a",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        17.4519213680978,
+        51.2365966257283
+      ],
+      "candidate": {
+        "coordinates": [
+          17.4519213680978,
+          51.2365966257283
+        ],
+        "formatted": "Sokołowice 100o, 56-400",
+        "housenumber": "100o",
+        "street": "",
+        "city": "Sokołowice",
+        "citypart": "",
+        "postcode": "56-400",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "021406",
+          "simc": "0879216",
+          "ulic": ""
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": null,
+          "streetPart": null,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": false,
+        "eligibleCount": 1,
+        "returnedCount": 1
+      }
+    },
+    {
+      "addressId": "ADR-53795164e29a",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        17.3879836955319,
+        50.7032632975546
+      ],
+      "candidate": {
+        "coordinates": [
+          17.3879836955319,
+          50.7032632975546
+        ],
+        "formatted": "Grodków, Wiejska 9, 49-200",
+        "housenumber": "9",
+        "street": "Wiejska",
+        "city": "Grodków",
+        "citypart": "",
+        "postcode": "49-200",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "160103",
+          "simc": "0965401",
+          "ulic": "24048"
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "streetPart": 1.0,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": true,
+        "eligibleCount": 1,
+        "returnedCount": 1
+      }
+    },
+    {
+      "addressId": "ADR-964a172bae21",
+      "status": "MATCHED_BUILDING_POSTCODE_NOTE",
+      "coordinates": [
+        18.6045116264439,
+        50.1386774622255
+      ],
+      "candidate": {
+        "coordinates": [
+          18.6045116264439,
+          50.1386774622255
+        ],
+        "formatted": "Rybnik, Arki Bożka 51I, 44-200",
+        "housenumber": "51I",
+        "street": "Arki Bożka",
+        "city": "Rybnik",
+        "citypart": "",
+        "postcode": "44-200",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "247301",
+          "simc": "0942765",
+          "ulic": "01940"
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "streetPart": 1.0,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [
+        "POSTCODE_DIFFERENCE"
+      ],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": false,
+          "street": true
+        },
+        "streetPartExact": true,
+        "eligibleCount": 1,
+        "returnedCount": 1
+      }
+    },
+    {
+      "addressId": "ADR-8dc52d15f26f",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        17.9425568094527,
+        50.1604458349355
+      ],
+      "candidate": {
+        "coordinates": [
+          17.9425568094527,
+          50.1604458349355
+        ],
+        "formatted": "Sułków 9A, 48-120",
+        "housenumber": "9A",
+        "street": "",
+        "city": "Sułków",
+        "citypart": "",
+        "postcode": "48-120",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "160201",
+          "simc": "0491127",
+          "ulic": ""
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": null,
+          "streetPart": null,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": false,
+        "eligibleCount": 1,
+        "returnedCount": 1
+      }
+    },
+    {
+      "addressId": "ADR-4e34a76c7964",
+      "status": "REVIEW_REQUIRED",
+      "coordinates": null,
+      "candidate": {
+        "coordinates": [
+          23.3813981858872,
+          50.9872276806522
+        ],
+        "formatted": "Maciejów 39, 22-304",
+        "housenumber": "39",
+        "street": "",
+        "city": "Maciejów",
+        "citypart": "",
+        "postcode": "22-304",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "060610",
+          "simc": "0108111",
+          "ulic": ""
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": null,
+          "streetPart": null,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [
+        "POSTCODE_MISMATCH"
+      ],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": false,
+          "street": true
+        },
+        "streetPartExact": false,
+        "eligibleCount": 0
+      }
+    },
+    {
+      "addressId": "ADR-93becc20000b",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        17.6712707432668,
+        50.1058972044784
+      ],
+      "candidate": {
+        "coordinates": [
+          17.6712707432668,
+          50.1058972044784
+        ],
+        "formatted": "Chomiąża 37, 48-155",
+        "housenumber": "37",
+        "street": "",
+        "city": "Chomiąża",
+        "citypart": "",
+        "postcode": "48-155",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "160203",
+          "simc": "0494143",
+          "ulic": ""
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": null,
+          "streetPart": null,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": false,
+        "eligibleCount": 1,
+        "returnedCount": 1
+      }
+    },
+    {
+      "addressId": "ADR-a1289045ff5b",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        17.5834473955221,
+        50.7569764340144
+      ],
+      "candidate": {
+        "coordinates": [
+          17.5834473955221,
+          50.7569764340144
+        ],
+        "formatted": "Nowa Wieś Mała 8C, 49-340",
+        "housenumber": "8C",
+        "street": "",
+        "city": "Nowa Wieś Mała",
+        "citypart": "",
+        "postcode": "49-340",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "160104",
+          "simc": "0498218",
+          "ulic": ""
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": null,
+          "streetPart": null,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": false,
+        "eligibleCount": 1,
+        "returnedCount": 1
+      }
+    },
+    {
+      "addressId": "ADR-922205fd7122",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        17.7666258205427,
+        50.8258380326186
+      ],
+      "candidate": {
+        "coordinates": [
+          17.7666258205427,
+          50.8258380326186
+        ],
+        "formatted": "Stare Siołkowice, Klapacz 127A, 46-083",
+        "housenumber": "127A",
+        "street": "Klapacz",
+        "city": "Stare Siołkowice",
+        "citypart": "",
+        "postcode": "46-083",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "160909",
+          "simc": "0502405",
+          "ulic": "08475"
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "streetPart": 1.0,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": true,
+        "eligibleCount": 1,
+        "returnedCount": 1
+      }
+    },
+    {
+      "addressId": "ADR-837d37a78a3d",
+      "status": "REVIEW_REQUIRED",
+      "coordinates": null,
+      "candidate": {
+        "coordinates": null,
+        "formatted": "",
+        "housenumber": "",
+        "street": "",
+        "city": "",
+        "citypart": "",
+        "postcode": "",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "",
+          "simc": "",
+          "ulic": ""
+        },
+        "confidence": {
+          "overall": null,
+          "city": null,
+          "street": null,
+          "streetPart": null,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [
+        "NO_REGISTER_MATCH"
+      ],
+      "matchEvidence": {
+        "eligibleCount": 0,
+        "streetPartExact": false
+      }
+    },
+    {
+      "addressId": "ADR-7b82172961a6",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        18.2931191681784,
+        50.8630257676486
+      ],
+      "candidate": {
+        "coordinates": [
+          18.2931191681784,
+          50.8630257676486
+        ],
+        "formatted": "Chudoba 169, 46-275",
+        "housenumber": "169",
+        "street": "",
+        "city": "Chudoba",
+        "citypart": "",
+        "postcode": "46-275",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "160403",
+          "simc": "0497443",
+          "ulic": ""
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": null,
+          "streetPart": null,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": false,
+        "eligibleCount": 1,
+        "returnedCount": 1
+      }
+    },
+    {
+      "addressId": "ADR-0dc8296b8707",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        17.3934176451779,
+        51.2429310395869
+      ],
+      "candidate": {
+        "coordinates": [
+          17.3934176451779,
+          51.2429310395869
+        ],
+        "formatted": "Boguszyce 23S, 56-400",
+        "housenumber": "23S",
+        "street": "",
+        "city": "Boguszyce",
+        "citypart": "",
+        "postcode": "56-400",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "021406",
+          "simc": "0878872",
+          "ulic": ""
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": null,
+          "streetPart": null,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": false,
+        "eligibleCount": 1,
+        "returnedCount": 1
+      }
+    },
+    {
+      "addressId": "ADR-d4a1a941dabe",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        18.6208261986002,
+        50.8807535438942
+      ],
+      "candidate": {
+        "coordinates": [
+          18.6208261986002,
+          50.8807535438942
+        ],
+        "formatted": "Kucoby, Leśna 14, 46-312",
+        "housenumber": "14",
+        "street": "Leśna",
+        "city": "Kucoby",
+        "citypart": "",
+        "postcode": "46-312",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "160803",
+          "simc": "0140155",
+          "ulic": "10898"
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "streetPart": 1.0,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": true,
+        "eligibleCount": 1,
+        "returnedCount": 1
+      }
+    },
+    {
+      "addressId": "ADR-dcfc7ae98fa7",
+      "status": "REVIEW_REQUIRED",
+      "coordinates": null,
+      "candidate": {
+        "coordinates": null,
+        "formatted": "",
+        "housenumber": "",
+        "street": "",
+        "city": "",
+        "citypart": "",
+        "postcode": "",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "",
+          "simc": "",
+          "ulic": ""
+        },
+        "confidence": {
+          "overall": null,
+          "city": null,
+          "street": null,
+          "streetPart": null,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [
+        "NO_REGISTER_MATCH"
+      ],
+      "matchEvidence": {
+        "eligibleCount": 0,
+        "streetPartExact": false
+      }
+    },
+    {
+      "addressId": "ADR-9c6fac72133e",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        17.52480908664,
+        51.277024353658
+      ],
+      "candidate": {
+        "coordinates": [
+          17.52480908664,
+          51.277024353658
+        ],
+        "formatted": "Ostrowina 105h, 56-400",
+        "housenumber": "105h",
+        "street": "",
+        "city": "Ostrowina",
+        "citypart": "",
+        "postcode": "56-400",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "021406",
+          "simc": "0879140",
+          "ulic": ""
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": null,
+          "streetPart": null,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": false,
+        "eligibleCount": 1,
+        "returnedCount": 1
+      }
+    },
+    {
+      "addressId": "ADR-913c884174bc",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        17.5244666822847,
+        51.2792329105642
+      ],
+      "candidate": {
+        "coordinates": [
+          17.5244666822847,
+          51.2792329105642
+        ],
+        "formatted": "Ostrowina 106l, 56-400",
+        "housenumber": "106l",
+        "street": "",
+        "city": "Ostrowina",
+        "citypart": "",
+        "postcode": "56-400",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "021406",
+          "simc": "0879140",
+          "ulic": ""
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": null,
+          "streetPart": null,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": false,
+        "eligibleCount": 1,
+        "returnedCount": 1
+      }
+    },
+    {
+      "addressId": "ADR-0e83bfe3b79a",
+      "status": "MATCHED_BUILDING_POSTCODE_NOTE",
+      "coordinates": [
+        18.5879179612353,
+        50.1381952205854
+      ],
+      "candidate": {
+        "coordinates": [
+          18.5879179612353,
+          50.1381952205854
+        ],
+        "formatted": "Rybnik, Jodłowa 68, 44-200",
+        "housenumber": "68",
+        "street": "Jodłowa",
+        "city": "Rybnik",
+        "citypart": "",
+        "postcode": "44-200",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "247301",
+          "simc": "0942765",
+          "ulic": "07582"
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "streetPart": 1.0,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [
+        "POSTCODE_DIFFERENCE"
+      ],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": false,
+          "street": true
+        },
+        "streetPartExact": true,
+        "eligibleCount": 1,
+        "returnedCount": 1
+      }
+    },
+    {
+      "addressId": "ADR-8e2e3b30b3ef",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        18.3587543501015,
+        50.7015103070608
+      ],
+      "candidate": {
+        "coordinates": [
+          18.3587543501015,
+          50.7015103070608
+        ],
+        "formatted": "Myślina, Parkingowa 6, 46-380",
+        "housenumber": "6",
+        "street": "Parkingowa",
+        "city": "Myślina",
+        "citypart": "",
+        "postcode": "46-380",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "160801",
+          "simc": "0131222",
+          "ulic": "15707"
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "streetPart": 1.0,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": true,
+        "eligibleCount": 1,
+        "returnedCount": 1
+      }
+    },
+    {
+      "addressId": "ADR-135c349d85bd",
+      "status": "MATCHED_BUILDING_POSTCODE_NOTE",
+      "coordinates": [
+        18.4831091313273,
+        50.6032060210964
+      ],
+      "candidate": {
+        "coordinates": [
+          18.4831091313273,
+          50.6032060210964
+        ],
+        "formatted": "Zawadzkie, Miarki 7, 47-126",
+        "housenumber": "7",
+        "street": "Miarki",
+        "city": "Zawadzkie",
+        "citypart": "",
+        "postcode": "47-126",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "161107",
+          "simc": "0966004",
+          "ulic": "12672"
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "streetPart": 1.0,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [
+        "POSTCODE_DIFFERENCE"
+      ],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": false,
+          "street": true
+        },
+        "streetPartExact": true,
+        "eligibleCount": 1,
+        "returnedCount": 1
+      }
+    },
+    {
+      "addressId": "ADR-6f85506673c1",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        17.8515692195104,
+        50.7643911633475
+      ],
+      "candidate": {
+        "coordinates": [
+          17.8515692195104,
+          50.7643911633475
+        ],
+        "formatted": "Dobrzeń Wielki, Osiedle Energetyk 9A, 46-081",
+        "housenumber": "9A",
+        "street": "Osiedle Energetyk",
+        "city": "Dobrzeń Wielki",
+        "citypart": "",
+        "postcode": "46-081",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "160903",
+          "simc": "0493439",
+          "ulic": "42456"
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "streetPart": 1.0,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": true,
+        "eligibleCount": 1,
+        "returnedCount": 1
+      }
+    },
+    {
+      "addressId": "ADR-e52b281ee3fd",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        18.0511281910087,
+        51.0117692721912
+      ],
+      "candidate": {
+        "coordinates": [
+          18.0511281910087,
+          51.0117692721912
+        ],
+        "formatted": "Gierałcice, Opolska 1, 46-250",
+        "housenumber": "1",
+        "street": "Opolska",
+        "city": "Gierałcice",
+        "citypart": "",
+        "postcode": "46-250",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "160404",
+          "simc": "0504960",
+          "ulic": "15095"
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "streetPart": 1.0,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": true,
+        "eligibleCount": 1,
+        "returnedCount": 1
+      }
+    },
+    {
+      "addressId": "ADR-ab67b8fcb48f",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        18.616868902744,
+        50.8767797557315
+      ],
+      "candidate": {
+        "coordinates": [
+          18.616868902744,
+          50.8767797557315
+        ],
+        "formatted": "Kucoby, Borecka 6, 46-312",
+        "housenumber": "6",
+        "street": "Borecka",
+        "city": "Kucoby",
+        "citypart": "",
+        "postcode": "46-312",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "160803",
+          "simc": "0140155",
+          "ulic": "01819"
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "streetPart": 1.0,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": true,
+        "eligibleCount": 1,
+        "returnedCount": 1
+      }
+    },
+    {
+      "addressId": "ADR-f8ee8404b91c",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        18.0641048764587,
+        50.7257739804994
+      ],
+      "candidate": {
+        "coordinates": [
+          18.0641048764587,
+          50.7257739804994
+        ],
+        "formatted": "Kotórz Wielki, Polna 23B, 46-045",
+        "housenumber": "23B",
+        "street": "Polna",
+        "city": "Kotórz Wielki",
+        "citypart": "",
+        "postcode": "46-045",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "160913",
+          "simc": "0504172",
+          "ulic": "17011"
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "streetPart": 1.0,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": true,
+        "eligibleCount": 1,
+        "returnedCount": 1
+      }
+    },
+    {
+      "addressId": "ADR-eb89d8745132",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        18.4845789806052,
+        50.877378472315
+      ],
+      "candidate": {
+        "coordinates": [
+          18.4845789806052,
+          50.877378472315
+        ],
+        "formatted": "Borki Małe, Oleska 2A, 46-300",
+        "housenumber": "2A",
+        "street": "Oleska",
+        "city": "Borki Małe",
+        "citypart": "",
+        "postcode": "46-300",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "160803",
+          "simc": "0139956",
+          "ulic": "14973"
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "streetPart": 1.0,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": true,
+        "eligibleCount": 1,
+        "returnedCount": 1
+      }
+    },
+    {
+      "addressId": "ADR-f59d0622e00c",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        17.3007350980333,
+        51.1502175504352
+      ],
+      "candidate": {
+        "coordinates": [
+          17.3007350980333,
+          51.1502175504352
+        ],
+        "formatted": "Piszkawa 8i, 56-400",
+        "housenumber": "8i",
+        "street": "",
+        "city": "Piszkawa",
+        "citypart": "",
+        "postcode": "56-400",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "021406",
+          "simc": "0879156",
+          "ulic": ""
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": null,
+          "streetPart": null,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": false,
+        "eligibleCount": 1,
+        "returnedCount": 1
+      }
+    },
+    {
+      "addressId": "ADR-174f4f0202e3",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        18.7430478875888,
+        50.2274753203144
+      ],
+      "candidate": {
+        "coordinates": [
+          18.7430478875888,
+          50.2274753203144
+        ],
+        "formatted": "Przyszowice, Bażantów 13, 44-178",
+        "housenumber": "13",
+        "street": "Bażantów",
+        "city": "Przyszowice",
+        "citypart": "",
+        "postcode": "44-178",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "240503",
+          "simc": "0214362",
+          "ulic": "00926"
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "streetPart": 1.0,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": true,
+        "eligibleCount": 1,
+        "returnedCount": 1
+      }
+    },
+    {
+      "addressId": "ADR-d64c5f551f6a",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        17.8738953652358,
+        50.6525856406709
+      ],
+      "candidate": {
+        "coordinates": [
+          17.8738953652358,
+          50.6525856406709
+        ],
+        "formatted": "Opole, Łączna 10, 45-940",
+        "housenumber": "10",
+        "street": "Łączna",
+        "city": "Opole",
+        "citypart": "",
+        "postcode": "45-940",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "166101",
+          "simc": "0965016",
+          "ulic": "11577"
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "streetPart": 1.0,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": true,
+        "eligibleCount": 1,
+        "returnedCount": 3
+      }
+    },
+    {
+      "addressId": "ADR-765606dd6eff",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        18.6133981047685,
+        50.1549842324353
+      ],
+      "candidate": {
+        "coordinates": [
+          18.6133981047685,
+          50.1549842324353
+        ],
+        "formatted": "Książenice, Powstańców 64, 44-213",
+        "housenumber": "64",
+        "street": "Powstańców",
+        "city": "Książenice",
+        "citypart": "",
+        "postcode": "44-213",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "241201",
+          "simc": "0213960",
+          "ulic": "17354"
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "streetPart": 1.0,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": true,
+        "eligibleCount": 1,
+        "returnedCount": 1
+      }
+    },
+    {
+      "addressId": "ADR-57f5c06f6daa",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        18.1406623552892,
+        50.739029472086
+      ],
+      "candidate": {
+        "coordinates": [
+          18.1406623552892,
+          50.739029472086
+        ],
+        "formatted": "Turawa, Jagodowa 1, 46-045",
+        "housenumber": "1",
+        "street": "Jagodowa",
+        "city": "Turawa",
+        "citypart": "",
+        "postcode": "46-045",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "160913",
+          "simc": "0504255",
+          "ulic": "07059"
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "streetPart": 1.0,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": true,
+        "eligibleCount": 1,
+        "returnedCount": 1
+      }
+    },
+    {
+      "addressId": "ADR-ba727cca6275",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        18.4990651256426,
+        50.9768777599303
+      ],
+      "candidate": {
+        "coordinates": [
+          18.4990651256426,
+          50.9768777599303
+        ],
+        "formatted": "Kościeliska 53A, 46-324",
+        "housenumber": "53A",
+        "street": "",
+        "city": "Kościeliska",
+        "citypart": "",
+        "postcode": "46-324",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "160805",
+          "simc": "0144294",
+          "ulic": ""
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": null,
+          "streetPart": null,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": false,
+        "eligibleCount": 1,
+        "returnedCount": 1
+      }
+    },
+    {
+      "addressId": "ADR-2d1cb38620fa",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        18.1384364529081,
+        50.9732194458851
+      ],
+      "candidate": {
+        "coordinates": [
+          18.1384364529081,
+          50.9732194458851
+        ],
+        "formatted": "Bogacica, Wiejska 43, 46-243",
+        "housenumber": "43",
+        "street": "Wiejska",
+        "city": "Bogacica",
+        "citypart": "",
+        "postcode": "46-243",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "160402",
+          "simc": "0496337",
+          "ulic": "24048"
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "streetPart": 1.0,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": true,
+        "eligibleCount": 1,
+        "returnedCount": 1
+      }
+    },
+    {
+      "addressId": "ADR-44c784791f2a",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        17.3560892008211,
+        51.3316663843258
+      ],
+      "candidate": {
+        "coordinates": [
+          17.3560892008211,
+          51.3316663843258
+        ],
+        "formatted": "Białe Błoto 31, 56-410",
+        "housenumber": "31",
+        "street": "",
+        "city": "Białe Błoto",
+        "citypart": "",
+        "postcode": "56-410",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "021403",
+          "simc": "0874101",
+          "ulic": ""
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": null,
+          "streetPart": null,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": false,
+        "eligibleCount": 1,
+        "returnedCount": 2
+      }
+    },
+    {
+      "addressId": "ADR-6414369a5f71",
+      "status": "MATCHED_BUILDING_POSTCODE_NOTE",
+      "coordinates": [
+        17.9712485815685,
+        50.5198600899053
+      ],
+      "candidate": {
+        "coordinates": [
+          17.9712485815685,
+          50.5198600899053
+        ],
+        "formatted": "Malnia, Sosnowa 7, 47-320",
+        "housenumber": "7",
+        "street": "Sosnowa",
+        "city": "Malnia",
+        "citypart": "",
+        "postcode": "47-320",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "160501",
+          "simc": "0494982",
+          "ulic": "20598"
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "streetPart": 1.0,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [
+        "POSTCODE_DIFFERENCE"
+      ],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": false,
+          "street": true
+        },
+        "streetPartExact": true,
+        "eligibleCount": 1,
+        "returnedCount": 1
+      }
+    },
+    {
+      "addressId": "ADR-76359d7b8e90",
+      "status": "REVIEW_REQUIRED",
+      "coordinates": null,
+      "candidate": {
+        "coordinates": null,
+        "formatted": "",
+        "housenumber": "",
+        "street": "",
+        "city": "",
+        "citypart": "",
+        "postcode": "",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "",
+          "simc": "",
+          "ulic": ""
+        },
+        "confidence": {
+          "overall": null,
+          "city": null,
+          "street": null,
+          "streetPart": null,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [
+        "NO_REGISTER_MATCH"
+      ],
+      "matchEvidence": {
+        "eligibleCount": 0,
+        "streetPartExact": false
+      }
+    },
+    {
+      "addressId": "ADR-c0d8f3ba8093",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        18.0899442155995,
+        50.5761776778435
+      ],
+      "candidate": {
+        "coordinates": [
+          18.0899442155995,
+          50.5761776778435
+        ],
+        "formatted": "Tarnów Opolski, Słonecznikowa 9, 46-050",
+        "housenumber": "9",
+        "street": "Słonecznikowa",
+        "city": "Tarnów Opolski",
+        "citypart": "",
+        "postcode": "46-050",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "160911",
+          "simc": "0504025",
+          "ulic": "20258"
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "streetPart": 1.0,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": true,
+        "eligibleCount": 1,
+        "returnedCount": 1
+      }
+    },
+    {
+      "addressId": "ADR-bbed70da216b",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        18.2729767926565,
+        50.6139242722004
+      ],
+      "candidate": {
+        "coordinates": [
+          18.2729767926565,
+          50.6139242722004
+        ],
+        "formatted": "Kadłub, Zielona 2, 47-175",
+        "housenumber": "2",
+        "street": "Zielona",
+        "city": "Kadłub",
+        "citypart": "",
+        "postcode": "47-175",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "161105",
+          "simc": "0503132",
+          "ulic": "26081"
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "streetPart": 1.0,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": true,
+        "eligibleCount": 1,
+        "returnedCount": 1
+      }
+    },
+    {
+      "addressId": "ADR-f030dc0206ef",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        17.3751211535226,
+        51.18169001201
+      ],
+      "candidate": {
+        "coordinates": [
+          17.3751211535226,
+          51.18169001201
+        ],
+        "formatted": "Bystre, Wiosenna 5, 56-400",
+        "housenumber": "5",
+        "street": "Wiosenna",
+        "city": "Bystre",
+        "citypart": "",
+        "postcode": "56-400",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "021406",
+          "simc": "0878949",
+          "ulic": "24364"
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "streetPart": 1.0,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": true,
+        "eligibleCount": 1,
+        "returnedCount": 1
+      }
+    },
+    {
+      "addressId": "ADR-89c990e8a99f",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        17.7220321523069,
+        50.6046866026642
+      ],
+      "candidate": {
+        "coordinates": [
+          17.7220321523069,
+          50.6046866026642
+        ],
+        "formatted": "Szydłów, Opolska 24, 49-130",
+        "housenumber": "24",
+        "street": "Opolska",
+        "city": "Szydłów",
+        "citypart": "",
+        "postcode": "49-130",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "160912",
+          "simc": "0504083",
+          "ulic": "15095"
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "streetPart": 1.0,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": true,
+        "eligibleCount": 1,
+        "returnedCount": 2
+      }
+    },
+    {
+      "addressId": "ADR-1789b0d12a7d",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        18.2815088763757,
+        50.5073045023557
+      ],
+      "candidate": {
+        "coordinates": [
+          18.2815088763757,
+          50.5073045023557
+        ],
+        "formatted": "Strzelce Opolskie, Władysława Łokietka 3, 47-100",
+        "housenumber": "3",
+        "street": "Władysława Łokietka",
+        "city": "Strzelce Opolskie",
+        "citypart": "",
+        "postcode": "47-100",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "161105",
+          "simc": "0965915",
+          "ulic": "11653"
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "streetPart": 1.0,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": true,
+        "eligibleCount": 1,
+        "returnedCount": 2
+      }
+    },
+    {
+      "addressId": "ADR-d72da86d5142",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        17.4232529772372,
+        51.2776035034117
+      ],
+      "candidate": {
+        "coordinates": [
+          17.4232529772372,
+          51.2776035034117
+        ],
+        "formatted": "Miodary 15A, 56-410",
+        "housenumber": "15A",
+        "street": "",
+        "city": "Miodary",
+        "citypart": "",
+        "postcode": "56-410",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "021403",
+          "simc": "0874182",
+          "ulic": ""
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": null,
+          "streetPart": null,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": false,
+        "eligibleCount": 1,
+        "returnedCount": 1
+      }
+    },
+    {
+      "addressId": "ADR-5982c55aa125",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        18.1611972645979,
+        50.2997175596289
+      ],
+      "candidate": {
+        "coordinates": [
+          18.1611972645979,
+          50.2997175596289
+        ],
+        "formatted": "Dębowa, Główna 8A, 47-208",
+        "housenumber": "8A",
+        "street": "Główna",
+        "city": "Dębowa",
+        "citypart": "",
+        "postcode": "47-208",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "160306",
+          "simc": "0502782",
+          "ulic": "05635"
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "streetPart": 1.0,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": true,
+        "eligibleCount": 1,
+        "returnedCount": 1
+      }
+    },
+    {
+      "addressId": "ADR-16acd0372783",
+      "status": "REVIEW_REQUIRED",
+      "coordinates": null,
+      "candidate": {
+        "coordinates": null,
+        "formatted": "",
+        "housenumber": "",
+        "street": "",
+        "city": "",
+        "citypart": "",
+        "postcode": "",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "",
+          "simc": "",
+          "ulic": ""
+        },
+        "confidence": {
+          "overall": null,
+          "city": null,
+          "street": null,
+          "streetPart": null,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [
+        "PROVIDER_UNAVAILABLE"
+      ],
+      "matchEvidence": {
+        "eligibleCount": 0,
+        "streetPartExact": false
+      }
+    },
+    {
+      "addressId": "ADR-9e92ded0a6ae",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        17.7865203441261,
+        50.7747099421406
+      ],
+      "candidate": {
+        "coordinates": [
+          17.7865203441261,
+          50.7747099421406
+        ],
+        "formatted": "Chróścice, Babilas 30, 46-080",
+        "housenumber": "30",
+        "street": "Babilas",
+        "city": "Chróścice",
+        "citypart": "",
+        "postcode": "46-080",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "160903",
+          "simc": "0493250",
+          "ulic": "00534"
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "streetPart": 1.0,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": true,
+        "eligibleCount": 1,
+        "returnedCount": 1
+      }
+    },
+    {
+      "addressId": "ADR-bd29343c65c5",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        18.289520501037,
+        50.5101279765416
+      ],
+      "candidate": {
+        "coordinates": [
+          18.289520501037,
+          50.5101279765416
+        ],
+        "formatted": "Strzelce Opolskie, Kardynała Stefana Wyszyńskiego 7, 47-100",
+        "housenumber": "7",
+        "street": "Kardynała Stefana Wyszyńskiego",
+        "city": "Strzelce Opolskie",
+        "citypart": "",
+        "postcode": "47-100",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "161105",
+          "simc": "0965915",
+          "ulic": "35421"
+        },
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "streetPart": 1.0,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [],
+      "matchEvidence": {
+        "fields": {
+          "number": true,
+          "city": true,
+          "postcode": true,
+          "street": true
+        },
+        "streetPartExact": true,
+        "eligibleCount": 1,
+        "returnedCount": 1
+      }
+    },
+    {
+      "addressId": "ADR-7b90c7c83a16",
+      "status": "REVIEW_REQUIRED",
+      "coordinates": null,
+      "candidate": {
+        "coordinates": null,
+        "formatted": "",
+        "housenumber": "",
+        "street": "",
+        "city": "",
+        "citypart": "",
+        "postcode": "",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "",
+          "simc": "",
+          "ulic": ""
+        },
+        "confidence": {
+          "overall": null,
+          "city": null,
+          "street": null,
+          "streetPart": null,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [
+        "NO_REGISTER_MATCH"
+      ],
+      "matchEvidence": {
+        "eligibleCount": 0,
+        "streetPartExact": false
+      }
+    },
+    {
+      "addressId": "ADR-9a4a76747c55",
+      "status": "REVIEW_REQUIRED",
+      "coordinates": null,
+      "candidate": {
+        "coordinates": null,
+        "formatted": "",
+        "housenumber": "",
+        "street": "",
+        "city": "",
+        "citypart": "",
+        "postcode": "",
+        "country_code": "pl",
+        "registry": {
+          "teryt": "",
+          "simc": "",
+          "ulic": ""
+        },
+        "confidence": {
+          "overall": null,
+          "city": null,
+          "street": null,
+          "streetPart": null,
+          "building": null
+        },
+        "attribution": "GUGiK — Uniwersalna Usługa Geokodowania",
+        "attribution_license": "Publiczna usługa GUGiK",
+        "attribution_url": "https://services.gugik.gov.pl/uug/"
+      },
+      "reasons": [
+        "PROVIDER_UNAVAILABLE"
+      ],
+      "matchEvidence": {
+        "eligibleCount": 0,
+        "streetPartExact": false
+      }
+    }
+  ]
+}

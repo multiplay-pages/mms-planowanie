@@ -1,0 +1,443 @@
+{
+  "datasetId": "f7037869ea5bed2d5c0b05416198feda9619b79351f2056501e3b64a79d3d08c",
+  "recipient": "https://services.gugik.gov.pl/uug/",
+  "operation": "GetAddress",
+  "records": [
+    {
+      "addressId": "ADR-fd245bb82543",
+      "address": "Wawelno, Leśna 32A"
+    },
+    {
+      "addressId": "ADR-a857dc6d2a77",
+      "address": "Wąsice, Główna 20"
+    },
+    {
+      "addressId": "ADR-36960b461cd1",
+      "address": "Knurów, Mieszka I 23A"
+    },
+    {
+      "addressId": "ADR-6fd98d99cd10",
+      "address": "Mokre 9"
+    },
+    {
+      "addressId": "ADR-0391711ddff4",
+      "address": "Wilków, Długa 149"
+    },
+    {
+      "addressId": "ADR-197fef0043b4",
+      "address": "Ozimek, Juliusza Słowackiego 3A"
+    },
+    {
+      "addressId": "ADR-5063c95d3cc7",
+      "address": "Grudynia Wielka, Leśna 1A"
+    },
+    {
+      "addressId": "ADR-441735ef10ac",
+      "address": "Przyszowice, Powstańców Śląskich 91B"
+    },
+    {
+      "addressId": "ADR-e66f408d1b58",
+      "address": "Dobrzeń Wielki, Żeromskiego 48"
+    },
+    {
+      "addressId": "ADR-55575010d9a8",
+      "address": "Radawie, Opolska 73"
+    },
+    {
+      "addressId": "ADR-b772bdf5ac69",
+      "address": "Zimnica 17C"
+    },
+    {
+      "addressId": "ADR-62050d20bf98",
+      "address": "Borkowice, Bogacka 24"
+    },
+    {
+      "addressId": "ADR-3094886a5e7a",
+      "address": "Lewin Brzeski, Rynek 25"
+    },
+    {
+      "addressId": "ADR-5b78889d48e4",
+      "address": "Ściborzyce Małe 40"
+    },
+    {
+      "addressId": "ADR-827e73a91a08",
+      "address": "Gręboszyce 12B"
+    },
+    {
+      "addressId": "ADR-741365bea2ef",
+      "address": "Dobrodzień, Powstańców Śląskich 2B"
+    },
+    {
+      "addressId": "ADR-0bc733b69bf6",
+      "address": "Opole, Rozmarynowa 6"
+    },
+    {
+      "addressId": "ADR-8f21ba2a4768",
+      "address": "Ozimek, 8 Marca 3B"
+    },
+    {
+      "addressId": "ADR-aaeeb40da4ce",
+      "address": "Osowiec, Dworcowa 7B"
+    },
+    {
+      "addressId": "ADR-a3f8cd94e454",
+      "address": "Opole, Kredytowa 19"
+    },
+    {
+      "addressId": "ADR-8f19ee97f28d",
+      "address": "Kamień Śląski, Wapienna 1"
+    },
+    {
+      "addressId": "ADR-687567c40bd8",
+      "address": "Izbicko, Powstańców Śląskich 17"
+    },
+    {
+      "addressId": "ADR-e4a8e697b2af",
+      "address": "Wachów, Pawła Kuczki 48"
+    },
+    {
+      "addressId": "ADR-65183f96ac15",
+      "address": "Lisięcice, Słowackiego 32"
+    },
+    {
+      "addressId": "ADR-1dcff80dc920",
+      "address": "Białe Błoto 17D"
+    },
+    {
+      "addressId": "ADR-9cfc6e9f7c77",
+      "address": "Szczedrzyk, Rybacka 7"
+    },
+    {
+      "addressId": "ADR-d64f08786502",
+      "address": "Opole, Pisankowa 9"
+    },
+    {
+      "addressId": "ADR-939c2c34b499",
+      "address": "Niekazanice 64"
+    },
+    {
+      "addressId": "ADR-bd2ca899d2df",
+      "address": "Opole, Studzienna 19E"
+    },
+    {
+      "addressId": "ADR-a4f55c4d18d3",
+      "address": "Krzywiczyny, Wołczyńska 54"
+    },
+    {
+      "addressId": "ADR-182a9da08a50",
+      "address": "Grudynia Wielka, Leśna 3C"
+    },
+    {
+      "addressId": "ADR-0a3827369a2c",
+      "address": "Białe Błoto 35"
+    },
+    {
+      "addressId": "ADR-b2b9b9fb3759",
+      "address": "Smolna 131"
+    },
+    {
+      "addressId": "ADR-946dd8d061c2",
+      "address": "Opawica 7"
+    },
+    {
+      "addressId": "ADR-0ec05aa1bb32",
+      "address": "Grabice, Wiejska 26"
+    },
+    {
+      "addressId": "ADR-32fddaeffafa",
+      "address": "Książenice, Księdza Pojdy 100C"
+    },
+    {
+      "addressId": "ADR-69e2569962c9",
+      "address": "Ligota Oleska 5"
+    },
+    {
+      "addressId": "ADR-be0bd65583b1",
+      "address": "Tarnów Opolski, 1 Maja 29G"
+    },
+    {
+      "addressId": "ADR-764a4744faef",
+      "address": "Sokołowice 100PB"
+    },
+    {
+      "addressId": "ADR-9b8662714b0b",
+      "address": "Zimnica 17B"
+    },
+    {
+      "addressId": "ADR-1f1d7aa2dd7b",
+      "address": "Cieśle 39CB"
+    },
+    {
+      "addressId": "ADR-3a1f36a79bbf",
+      "address": "Kucoby, Spacerowa 62"
+    },
+    {
+      "addressId": "ADR-9f5600b90dfc",
+      "address": "Bogdańczowice 26B"
+    },
+    {
+      "addressId": "ADR-48129c2deb52",
+      "address": "Kochłowice 3A"
+    },
+    {
+      "addressId": "ADR-4463950bb22f",
+      "address": "Krasiejów, Rzeczna 10"
+    },
+    {
+      "addressId": "ADR-fd10dcc27dfe",
+      "address": "Borki Wielkie, Kolonia Kuźnica Borecka 27A"
+    },
+    {
+      "addressId": "ADR-aa9a12e31e3d",
+      "address": "Kadłub, Krótka 17"
+    },
+    {
+      "addressId": "ADR-b9c38e48d701",
+      "address": "Chróścice, Orzeszkowej 4"
+    },
+    {
+      "addressId": "ADR-5f9cbddc0eae",
+      "address": "Skorogoszcz, Jakuba Kani 5"
+    },
+    {
+      "addressId": "ADR-4c610142b186",
+      "address": "Tarnów Opolski, Osiedle Zakładowe 1A"
+    },
+    {
+      "addressId": "ADR-bb106d3e6064",
+      "address": "Brynica, Stawowa 1A"
+    },
+    {
+      "addressId": "ADR-9c486e22acf1",
+      "address": "Rzędowice, Wolna 1"
+    },
+    {
+      "addressId": "ADR-a70e01bb2d22",
+      "address": "Krzeczyn 3B"
+    },
+    {
+      "addressId": "ADR-136c7adc89e1",
+      "address": "Dobrzeń Wielki, Osiedle Energetyk 4A"
+    },
+    {
+      "addressId": "ADR-446013bf569a",
+      "address": "Turawa, Kościuszki 12"
+    },
+    {
+      "addressId": "ADR-50742c1f67d1",
+      "address": "Kucoby, Kiki 27"
+    },
+    {
+      "addressId": "ADR-521bfadcde57",
+      "address": "Bystre, Jesienna 3"
+    },
+    {
+      "addressId": "ADR-5a1ce601cd0a",
+      "address": "Ornontowice, Akacjowa 20"
+    },
+    {
+      "addressId": "ADR-b4e597ab15b5",
+      "address": "Dobra 66F"
+    },
+    {
+      "addressId": "ADR-6708b35973c8",
+      "address": "Szyszków 35"
+    },
+    {
+      "addressId": "ADR-f79ff100cc6d",
+      "address": "Szum 101"
+    },
+    {
+      "addressId": "ADR-b62928e7d05c",
+      "address": "Cieśle 36G"
+    },
+    {
+      "addressId": "ADR-5b0cbf345d7b",
+      "address": "Poniatowice 187F"
+    },
+    {
+      "addressId": "ADR-3b5677afde3d",
+      "address": "Smolna 22C"
+    },
+    {
+      "addressId": "ADR-2d1bb8bb481a",
+      "address": "Sokołowice 100O"
+    },
+    {
+      "addressId": "ADR-53795164e29a",
+      "address": "Grodków, Wiejska 9"
+    },
+    {
+      "addressId": "ADR-964a172bae21",
+      "address": "Rybnik, Arki Bożka 51I"
+    },
+    {
+      "addressId": "ADR-8dc52d15f26f",
+      "address": "Sułków 9A"
+    },
+    {
+      "addressId": "ADR-4e34a76c7964",
+      "address": "Maciejów 39"
+    },
+    {
+      "addressId": "ADR-93becc20000b",
+      "address": "Chomiąża 37"
+    },
+    {
+      "addressId": "ADR-a1289045ff5b",
+      "address": "Nowa Wieś Mała 8C"
+    },
+    {
+      "addressId": "ADR-922205fd7122",
+      "address": "Stare Siołkowice, Klapacz 127A"
+    },
+    {
+      "addressId": "ADR-837d37a78a3d",
+      "address": "Boguszyce 22E"
+    },
+    {
+      "addressId": "ADR-7b82172961a6",
+      "address": "Chudoba 169"
+    },
+    {
+      "addressId": "ADR-0dc8296b8707",
+      "address": "Boguszyce 23S"
+    },
+    {
+      "addressId": "ADR-d4a1a941dabe",
+      "address": "Kucoby, Leśna 14"
+    },
+    {
+      "addressId": "ADR-dcfc7ae98fa7",
+      "address": "Brzęczkowice 15A"
+    },
+    {
+      "addressId": "ADR-9c6fac72133e",
+      "address": "Ostrowina 105H"
+    },
+    {
+      "addressId": "ADR-913c884174bc",
+      "address": "Ostrowina 106L"
+    },
+    {
+      "addressId": "ADR-0e83bfe3b79a",
+      "address": "Rybnik, Jodłowa 68"
+    },
+    {
+      "addressId": "ADR-8e2e3b30b3ef",
+      "address": "Myślina, Parkingowa 6"
+    },
+    {
+      "addressId": "ADR-135c349d85bd",
+      "address": "Zawadzkie, Miarki 7"
+    },
+    {
+      "addressId": "ADR-6f85506673c1",
+      "address": "Dobrzeń Wielki, Osiedle Energetyk 9A"
+    },
+    {
+      "addressId": "ADR-e52b281ee3fd",
+      "address": "Gierałcice, Opolska 1"
+    },
+    {
+      "addressId": "ADR-ab67b8fcb48f",
+      "address": "Kucoby, Borecka 6"
+    },
+    {
+      "addressId": "ADR-f8ee8404b91c",
+      "address": "Kotórz Wielki, Polna 23B"
+    },
+    {
+      "addressId": "ADR-eb89d8745132",
+      "address": "Borki Małe, Oleska 2A"
+    },
+    {
+      "addressId": "ADR-f59d0622e00c",
+      "address": "Piszkawa 8I"
+    },
+    {
+      "addressId": "ADR-174f4f0202e3",
+      "address": "Przyszowice, Bażantów 13"
+    },
+    {
+      "addressId": "ADR-d64c5f551f6a",
+      "address": "Opole, Łączna 10"
+    },
+    {
+      "addressId": "ADR-765606dd6eff",
+      "address": "Książenice, Powstańców 64"
+    },
+    {
+      "addressId": "ADR-57f5c06f6daa",
+      "address": "Turawa, Jagodowa 1"
+    },
+    {
+      "addressId": "ADR-ba727cca6275",
+      "address": "Kościeliska 53A"
+    },
+    {
+      "addressId": "ADR-2d1cb38620fa",
+      "address": "Bogacica, Wiejska 43"
+    },
+    {
+      "addressId": "ADR-44c784791f2a",
+      "address": "Białe Błoto 31"
+    },
+    {
+      "addressId": "ADR-6414369a5f71",
+      "address": "Malnia, Sosnowa 7"
+    },
+    {
+      "addressId": "ADR-76359d7b8e90",
+      "address": "Sołtysy BN"
+    },
+    {
+      "addressId": "ADR-c0d8f3ba8093",
+      "address": "Tarnów Opolski, Słonecznikowa 9"
+    },
+    {
+      "addressId": "ADR-bbed70da216b",
+      "address": "Kadłub, Zielona 2"
+    },
+    {
+      "addressId": "ADR-f030dc0206ef",
+      "address": "Bystre, Wiosenna 5"
+    },
+    {
+      "addressId": "ADR-89c990e8a99f",
+      "address": "Szydłów, Opolska 24"
+    },
+    {
+      "addressId": "ADR-1789b0d12a7d",
+      "address": "Strzelce Opolskie, Władysława Łokietka 3"
+    },
+    {
+      "addressId": "ADR-d72da86d5142",
+      "address": "Miodary 15A"
+    },
+    {
+      "addressId": "ADR-5982c55aa125",
+      "address": "Dębowa, Główna 8A"
+    },
+    {
+      "addressId": "ADR-16acd0372783",
+      "address": "Paniówki, Gliwicka BN3"
+    },
+    {
+      "addressId": "ADR-9e92ded0a6ae",
+      "address": "Chróścice, Babilas 30"
+    },
+    {
+      "addressId": "ADR-bd29343c65c5",
+      "address": "Strzelce Opolskie, Kardynała Stefana Wyszyńskiego 7"
+    },
+    {
+      "addressId": "ADR-7b90c7c83a16",
+      "address": "Namysłów, Kazimierza Pułaskiego 18"
+    },
+    {
+      "addressId": "ADR-9a4a76747c55",
+      "address": "Zębowice, Leśna BN1"
+    }
+  ]
+}

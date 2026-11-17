@@ -1,0 +1,442 @@
+{
+  "datasetId": "f7037869ea5bed2d5c0b05416198feda9619b79351f2056501e3b64a79d3d08c",
+  "provider": "Geoapify; coordinate results are a separate layer in geocoding.json",
+  "items": [
+    {
+      "inputIndex": 0,
+      "addressId": "ADR-fd245bb82543"
+    },
+    {
+      "inputIndex": 1,
+      "addressId": "ADR-a857dc6d2a77"
+    },
+    {
+      "inputIndex": 2,
+      "addressId": "ADR-36960b461cd1"
+    },
+    {
+      "inputIndex": 3,
+      "addressId": "ADR-6fd98d99cd10"
+    },
+    {
+      "inputIndex": 4,
+      "addressId": "ADR-0391711ddff4"
+    },
+    {
+      "inputIndex": 5,
+      "addressId": "ADR-197fef0043b4"
+    },
+    {
+      "inputIndex": 6,
+      "addressId": "ADR-5063c95d3cc7"
+    },
+    {
+      "inputIndex": 7,
+      "addressId": "ADR-441735ef10ac"
+    },
+    {
+      "inputIndex": 8,
+      "addressId": "ADR-e66f408d1b58"
+    },
+    {
+      "inputIndex": 9,
+      "addressId": "ADR-55575010d9a8"
+    },
+    {
+      "inputIndex": 10,
+      "addressId": "ADR-b772bdf5ac69"
+    },
+    {
+      "inputIndex": 11,
+      "addressId": "ADR-62050d20bf98"
+    },
+    {
+      "inputIndex": 12,
+      "addressId": "ADR-3094886a5e7a"
+    },
+    {
+      "inputIndex": 13,
+      "addressId": "ADR-5b78889d48e4"
+    },
+    {
+      "inputIndex": 14,
+      "addressId": "ADR-827e73a91a08"
+    },
+    {
+      "inputIndex": 15,
+      "addressId": "ADR-741365bea2ef"
+    },
+    {
+      "inputIndex": 16,
+      "addressId": "ADR-0bc733b69bf6"
+    },
+    {
+      "inputIndex": 17,
+      "addressId": "ADR-8f21ba2a4768"
+    },
+    {
+      "inputIndex": 18,
+      "addressId": "ADR-aaeeb40da4ce"
+    },
+    {
+      "inputIndex": 19,
+      "addressId": "ADR-a3f8cd94e454"
+    },
+    {
+      "inputIndex": 20,
+      "addressId": "ADR-8f19ee97f28d"
+    },
+    {
+      "inputIndex": 21,
+      "addressId": "ADR-687567c40bd8"
+    },
+    {
+      "inputIndex": 22,
+      "addressId": "ADR-e4a8e697b2af"
+    },
+    {
+      "inputIndex": 23,
+      "addressId": "ADR-65183f96ac15"
+    },
+    {
+      "inputIndex": 24,
+      "addressId": "ADR-1dcff80dc920"
+    },
+    {
+      "inputIndex": 25,
+      "addressId": "ADR-9cfc6e9f7c77"
+    },
+    {
+      "inputIndex": 26,
+      "addressId": "ADR-d64f08786502"
+    },
+    {
+      "inputIndex": 27,
+      "addressId": "ADR-939c2c34b499"
+    },
+    {
+      "inputIndex": 28,
+      "addressId": "ADR-bd2ca899d2df"
+    },
+    {
+      "inputIndex": 29,
+      "addressId": "ADR-a4f55c4d18d3"
+    },
+    {
+      "inputIndex": 30,
+      "addressId": "ADR-182a9da08a50"
+    },
+    {
+      "inputIndex": 31,
+      "addressId": "ADR-0a3827369a2c"
+    },
+    {
+      "inputIndex": 32,
+      "addressId": "ADR-b2b9b9fb3759"
+    },
+    {
+      "inputIndex": 33,
+      "addressId": "ADR-946dd8d061c2"
+    },
+    {
+      "inputIndex": 34,
+      "addressId": "ADR-0ec05aa1bb32"
+    },
+    {
+      "inputIndex": 35,
+      "addressId": "ADR-32fddaeffafa"
+    },
+    {
+      "inputIndex": 36,
+      "addressId": "ADR-69e2569962c9"
+    },
+    {
+      "inputIndex": 37,
+      "addressId": "ADR-be0bd65583b1"
+    },
+    {
+      "inputIndex": 38,
+      "addressId": "ADR-764a4744faef"
+    },
+    {
+      "inputIndex": 39,
+      "addressId": "ADR-9b8662714b0b"
+    },
+    {
+      "inputIndex": 40,
+      "addressId": "ADR-1f1d7aa2dd7b"
+    },
+    {
+      "inputIndex": 41,
+      "addressId": "ADR-3a1f36a79bbf"
+    },
+    {
+      "inputIndex": 42,
+      "addressId": "ADR-9f5600b90dfc"
+    },
+    {
+      "inputIndex": 43,
+      "addressId": "ADR-48129c2deb52"
+    },
+    {
+      "inputIndex": 44,
+      "addressId": "ADR-4463950bb22f"
+    },
+    {
+      "inputIndex": 45,
+      "addressId": "ADR-fd10dcc27dfe"
+    },
+    {
+      "inputIndex": 46,
+      "addressId": "ADR-aa9a12e31e3d"
+    },
+    {
+      "inputIndex": 47,
+      "addressId": "ADR-b9c38e48d701"
+    },
+    {
+      "inputIndex": 48,
+      "addressId": "ADR-5f9cbddc0eae"
+    },
+    {
+      "inputIndex": 49,
+      "addressId": "ADR-4c610142b186"
+    },
+    {
+      "inputIndex": 50,
+      "addressId": "ADR-bb106d3e6064"
+    },
+    {
+      "inputIndex": 51,
+      "addressId": "ADR-9c486e22acf1"
+    },
+    {
+      "inputIndex": 52,
+      "addressId": "ADR-a70e01bb2d22"
+    },
+    {
+      "inputIndex": 53,
+      "addressId": "ADR-136c7adc89e1"
+    },
+    {
+      "inputIndex": 54,
+      "addressId": "ADR-446013bf569a"
+    },
+    {
+      "inputIndex": 55,
+      "addressId": "ADR-50742c1f67d1"
+    },
+    {
+      "inputIndex": 56,
+      "addressId": "ADR-521bfadcde57"
+    },
+    {
+      "inputIndex": 57,
+      "addressId": "ADR-5a1ce601cd0a"
+    },
+    {
+      "inputIndex": 58,
+      "addressId": "ADR-b4e597ab15b5"
+    },
+    {
+      "inputIndex": 59,
+      "addressId": "ADR-6708b35973c8"
+    },
+    {
+      "inputIndex": 60,
+      "addressId": "ADR-f79ff100cc6d"
+    },
+    {
+      "inputIndex": 61,
+      "addressId": "ADR-b62928e7d05c"
+    },
+    {
+      "inputIndex": 62,
+      "addressId": "ADR-5b0cbf345d7b"
+    },
+    {
+      "inputIndex": 63,
+      "addressId": "ADR-3b5677afde3d"
+    },
+    {
+      "inputIndex": 64,
+      "addressId": "ADR-2d1bb8bb481a"
+    },
+    {
+      "inputIndex": 65,
+      "addressId": "ADR-53795164e29a"
+    },
+    {
+      "inputIndex": 66,
+      "addressId": "ADR-964a172bae21"
+    },
+    {
+      "inputIndex": 67,
+      "addressId": "ADR-8dc52d15f26f"
+    },
+    {
+      "inputIndex": 68,
+      "addressId": "ADR-4e34a76c7964"
+    },
+    {
+      "inputIndex": 69,
+      "addressId": "ADR-93becc20000b"
+    },
+    {
+      "inputIndex": 70,
+      "addressId": "ADR-a1289045ff5b"
+    },
+    {
+      "inputIndex": 71,
+      "addressId": "ADR-922205fd7122"
+    },
+    {
+      "inputIndex": 72,
+      "addressId": "ADR-837d37a78a3d"
+    },
+    {
+      "inputIndex": 73,
+      "addressId": "ADR-7b82172961a6"
+    },
+    {
+      "inputIndex": 74,
+      "addressId": "ADR-0dc8296b8707"
+    },
+    {
+      "inputIndex": 75,
+      "addressId": "ADR-d4a1a941dabe"
+    },
+    {
+      "inputIndex": 76,
+      "addressId": "ADR-dcfc7ae98fa7"
+    },
+    {
+      "inputIndex": 77,
+      "addressId": "ADR-9c6fac72133e"
+    },
+    {
+      "inputIndex": 78,
+      "addressId": "ADR-913c884174bc"
+    },
+    {
+      "inputIndex": 79,
+      "addressId": "ADR-0e83bfe3b79a"
+    },
+    {
+      "inputIndex": 80,
+      "addressId": "ADR-8e2e3b30b3ef"
+    },
+    {
+      "inputIndex": 81,
+      "addressId": "ADR-135c349d85bd"
+    },
+    {
+      "inputIndex": 82,
+      "addressId": "ADR-6f85506673c1"
+    },
+    {
+      "inputIndex": 83,
+      "addressId": "ADR-e52b281ee3fd"
+    },
+    {
+      "inputIndex": 84,
+      "addressId": "ADR-ab67b8fcb48f"
+    },
+    {
+      "inputIndex": 85,
+      "addressId": "ADR-f8ee8404b91c"
+    },
+    {
+      "inputIndex": 86,
+      "addressId": "ADR-eb89d8745132"
+    },
+    {
+      "inputIndex": 87,
+      "addressId": "ADR-f59d0622e00c"
+    },
+    {
+      "inputIndex": 88,
+      "addressId": "ADR-174f4f0202e3"
+    },
+    {
+      "inputIndex": 89,
+      "addressId": "ADR-d64c5f551f6a"
+    },
+    {
+      "inputIndex": 90,
+      "addressId": "ADR-765606dd6eff"
+    },
+    {
+      "inputIndex": 91,
+      "addressId": "ADR-57f5c06f6daa"
+    },
+    {
+      "inputIndex": 92,
+      "addressId": "ADR-ba727cca6275"
+    },
+    {
+      "inputIndex": 93,
+      "addressId": "ADR-2d1cb38620fa"
+    },
+    {
+      "inputIndex": 94,
+      "addressId": "ADR-44c784791f2a"
+    },
+    {
+      "inputIndex": 95,
+      "addressId": "ADR-6414369a5f71"
+    },
+    {
+      "inputIndex": 96,
+      "addressId": "ADR-76359d7b8e90"
+    },
+    {
+      "inputIndex": 97,
+      "addressId": "ADR-c0d8f3ba8093"
+    },
+    {
+      "inputIndex": 98,
+      "addressId": "ADR-bbed70da216b"
+    },
+    {
+      "inputIndex": 99,
+      "addressId": "ADR-f030dc0206ef"
+    },
+    {
+      "inputIndex": 100,
+      "addressId": "ADR-89c990e8a99f"
+    },
+    {
+      "inputIndex": 101,
+      "addressId": "ADR-1789b0d12a7d"
+    },
+    {
+      "inputIndex": 102,
+      "addressId": "ADR-d72da86d5142"
+    },
+    {
+      "inputIndex": 103,
+      "addressId": "ADR-5982c55aa125"
+    },
+    {
+      "inputIndex": 104,
+      "addressId": "ADR-16acd0372783"
+    },
+    {
+      "inputIndex": 105,
+      "addressId": "ADR-9e92ded0a6ae"
+    },
+    {
+      "inputIndex": 106,
+      "addressId": "ADR-bd29343c65c5"
+    },
+    {
+      "inputIndex": 107,
+      "addressId": "ADR-7b90c7c83a16"
+    },
+    {
+      "inputIndex": 108,
+      "addressId": "ADR-9a4a76747c55"
+    }
+  ]
+}

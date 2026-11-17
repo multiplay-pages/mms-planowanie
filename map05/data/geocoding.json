@@ -1,0 +1,3340 @@
+{
+  "schemaVersion": 1,
+  "datasetId": "f7037869ea5bed2d5c0b05416198feda9619b79351f2056501e3b64a79d3d08c",
+  "source": {
+    "provider": "Geoapify",
+    "method": "online-tool",
+    "filename": "geocoded_by_geoapify-16.11.2026, 16_49_56.csv",
+    "sha256": "06b5df049f5aaf2b058cbc6686d503ac64a569b1c6930f9731950aa97b288ae0",
+    "url": "https://www.geoapify.com/tools/geocoding-online/"
+  },
+  "policy": {
+    "version": 1,
+    "minimumConfidence": 0.95,
+    "streetMatch": "exact-after-ul-prefix",
+    "independentlyVerified": false
+  },
+  "summary": {
+    "total": 109,
+    "matched": 46,
+    "review": 63,
+    "candidateCoordinates": 109,
+    "reasons": {
+      "BUILDING_MISMATCH": 57,
+      "CITY_MISMATCH": 28,
+      "BUILDING_CONFIDENCE": 47,
+      "STREET_MISMATCH": 6,
+      "LOW_CONFIDENCE": 8,
+      "STREET_CONFIDENCE": 6,
+      "POSTCODE_MISMATCH": 7,
+      "CITY_CONFIDENCE": 2
+    }
+  },
+  "records": [
+    {
+      "addressId": "ADR-fd245bb82543",
+      "status": "REVIEW_REQUIRED",
+      "coordinates": null,
+      "reasons": [
+        "BUILDING_MISMATCH"
+      ],
+      "candidate": {
+        "coordinates": [
+          17.7596062,
+          50.6502427
+        ],
+        "formatted": "Leśna 32, 46-070 Wawelno, Polska",
+        "housenumber": "32",
+        "street": "Leśna",
+        "city": "Wawelno",
+        "postcode": "46-070",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 0.95,
+          "city": 1.0,
+          "street": 1.0,
+          "building": 0.95
+        }
+      }
+    },
+    {
+      "addressId": "ADR-a857dc6d2a77",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        18.0254902,
+        50.9844843
+      ],
+      "reasons": [],
+      "candidate": {
+        "coordinates": [
+          18.0254902,
+          50.9844843
+        ],
+        "formatted": "Główna 20, 46-250 Wąsice, Polska",
+        "housenumber": "20",
+        "street": "Główna",
+        "city": "Wąsice",
+        "postcode": "46-250",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "building": 1.0
+        }
+      }
+    },
+    {
+      "addressId": "ADR-36960b461cd1",
+      "status": "REVIEW_REQUIRED",
+      "coordinates": null,
+      "reasons": [
+        "BUILDING_MISMATCH"
+      ],
+      "candidate": {
+        "coordinates": [
+          18.6612112,
+          50.2319122
+        ],
+        "formatted": "Mieszka I 23, 44-194 Knurów, Polska",
+        "housenumber": "23",
+        "street": "Mieszka I",
+        "city": "Knurów",
+        "postcode": "44-194",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 0.95,
+          "city": 1.0,
+          "street": 1.0,
+          "building": 0.95
+        }
+      }
+    },
+    {
+      "addressId": "ADR-6fd98d99cd10",
+      "status": "REVIEW_REQUIRED",
+      "coordinates": null,
+      "reasons": [
+        "BUILDING_MISMATCH",
+        "CITY_MISMATCH",
+        "BUILDING_CONFIDENCE"
+      ],
+      "candidate": {
+        "coordinates": [
+          17.671756239367312,
+          50.142263742706504
+        ],
+        "formatted": "48-155 Radynia, Polska",
+        "housenumber": "",
+        "street": "",
+        "city": "Radynia",
+        "postcode": "48-155",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": null,
+          "building": null
+        }
+      }
+    },
+    {
+      "addressId": "ADR-0391711ddff4",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        17.6759352,
+        51.128035
+      ],
+      "reasons": [],
+      "candidate": {
+        "coordinates": [
+          17.6759352,
+          51.128035
+        ],
+        "formatted": "Długa 149, 46-113 Wilków, Polska",
+        "housenumber": "149",
+        "street": "Długa",
+        "city": "Wilków",
+        "postcode": "46-113",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "building": 1.0
+        }
+      }
+    },
+    {
+      "addressId": "ADR-197fef0043b4",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        18.222164,
+        50.680015
+      ],
+      "reasons": [],
+      "candidate": {
+        "coordinates": [
+          18.222164,
+          50.680015
+        ],
+        "formatted": "Juliusza Słowackiego 3A, Gmina Ozimek, 46-040 Ozimek, Polska",
+        "housenumber": "3A",
+        "street": "Juliusza Słowackiego",
+        "city": "Ozimek",
+        "postcode": "46-040",
+        "country_code": "pl",
+        "attribution": "© OpenAddresses contributors",
+        "attribution_license": "BSD-3-Clause License",
+        "attribution_url": "",
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "building": 1.0
+        }
+      }
+    },
+    {
+      "addressId": "ADR-5063c95d3cc7",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        17.9520587,
+        50.2438058
+      ],
+      "reasons": [],
+      "candidate": {
+        "coordinates": [
+          17.9520587,
+          50.2438058
+        ],
+        "formatted": "Leśna 1A, 47-280 Grudynia Wielka, Polska",
+        "housenumber": "1A",
+        "street": "Leśna",
+        "city": "Grudynia Wielka",
+        "postcode": "47-280",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "building": 1.0
+        }
+      }
+    },
+    {
+      "addressId": "ADR-441735ef10ac",
+      "status": "REVIEW_REQUIRED",
+      "coordinates": null,
+      "reasons": [
+        "BUILDING_MISMATCH"
+      ],
+      "candidate": {
+        "coordinates": [
+          18.7252139,
+          50.2519449
+        ],
+        "formatted": "Powstańców Śląskich 91, 44-178 Przyszowice, Polska",
+        "housenumber": "91",
+        "street": "Powstańców Śląskich",
+        "city": "Przyszowice",
+        "postcode": "44-178",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 0.95,
+          "city": 1.0,
+          "street": 1.0,
+          "building": 0.95
+        }
+      }
+    },
+    {
+      "addressId": "ADR-e66f408d1b58",
+      "status": "REVIEW_REQUIRED",
+      "coordinates": null,
+      "reasons": [
+        "STREET_MISMATCH",
+        "LOW_CONFIDENCE",
+        "BUILDING_CONFIDENCE",
+        "STREET_CONFIDENCE"
+      ],
+      "candidate": {
+        "coordinates": [
+          17.8517059,
+          50.7791253
+        ],
+        "formatted": "Stefana Żeromskiego 48, 46-081 Dobrzeń Wielki, Polska",
+        "housenumber": "48",
+        "street": "Stefana Żeromskiego",
+        "city": "Dobrzeń Wielki",
+        "postcode": "46-081",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 0.9,
+          "city": 1.0,
+          "street": 0.9,
+          "building": 0.9
+        }
+      }
+    },
+    {
+      "addressId": "ADR-55575010d9a8",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        18.2996871,
+        50.7811817
+      ],
+      "reasons": [],
+      "candidate": {
+        "coordinates": [
+          18.2996871,
+          50.7811817
+        ],
+        "formatted": "Opolska 73, 46-048 Radawie, Polska",
+        "housenumber": "73",
+        "street": "Opolska",
+        "city": "Radawie",
+        "postcode": "46-048",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "building": 1.0
+        }
+      }
+    },
+    {
+      "addressId": "ADR-b772bdf5ac69",
+      "status": "REVIEW_REQUIRED",
+      "coordinates": null,
+      "reasons": [
+        "BUILDING_MISMATCH",
+        "CITY_MISMATCH",
+        "BUILDING_CONFIDENCE"
+      ],
+      "candidate": {
+        "coordinates": [
+          17.39850786090566,
+          51.20663919198113
+        ],
+        "formatted": "56-400 Oleśnica, Polska",
+        "housenumber": "",
+        "street": "",
+        "city": "Oleśnica",
+        "postcode": "56-400",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": null,
+          "building": null
+        }
+      }
+    },
+    {
+      "addressId": "ADR-62050d20bf98",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        18.148247,
+        50.9535697
+      ],
+      "reasons": [],
+      "candidate": {
+        "coordinates": [
+          18.148247,
+          50.9535697
+        ],
+        "formatted": "Bogacka 24, 46-243 Borkowice, Polska",
+        "housenumber": "24",
+        "street": "Bogacka",
+        "city": "Borkowice",
+        "postcode": "46-243",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "building": 1.0
+        }
+      }
+    },
+    {
+      "addressId": "ADR-3094886a5e7a",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        17.616583,
+        50.7491948
+      ],
+      "reasons": [],
+      "candidate": {
+        "coordinates": [
+          17.616583,
+          50.7491948
+        ],
+        "formatted": "Rynek 25, 49-340 Lewin Brzeski, Polska",
+        "housenumber": "25",
+        "street": "Rynek",
+        "city": "Lewin Brzeski",
+        "postcode": "49-340",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "building": 1.0
+        }
+      }
+    },
+    {
+      "addressId": "ADR-5b78889d48e4",
+      "status": "REVIEW_REQUIRED",
+      "coordinates": null,
+      "reasons": [
+        "BUILDING_MISMATCH",
+        "CITY_MISMATCH",
+        "BUILDING_CONFIDENCE"
+      ],
+      "candidate": {
+        "coordinates": [
+          17.827626828657316,
+          50.26735183346693
+        ],
+        "formatted": "48-118 Kietlice, Polska",
+        "housenumber": "",
+        "street": "",
+        "city": "Kietlice",
+        "postcode": "48-118",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": null,
+          "building": null
+        }
+      }
+    },
+    {
+      "addressId": "ADR-827e73a91a08",
+      "status": "REVIEW_REQUIRED",
+      "coordinates": null,
+      "reasons": [
+        "BUILDING_MISMATCH",
+        "CITY_MISMATCH",
+        "BUILDING_CONFIDENCE"
+      ],
+      "candidate": {
+        "coordinates": [
+          17.39850786090566,
+          51.20663919198113
+        ],
+        "formatted": "56-400 Oleśnica, Polska",
+        "housenumber": "",
+        "street": "",
+        "city": "Oleśnica",
+        "postcode": "56-400",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": null,
+          "building": null
+        }
+      }
+    },
+    {
+      "addressId": "ADR-741365bea2ef",
+      "status": "REVIEW_REQUIRED",
+      "coordinates": null,
+      "reasons": [
+        "BUILDING_MISMATCH"
+      ],
+      "candidate": {
+        "coordinates": [
+          18.4433166,
+          50.7254823
+        ],
+        "formatted": "Powstańców Śląskich 2, 46-380 Dobrodzień, Polska",
+        "housenumber": "2",
+        "street": "Powstańców Śląskich",
+        "city": "Dobrodzień",
+        "postcode": "46-380",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 0.95,
+          "city": 1.0,
+          "street": 1.0,
+          "building": 0.95
+        }
+      }
+    },
+    {
+      "addressId": "ADR-0bc733b69bf6",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        17.9754465,
+        50.6851815
+      ],
+      "reasons": [],
+      "candidate": {
+        "coordinates": [
+          17.9754465,
+          50.6851815
+        ],
+        "formatted": "Rozmarynowa 6, 45-403 Opole, Polska",
+        "housenumber": "6",
+        "street": "Rozmarynowa",
+        "city": "Opole",
+        "postcode": "45-403",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "building": 1.0
+        }
+      }
+    },
+    {
+      "addressId": "ADR-8f21ba2a4768",
+      "status": "REVIEW_REQUIRED",
+      "coordinates": null,
+      "reasons": [
+        "BUILDING_MISMATCH",
+        "BUILDING_CONFIDENCE"
+      ],
+      "candidate": {
+        "coordinates": [
+          18.2125215,
+          50.6822173
+        ],
+        "formatted": "8 Marca, 46-040 Ozimek, Polska",
+        "housenumber": "",
+        "street": "8 Marca",
+        "city": "Ozimek",
+        "postcode": "46-040",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "building": null
+        }
+      }
+    },
+    {
+      "addressId": "ADR-aaeeb40da4ce",
+      "status": "REVIEW_REQUIRED",
+      "coordinates": null,
+      "reasons": [
+        "BUILDING_MISMATCH",
+        "POSTCODE_MISMATCH"
+      ],
+      "candidate": {
+        "coordinates": [
+          18.0374402,
+          50.752846
+        ],
+        "formatted": "Dworcowa 7, Osowiec-Osiedle, 46-045 Osowiec, Polska",
+        "housenumber": "7",
+        "street": "Dworcowa",
+        "city": "Osowiec",
+        "postcode": "46-045",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 0.95,
+          "city": 1.0,
+          "street": 1.0,
+          "building": 0.95
+        }
+      }
+    },
+    {
+      "addressId": "ADR-a3f8cd94e454",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        17.9712174,
+        50.6264849
+      ],
+      "reasons": [],
+      "candidate": {
+        "coordinates": [
+          17.9712174,
+          50.6264849
+        ],
+        "formatted": "Kredytowa 19, 45-662 Opole, Polska",
+        "housenumber": "19",
+        "street": "Kredytowa",
+        "city": "Opole",
+        "postcode": "45-662",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "building": 1.0
+        }
+      }
+    },
+    {
+      "addressId": "ADR-8f19ee97f28d",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        18.0815687,
+        50.5418235
+      ],
+      "reasons": [],
+      "candidate": {
+        "coordinates": [
+          18.0815687,
+          50.5418235
+        ],
+        "formatted": "Wapienna 1, 47-325 Kamień Śląski, Polska",
+        "housenumber": "1",
+        "street": "Wapienna",
+        "city": "Kamień Śląski",
+        "postcode": "47-325",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "building": 1.0
+        }
+      }
+    },
+    {
+      "addressId": "ADR-687567c40bd8",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        18.155747,
+        50.573401
+      ],
+      "reasons": [],
+      "candidate": {
+        "coordinates": [
+          18.155747,
+          50.573401
+        ],
+        "formatted": "Powstańców Śląskich 17, 47-180 Izbicko, Polska",
+        "housenumber": "17",
+        "street": "Powstańców Śląskich",
+        "city": "Izbicko",
+        "postcode": "47-180",
+        "country_code": "pl",
+        "attribution": "© OpenAddresses contributors",
+        "attribution_license": "BSD-3-Clause License",
+        "attribution_url": "",
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "building": 1.0
+        }
+      }
+    },
+    {
+      "addressId": "ADR-e4a8e697b2af",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        18.3858524,
+        50.8425855
+      ],
+      "reasons": [],
+      "candidate": {
+        "coordinates": [
+          18.3858524,
+          50.8425855
+        ],
+        "formatted": "Pawła Kuczki 48, 46-300 Wachów, Polska",
+        "housenumber": "48",
+        "street": "Pawła Kuczki",
+        "city": "Wachów",
+        "postcode": "46-300",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "building": 1.0
+        }
+      }
+    },
+    {
+      "addressId": "ADR-65183f96ac15",
+      "status": "REVIEW_REQUIRED",
+      "coordinates": null,
+      "reasons": [
+        "STREET_MISMATCH",
+        "LOW_CONFIDENCE",
+        "BUILDING_CONFIDENCE",
+        "STREET_CONFIDENCE"
+      ],
+      "candidate": {
+        "coordinates": [
+          17.8762072,
+          50.2649885
+        ],
+        "formatted": "Juliusza Słowackiego 32, 48-118 Lisięcice, Polska",
+        "housenumber": "32",
+        "street": "Juliusza Słowackiego",
+        "city": "Lisięcice",
+        "postcode": "48-118",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 0.9,
+          "city": 1.0,
+          "street": 0.9,
+          "building": 0.9
+        }
+      }
+    },
+    {
+      "addressId": "ADR-1dcff80dc920",
+      "status": "REVIEW_REQUIRED",
+      "coordinates": null,
+      "reasons": [
+        "BUILDING_MISMATCH",
+        "CITY_MISMATCH",
+        "BUILDING_CONFIDENCE"
+      ],
+      "candidate": {
+        "coordinates": [
+          17.33464217559475,
+          51.2779968707137
+        ],
+        "formatted": "56-410 Strzelce, Polska",
+        "housenumber": "",
+        "street": "",
+        "city": "Strzelce",
+        "postcode": "56-410",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": null,
+          "building": null
+        }
+      }
+    },
+    {
+      "addressId": "ADR-9cfc6e9f7c77",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        18.153173,
+        50.7076842
+      ],
+      "reasons": [],
+      "candidate": {
+        "coordinates": [
+          18.153173,
+          50.7076842
+        ],
+        "formatted": "Rybacka 7, 46-042 Szczedrzyk, Polska",
+        "housenumber": "7",
+        "street": "Rybacka",
+        "city": "Szczedrzyk",
+        "postcode": "46-042",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "building": 1.0
+        }
+      }
+    },
+    {
+      "addressId": "ADR-d64f08786502",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        17.8548228,
+        50.6843812
+      ],
+      "reasons": [],
+      "candidate": {
+        "coordinates": [
+          17.8548228,
+          50.6843812
+        ],
+        "formatted": "Pisankowa 9, 45-841 Opole, Polska",
+        "housenumber": "9",
+        "street": "Pisankowa",
+        "city": "Opole",
+        "postcode": "45-841",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "building": 1.0
+        }
+      }
+    },
+    {
+      "addressId": "ADR-939c2c34b499",
+      "status": "REVIEW_REQUIRED",
+      "coordinates": null,
+      "reasons": [
+        "BUILDING_MISMATCH",
+        "CITY_MISMATCH",
+        "BUILDING_CONFIDENCE"
+      ],
+      "candidate": {
+        "coordinates": [
+          17.81811581891149,
+          50.057003657009346
+        ],
+        "formatted": "48-140 Posucice, Polska",
+        "housenumber": "",
+        "street": "",
+        "city": "Posucice",
+        "postcode": "48-140",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": null,
+          "building": null
+        }
+      }
+    },
+    {
+      "addressId": "ADR-bd2ca899d2df",
+      "status": "REVIEW_REQUIRED",
+      "coordinates": null,
+      "reasons": [
+        "BUILDING_MISMATCH",
+        "POSTCODE_MISMATCH"
+      ],
+      "candidate": {
+        "coordinates": [
+          17.9275688,
+          50.7363165
+        ],
+        "formatted": "Studzienna 19, 46-020 Opole, Polska",
+        "housenumber": "19",
+        "street": "Studzienna",
+        "city": "Opole",
+        "postcode": "46-020",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 0.95,
+          "city": 1.0,
+          "street": 1.0,
+          "building": 0.95
+        }
+      }
+    },
+    {
+      "addressId": "ADR-a4f55c4d18d3",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        18.049258,
+        51.0714633
+      ],
+      "reasons": [],
+      "candidate": {
+        "coordinates": [
+          18.049258,
+          51.0714633
+        ],
+        "formatted": "Wołczyńska 54, 46-264 Krzywiczyny, Polska",
+        "housenumber": "54",
+        "street": "Wołczyńska",
+        "city": "Krzywiczyny",
+        "postcode": "46-264",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "building": 1.0
+        }
+      }
+    },
+    {
+      "addressId": "ADR-182a9da08a50",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        17.9526062,
+        50.2444125
+      ],
+      "reasons": [],
+      "candidate": {
+        "coordinates": [
+          17.9526062,
+          50.2444125
+        ],
+        "formatted": "Leśna 3C, 47-280 Grudynia Wielka, Polska",
+        "housenumber": "3C",
+        "street": "Leśna",
+        "city": "Grudynia Wielka",
+        "postcode": "47-280",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "building": 1.0
+        }
+      }
+    },
+    {
+      "addressId": "ADR-0a3827369a2c",
+      "status": "REVIEW_REQUIRED",
+      "coordinates": null,
+      "reasons": [
+        "BUILDING_MISMATCH",
+        "CITY_MISMATCH",
+        "BUILDING_CONFIDENCE"
+      ],
+      "candidate": {
+        "coordinates": [
+          17.33464217559475,
+          51.2779968707137
+        ],
+        "formatted": "56-410 Strzelce, Polska",
+        "housenumber": "",
+        "street": "",
+        "city": "Strzelce",
+        "postcode": "56-410",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": null,
+          "building": null
+        }
+      }
+    },
+    {
+      "addressId": "ADR-b2b9b9fb3759",
+      "status": "REVIEW_REQUIRED",
+      "coordinates": null,
+      "reasons": [
+        "BUILDING_MISMATCH",
+        "CITY_MISMATCH",
+        "BUILDING_CONFIDENCE"
+      ],
+      "candidate": {
+        "coordinates": [
+          17.39850786090566,
+          51.20663919198113
+        ],
+        "formatted": "56-400 Oleśnica, Polska",
+        "housenumber": "",
+        "street": "",
+        "city": "Oleśnica",
+        "postcode": "56-400",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": null,
+          "building": null
+        }
+      }
+    },
+    {
+      "addressId": "ADR-946dd8d061c2",
+      "status": "REVIEW_REQUIRED",
+      "coordinates": null,
+      "reasons": [
+        "BUILDING_MISMATCH",
+        "CITY_MISMATCH",
+        "BUILDING_CONFIDENCE"
+      ],
+      "candidate": {
+        "coordinates": [
+          17.671756239367312,
+          50.142263742706504
+        ],
+        "formatted": "48-155 Radynia, Polska",
+        "housenumber": "",
+        "street": "",
+        "city": "Radynia",
+        "postcode": "48-155",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": null,
+          "building": null
+        }
+      }
+    },
+    {
+      "addressId": "ADR-0ec05aa1bb32",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        17.9826239,
+        50.9078513
+      ],
+      "reasons": [],
+      "candidate": {
+        "coordinates": [
+          17.9826239,
+          50.9078513
+        ],
+        "formatted": "Wiejska 26, 46-030 Grabice, Polska",
+        "housenumber": "26",
+        "street": "Wiejska",
+        "city": "Grabice",
+        "postcode": "46-030",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "building": 1.0
+        }
+      }
+    },
+    {
+      "addressId": "ADR-32fddaeffafa",
+      "status": "REVIEW_REQUIRED",
+      "coordinates": null,
+      "reasons": [
+        "BUILDING_MISMATCH",
+        "STREET_MISMATCH",
+        "LOW_CONFIDENCE",
+        "BUILDING_CONFIDENCE",
+        "STREET_CONFIDENCE"
+      ],
+      "candidate": {
+        "coordinates": [
+          18.6001391,
+          50.1587256
+        ],
+        "formatted": "Szkoła Podstawowa imienia Stanisława Ligonia, Księdza Jana Pojdy 100, 44-213 Książenice, Polska",
+        "housenumber": "100",
+        "street": "Księdza Jana Pojdy",
+        "city": "Książenice",
+        "postcode": "44-213",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 0.855,
+          "city": 1.0,
+          "street": 0.9,
+          "building": 0.855
+        }
+      }
+    },
+    {
+      "addressId": "ADR-69e2569962c9",
+      "status": "REVIEW_REQUIRED",
+      "coordinates": null,
+      "reasons": [
+        "BUILDING_MISMATCH",
+        "BUILDING_CONFIDENCE"
+      ],
+      "candidate": {
+        "coordinates": [
+          18.5420332,
+          50.9585025
+        ],
+        "formatted": "46-333 Ligota Oleska, Polska",
+        "housenumber": "",
+        "street": "",
+        "city": "Ligota Oleska",
+        "postcode": "46-333",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": null,
+          "building": null
+        }
+      }
+    },
+    {
+      "addressId": "ADR-be0bd65583b1",
+      "status": "REVIEW_REQUIRED",
+      "coordinates": null,
+      "reasons": [
+        "BUILDING_MISMATCH",
+        "BUILDING_CONFIDENCE"
+      ],
+      "candidate": {
+        "coordinates": [
+          18.0808298,
+          50.5809712
+        ],
+        "formatted": "1 Maja, 46-050 Tarnów Opolski, Polska",
+        "housenumber": "",
+        "street": "1 Maja",
+        "city": "Tarnów Opolski",
+        "postcode": "46-050",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "building": null
+        }
+      }
+    },
+    {
+      "addressId": "ADR-764a4744faef",
+      "status": "REVIEW_REQUIRED",
+      "coordinates": null,
+      "reasons": [
+        "BUILDING_MISMATCH",
+        "CITY_MISMATCH",
+        "BUILDING_CONFIDENCE"
+      ],
+      "candidate": {
+        "coordinates": [
+          17.39850786090566,
+          51.20663919198113
+        ],
+        "formatted": "56-400 Oleśnica, Polska",
+        "housenumber": "",
+        "street": "",
+        "city": "Oleśnica",
+        "postcode": "56-400",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": null,
+          "building": null
+        }
+      }
+    },
+    {
+      "addressId": "ADR-9b8662714b0b",
+      "status": "REVIEW_REQUIRED",
+      "coordinates": null,
+      "reasons": [
+        "BUILDING_MISMATCH",
+        "CITY_MISMATCH",
+        "BUILDING_CONFIDENCE"
+      ],
+      "candidate": {
+        "coordinates": [
+          17.39850786090566,
+          51.20663919198113
+        ],
+        "formatted": "56-400 Oleśnica, Polska",
+        "housenumber": "",
+        "street": "",
+        "city": "Oleśnica",
+        "postcode": "56-400",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": null,
+          "building": null
+        }
+      }
+    },
+    {
+      "addressId": "ADR-1f1d7aa2dd7b",
+      "status": "REVIEW_REQUIRED",
+      "coordinates": null,
+      "reasons": [
+        "BUILDING_MISMATCH",
+        "CITY_MISMATCH",
+        "BUILDING_CONFIDENCE"
+      ],
+      "candidate": {
+        "coordinates": [
+          17.39850786090566,
+          51.20663919198113
+        ],
+        "formatted": "56-400 Oleśnica, Polska",
+        "housenumber": "",
+        "street": "",
+        "city": "Oleśnica",
+        "postcode": "56-400",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": null,
+          "building": null
+        }
+      }
+    },
+    {
+      "addressId": "ADR-3a1f36a79bbf",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        18.6142449,
+        50.8791149
+      ],
+      "reasons": [],
+      "candidate": {
+        "coordinates": [
+          18.6142449,
+          50.8791149
+        ],
+        "formatted": "Spacerowa 62, 46-312 Kucoby, Polska",
+        "housenumber": "62",
+        "street": "Spacerowa",
+        "city": "Kucoby",
+        "postcode": "46-312",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "building": 1.0
+        }
+      }
+    },
+    {
+      "addressId": "ADR-9f5600b90dfc",
+      "status": "REVIEW_REQUIRED",
+      "coordinates": null,
+      "reasons": [
+        "BUILDING_MISMATCH",
+        "BUILDING_CONFIDENCE"
+      ],
+      "candidate": {
+        "coordinates": [
+          18.281052,
+          50.9802883
+        ],
+        "formatted": "46-233 Bogdańczowice, Polska",
+        "housenumber": "",
+        "street": "",
+        "city": "Bogdańczowice",
+        "postcode": "46-233",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": null,
+          "building": null
+        }
+      }
+    },
+    {
+      "addressId": "ADR-48129c2deb52",
+      "status": "REVIEW_REQUIRED",
+      "coordinates": null,
+      "reasons": [
+        "BUILDING_MISMATCH",
+        "CITY_MISMATCH",
+        "BUILDING_CONFIDENCE"
+      ],
+      "candidate": {
+        "coordinates": [
+          18.211860398319757,
+          51.11117529577393
+        ],
+        "formatted": "46-220 Byczyna, Polska",
+        "housenumber": "",
+        "street": "",
+        "city": "Byczyna",
+        "postcode": "46-220",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": null,
+          "building": null
+        }
+      }
+    },
+    {
+      "addressId": "ADR-4463950bb22f",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        18.2600977,
+        50.6738501
+      ],
+      "reasons": [],
+      "candidate": {
+        "coordinates": [
+          18.2600977,
+          50.6738501
+        ],
+        "formatted": "Rzeczna 10, 46-040 Krasiejów, Polska",
+        "housenumber": "10",
+        "street": "Rzeczna",
+        "city": "Krasiejów",
+        "postcode": "46-040",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "building": 1.0
+        }
+      }
+    },
+    {
+      "addressId": "ADR-fd10dcc27dfe",
+      "status": "REVIEW_REQUIRED",
+      "coordinates": null,
+      "reasons": [
+        "BUILDING_MISMATCH"
+      ],
+      "candidate": {
+        "coordinates": [
+          18.556167,
+          50.8534824
+        ],
+        "formatted": "Kolonia Kuźnica Borecka 27, 46-300 Borki Wielkie, Polska",
+        "housenumber": "27",
+        "street": "Kolonia Kuźnica Borecka",
+        "city": "Borki Wielkie",
+        "postcode": "46-300",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 0.95,
+          "city": 1.0,
+          "street": 1.0,
+          "building": 0.95
+        }
+      }
+    },
+    {
+      "addressId": "ADR-aa9a12e31e3d",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        18.258541,
+        50.613129
+      ],
+      "reasons": [],
+      "candidate": {
+        "coordinates": [
+          18.258541,
+          50.613129
+        ],
+        "formatted": "Krótka 17, 47-175 Kadłub, Polska",
+        "housenumber": "17",
+        "street": "Krótka",
+        "city": "Kadłub",
+        "postcode": "47-175",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "building": 1.0
+        }
+      }
+    },
+    {
+      "addressId": "ADR-b9c38e48d701",
+      "status": "REVIEW_REQUIRED",
+      "coordinates": null,
+      "reasons": [
+        "STREET_MISMATCH",
+        "LOW_CONFIDENCE",
+        "BUILDING_CONFIDENCE",
+        "STREET_CONFIDENCE"
+      ],
+      "candidate": {
+        "coordinates": [
+          17.8116986,
+          50.7933909
+        ],
+        "formatted": "Elizy Orzeszkowej 4, 46-080 Chróścice, Polska",
+        "housenumber": "4",
+        "street": "Elizy Orzeszkowej",
+        "city": "Chróścice",
+        "postcode": "46-080",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 0.9,
+          "city": 1.0,
+          "street": 0.9,
+          "building": 0.9
+        }
+      }
+    },
+    {
+      "addressId": "ADR-5f9cbddc0eae",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        17.680821,
+        50.75535
+      ],
+      "reasons": [],
+      "candidate": {
+        "coordinates": [
+          17.680821,
+          50.75535
+        ],
+        "formatted": "Jakuba Kani 5, 49-345 Skorogoszcz, Polska",
+        "housenumber": "5",
+        "street": "Jakuba Kani",
+        "city": "Skorogoszcz",
+        "postcode": "49-345",
+        "country_code": "pl",
+        "attribution": "© OpenAddresses contributors",
+        "attribution_license": "BSD-3-Clause License",
+        "attribution_url": "",
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "building": 1.0
+        }
+      }
+    },
+    {
+      "addressId": "ADR-4c610142b186",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        18.0788373,
+        50.5837532
+      ],
+      "reasons": [],
+      "candidate": {
+        "coordinates": [
+          18.0788373,
+          50.5837532
+        ],
+        "formatted": "Osiedle Zakładowe 1A, 46-050 Tarnów Opolski, Polska",
+        "housenumber": "1A",
+        "street": "Osiedle Zakładowe",
+        "city": "Tarnów Opolski",
+        "postcode": "46-050",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "building": 1.0
+        }
+      }
+    },
+    {
+      "addressId": "ADR-bb106d3e6064",
+      "status": "REVIEW_REQUIRED",
+      "coordinates": null,
+      "reasons": [
+        "BUILDING_MISMATCH"
+      ],
+      "candidate": {
+        "coordinates": [
+          17.9260889,
+          50.807675
+        ],
+        "formatted": "Stawowa 1, 46-024 Brynica, Polska",
+        "housenumber": "1",
+        "street": "Stawowa",
+        "city": "Brynica",
+        "postcode": "46-024",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 0.95,
+          "city": 1.0,
+          "street": 1.0,
+          "building": 0.95
+        }
+      }
+    },
+    {
+      "addressId": "ADR-9c486e22acf1",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        18.4615516,
+        50.7708194
+      ],
+      "reasons": [],
+      "candidate": {
+        "coordinates": [
+          18.4615516,
+          50.7708194
+        ],
+        "formatted": "Wolna 1, 46-380 Rzędowice, Polska",
+        "housenumber": "1",
+        "street": "Wolna",
+        "city": "Rzędowice",
+        "postcode": "46-380",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "building": 1.0
+        }
+      }
+    },
+    {
+      "addressId": "ADR-a70e01bb2d22",
+      "status": "REVIEW_REQUIRED",
+      "coordinates": null,
+      "reasons": [
+        "BUILDING_MISMATCH",
+        "CITY_MISMATCH",
+        "BUILDING_CONFIDENCE"
+      ],
+      "candidate": {
+        "coordinates": [
+          17.39850786090566,
+          51.20663919198113
+        ],
+        "formatted": "56-400 Oleśnica, Polska",
+        "housenumber": "",
+        "street": "",
+        "city": "Oleśnica",
+        "postcode": "56-400",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": null,
+          "building": null
+        }
+      }
+    },
+    {
+      "addressId": "ADR-136c7adc89e1",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        17.8534663,
+        50.7640535
+      ],
+      "reasons": [],
+      "candidate": {
+        "coordinates": [
+          17.8534663,
+          50.7640535
+        ],
+        "formatted": "Osiedle Energetyk 4A, 46-081 Dobrzeń Wielki, Polska",
+        "housenumber": "4A",
+        "street": "Osiedle Energetyk",
+        "city": "Dobrzeń Wielki",
+        "postcode": "46-081",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "building": 1.0
+        }
+      }
+    },
+    {
+      "addressId": "ADR-446013bf569a",
+      "status": "REVIEW_REQUIRED",
+      "coordinates": null,
+      "reasons": [
+        "STREET_MISMATCH",
+        "LOW_CONFIDENCE",
+        "BUILDING_CONFIDENCE",
+        "STREET_CONFIDENCE"
+      ],
+      "candidate": {
+        "coordinates": [
+          18.0753706,
+          50.7359081
+        ],
+        "formatted": "Tadeusza Kościuszki 12, 46-045 Turawa, Polska",
+        "housenumber": "12",
+        "street": "Tadeusza Kościuszki",
+        "city": "Turawa",
+        "postcode": "46-045",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 0.9,
+          "city": 1.0,
+          "street": 0.9,
+          "building": 0.9
+        }
+      }
+    },
+    {
+      "addressId": "ADR-50742c1f67d1",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        18.62377,
+        50.880469
+      ],
+      "reasons": [],
+      "candidate": {
+        "coordinates": [
+          18.62377,
+          50.880469
+        ],
+        "formatted": "Kiki 27, 46-312 Kucoby, Polska",
+        "housenumber": "27",
+        "street": "Kiki",
+        "city": "Kucoby",
+        "postcode": "46-312",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "building": 1.0
+        }
+      }
+    },
+    {
+      "addressId": "ADR-521bfadcde57",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        17.3802804,
+        51.1791025
+      ],
+      "reasons": [],
+      "candidate": {
+        "coordinates": [
+          17.3802804,
+          51.1791025
+        ],
+        "formatted": "Jesienna 3, 56-400 Bystre, Polska",
+        "housenumber": "3",
+        "street": "Jesienna",
+        "city": "Bystre",
+        "postcode": "56-400",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "building": 1.0
+        }
+      }
+    },
+    {
+      "addressId": "ADR-5a1ce601cd0a",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        18.7744829,
+        50.1723571
+      ],
+      "reasons": [],
+      "candidate": {
+        "coordinates": [
+          18.7744829,
+          50.1723571
+        ],
+        "formatted": "Akacjowa 20, 43-178 Ornontowice, Polska",
+        "housenumber": "20",
+        "street": "Akacjowa",
+        "city": "Ornontowice",
+        "postcode": "43-178",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "building": 1.0
+        }
+      }
+    },
+    {
+      "addressId": "ADR-b4e597ab15b5",
+      "status": "REVIEW_REQUIRED",
+      "coordinates": null,
+      "reasons": [
+        "BUILDING_MISMATCH",
+        "POSTCODE_MISMATCH",
+        "BUILDING_CONFIDENCE"
+      ],
+      "candidate": {
+        "coordinates": [
+          18.6159693,
+          51.9161774
+        ],
+        "formatted": "Dobra, powiat turecki, Polska",
+        "housenumber": "",
+        "street": "",
+        "city": "Dobra",
+        "postcode": "",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": null,
+          "building": null
+        }
+      }
+    },
+    {
+      "addressId": "ADR-6708b35973c8",
+      "status": "REVIEW_REQUIRED",
+      "coordinates": null,
+      "reasons": [
+        "BUILDING_MISMATCH",
+        "CITY_MISMATCH",
+        "BUILDING_CONFIDENCE"
+      ],
+      "candidate": {
+        "coordinates": [
+          18.402686667860422,
+          51.02869386726354
+        ],
+        "formatted": "46-310 Gorzów Śląski, Polska",
+        "housenumber": "",
+        "street": "",
+        "city": "Gorzów Śląski",
+        "postcode": "46-310",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": null,
+          "building": null
+        }
+      }
+    },
+    {
+      "addressId": "ADR-f79ff100cc6d",
+      "status": "REVIEW_REQUIRED",
+      "coordinates": null,
+      "reasons": [
+        "BUILDING_MISMATCH",
+        "BUILDING_CONFIDENCE"
+      ],
+      "candidate": {
+        "coordinates": [
+          18.0158609,
+          50.9715768
+        ],
+        "formatted": "46-250 Szum, Polska",
+        "housenumber": "",
+        "street": "",
+        "city": "Szum",
+        "postcode": "46-250",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": null,
+          "building": null
+        }
+      }
+    },
+    {
+      "addressId": "ADR-b62928e7d05c",
+      "status": "REVIEW_REQUIRED",
+      "coordinates": null,
+      "reasons": [
+        "BUILDING_MISMATCH",
+        "CITY_MISMATCH",
+        "BUILDING_CONFIDENCE"
+      ],
+      "candidate": {
+        "coordinates": [
+          17.39850786090566,
+          51.20663919198113
+        ],
+        "formatted": "56-400 Oleśnica, Polska",
+        "housenumber": "",
+        "street": "",
+        "city": "Oleśnica",
+        "postcode": "56-400",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": null,
+          "building": null
+        }
+      }
+    },
+    {
+      "addressId": "ADR-5b0cbf345d7b",
+      "status": "REVIEW_REQUIRED",
+      "coordinates": null,
+      "reasons": [
+        "BUILDING_MISMATCH",
+        "BUILDING_CONFIDENCE"
+      ],
+      "candidate": {
+        "coordinates": [
+          17.5152802,
+          51.2263302
+        ],
+        "formatted": "Poniatowice-Kolonia, 56-400 Poniatowice, Polska",
+        "housenumber": "",
+        "street": "",
+        "city": "Poniatowice",
+        "postcode": "56-400",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": null,
+          "building": null
+        }
+      }
+    },
+    {
+      "addressId": "ADR-3b5677afde3d",
+      "status": "REVIEW_REQUIRED",
+      "coordinates": null,
+      "reasons": [
+        "BUILDING_MISMATCH",
+        "CITY_MISMATCH",
+        "POSTCODE_MISMATCH",
+        "LOW_CONFIDENCE",
+        "CITY_CONFIDENCE"
+      ],
+      "candidate": {
+        "coordinates": [
+          18.42266,
+          50.017953
+        ],
+        "formatted": "Smolna 56, 44-300 Wodzisław Śląski, Polska",
+        "housenumber": "56",
+        "street": "Smolna",
+        "city": "Wodzisław Śląski",
+        "postcode": "44-300",
+        "country_code": "pl",
+        "attribution": "© OpenAddresses contributors",
+        "attribution_license": "BSD-3-Clause License",
+        "attribution_url": "",
+        "confidence": {
+          "overall": 0.8636363636363636,
+          "city": null,
+          "street": 1.0,
+          "building": 1.0
+        }
+      }
+    },
+    {
+      "addressId": "ADR-2d1bb8bb481a",
+      "status": "REVIEW_REQUIRED",
+      "coordinates": null,
+      "reasons": [
+        "BUILDING_MISMATCH",
+        "CITY_MISMATCH",
+        "BUILDING_CONFIDENCE"
+      ],
+      "candidate": {
+        "coordinates": [
+          17.39850786090566,
+          51.20663919198113
+        ],
+        "formatted": "56-400 Oleśnica, Polska",
+        "housenumber": "",
+        "street": "",
+        "city": "Oleśnica",
+        "postcode": "56-400",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": null,
+          "building": null
+        }
+      }
+    },
+    {
+      "addressId": "ADR-53795164e29a",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        17.3880472,
+        50.7031525
+      ],
+      "reasons": [],
+      "candidate": {
+        "coordinates": [
+          17.3880472,
+          50.7031525
+        ],
+        "formatted": "Wiejska 9, 49-200 Grodków, Polska",
+        "housenumber": "9",
+        "street": "Wiejska",
+        "city": "Grodków",
+        "postcode": "49-200",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "building": 1.0
+        }
+      }
+    },
+    {
+      "addressId": "ADR-964a172bae21",
+      "status": "REVIEW_REQUIRED",
+      "coordinates": null,
+      "reasons": [
+        "BUILDING_MISMATCH",
+        "BUILDING_CONFIDENCE"
+      ],
+      "candidate": {
+        "coordinates": [
+          18.600726,
+          50.1359414
+        ],
+        "formatted": "Arki Bożka, 44-213 Rybnik, Polska",
+        "housenumber": "",
+        "street": "Arki Bożka",
+        "city": "Rybnik",
+        "postcode": "44-213",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "building": null
+        }
+      }
+    },
+    {
+      "addressId": "ADR-8dc52d15f26f",
+      "status": "REVIEW_REQUIRED",
+      "coordinates": null,
+      "reasons": [
+        "BUILDING_MISMATCH",
+        "POSTCODE_MISMATCH",
+        "BUILDING_CONFIDENCE"
+      ],
+      "candidate": {
+        "coordinates": [
+          20.0822937,
+          50.8826866
+        ],
+        "formatted": "Sułków, powiat włoszczowski, Polska",
+        "housenumber": "",
+        "street": "",
+        "city": "Sułków",
+        "postcode": "",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": null,
+          "building": null
+        }
+      }
+    },
+    {
+      "addressId": "ADR-4e34a76c7964",
+      "status": "REVIEW_REQUIRED",
+      "coordinates": null,
+      "reasons": [
+        "BUILDING_MISMATCH",
+        "BUILDING_CONFIDENCE"
+      ],
+      "candidate": {
+        "coordinates": [
+          18.2853277,
+          51.0324633
+        ],
+        "formatted": "46-211 Maciejów, Polska",
+        "housenumber": "",
+        "street": "",
+        "city": "Maciejów",
+        "postcode": "46-211",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": null,
+          "building": null
+        }
+      }
+    },
+    {
+      "addressId": "ADR-93becc20000b",
+      "status": "REVIEW_REQUIRED",
+      "coordinates": null,
+      "reasons": [
+        "BUILDING_MISMATCH",
+        "CITY_MISMATCH",
+        "BUILDING_CONFIDENCE"
+      ],
+      "candidate": {
+        "coordinates": [
+          17.671756239367312,
+          50.142263742706504
+        ],
+        "formatted": "48-155 Radynia, Polska",
+        "housenumber": "",
+        "street": "",
+        "city": "Radynia",
+        "postcode": "48-155",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": null,
+          "building": null
+        }
+      }
+    },
+    {
+      "addressId": "ADR-a1289045ff5b",
+      "status": "REVIEW_REQUIRED",
+      "coordinates": null,
+      "reasons": [
+        "BUILDING_MISMATCH",
+        "CITY_MISMATCH",
+        "BUILDING_CONFIDENCE"
+      ],
+      "candidate": {
+        "coordinates": [
+          17.608609739917455,
+          50.74960730053066
+        ],
+        "formatted": "49-340 Lewin Brzeski, Polska",
+        "housenumber": "",
+        "street": "",
+        "city": "Lewin Brzeski",
+        "postcode": "49-340",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": null,
+          "building": null
+        }
+      }
+    },
+    {
+      "addressId": "ADR-922205fd7122",
+      "status": "REVIEW_REQUIRED",
+      "coordinates": null,
+      "reasons": [
+        "BUILDING_MISMATCH"
+      ],
+      "candidate": {
+        "coordinates": [
+          17.7669197,
+          50.8256983
+        ],
+        "formatted": "Klapacz 127, 46-083 Stare Siołkowice, Polska",
+        "housenumber": "127",
+        "street": "Klapacz",
+        "city": "Stare Siołkowice",
+        "postcode": "46-083",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 0.95,
+          "city": 1.0,
+          "street": 1.0,
+          "building": 0.95
+        }
+      }
+    },
+    {
+      "addressId": "ADR-837d37a78a3d",
+      "status": "REVIEW_REQUIRED",
+      "coordinates": null,
+      "reasons": [
+        "BUILDING_MISMATCH",
+        "CITY_MISMATCH",
+        "BUILDING_CONFIDENCE"
+      ],
+      "candidate": {
+        "coordinates": [
+          17.39850786090566,
+          51.20663919198113
+        ],
+        "formatted": "56-400 Oleśnica, Polska",
+        "housenumber": "",
+        "street": "",
+        "city": "Oleśnica",
+        "postcode": "56-400",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": null,
+          "building": null
+        }
+      }
+    },
+    {
+      "addressId": "ADR-7b82172961a6",
+      "status": "REVIEW_REQUIRED",
+      "coordinates": null,
+      "reasons": [
+        "BUILDING_MISMATCH",
+        "BUILDING_CONFIDENCE"
+      ],
+      "candidate": {
+        "coordinates": [
+          18.2853146,
+          50.8621175
+        ],
+        "formatted": "46-275 Chudoba, Polska",
+        "housenumber": "",
+        "street": "",
+        "city": "Chudoba",
+        "postcode": "46-275",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": null,
+          "building": null
+        }
+      }
+    },
+    {
+      "addressId": "ADR-0dc8296b8707",
+      "status": "REVIEW_REQUIRED",
+      "coordinates": null,
+      "reasons": [
+        "BUILDING_MISMATCH",
+        "CITY_MISMATCH",
+        "BUILDING_CONFIDENCE"
+      ],
+      "candidate": {
+        "coordinates": [
+          17.39850786090566,
+          51.20663919198113
+        ],
+        "formatted": "56-400 Oleśnica, Polska",
+        "housenumber": "",
+        "street": "",
+        "city": "Oleśnica",
+        "postcode": "56-400",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": null,
+          "building": null
+        }
+      }
+    },
+    {
+      "addressId": "ADR-d4a1a941dabe",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        18.620826,
+        50.880753
+      ],
+      "reasons": [],
+      "candidate": {
+        "coordinates": [
+          18.620826,
+          50.880753
+        ],
+        "formatted": "Leśna 14, 46-312 Kucoby, Polska",
+        "housenumber": "14",
+        "street": "Leśna",
+        "city": "Kucoby",
+        "postcode": "46-312",
+        "country_code": "pl",
+        "attribution": "© OpenAddresses contributors",
+        "attribution_license": "BSD-3-Clause License",
+        "attribution_url": "",
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "building": 1.0
+        }
+      }
+    },
+    {
+      "addressId": "ADR-dcfc7ae98fa7",
+      "status": "REVIEW_REQUIRED",
+      "coordinates": null,
+      "reasons": [
+        "BUILDING_MISMATCH",
+        "CITY_MISMATCH",
+        "BUILDING_CONFIDENCE"
+      ],
+      "candidate": {
+        "coordinates": [
+          17.61796371576205,
+          50.63663725206253
+        ],
+        "formatted": "49-100 Niemodlin, Polska",
+        "housenumber": "",
+        "street": "",
+        "city": "Niemodlin",
+        "postcode": "49-100",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": null,
+          "building": null
+        }
+      }
+    },
+    {
+      "addressId": "ADR-9c6fac72133e",
+      "status": "REVIEW_REQUIRED",
+      "coordinates": null,
+      "reasons": [
+        "BUILDING_MISMATCH",
+        "CITY_MISMATCH",
+        "BUILDING_CONFIDENCE"
+      ],
+      "candidate": {
+        "coordinates": [
+          17.39850786090566,
+          51.20663919198113
+        ],
+        "formatted": "56-400 Oleśnica, Polska",
+        "housenumber": "",
+        "street": "",
+        "city": "Oleśnica",
+        "postcode": "56-400",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": null,
+          "building": null
+        }
+      }
+    },
+    {
+      "addressId": "ADR-913c884174bc",
+      "status": "REVIEW_REQUIRED",
+      "coordinates": null,
+      "reasons": [
+        "BUILDING_MISMATCH",
+        "CITY_MISMATCH",
+        "BUILDING_CONFIDENCE"
+      ],
+      "candidate": {
+        "coordinates": [
+          17.39850786090566,
+          51.20663919198113
+        ],
+        "formatted": "56-400 Oleśnica, Polska",
+        "housenumber": "",
+        "street": "",
+        "city": "Oleśnica",
+        "postcode": "56-400",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": null,
+          "building": null
+        }
+      }
+    },
+    {
+      "addressId": "ADR-0e83bfe3b79a",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        18.5879109,
+        50.1382234
+      ],
+      "reasons": [],
+      "candidate": {
+        "coordinates": [
+          18.5879109,
+          50.1382234
+        ],
+        "formatted": "Jodłowa 68, 44-213 Rybnik, Polska",
+        "housenumber": "68",
+        "street": "Jodłowa",
+        "city": "Rybnik",
+        "postcode": "44-213",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "building": 1.0
+        }
+      }
+    },
+    {
+      "addressId": "ADR-8e2e3b30b3ef",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        18.3587035,
+        50.7015322
+      ],
+      "reasons": [],
+      "candidate": {
+        "coordinates": [
+          18.3587035,
+          50.7015322
+        ],
+        "formatted": "Parkingowa 6, 46-380 Myślina, Polska",
+        "housenumber": "6",
+        "street": "Parkingowa",
+        "city": "Myślina",
+        "postcode": "46-380",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "building": 1.0
+        }
+      }
+    },
+    {
+      "addressId": "ADR-135c349d85bd",
+      "status": "REVIEW_REQUIRED",
+      "coordinates": null,
+      "reasons": [
+        "STREET_MISMATCH",
+        "LOW_CONFIDENCE",
+        "BUILDING_CONFIDENCE",
+        "STREET_CONFIDENCE"
+      ],
+      "candidate": {
+        "coordinates": [
+          18.4831816,
+          50.6031458
+        ],
+        "formatted": "Karola Miarki 7, 47-120 Zawadzkie, Polska",
+        "housenumber": "7",
+        "street": "Karola Miarki",
+        "city": "Zawadzkie",
+        "postcode": "47-120",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 0.9,
+          "city": 1.0,
+          "street": 0.9,
+          "building": 0.9
+        }
+      }
+    },
+    {
+      "addressId": "ADR-6f85506673c1",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        17.8515812,
+        50.7644042
+      ],
+      "reasons": [],
+      "candidate": {
+        "coordinates": [
+          17.8515812,
+          50.7644042
+        ],
+        "formatted": "Osiedle Energetyk 9A, 46-081 Dobrzeń Wielki, Polska",
+        "housenumber": "9A",
+        "street": "Osiedle Energetyk",
+        "city": "Dobrzeń Wielki",
+        "postcode": "46-081",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "building": 1.0
+        }
+      }
+    },
+    {
+      "addressId": "ADR-e52b281ee3fd",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        18.0512504,
+        51.0117692
+      ],
+      "reasons": [],
+      "candidate": {
+        "coordinates": [
+          18.0512504,
+          51.0117692
+        ],
+        "formatted": "Opolska 1, 46-250 Gierałcice, Polska",
+        "housenumber": "1",
+        "street": "Opolska",
+        "city": "Gierałcice",
+        "postcode": "46-250",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "building": 1.0
+        }
+      }
+    },
+    {
+      "addressId": "ADR-ab67b8fcb48f",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        18.6168689,
+        50.8767798
+      ],
+      "reasons": [],
+      "candidate": {
+        "coordinates": [
+          18.6168689,
+          50.8767798
+        ],
+        "formatted": "Borecka 6, 46-312 Kucoby, Polska",
+        "housenumber": "6",
+        "street": "Borecka",
+        "city": "Kucoby",
+        "postcode": "46-312",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "building": 1.0
+        }
+      }
+    },
+    {
+      "addressId": "ADR-f8ee8404b91c",
+      "status": "REVIEW_REQUIRED",
+      "coordinates": null,
+      "reasons": [
+        "BUILDING_MISMATCH"
+      ],
+      "candidate": {
+        "coordinates": [
+          18.0646759,
+          50.7273878
+        ],
+        "formatted": "Polna 23, 46-045 Kotórz Wielki, Polska",
+        "housenumber": "23",
+        "street": "Polna",
+        "city": "Kotórz Wielki",
+        "postcode": "46-045",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 0.95,
+          "city": 1.0,
+          "street": 1.0,
+          "building": 0.95
+        }
+      }
+    },
+    {
+      "addressId": "ADR-eb89d8745132",
+      "status": "REVIEW_REQUIRED",
+      "coordinates": null,
+      "reasons": [
+        "BUILDING_MISMATCH"
+      ],
+      "candidate": {
+        "coordinates": [
+          18.4855373,
+          50.8783483
+        ],
+        "formatted": "Oleska 2, 46-300 Borki Małe, Polska",
+        "housenumber": "2",
+        "street": "Oleska",
+        "city": "Borki Małe",
+        "postcode": "46-300",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 0.95,
+          "city": 1.0,
+          "street": 1.0,
+          "building": 0.95
+        }
+      }
+    },
+    {
+      "addressId": "ADR-f59d0622e00c",
+      "status": "REVIEW_REQUIRED",
+      "coordinates": null,
+      "reasons": [
+        "BUILDING_MISMATCH",
+        "POSTCODE_MISMATCH",
+        "BUILDING_CONFIDENCE"
+      ],
+      "candidate": {
+        "coordinates": [
+          17.3053399,
+          51.1506804
+        ],
+        "formatted": "Piszkawa, powiat oleśnicki, Polska",
+        "housenumber": "",
+        "street": "",
+        "city": "Piszkawa",
+        "postcode": "",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": null,
+          "building": null
+        }
+      }
+    },
+    {
+      "addressId": "ADR-174f4f0202e3",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        18.7430479,
+        50.2274753
+      ],
+      "reasons": [],
+      "candidate": {
+        "coordinates": [
+          18.7430479,
+          50.2274753
+        ],
+        "formatted": "Bażantów 13, 44-178 Przyszowice, Polska",
+        "housenumber": "13",
+        "street": "Bażantów",
+        "city": "Przyszowice",
+        "postcode": "44-178",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "building": 1.0
+        }
+      }
+    },
+    {
+      "addressId": "ADR-d64c5f551f6a",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        17.87387,
+        50.652564
+      ],
+      "reasons": [],
+      "candidate": {
+        "coordinates": [
+          17.87387,
+          50.652564
+        ],
+        "formatted": "Łączna 10, 45-940 Opole, Polska",
+        "housenumber": "10",
+        "street": "Łączna",
+        "city": "Opole",
+        "postcode": "45-940",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "building": 1.0
+        }
+      }
+    },
+    {
+      "addressId": "ADR-765606dd6eff",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        18.613398,
+        50.154984
+      ],
+      "reasons": [],
+      "candidate": {
+        "coordinates": [
+          18.613398,
+          50.154984
+        ],
+        "formatted": "Powstańców 64, 44-213 Książenice, Polska",
+        "housenumber": "64",
+        "street": "Powstańców",
+        "city": "Książenice",
+        "postcode": "44-213",
+        "country_code": "pl",
+        "attribution": "© OpenAddresses contributors",
+        "attribution_license": "BSD-3-Clause License",
+        "attribution_url": "",
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "building": 1.0
+        }
+      }
+    },
+    {
+      "addressId": "ADR-57f5c06f6daa",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        18.14066,
+        50.73903
+      ],
+      "reasons": [],
+      "candidate": {
+        "coordinates": [
+          18.14066,
+          50.73903
+        ],
+        "formatted": "Jagodowa 1, 46-045 Turawa, Polska",
+        "housenumber": "1",
+        "street": "Jagodowa",
+        "city": "Turawa",
+        "postcode": "46-045",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "building": 1.0
+        }
+      }
+    },
+    {
+      "addressId": "ADR-ba727cca6275",
+      "status": "REVIEW_REQUIRED",
+      "coordinates": null,
+      "reasons": [
+        "BUILDING_MISMATCH",
+        "CITY_MISMATCH",
+        "LOW_CONFIDENCE",
+        "CITY_CONFIDENCE"
+      ],
+      "candidate": {
+        "coordinates": [
+          18.5048382,
+          50.9772092
+        ],
+        "formatted": "Kościeliska 46, 46-324 gmina Radłów, Polska",
+        "housenumber": "46",
+        "street": "Kościeliska",
+        "city": "gmina Radłów",
+        "postcode": "46-324",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 0.8888888888888888,
+          "city": null,
+          "street": 1.0,
+          "building": 1.0
+        }
+      }
+    },
+    {
+      "addressId": "ADR-2d1cb38620fa",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        18.1384899,
+        50.9732201
+      ],
+      "reasons": [],
+      "candidate": {
+        "coordinates": [
+          18.1384899,
+          50.9732201
+        ],
+        "formatted": "Wiejska 43, 46-243 Bogacica, Polska",
+        "housenumber": "43",
+        "street": "Wiejska",
+        "city": "Bogacica",
+        "postcode": "46-243",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "building": 1.0
+        }
+      }
+    },
+    {
+      "addressId": "ADR-44c784791f2a",
+      "status": "REVIEW_REQUIRED",
+      "coordinates": null,
+      "reasons": [
+        "BUILDING_MISMATCH",
+        "CITY_MISMATCH",
+        "BUILDING_CONFIDENCE"
+      ],
+      "candidate": {
+        "coordinates": [
+          17.33464217559475,
+          51.2779968707137
+        ],
+        "formatted": "56-410 Strzelce, Polska",
+        "housenumber": "",
+        "street": "",
+        "city": "Strzelce",
+        "postcode": "56-410",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": null,
+          "building": null
+        }
+      }
+    },
+    {
+      "addressId": "ADR-6414369a5f71",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        17.9712199,
+        50.5199406
+      ],
+      "reasons": [],
+      "candidate": {
+        "coordinates": [
+          17.9712199,
+          50.5199406
+        ],
+        "formatted": "Sosnowa 7, 47-316 Malnia, Polska",
+        "housenumber": "7",
+        "street": "Sosnowa",
+        "city": "Malnia",
+        "postcode": "47-316",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "building": 1.0
+        }
+      }
+    },
+    {
+      "addressId": "ADR-76359d7b8e90",
+      "status": "REVIEW_REQUIRED",
+      "coordinates": null,
+      "reasons": [
+        "BUILDING_MISMATCH",
+        "POSTCODE_MISMATCH",
+        "BUILDING_CONFIDENCE"
+      ],
+      "candidate": {
+        "coordinates": [
+          18.528251,
+          51.1118029
+        ],
+        "formatted": "Sołtysy, powiat oleski, Polska",
+        "housenumber": "",
+        "street": "",
+        "city": "Sołtysy",
+        "postcode": "",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": null,
+          "building": null
+        }
+      }
+    },
+    {
+      "addressId": "ADR-c0d8f3ba8093",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        18.0899225,
+        50.5761762
+      ],
+      "reasons": [],
+      "candidate": {
+        "coordinates": [
+          18.0899225,
+          50.5761762
+        ],
+        "formatted": "Słonecznikowa 9, 46-050 Tarnów Opolski, Polska",
+        "housenumber": "9",
+        "street": "Słonecznikowa",
+        "city": "Tarnów Opolski",
+        "postcode": "46-050",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "building": 1.0
+        }
+      }
+    },
+    {
+      "addressId": "ADR-bbed70da216b",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        18.272976,
+        50.6139158
+      ],
+      "reasons": [],
+      "candidate": {
+        "coordinates": [
+          18.272976,
+          50.6139158
+        ],
+        "formatted": "Zielona 2, 47-175 Kadłub, Polska",
+        "housenumber": "2",
+        "street": "Zielona",
+        "city": "Kadłub",
+        "postcode": "47-175",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "building": 1.0
+        }
+      }
+    },
+    {
+      "addressId": "ADR-f030dc0206ef",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        17.3751195,
+        51.1816936
+      ],
+      "reasons": [],
+      "candidate": {
+        "coordinates": [
+          17.3751195,
+          51.1816936
+        ],
+        "formatted": "Wiosenna 5, 56-400 Bystre, Polska",
+        "housenumber": "5",
+        "street": "Wiosenna",
+        "city": "Bystre",
+        "postcode": "56-400",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "building": 1.0
+        }
+      }
+    },
+    {
+      "addressId": "ADR-89c990e8a99f",
+      "status": "REVIEW_REQUIRED",
+      "coordinates": null,
+      "reasons": [
+        "CITY_MISMATCH"
+      ],
+      "candidate": {
+        "coordinates": [
+          17.6587,
+          50.596646
+        ],
+        "formatted": "Opolska 24, 49-130 Tułowice, Polska",
+        "housenumber": "24",
+        "street": "Opolska",
+        "city": "Tułowice",
+        "postcode": "49-130",
+        "country_code": "pl",
+        "attribution": "© OpenAddresses contributors",
+        "attribution_license": "BSD-3-Clause License",
+        "attribution_url": "",
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "building": 1.0
+        }
+      }
+    },
+    {
+      "addressId": "ADR-1789b0d12a7d",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        18.2815349,
+        50.5072618
+      ],
+      "reasons": [],
+      "candidate": {
+        "coordinates": [
+          18.2815349,
+          50.5072618
+        ],
+        "formatted": "Władysława Łokietka 3, 47-100 Strzelce Opolskie, Polska",
+        "housenumber": "3",
+        "street": "Władysława Łokietka",
+        "city": "Strzelce Opolskie",
+        "postcode": "47-100",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "building": 1.0
+        }
+      }
+    },
+    {
+      "addressId": "ADR-d72da86d5142",
+      "status": "REVIEW_REQUIRED",
+      "coordinates": null,
+      "reasons": [
+        "BUILDING_MISMATCH",
+        "BUILDING_CONFIDENCE"
+      ],
+      "candidate": {
+        "coordinates": [
+          17.4005162,
+          51.2707488
+        ],
+        "formatted": "56-410 Miodary, Polska",
+        "housenumber": "",
+        "street": "",
+        "city": "Miodary",
+        "postcode": "56-410",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": null,
+          "building": null
+        }
+      }
+    },
+    {
+      "addressId": "ADR-5982c55aa125",
+      "status": "REVIEW_REQUIRED",
+      "coordinates": null,
+      "reasons": [
+        "BUILDING_MISMATCH"
+      ],
+      "candidate": {
+        "coordinates": [
+          18.1611095,
+          50.2994138
+        ],
+        "formatted": "Główna 8, 47-208 Dębowa, Polska",
+        "housenumber": "8",
+        "street": "Główna",
+        "city": "Dębowa",
+        "postcode": "47-208",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 0.95,
+          "city": 1.0,
+          "street": 1.0,
+          "building": 0.95
+        }
+      }
+    },
+    {
+      "addressId": "ADR-16acd0372783",
+      "status": "REVIEW_REQUIRED",
+      "coordinates": null,
+      "reasons": [
+        "BUILDING_MISMATCH",
+        "BUILDING_CONFIDENCE"
+      ],
+      "candidate": {
+        "coordinates": [
+          18.7960309,
+          50.2308617
+        ],
+        "formatted": "Gliwicka, 44-177 Paniówki, Polska",
+        "housenumber": "",
+        "street": "Gliwicka",
+        "city": "Paniówki",
+        "postcode": "44-177",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "building": null
+        }
+      }
+    },
+    {
+      "addressId": "ADR-9e92ded0a6ae",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        17.7867169,
+        50.7748461
+      ],
+      "reasons": [],
+      "candidate": {
+        "coordinates": [
+          17.7867169,
+          50.7748461
+        ],
+        "formatted": "Babilas 30, 46-080 Chróścice, Polska",
+        "housenumber": "30",
+        "street": "Babilas",
+        "city": "Chróścice",
+        "postcode": "46-080",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "building": 1.0
+        }
+      }
+    },
+    {
+      "addressId": "ADR-bd29343c65c5",
+      "status": "MATCHED_BUILDING",
+      "coordinates": [
+        18.2895137,
+        50.5101136
+      ],
+      "reasons": [],
+      "candidate": {
+        "coordinates": [
+          18.2895137,
+          50.5101136
+        ],
+        "formatted": "Kardynała Stefana Wyszyńskiego 7, 47-100 Strzelce Opolskie, Polska",
+        "housenumber": "7",
+        "street": "Kardynała Stefana Wyszyńskiego",
+        "city": "Strzelce Opolskie",
+        "postcode": "47-100",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "building": 1.0
+        }
+      }
+    },
+    {
+      "addressId": "ADR-7b90c7c83a16",
+      "status": "REVIEW_REQUIRED",
+      "coordinates": null,
+      "reasons": [
+        "BUILDING_MISMATCH"
+      ],
+      "candidate": {
+        "coordinates": [
+          17.7222038,
+          51.08415
+        ],
+        "formatted": "Kazimierza Pułaskiego 18a, 46-100 Namysłów, Polska",
+        "housenumber": "18a",
+        "street": "Kazimierza Pułaskiego",
+        "city": "Namysłów",
+        "postcode": "46-100",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 0.95,
+          "city": 1.0,
+          "street": 1.0,
+          "building": 0.95
+        }
+      }
+    },
+    {
+      "addressId": "ADR-9a4a76747c55",
+      "status": "REVIEW_REQUIRED",
+      "coordinates": null,
+      "reasons": [
+        "BUILDING_MISMATCH",
+        "BUILDING_CONFIDENCE"
+      ],
+      "candidate": {
+        "coordinates": [
+          18.322688,
+          50.7742885
+        ],
+        "formatted": "Leśna, 46-048 Zębowice, Polska",
+        "housenumber": "",
+        "street": "Leśna",
+        "city": "Zębowice",
+        "postcode": "46-048",
+        "country_code": "pl",
+        "attribution": "© OpenStreetMap contributors",
+        "attribution_license": "Open Database License",
+        "attribution_url": "https://www.openstreetmap.org/copyright",
+        "confidence": {
+          "overall": 1.0,
+          "city": 1.0,
+          "street": 1.0,
+          "building": null
+        }
+      }
+    }
+  ]
+}
