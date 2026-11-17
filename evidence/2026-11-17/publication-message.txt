@@ -1,0 +1,4 @@
+docs: record independently verified GitHub publication
+
+Record remote commit/tree and file verification, close the publication step,
+and preserve the implementation commit identity for the Aion UI handoff.

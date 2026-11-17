@@ -41,6 +41,12 @@ Użytkownik wskazał `https://github.com/multiplay-pages/mms-planowanie.git`. Ko
 
 Przygotowano `docs/HISTORIA-PRAC.md`, `ARCHITEKTURA.md`, `DECYZJE-I-ZAKRES.md`, `URUCHOMIENIE-I-TESTY.md`, `PRZEKAZANIE-AION-UI.md`, oryginalny brief, indeks, główny README i `CLAUDE.md`. Uporządkowano wejścia dla obu agentów. Publiczne duże wejścia zapisano w bezstratnych archiwach z manifestem; cache PBF i obliczeń oraz zależności nie są publikowane jako pliki źródłowe. Faktyczny commit/potwierdzenie zdalnego zapisu jest rejestrowany osobno po wykonaniu push; sam etap przygotowania nie jest dowodem publikacji.
 
+### Potwierdzona publikacja — 17.11.2026
+
+Pełny projekt wysłano do publicznego `multiplay-pages/mms-planowanie`, gałąź `main`, commit implementacji `016347792204fc13d9ea980eb6cb667b3df79dde`. Zdalny HEAD i pełne drzewo `01d159ecbea4ba604a1f7acd50461d68890c180f` porównano niezależnie przez GitHub API z zapisem lokalnym: **PASS, 123 pliki**, bez ucięcia drzewa. Potwierdzono obecność planera, danych adresowych i współrzędnych, lokalnych tras, archiwów wejść, dokumentacji i dowodów testów. [Potwierdzenie publikacji](../evidence/2026-11-17/publication.json) zawiera identyfikatory plików i rozmiary. Późniejszy commit dokumentacyjny zapisuje ten dowód; identyfikatory w nim odnoszą się do powyższego commitu implementacji.
+
+Zachowano początkowy commit repozytorium; push bez wymuszania. GitHub przyjął planer offline (66,30 MiB), zgłaszając ostrzeżenie o przekroczeniu zalecanych 50 MB; plik jest poniżej limitu 100 MiB. Nie użyto Git LFS. Nie uruchomiono Pages ani wdrożenia aplikacji. Cache pobrań PBF i obliczeń oraz zależności pozostają poza Git; bezstratne archiwa przetworzonych wejść i narzędzie odtworzenia są opublikowane.
+
 ### Pozostające granice dowodów
 
 - W tej sesji nie uruchomiono prawdziwych testów wizualnych/interakcyjnych przeglądarki — obowiązuje historyczna konkretna odmowa Browser Use i zakaz jej obejścia. DOM w pamięci i kontrola HTML nie są rendererem.

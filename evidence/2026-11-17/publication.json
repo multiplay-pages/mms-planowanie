@@ -1,0 +1,113 @@
+{
+  "description": "Independent remote verification of the implementation publication. The later documentation-only commit contains this receipt; these hashes identify the implementation commit, not the receipt commit.",
+  "repository": "multiplay-pages/mms-planowanie",
+  "branch": "main",
+  "commit": "016347792204fc13d9ea980eb6cb667b3df79dde",
+  "tree": "01d159ecbea4ba604a1f7acd50461d68890c180f",
+  "trackedFiles": 123,
+  "clean": true,
+  "verifiedUtc": "2026-11-17 12:04:54 UTC",
+  "remoteCommit": "016347792204fc13d9ea980eb6cb667b3df79dde",
+  "remoteTree": "01d159ecbea4ba604a1f7acd50461d68890c180f",
+  "remoteBlobCount": 123,
+  "publicRepository": true,
+  "forcePush": false,
+  "criticalFiles": [
+    {
+      "path": "README.md",
+      "sha": "4a17899adf189af6e7b99ba62a18e87b9c16af59",
+      "bytes": 3992
+    },
+    {
+      "path": "AGENTS.md",
+      "sha": "0f430c44fe1453031efa82202e5c3bc05a3e0282",
+      "bytes": 3559
+    },
+    {
+      "path": "CLAUDE.md",
+      "sha": "1d36a0b094ec6af0139f16c23b2b3eb01e070758",
+      "bytes": 1232
+    },
+    {
+      "path": "docs/PRZEKAZANIE-AION-UI.md",
+      "sha": "4b413de3a72a76f4e209ae528b5e0012471dd04c",
+      "bytes": 7801
+    },
+    {
+      "path": "docs/HISTORIA-PRAC.md",
+      "sha": "3a2905c9e8e9b456b88ae1b8e31bdf75eec901be",
+      "bytes": 22660
+    },
+    {
+      "path": "docs/ARCHITEKTURA.md",
+      "sha": "5c83a7b77af9b995d82561c2f0c4511467980578",
+      "bytes": 17473
+    },
+    {
+      "path": "docs/DECYZJE-I-ZAKRES.md",
+      "sha": "13fc6eba5e9994490aa32b55101fbfbebac57fa5",
+      "bytes": 5452
+    },
+    {
+      "path": "docs/URUCHOMIENIE-I-TESTY.md",
+      "sha": "0593b41e31fdb5135615c073e9cb11904513bed0",
+      "bytes": 7905
+    },
+    {
+      "path": "map05/planner-offline.html",
+      "sha": "7ab3d3cf513834e8d08da62a6488f5ecbf336612",
+      "bytes": 69521671
+    },
+    {
+      "path": "map05/data/addresses.json",
+      "sha": "133e1236c85f7e76c7f241f3728e06822ee6e066",
+      "bytes": 52818
+    },
+    {
+      "path": "map05/data/local-routes.json",
+      "sha": "873843d125e9296e7193d5e7591f1bbbef355baa",
+      "bytes": 40630912
+    },
+    {
+      "path": "map05/basemap/planner-compact.json",
+      "sha": "8c2a0e7829ece4165c4d62972b00ee0ad80e919a",
+      "bytes": 28677049
+    },
+    {
+      "path": "map05/basemap/regional-roads.json.gz",
+      "sha": "23f526a636e7ae0bf9cfe7b4af3560c99b7623eb",
+      "bytes": 33233952
+    },
+    {
+      "path": "map05/basemap/planner-data.json.gz",
+      "sha": "894c5bd6c786b4b8c44ebd3baa4311a92309b8fe",
+      "bytes": 21799522
+    },
+    {
+      "path": "dane_adresowe-v2.xlsx",
+      "sha": "f5cb0a813655bcce78b107f85a4302d855f671aa",
+      "bytes": 11679
+    },
+    {
+      "path": "map04/fixtures.json",
+      "sha": "f609c186f7f8896db6d48851d9a52d0abca87b58",
+      "bytes": 8672
+    },
+    {
+      "path": "evidence/2026-11-17/integrity.json",
+      "sha": "7c511ba49531d1fbdac87590687329a37ee6ae13",
+      "bytes": 913
+    }
+  ],
+  "result": "PASS",
+  "codeTests": {
+    "javascript": 76,
+    "pythonMap05": 80,
+    "pythonMap04": 24,
+    "total": 180
+  },
+  "browserVisual": "NOT_EXECUTED_POLICY_BLOCK",
+  "verificationMethod": "GitHub API branch HEAD and recursive Git tree matched locally recorded commit/tree, blob count and critical file records.",
+  "excludedGeneratedCaches": "PBF downloads, calculation checkpoints, dependencies and uncompressed inputs preserved in committed lossless gzip archives are excluded from Git.",
+  "githubLargeFileWarning": "planner-offline.html exceeds the recommended 50 MB; accepted by GitHub, below its 100 MiB limit. No Git LFS pointers."
+}

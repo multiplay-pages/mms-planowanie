@@ -74,6 +74,6 @@ Interfaces: `mergeRoutes(datasetId, layer)`, `assessBasket(scenario, plan, teamI
 - [x] Source/build/data tests: 180/180 PASS; source/CSP/syntax checks PASS.
 - [x] Independent review P2 fixed with RED→GREEN regressions for source baskets and legacy repair.
 - [x] Detailed history, architecture, decisions, runbook and Aion UI handoff written.
-- [ ] Publish and independently verify remote commit/files; record the result.
+- [x] Publish and independently verify remote commit/files; record the result. Implementation commit `016347792204fc13d9ea980eb6cb667b3df79dde`; 123 files and tree matched through GitHub API. See `evidence/2026-11-17/publication.json`.
 
 Browser visual gate remains unexecuted in this session due the recorded tool policy. It is a next-environment task, not a claimed PASS.

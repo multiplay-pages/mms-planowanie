@@ -182,6 +182,8 @@ Duże publiczne wejścia przetworzone przechowuje się bezstratnie jako `.json.g
 
 Powstały dokumenty decyzji, architektury, historii, uruchomienia/testów i przekazania do Aion UI. Zachowano pierwotny brief oraz raporty etapów. Aktualne wyniki końcowego zestawu i dowody publikacji należy odczytywać z `map05/VERIFICATION.md` i Git; nie z historycznych liczb 88/102 testów.
 
+Publikacja została wykonana: commit implementacji `016347792204fc13d9ea980eb6cb667b3df79dde` trafił na `main`. Niezależny odczyt przez GitHub API potwierdził zgodność HEAD, pełnego drzewa i 123 plików z lokalnym zapisem. Szczegóły są w `evidence/2026-11-17/publication.json`; późniejszy commit dokumentacyjny dopisuje ten dowód. Nie wymuszano historii. GitHub przyjął duży samodzielny plik planera z ostrzeżeniem o zalecanym rozmiarze. Nie wykonano publikacji GitHub Pages.
+
 ## Co świadomie pozostaje ograniczeniem prototypu
 
 - 7 adresów pozostaje bez współrzędnych na wyraźne polecenie użytkownika.
