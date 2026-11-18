@@ -1,0 +1,26 @@
+{
+  "checks": [
+    {
+      "id": "disabled localStorage permits in-memory acceptance and undo",
+      "status": "PASS",
+      "detail": {
+        "empty": 0,
+        "accepted": 14,
+        "storageStatus": "Pamięć przeglądarki jest niedostępna. Zmiany pozostają w tej sesji. Użyj „Zapisz plan JSON” przed zamknięciem."
+      }
+    },
+    {
+      "id": "filter-only change during run and refresh during preview",
+      "status": "PASS",
+      "detail": {
+        "persistedAssignments": 13
+      }
+    },
+    {
+      "id": "changing variant invalidates the previous proposal",
+      "status": "PASS"
+    }
+  ],
+  "external": [],
+  "errors": []
+}

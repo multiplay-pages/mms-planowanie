@@ -1,0 +1,28 @@
+{
+  "label": "served",
+  "chrome": "157.0.8103.79",
+  "checks": [
+    {
+      "id": "startup/orchestration",
+      "status": "BLOCKED",
+      "detail": "locator.waitFor: Timeout 120000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#planner') to be visible\u001b[22m\n\u001b[2m    238 × locator resolved to hidden <div hidden=\"\" id=\"planner\">…</div>\u001b[22m\n"
+    },
+    {
+      "id": "no external attempts",
+      "status": "PASS"
+    },
+    {
+      "id": "no errors in console or page",
+      "status": "FAIL",
+      "detail": "Expected values to be strictly deep-equal:\n+ actual - expected\n\n+ [\n+   'Failed to load resource: net::ERR_CONNECTION_REFUSED',\n+   'Failed to load resource: net::ERR_CONNECTION_REFUSED',\n+   'Failed to load resource: net::ERR_CONNECTION_REFUSED',\n+   'Failed to load resource: net::ERR_CONNECTION_REFUSED'\n+ ]\n- []\n"
+    }
+  ],
+  "requests": [],
+  "errors": [
+    "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+    "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+    "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+    "Failed to load resource: net::ERR_CONNECTION_REFUSED"
+  ],
+  "matrix": []
+}

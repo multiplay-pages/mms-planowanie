@@ -1,0 +1,77 @@
+name: MMS Planowanie integration checks
+on:
+  push:
+    branches: [main, map07b08-integration]
+  pull_request:
+    branches: [main]
+permissions:
+  contents: write
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: map05/package-lock.json
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: npm ci --prefix map05
+      - name: Audit installed test dependencies
+        run: npm audit --prefix map05 --audit-level=high
+      - name: Check JS syntax
+        run: node --check map05/planner.mjs && node --check map05/tests/planner-ui.test.mjs
+      - name: Run combined JavaScript regressions
+        run: npm test --prefix map05
+      - name: Restore checksum-verified local OSM source assets (no network)
+        run: python -X utf8 map05/prepare_assets.py
+      - name: Run MAP-05 Python regressions
+        run: python -X utf8 -m unittest discover -s map05/tests -p 'test_*.py' -v
+      - name: Run MAP-04 Python regressions
+        run: python -X utf8 -m unittest discover -s map04/tests -p 'test_*.py' -v
+      - name: Rebuild integrated offline artifact
+        run: python -X utf8 map05/build_planner.py
+      - name: Validate generated artifact
+        run: |
+          test -s map05/planner-offline.html
+          grep -q 'PODGLĄD PROPOZYCJI' map05/planner-offline.html
+          grep -q 'op-workspace' map05/planner-offline.html
+          wc -c map05/planner-offline.html
+      - name: Prepare real Chrome QA
+        run: |
+          npm install --no-save --prefix map05 playwright-core@1.56.1
+          if command -v google-chrome >/dev/null; then
+            echo 'CI_CHROME_CHANNEL=chrome' >> "$GITHUB_ENV"
+          else
+            (cd map05 && npx playwright-core install chromium)
+          fi
+      - name: Run local server and real Chrome served/offline integration smoke
+        run: |
+          python -X utf8 map05/serve.py > /tmp/mms-plan-server.log 2>&1 &
+          PID=$!
+          trap 'kill "$PID" || true' EXIT
+          for i in $(seq 1 40); do
+            if curl -fsS http://127.0.0.1:8765/ -o /dev/null; then break; fi
+            sleep 1
+          done
+          curl -fsS http://127.0.0.1:8765/ -o /dev/null
+          node evidence/2026-11-18-integration/integration-browser.mjs
+      - name: Commit rebuilt offline artifact only on integration branch
+        if: github.event_name == 'push' && github.ref == 'refs/heads/map07b08-integration'
+        run: |
+          git add map05/planner-offline.html
+          if git diff --cached --quiet; then
+            echo 'Integrated offline artifact already up-to-date'
+          else
+            git config user.name 'github-actions[bot]'
+            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+            git commit -m 'build: regenerate integrated offline planner'
+            git push origin HEAD:map07b08-integration
+          fi

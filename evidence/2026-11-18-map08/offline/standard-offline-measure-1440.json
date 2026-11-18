@@ -1,0 +1,25 @@
+{
+  "label": "standard-offline",
+  "url": "file:///C:/Users/lcichanowicz/work/mms-map08/map05/planner-offline.html",
+  "viewport": [
+    1440,
+    900
+  ],
+  "bytes": 32450863,
+  "loadEventMs": 597,
+  "plannerVisibleMs": 1554,
+  "mapReadyMs": 4000,
+  "rich": false,
+  "status": "Podkład: Drogowa — lokalne drogi OSM — pakiet mapy niedostępny, podkład uproszczony (tylko drogi), bez połączeń zewnętrznych. Zdjęcia satelitarne są niedostępne, dopóki właściciel nie potwierdzi praw i nie skonfiguruje dostawcy.",
+  "heapAfterLoadMB": 70,
+  "frames": {
+    "n": 685,
+    "p50": 16.7,
+    "p95": 16.8,
+    "max": 66.8
+  },
+  "heapAfterInteractionMB": 86.7,
+  "totalJsHeapMB": 289.9,
+  "externalRequests": [],
+  "errors": []
+}

@@ -204,6 +204,17 @@ Końcowy przegląd Codexa (T6) zgłosił 5 × P2 i 1 × P3 (popup z nieaktualnym
 
 Użytkownik zatwierdził: zmniejszenie pliku offline, przeniesienie kafli do Web Workera i warunkową publikację gałęzi (bez scalenia do `main` i bez wdrożenia). Claude Code zapakował duże bloki danych gzip+base64 (71,3 → 32,4 MB), przeniósł rozpakowanie, parsowanie i kodowanie kafli dróg do workera (offline: worker z `blob:`), dodał bezpieczne przejścia na mapę SVG i zmierzył PRZED/PO (3 + 3 przebiegi naprzemiennie w Chrome z GPU). Codex wykonał audyt przedpublikacyjny (T9: brak sekretów; otwarte sprawy praw do utrwalonych wyników GUGiK UUG/Geoapify i atrybucji — udokumentowane w `docs/ZRODLA-DANYCH-I-LICENCJE.md`), przegląd implementacji (T10: 2 × P2 i 1 × P3 — awaria workera po starcie, nieograniczone anulowania, tekst opisu mapy; naprawione) i re-check (T11: APPROVE). Dodano testy w Firefoksie (WebDriver BiDi) i dotykowe w Chrome. Szczegóły: `evidence/2026-11-18-map061/README.md`. Context7 i Notion nie były dostępne w tej sesji.
 
+
+## 18.11.2026 — MAP-07B: grupowanie instalacji pomiędzy koszykami (symulacja)
+
+Gałąź `map07b-cross-basket-optimization` od `map06-interactive-map`. Wyniku „MAP-07A” nie było w repozytorium; za zgodą użytkownika zaimplementowano go jako krok 0. Dodano `map05/optimizer.mjs` (propozycja dnia między ekipami i slotami według istniejących reguł twardych, trzy nazwane warianty hierarchii celów — niezatwierdzone, wyjaśnienia dla każdego zlecenia, powody pominięć), panel „Optymalizacja między koszykami” (porównanie „Obecny plan / Propozycja”, podgląd na mapie, jawna akceptacja z cofnięciem, odrzucenie) oraz benchmark MAP-06 / MAP-07A / MAP-07B. Zmiana w `planner-model.mjs` ogranicza się do eksportu `placementError` i memoizacji walidacji dat. Kolizja nazw w skrypcie offline (`proposal`) wykryta w Chrome z pliku `planner-offline.html` i zabezpieczona testem. Szczegóły, tabela wyników i otwarte decyzje: `docs/MAP07B-OPTYMALIZACJA.md`; dowody: `evidence/2026-11-18-map07b/`.
+
+## 18.11.2026 — MAP-08: przebudowa mapy operacyjnej (gałąź `map08-map-quality`)
+
+Użytkownik zlecił audyt i przebudowę samej mapy (jakość podkładu, czytelność, osobny duży widok), bez zmiany macierzy odległości, routingu ani modelu planu i bez łączenia z MAP-07A. Audyt wykazał, że słabość wynika głównie z danych (podkład tylko z wybranych klas dróg), a nie ze stylu; mapa zajmowała ok. 17% okna.
+
+Claude Code zbudował lokalny pakiet PMTiles z ekstraktów Geofabrik (drogi z hierarchią i nazwami, miejscowości, budynki, woda, tereny, kolej), własny czytnik w przeglądarce, dwa warianty stylu (Operational Light, Professional Navigation), widok „Duża mapa” z panelem ekip, klasteryzacją, szczegółami i legendą oraz uczciwy status podkładu (naprawa niespójności po Hybryda → Drogowa). Satelita/Hybryda pozostają niedostępne do decyzji właściciela (ORTO). Codex (T20) napisał testy potoku pakietu i znalazł dwie usterki (zasięg `Coverage.near`, zerowy offset w katalogu PMTiles) — naprawione. Pełny opis i pomiary: `docs/MAP08-MAPA-OPERACYJNA.md`.
+
 ## Co świadomie pozostaje ograniczeniem prototypu
 
 - 7 adresów pozostaje bez współrzędnych na wyraźne polecenie użytkownika.

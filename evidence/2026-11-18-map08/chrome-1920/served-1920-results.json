@@ -1,0 +1,223 @@
+{
+  "label": "served-1920",
+  "viewport": [
+    1920,
+    1080
+  ],
+  "loadMs": 2378,
+  "rich": true,
+  "inlineMap": [
+    558,
+    560
+  ],
+  "inlineShare": 0.151,
+  "workspaceMap": [
+    1540,
+    907
+  ],
+  "workspaceShare": 0.674,
+  "perf": {
+    "frames": 438,
+    "medianMs": 16.7,
+    "p95Ms": 16.9,
+    "worstMs": 17.1,
+    "heapMB": 100
+  },
+  "errors": [],
+  "external": [],
+  "failedRequests": [
+    "http://127.0.0.1:8765/basemap/map-pack.pmtiles",
+    "http://127.0.0.1:8765/basemap/map-pack.pmtiles",
+    "http://127.0.0.1:8765/basemap/map-pack.pmtiles",
+    "http://127.0.0.1:8765/basemap/map-pack.pmtiles",
+    "http://127.0.0.1:8765/basemap/map-pack.pmtiles"
+  ],
+  "results": [
+    {
+      "id": "S1 several teams in different towns",
+      "ok": true,
+      "detail": "5 teams, towns Lewin Brzeski,Skorogoszcz,Opole,Białe Błoto,Cieśle,Sokołowice,Knurów,Rybnik,Ligota Oleska,Kucoby,Chudoba,Szum,Wąsice"
+    },
+    {
+      "id": "S1b team colours distinct",
+      "ok": true
+    },
+    {
+      "id": "S6 shapes: MPL circle, BSA square (POMIAR diamond if present)",
+      "ok": true,
+      "detail": "MPL:circle BSA:square"
+    },
+    {
+      "id": "S5 numbers 1..n per team",
+      "ok": true
+    },
+    {
+      "id": "S2 workspace map takes most of the window",
+      "ok": true,
+      "detail": "1540x907 = 67% of 1920x1080 (inline 15%)"
+    },
+    {
+      "id": "S2b no horizontal overflow in workspace",
+      "ok": true,
+      "detail": "0"
+    },
+    {
+      "id": "S3a team toggle hides its visits and route",
+      "ok": true
+    },
+    {
+      "id": "S3 single route, three visits",
+      "ok": true,
+      "detail": "3 visits, 2 legs"
+    },
+    {
+      "id": "S4 view auto-fits the selected route",
+      "ok": true
+    },
+    {
+      "id": "S3b team sum shows km and time",
+      "ok": true,
+      "detail": "3 wizyty · 32,8 km · ok. 45 min jazdy"
+    },
+    {
+      "id": "S3c leg lengths between visits",
+      "ok": true,
+      "detail": "6,5 km · ok. 10 min | 26,4 km · ok. 34 min"
+    },
+    {
+      "id": "S3d show all routes again",
+      "ok": true
+    },
+    {
+      "id": "S4b focus dims other routes",
+      "ok": true
+    },
+    {
+      "id": "S8a select from basket shows details",
+      "ok": true
+    },
+    {
+      "id": "S8b details can be closed",
+      "ok": true
+    },
+    {
+      "id": "S8c select from map: popup + details + list sync",
+      "ok": true,
+      "detail": "popup=true"
+    },
+    {
+      "id": "Esc closes popup/details first, not the large map",
+      "ok": true
+    },
+    {
+      "id": "S7 overlapping markers are clustered when zoomed out",
+      "ok": true,
+      "detail": "23 cluster features"
+    },
+    {
+      "id": "S7b clicking a cluster zooms in",
+      "ok": true,
+      "detail": "zoom 8.1 -> 9.5 for cluster of 9"
+    },
+    {
+      "id": "S7c individual installations can be picked when zoomed in",
+      "ok": true,
+      "detail": "1 single markers"
+    },
+    {
+      "id": "S14 layer switch arrows",
+      "ok": true,
+      "detail": "none -> visible"
+    },
+    {
+      "id": "S14 layer switch legs",
+      "ok": true,
+      "detail": "none -> visible"
+    },
+    {
+      "id": "S14 layer switch numbers",
+      "ok": true,
+      "detail": "none -> visible"
+    },
+    {
+      "id": "S14 layer switch streets",
+      "ok": true,
+      "detail": "none -> visible"
+    },
+    {
+      "id": "S14 layer switch places",
+      "ok": true,
+      "detail": "none -> visible"
+    },
+    {
+      "id": "S14 layer switch buildings",
+      "ok": true,
+      "detail": "none -> visible"
+    },
+    {
+      "id": "S14 layer switch nature",
+      "ok": true,
+      "detail": "none -> visible"
+    },
+    {
+      "id": "S14b routes switch removes routes",
+      "ok": true
+    },
+    {
+      "id": "S16 style variant switches the whole style and persists",
+      "ok": true
+    },
+    {
+      "id": "S15 basemap status states the real source",
+      "ok": true,
+      "detail": "Podkład: Drogowa — lokalny pakiet mapy OSM (drogi, nazwy, budynki, woda, tereny), bez połączeń zewnętrznych. Zdjęcia sat"
+    },
+    {
+      "id": "S15b satellite/hybrid honestly unavailable by default",
+      "ok": true
+    },
+    {
+      "id": "S10 day change empties/updates map without refresh",
+      "ok": true
+    },
+    {
+      "id": "S11 regenerate from the workspace redraws immediately",
+      "ok": true,
+      "detail": "13 visits on 20.11"
+    },
+    {
+      "id": "S11b going back keeps the earlier plan",
+      "ok": true
+    },
+    {
+      "id": "S13 order without coordinates is not drawn",
+      "ok": true,
+      "detail": "TEST-069; gaps NO_LOCATION_QUEUE"
+    },
+    {
+      "id": "S13b the gap message names the unlocated queue orders",
+      "ok": true
+    },
+    {
+      "id": "S13c details explain the missing position",
+      "ok": true
+    },
+    {
+      "id": "perf: p95 frame time under 50 ms while flying across zoom levels",
+      "ok": true,
+      "detail": "{\"frames\":438,\"medianMs\":16.7,\"p95Ms\":16.9,\"worstMs\":17.1,\"heapMB\":100}"
+    },
+    {
+      "id": "no console/page errors",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "no external requests",
+      "ok": true,
+      "detail": ""
+    }
+  ],
+  "pass": 40,
+  "fail": 0
+}

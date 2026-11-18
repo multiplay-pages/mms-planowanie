@@ -10,6 +10,7 @@ Stan dokumentacji: 17.11.2026. Jest to zapis wykonanych prac, decyzji użytkowni
 4. [Historia prac](HISTORIA-PRAC.md) — szczegółowa rekonstrukcja etapów i powodów zmian.
 5. [Uruchomienie i testy](URUCHOMIENIE-I-TESTY.md) — powtarzalne uruchomienie, odbudowanie danych i diagnostyka.
 6. [Bieżąca weryfikacja](../map05/VERIFICATION.md) — wykonane sprawdzenia, wyniki i ograniczenia dowodów.
+7. [MAP-08 — mapa operacyjna](MAP08-MAPA-OPERACYJNA.md) — audyt mapy, dwa warianty, lokalny pakiet OSM, duża mapa, satelita, pomiary offline.
 
 ## Dokumenty źródłowe
 

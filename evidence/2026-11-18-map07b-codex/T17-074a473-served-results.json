@@ -1,0 +1,710 @@
+{
+  "label": "served",
+  "chrome": "157.0.8103.79",
+  "checks": [
+    {
+      "id": "matrix/2026-11-18/COVERAGE_FIRST",
+      "status": "PASS"
+    },
+    {
+      "id": "matrix/2026-11-18/AGE_FIRST",
+      "status": "PASS"
+    },
+    {
+      "id": "matrix/2026-11-18/BALANCE_FIRST",
+      "status": "PASS"
+    },
+    {
+      "id": "matrix/2026-11-19/COVERAGE_FIRST",
+      "status": "PASS"
+    },
+    {
+      "id": "matrix/2026-11-19/AGE_FIRST",
+      "status": "PASS"
+    },
+    {
+      "id": "matrix/2026-11-19/BALANCE_FIRST",
+      "status": "PASS"
+    },
+    {
+      "id": "matrix/2026-11-20/COVERAGE_FIRST",
+      "status": "PASS"
+    },
+    {
+      "id": "matrix/2026-11-20/AGE_FIRST",
+      "status": "PASS"
+    },
+    {
+      "id": "matrix/2026-11-20/BALANCE_FIRST",
+      "status": "PASS"
+    },
+    {
+      "id": "preview changes map only; reject keeps plan",
+      "status": "PASS",
+      "detail": {
+        "before": 0,
+        "preview": 14
+      }
+    },
+    {
+      "id": "accept and undo with keyboard; Tab and Esc",
+      "status": "PASS"
+    },
+    {
+      "id": "protected assignments survive; no preview in JSON; import invalidates proposal",
+      "status": "PASS",
+      "detail": [
+        {
+          "orderId": "TEST-013",
+          "origin": "AUTO",
+          "confirmed": true
+        },
+        {
+          "orderId": "TEST-025",
+          "origin": "MANUAL",
+          "confirmed": false
+        }
+      ]
+    },
+    {
+      "id": "layout and reachable controls at 1440/1150/700/390",
+      "status": "PASS",
+      "detail": [
+        {
+          "width": 1440,
+          "doc": 0,
+          "panel": 0,
+          "table": 0
+        },
+        {
+          "width": 1150,
+          "doc": 0,
+          "panel": 0,
+          "table": 0
+        },
+        {
+          "width": 700,
+          "doc": 0,
+          "panel": 0,
+          "table": 8
+        },
+        {
+          "width": 390,
+          "doc": 0,
+          "panel": 0,
+          "table": 293
+        }
+      ]
+    },
+    {
+      "id": "same-turn repeated run clicks do not change plan",
+      "status": "PASS",
+      "detail": 1
+    },
+    {
+      "id": "run stays bound to the date at click",
+      "status": "PASS"
+    },
+    {
+      "id": "dialog remains bound to the simulated plan it described",
+      "status": "PASS",
+      "detail": {
+        "first": "COVERAGE_FIRST",
+        "second": "AGE_FIRST",
+        "shown": "Dzień 2026-11-19: 4 nowych, 0 przeniesionych, 3 usuniętych wizyt. Zaplanowane zlecenia 13 → 14, odległość koszyków 118,6 km → 109,1 km. Zamienione zostaną tylko automatyczne, niepotwierdzone propozycje tego dnia; potwierdzone i ręczne przydziały pozostają. Zmianę można cofnąć przyciskiem „Cofnij zmianę”.",
+        "beforeRows": [
+          [
+            "Zaplanowane zlecenia",
+            "0",
+            "14"
+          ],
+          [
+            "w tym instalacje",
+            "0",
+            "14"
+          ],
+          [
+            "Dni oczekiwania zaplanowanych zleceń",
+            "0",
+            "232"
+          ],
+          [
+            "Łączna odległość koszyków",
+            "0 km",
+            "106,4 km"
+          ],
+          [
+            "Szacowany czas dojazdów",
+            "0 min",
+            "174 min"
+          ],
+          [
+            "Naruszenia limitów (30 km, +10 km, okna)",
+            "0",
+            "0"
+          ],
+          [
+            "Wolne otwarte sloty",
+            "15",
+            "0"
+          ]
+        ],
+        "afterRows": [
+          [
+            "Zaplanowane zlecenia",
+            "0",
+            "13"
+          ],
+          [
+            "w tym instalacje",
+            "0",
+            "13"
+          ],
+          [
+            "Dni oczekiwania zaplanowanych zleceń",
+            "0",
+            "217"
+          ],
+          [
+            "Łączna odległość koszyków",
+            "0 km",
+            "116,4 km"
+          ],
+          [
+            "Szacowany czas dojazdów",
+            "0 min",
+            "182 min"
+          ],
+          [
+            "Naruszenia limitów (30 km, +10 km, okna)",
+            "0",
+            "0"
+          ],
+          [
+            "Wolne otwarte sloty",
+            "15",
+            "0"
+          ]
+        ],
+        "stillOpen": false,
+        "changed": false,
+        "savedCount": 0
+      }
+    },
+    {
+      "id": "no external attempts",
+      "status": "PASS"
+    },
+    {
+      "id": "no errors in console or page",
+      "status": "PASS"
+    }
+  ],
+  "requests": [],
+  "errors": [],
+  "matrix": [
+    {
+      "date": "2026-11-18",
+      "variant": "COVERAGE_FIRST",
+      "elapsedMs": 1934,
+      "status": "Propozycja: wariant „Liczba i czas oczekiwania, potem km”, obliczona w 1761 ms. To symulacja: plan nie został zmieniony.",
+      "comparison": [
+        [
+          "Zaplanowane zlecenia",
+          "0",
+          "14"
+        ],
+        [
+          "w tym instalacje",
+          "0",
+          "14"
+        ],
+        [
+          "Dni oczekiwania zaplanowanych zleceń",
+          "0",
+          "218"
+        ],
+        [
+          "Łączna odległość koszyków",
+          "0 km",
+          "106,4 km"
+        ],
+        [
+          "Szacowany czas dojazdów",
+          "0 min",
+          "174 min"
+        ],
+        [
+          "Naruszenia limitów (30 km, +10 km, okna)",
+          "0",
+          "0"
+        ],
+        [
+          "Wolne otwarte sloty",
+          "15",
+          "0"
+        ]
+      ]
+    },
+    {
+      "date": "2026-11-18",
+      "variant": "AGE_FIRST",
+      "elapsedMs": 1939,
+      "status": "Propozycja: wariant „Starszeństwo najpierw”, obliczona w 1771 ms. To symulacja: plan nie został zmieniony.",
+      "comparison": [
+        [
+          "Zaplanowane zlecenia",
+          "0",
+          "13"
+        ],
+        [
+          "w tym instalacje",
+          "0",
+          "13"
+        ],
+        [
+          "Dni oczekiwania zaplanowanych zleceń",
+          "0",
+          "204"
+        ],
+        [
+          "Łączna odległość koszyków",
+          "0 km",
+          "116,4 km"
+        ],
+        [
+          "Szacowany czas dojazdów",
+          "0 min",
+          "182 min"
+        ],
+        [
+          "Naruszenia limitów (30 km, +10 km, okna)",
+          "0",
+          "0"
+        ],
+        [
+          "Wolne otwarte sloty",
+          "15",
+          "0"
+        ]
+      ]
+    },
+    {
+      "date": "2026-11-18",
+      "variant": "BALANCE_FIRST",
+      "elapsedMs": 1987,
+      "status": "Propozycja: wariant „Równomierność przed kilometrami”, obliczona w 1881 ms. To symulacja: plan nie został zmieniony.",
+      "comparison": [
+        [
+          "Zaplanowane zlecenia",
+          "0",
+          "14"
+        ],
+        [
+          "w tym instalacje",
+          "0",
+          "14"
+        ],
+        [
+          "Dni oczekiwania zaplanowanych zleceń",
+          "0",
+          "218"
+        ],
+        [
+          "Łączna odległość koszyków",
+          "0 km",
+          "106,4 km"
+        ],
+        [
+          "Szacowany czas dojazdów",
+          "0 min",
+          "174 min"
+        ],
+        [
+          "Naruszenia limitów (30 km, +10 km, okna)",
+          "0",
+          "0"
+        ],
+        [
+          "Wolne otwarte sloty",
+          "15",
+          "0"
+        ]
+      ]
+    },
+    {
+      "date": "2026-11-19",
+      "variant": "COVERAGE_FIRST",
+      "elapsedMs": 1572,
+      "status": "Propozycja: wariant „Liczba i czas oczekiwania, potem km”, obliczona w 1455 ms. To symulacja: plan nie został zmieniony.",
+      "comparison": [
+        [
+          "Zaplanowane zlecenia",
+          "0",
+          "14"
+        ],
+        [
+          "w tym instalacje",
+          "0",
+          "14"
+        ],
+        [
+          "Dni oczekiwania zaplanowanych zleceń",
+          "0",
+          "232"
+        ],
+        [
+          "Łączna odległość koszyków",
+          "0 km",
+          "106,4 km"
+        ],
+        [
+          "Szacowany czas dojazdów",
+          "0 min",
+          "174 min"
+        ],
+        [
+          "Naruszenia limitów (30 km, +10 km, okna)",
+          "0",
+          "0"
+        ],
+        [
+          "Wolne otwarte sloty",
+          "15",
+          "0"
+        ]
+      ]
+    },
+    {
+      "date": "2026-11-19",
+      "variant": "AGE_FIRST",
+      "elapsedMs": 1520,
+      "status": "Propozycja: wariant „Starszeństwo najpierw”, obliczona w 1432 ms. To symulacja: plan nie został zmieniony.",
+      "comparison": [
+        [
+          "Zaplanowane zlecenia",
+          "0",
+          "13"
+        ],
+        [
+          "w tym instalacje",
+          "0",
+          "13"
+        ],
+        [
+          "Dni oczekiwania zaplanowanych zleceń",
+          "0",
+          "217"
+        ],
+        [
+          "Łączna odległość koszyków",
+          "0 km",
+          "116,4 km"
+        ],
+        [
+          "Szacowany czas dojazdów",
+          "0 min",
+          "182 min"
+        ],
+        [
+          "Naruszenia limitów (30 km, +10 km, okna)",
+          "0",
+          "0"
+        ],
+        [
+          "Wolne otwarte sloty",
+          "15",
+          "0"
+        ]
+      ]
+    },
+    {
+      "date": "2026-11-19",
+      "variant": "BALANCE_FIRST",
+      "elapsedMs": 1521,
+      "status": "Propozycja: wariant „Równomierność przed kilometrami”, obliczona w 1432 ms. To symulacja: plan nie został zmieniony.",
+      "comparison": [
+        [
+          "Zaplanowane zlecenia",
+          "0",
+          "14"
+        ],
+        [
+          "w tym instalacje",
+          "0",
+          "14"
+        ],
+        [
+          "Dni oczekiwania zaplanowanych zleceń",
+          "0",
+          "232"
+        ],
+        [
+          "Łączna odległość koszyków",
+          "0 km",
+          "106,4 km"
+        ],
+        [
+          "Szacowany czas dojazdów",
+          "0 min",
+          "174 min"
+        ],
+        [
+          "Naruszenia limitów (30 km, +10 km, okna)",
+          "0",
+          "0"
+        ],
+        [
+          "Wolne otwarte sloty",
+          "15",
+          "0"
+        ]
+      ]
+    },
+    {
+      "date": "2026-11-20",
+      "variant": "COVERAGE_FIRST",
+      "elapsedMs": 1551,
+      "status": "Propozycja: wariant „Liczba i czas oczekiwania, potem km”, obliczona w 1459 ms. To symulacja: plan nie został zmieniony.",
+      "comparison": [
+        [
+          "Zaplanowane zlecenia",
+          "0",
+          "14"
+        ],
+        [
+          "w tym instalacje",
+          "0",
+          "14"
+        ],
+        [
+          "Dni oczekiwania zaplanowanych zleceń",
+          "0",
+          "246"
+        ],
+        [
+          "Łączna odległość koszyków",
+          "0 km",
+          "106,4 km"
+        ],
+        [
+          "Szacowany czas dojazdów",
+          "0 min",
+          "174 min"
+        ],
+        [
+          "Naruszenia limitów (30 km, +10 km, okna)",
+          "0",
+          "0"
+        ],
+        [
+          "Wolne otwarte sloty",
+          "15",
+          "0"
+        ]
+      ]
+    },
+    {
+      "date": "2026-11-20",
+      "variant": "AGE_FIRST",
+      "elapsedMs": 1651,
+      "status": "Propozycja: wariant „Starszeństwo najpierw”, obliczona w 1535 ms. To symulacja: plan nie został zmieniony.",
+      "comparison": [
+        [
+          "Zaplanowane zlecenia",
+          "0",
+          "13"
+        ],
+        [
+          "w tym instalacje",
+          "0",
+          "13"
+        ],
+        [
+          "Dni oczekiwania zaplanowanych zleceń",
+          "0",
+          "230"
+        ],
+        [
+          "Łączna odległość koszyków",
+          "0 km",
+          "116,4 km"
+        ],
+        [
+          "Szacowany czas dojazdów",
+          "0 min",
+          "182 min"
+        ],
+        [
+          "Naruszenia limitów (30 km, +10 km, okna)",
+          "0",
+          "0"
+        ],
+        [
+          "Wolne otwarte sloty",
+          "15",
+          "0"
+        ]
+      ]
+    },
+    {
+      "date": "2026-11-20",
+      "variant": "BALANCE_FIRST",
+      "elapsedMs": 1564,
+      "status": "Propozycja: wariant „Równomierność przed kilometrami”, obliczona w 1476 ms. To symulacja: plan nie został zmieniony.",
+      "comparison": [
+        [
+          "Zaplanowane zlecenia",
+          "0",
+          "14"
+        ],
+        [
+          "w tym instalacje",
+          "0",
+          "14"
+        ],
+        [
+          "Dni oczekiwania zaplanowanych zleceń",
+          "0",
+          "246"
+        ],
+        [
+          "Łączna odległość koszyków",
+          "0 km",
+          "106,4 km"
+        ],
+        [
+          "Szacowany czas dojazdów",
+          "0 min",
+          "174 min"
+        ],
+        [
+          "Naruszenia limitów (30 km, +10 km, okna)",
+          "0",
+          "0"
+        ],
+        [
+          "Wolne otwarte sloty",
+          "15",
+          "0"
+        ]
+      ]
+    }
+  ],
+  "map": {
+    "loaded": true,
+    "renderer": "ANGLE (Intel, Intel(R) UHD Graphics 630 (0x00003E9B) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+  },
+  "race": {
+    "first": "COVERAGE_FIRST",
+    "second": "AGE_FIRST",
+    "shown": "Dzień 2026-11-19: 4 nowych, 0 przeniesionych, 3 usuniętych wizyt. Zaplanowane zlecenia 13 → 14, odległość koszyków 118,6 km → 109,1 km. Zamienione zostaną tylko automatyczne, niepotwierdzone propozycje tego dnia; potwierdzone i ręczne przydziały pozostają. Zmianę można cofnąć przyciskiem „Cofnij zmianę”.",
+    "beforeRows": [
+      [
+        "Zaplanowane zlecenia",
+        "0",
+        "14"
+      ],
+      [
+        "w tym instalacje",
+        "0",
+        "14"
+      ],
+      [
+        "Dni oczekiwania zaplanowanych zleceń",
+        "0",
+        "232"
+      ],
+      [
+        "Łączna odległość koszyków",
+        "0 km",
+        "106,4 km"
+      ],
+      [
+        "Szacowany czas dojazdów",
+        "0 min",
+        "174 min"
+      ],
+      [
+        "Naruszenia limitów (30 km, +10 km, okna)",
+        "0",
+        "0"
+      ],
+      [
+        "Wolne otwarte sloty",
+        "15",
+        "0"
+      ]
+    ],
+    "afterRows": [
+      [
+        "Zaplanowane zlecenia",
+        "0",
+        "13"
+      ],
+      [
+        "w tym instalacje",
+        "0",
+        "13"
+      ],
+      [
+        "Dni oczekiwania zaplanowanych zleceń",
+        "0",
+        "217"
+      ],
+      [
+        "Łączna odległość koszyków",
+        "0 km",
+        "116,4 km"
+      ],
+      [
+        "Szacowany czas dojazdów",
+        "0 min",
+        "182 min"
+      ],
+      [
+        "Naruszenia limitów (30 km, +10 km, okna)",
+        "0",
+        "0"
+      ],
+      [
+        "Wolne otwarte sloty",
+        "15",
+        "0"
+      ]
+    ],
+    "stillOpen": false,
+    "changed": false,
+    "savedCount": 0
+  },
+  "longTasksMs": [
+    1776,
+    1776,
+    1886,
+    1458,
+    1437,
+    1437,
+    1464,
+    1539,
+    1479,
+    223,
+    1742,
+    103,
+    59,
+    164,
+    70,
+    58,
+    1158,
+    91,
+    86,
+    1084,
+    1590,
+    1566,
+    50,
+    50,
+    76,
+    69,
+    1717,
+    1700
+  ]
+}

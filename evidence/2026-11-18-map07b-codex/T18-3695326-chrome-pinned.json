@@ -1,0 +1,26 @@
+[
+  {
+    "label": "served",
+    "commit": "3695326",
+    "chrome": "157.0.8103.79",
+    "checks": [
+      "variant change withdraws proposal",
+      "old proposal cannot be applied during new computation",
+      "day change cancels pending computation"
+    ],
+    "errors": [],
+    "requests": []
+  },
+  {
+    "label": "offline",
+    "commit": "3695326",
+    "chrome": "157.0.8103.79",
+    "checks": [
+      "variant change withdraws proposal",
+      "old proposal cannot be applied during new computation",
+      "day change cancels pending computation"
+    ],
+    "errors": [],
+    "requests": []
+  }
+]

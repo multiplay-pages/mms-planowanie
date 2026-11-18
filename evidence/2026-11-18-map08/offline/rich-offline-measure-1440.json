@@ -1,0 +1,25 @@
+{
+  "label": "rich-offline",
+  "url": "file:///C:/Users/lcichanowicz/work/mms-map08/map05/planner-offline-rich.html",
+  "viewport": [
+    1440,
+    900
+  ],
+  "bytes": 103498783,
+  "loadEventMs": 932,
+  "plannerVisibleMs": 2129,
+  "mapReadyMs": 3269,
+  "rich": true,
+  "status": "Podkład: Drogowa — lokalny pakiet mapy OSM (drogi, nazwy, budynki, woda, tereny), bez połączeń zewnętrznych. Zdjęcia satelitarne są niedostępne, dopóki właściciel nie potwierdzi praw i nie skonfiguruje dostawcy.",
+  "heapAfterLoadMB": 53.3,
+  "frames": {
+    "n": 677,
+    "p50": 16.7,
+    "p95": 16.8,
+    "max": 100
+  },
+  "heapAfterInteractionMB": 67.9,
+  "totalJsHeapMB": 202.2,
+  "externalRequests": [],
+  "errors": []
+}

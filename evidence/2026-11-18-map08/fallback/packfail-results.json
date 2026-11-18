@@ -1,0 +1,32 @@
+[
+  {
+    "id": "fails-after-open: map still works on the roads-only tiles",
+    "ok": true,
+    "detail": "{\"rich\":false,\"visits\":13}"
+  },
+  {
+    "id": "fails-after-open: status says the pack is not in use",
+    "ok": true,
+    "detail": "Pakiet mapy przestał działać — przełączono na podkład uproszczony (tylko drogi). Podkład: Drogowa — lokalne dr"
+  },
+  {
+    "id": "fails-after-open: no uncaught errors",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "id": "truncated: map still works on the roads-only tiles",
+    "ok": true,
+    "detail": "{\"rich\":false,\"visits\":13}"
+  },
+  {
+    "id": "truncated: status says the pack is not in use",
+    "ok": true,
+    "detail": "Podkład: Drogowa — lokalne drogi OSM — pakiet mapy niedostępny, podkład uproszczony (tylko drogi), bez połącze"
+  },
+  {
+    "id": "truncated: no uncaught errors",
+    "ok": true,
+    "detail": ""
+  }
+]

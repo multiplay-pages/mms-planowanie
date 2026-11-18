@@ -1,0 +1,53 @@
+[
+  {
+    "id": "H0 provider configured -> hybrid/satellite selectable",
+    "ok": true
+  },
+  {
+    "id": "H0b no imagery request before the user chooses it",
+    "ok": true,
+    "detail": "0 requests"
+  },
+  {
+    "id": "H1 road status at start",
+    "ok": true,
+    "detail": "Podkład: Drogowa — lokalny pakiet mapy OSM (drogi, nazwy, bu"
+  },
+  {
+    "id": "H2 hybrid status names Hybryda and the attribution",
+    "ok": true,
+    "detail": "Podkład: Hybryda — © Mock provider (test). Widoczny obszar jest wysyłany do dostawcy zdjęć"
+  },
+  {
+    "id": "H2c satellite raster layer present and visible in Hybrid",
+    "ok": true,
+    "detail": "[[\"satellite\",\"visible\"]]"
+  },
+  {
+    "id": "H2b imagery requested only now, from the configured provider",
+    "ok": true,
+    "detail": "28 requests"
+  },
+  {
+    "id": "H3 AFTER Hybrid -> Road status says Drogowa (audit fix)",
+    "ok": true,
+    "detail": "Podkład: Drogowa — lokalny pakiet mapy OSM (drogi, nazwy, budynki, woda, tereny), bez połą"
+  },
+  {
+    "id": "H3b imagery layer is gone after returning to Road",
+    "ok": true,
+    "detail": "[]"
+  },
+  {
+    "id": "H3c no further imagery requests in Road mode",
+    "ok": true
+  },
+  {
+    "id": "H4 satellite status",
+    "ok": true
+  },
+  {
+    "id": "H5 Satellite -> Road status",
+    "ok": true
+  }
+]
