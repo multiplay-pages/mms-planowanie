@@ -39,11 +39,11 @@ const withAdded=(plan,assignment)=>withAssignments(plan,[...plan.assignments,ass
 
 /** Aggregate figures of one day, shared by the optimizer, the UI comparison and the benchmark. */
 /**
- * `baseline` (optional) is {issueMap,gaps} of the current plan: limit issues and unassessable checks per basket. A gap moved from one basket to another counts as new. A candidate that introduces or worsens a limit issue in ANY basket
+ * `baseline` (optional) is {issueMap,gaps,ranks} of the current plan: limit issues and unassessable checks per basket. A gap moved from one basket to another counts as new. A candidate that introduces or worsens a limit issue in ANY basket
  * (also in a basket an order was moved out of, where removal can create a new long leg) is flagged `invalid`.
  */
 export function evaluateDay(scenario,plan,date,baseline=null) {
-  const issueMap=new Map(),gaps=new Set(),rows=[],ageHist=[],totals={count:0,installs:0,ageSum:0,km:0,minutes:0,sumsq:0,sameTown:0,unassessedBaskets:0,violations:0};
+  const issueMap=new Map(),gaps=new Set(),ranks=new Map(),rows=[],ageHist=[],totals={count:0,installs:0,ageSum:0,km:0,minutes:0,sumsq:0,sameTown:0,unassessedBaskets:0,violations:0};
   for(const team of scenario.teams) {
     const items=plan.assignments.filter(item=>item.teamId===team.id&&item.date===date);
     const assessment=assessBasket(scenario,plan,team.id,date);
@@ -59,6 +59,17 @@ export function evaluateDay(scenario,plan,date,baseline=null) {
     totals.violations+=assessment.violations.length;
     if(orders.length>1&&assessment.distanceM===null)gaps.add(`${team.id}/legs`);
     for(const leg of assessment.legs)if(leg.status!=='OK')gaps.add(`${team.id}/leg/${leg.from}/${leg.to}`);
+    // Generic guard: the assessment status of a basket must never get worse (PASS/N-A < UNASSESSED < LIMIT) than before the move.
+    const rank={PASS:0,NOT_APPLICABLE:0,UNASSESSED:1,LIMIT:2};
+    ranks.set(`${team.id}/installationDistance`,rank[assessment.installationDistance.status]??0);
+    ranks.set(`${team.id}/measurementExtra`,rank[assessment.measurementExtra.status]??0);
+    // Boundaries of every measurement: an installation before and after it. Losing one is a new problem even when the message stays the same.
+    const route=assessment.orders.map(id=>orderOf(scenario,id));
+    route.forEach((order,index)=>{
+      if(order.type!=='POMIAR')return;
+      if(!route.slice(0,index).some(item=>item.type!=='POMIAR'))gaps.add(`${team.id}/boundary/${order.id}/before`);
+      if(!route.slice(index+1).some(item=>item.type!=='POMIAR'))gaps.add(`${team.id}/boundary/${order.id}/after`);
+    });
     // Reference legs of the +10 km measurement check (installation to installation): the identity of a missing one matters too.
     if(assessment.hasMeasurements) {
       const installs=assessment.orders.map(id=>orderOf(scenario,id)).filter(order=>order.type!=='POMIAR');
@@ -71,8 +82,8 @@ export function evaluateDay(scenario,plan,date,baseline=null) {
     rows.push({teamId:team.id,orders:assessment.orders,visits:orders.length,distanceM:assessment.distanceM,estimatedDurationS:assessment.estimatedDurationS,violations:assessment.violations,checks:{installationDistance:assessment.installationDistance.status,measurementExtra:assessment.measurementExtra.status,windows:assessment.windows.status}});
   }
   for(let i=0;i<ageHist.length;i++)ageHist[i]??=0;
-  const invalid=baseline?([...issueMap].some(([key,excess])=>excess>(baseline.issueMap.get(key)??0))||[...gaps].some(key=>!baseline.gaps.has(key))):false;
-  return {date,teams:rows,...totals,ageHist,issueMap,gaps,invalid};
+  const invalid=baseline?([...issueMap].some(([key,excess])=>excess>(baseline.issueMap.get(key)??0))||[...gaps].some(key=>!baseline.gaps.has(key))||[...ranks].some(([key,value])=>value>(baseline.ranks.get(key)??0))):false;
+  return {date,teams:rows,...totals,ageHist,issueMap,gaps,ranks,invalid};
 }
 
 const better=(a,b,keys)=>{
@@ -140,7 +151,7 @@ export function proposeDayPlan(scenario,current,date,{variant='COVERAGE_FIRST',o
   const pool=rawPool.filter(order=>!assignedElsewhere.has(order.id)).sort((a,b)=>a.createdOn.localeCompare(b.createdOn)||a.id.localeCompare(b.id));
   let evaluations=0,truncated=false,iterations=0;
   // Baseline = limit issues of the CURRENT plan (before any order is released): removing a visit can create a new long leg, which must count as new.
-  const baseline={issueMap:before.issueMap,gaps:before.gaps};
+  const baseline={issueMap:before.issueMap,gaps:before.gaps,ranks:before.ranks};
   const evaluate=candidate=>{evaluations++;return evaluateDay(scenario,candidate,date,baseline);};
   const place=(base,order,position)=>{
     const assignment=proposalOf(order.id,position.teamId,date,position.start);

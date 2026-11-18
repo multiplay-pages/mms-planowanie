@@ -254,3 +254,28 @@ test('a protected measurement must not fall outside the installation chain after
     assert.ok(gaps.every(key=>baseline.has(key)),`${variant}: no new reason for an unassessable measurement (${gaps.join('; ')})`);
   }
 });
+
+test('removing the only installation before two protected measurements takes their start boundary away (Codex T18 P2)',()=>{
+  const {synthetic,seed,mpl,pomiar}=syntheticScenario(),[a]=mpl,[m1,m2]=pomiar;
+  const base=seed(['TEST-02',[row(a,'AUTO'),row(m1),row(m2)]]);
+  const baseline=evaluateDay(synthetic,base,DATE);
+  assert.equal(baseline.gaps.has(`TEST-02/boundary/${m1.id}/before`),false);assert.equal(baseline.gaps.has(`TEST-02/boundary/${m1.id}/after`),true);
+  for(const variant of Object.keys(VARIANTS)) {
+    const result=proposeDayPlan(synthetic,base,DATE,{variant,orderIds:[a.id],budgetMs:1000});
+    const after=evaluateDay(synthetic,result.plan,DATE);
+    assert.equal(after.gaps.has(`TEST-02/boundary/${m1.id}/before`),false,`${variant}: M1 keeps its installation before it`);
+    assert.equal(after.gaps.has(`TEST-02/boundary/${m2.id}/before`),false,`${variant}: M2 keeps its installation before it`);
+  }
+});
+test('losing the first or last boundary installation of a measurement is refused even beside an older reference-road gap (Codex T18 P2)',()=>{
+  const {synthetic,edge,seed,mpl,pomiar}=syntheticScenario(),[a,b]=mpl,[m]=pomiar;
+  edge(a,b,null);edge(a,m,5000);edge(m,b,5000);
+  for(const [label,basket] of [['last',[row(a,'MANUAL',true),row(m),row(b,'AUTO')]],['first',[row(b,'AUTO'),row(m),row(a,'MANUAL',true)]]]) {
+    const base=seed(['TEST-02',basket]);
+    for(const variant of Object.keys(VARIANTS)) {
+      const result=proposeDayPlan(synthetic,base,DATE,{variant,orderIds:[b.id],budgetMs:1000});
+      const gaps=[...evaluateDay(synthetic,result.plan,DATE).gaps].filter(key=>key.includes('/boundary/'));
+      assert.deepEqual(gaps,[],`${label}/${variant}: the measurement keeps both boundaries`);
+    }
+  }
+});
