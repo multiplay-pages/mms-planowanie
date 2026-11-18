@@ -174,3 +174,17 @@ node aggregate-perf.mjs <katalog z wynikami>
 - Przy aktywnym WebGL scenariusze `scenarios.mjs` S1, S2, S4 i S9 (części dotyczące mapy SVG) nie mają zastosowania — mapę SVG zastępuje mapa operacyjna; zob. `evidence/2026-11-18-map061/README.md`.
 - Bieżące liczby: `npm test` 140, `unittest map05` 82, `unittest map04` 24.
 - Licencje i pochodzenie danych: `docs/ZRODLA-DANYCH-I-LICENCJE.md`.
+
+## MAP-07B: optymalizacja między koszykami (gałąź `map07b-cross-basket-optimization`)
+
+Karta „Optymalizacja między koszykami” w planerze (serwer lub `planner-offline.html`) wymaga lokalnych dróg. Wynik to symulacja — plan zmienia się dopiero po akceptacji w oknie potwierdzenia (cofnięcie: „Cofnij zmianę”).
+
+```
+cd map05
+npm test                                   # 167 testów, w tym tests/optimizer.test.mjs
+node benchmark-optimizer.mjs               # tabela MAP-06 / MAP-07A / MAP-07B (REPEATS=3 node ... dla mediany)
+node benchmark-optimizer.mjs --json out.json
+node benchmark-examples.mjs COVERAGE_FIRST # konkretne koszyki przed/po
+```
+
+Po zmianie `planner.mjs` lub `optimizer.mjs` odbuduj plik offline (`python -X utf8 map05/build_planner.py`); test „offline bundle” wykrywa kolizje nazw w jednym zakresie skryptu. Opis: `docs/MAP07B-OPTYMALIZACJA.md`.

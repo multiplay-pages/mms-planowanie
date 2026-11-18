@@ -5,7 +5,14 @@ import {mergeRoutes,routeLeg,assessBasket} from './routes.mjs';
 const copy=value=>JSON.parse(JSON.stringify(value));
 const fail=message=>{throw new Error(message);};
 const datePattern=/^\d{4}-\d{2}-\d{2}$/;
-const validDate=value=>typeof value==='string'&&datePattern.test(value)&&!Number.isNaN(Date.parse(value+'T12:00:00Z'))&&new Date(value+'T12:00:00Z').toISOString().slice(0,10)===value;
+const validDates=new Set();// memo of already accepted date strings: validatePlan runs once per candidate in the MAP-07B search
+const validDate=value=>{
+  if(typeof value!=='string')return false;
+  if(validDates.has(value))return true;
+  const ok=datePattern.test(value)&&!Number.isNaN(Date.parse(value+'T12:00:00Z'))&&new Date(value+'T12:00:00Z').toISOString().slice(0,10)===value;
+  if(ok&&validDates.size<4096)validDates.add(value);
+  return ok;
+};
 const teamFor=(s,id)=>s.teams.find(t=>t.id===id)??fail('Nieznana ekipa.');
 const orderFor=(s,id)=>s.orders.find(o=>o.id===id)??fail('Nieznane zlecenie.');
 const availabilityFor=(p,id,date)=>p.availability.find(a=>a.teamId===id&&a.date===date)?.slots??[];
@@ -121,6 +128,11 @@ function checkNewRoadIssues(scenario,before,after,affected) {
     const introduced=assessBasket(scenario,after,teamId,date).issues.find(issue=>issue.excess>(previous.get(issue.key)??0));
     if(introduced)fail(`Zmiana tworzy lub zwiększa naruszenie w koszyku ${teamId} (${date}): ${introduced.message}`);
   }
+}
+
+// Read-only feasibility check shared with the MAP-07B optimizer: null when the assignment is allowed, otherwise {kind,message}.
+export function placementError(scenario,plan,assignment) {
+  return candidateError(scenario,plan,assignment);
 }
 
 function canAssign(scenario,plan,assignment) {

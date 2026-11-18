@@ -2,6 +2,10 @@
 
 **STATUS HISTORYCZNY etapu „prawdziwa przeglądarka” (aktualny stan MAP-06 jest w sekcji poniżej): 10/10 scenariuszy runbooka PASS w prawdziwym Chrome 157 — zarówno modułowy widok przez `serve.py`, jak i zbudowany `planner-offline.html` przez `file://`. Wykryto i naprawiono 7 usterek, w tym P1 wizualne zasłonięcie ulic przy zbliżeniu. Testy: npm 86/86, Python map05 80/80, map04 24/24 — łącznie 190/190 PASS; build PASS. 0 żądań poza loopback/`file:`, 0 błędów konsoli. Nie testowano innych przeglądarek, trybu z oknem/GPU, urządzeń dotykowych ani czytnika ekranu. Prototyp nie jest gotowy produkcyjnie. Sekcje poniżej nowej są historyczne.**
 
+## 18.11.2026 — MAP-07B (symulacja optymalizacji między koszykami)
+
+Gałąź `map07b-cross-basket-optimization`. `npm test` 167/167, `unittest map05` 82/82, `unittest map04` 24/24. Chrome 157 (GPU): audyt `evidence/2026-11-18-map07b/chrome/` — 26/26 w trybie serwera i 26/26 z pliku offline (symulacja, brak zapisu przed akceptacją, akceptacja i cofnięcie, odrzucenie, podgląd mapy, układ 1440–390 px, brak błędów i żądań zewnętrznych). Benchmark i otwarte decyzje: `docs/MAP07B-OPTYMALIZACJA.md`. Niezależny przegląd Codex T15 (T15: P1 + 2 × P2 na 7b5427b; T16: P1 + 2 × P2 na 6a9bd57; naprawione, kolejny re-check w toku): `evidence/2026-11-18-map07b-codex/`. NOT TESTED: fizyczny dotyk, Safari/Edge, czytnik ekranu, Firefox dla nowego panelu.
+
 ## 18.11.2026 — MAP-06.1 (optymalizacja, worker kafli, Firefox)
 
 **Status: technicznie zatwierdzony prototyp — optymalizacja i odbiór użytkownika w toku.** Nie scalono z `main`. Pełny opis, tabela PRZED/PO i ograniczenia: `evidence/2026-11-18-map061/README.md`.

@@ -1,0 +1,27 @@
+{
+  "checks": [
+    {
+      "id": "disabled localStorage permits in-memory acceptance and undo",
+      "status": "PASS",
+      "detail": {
+        "empty": 0,
+        "accepted": 14,
+        "storageStatus": "Pamięć przeglądarki jest niedostępna. Zmiany pozostają w tej sesji. Użyj „Zapisz plan JSON” przed zamknięciem."
+      }
+    },
+    {
+      "id": "filter-only change during run and refresh during preview",
+      "status": "PASS",
+      "detail": {
+        "persistedAssignments": 13
+      }
+    },
+    {
+      "id": "changing variant invalidates the previous proposal",
+      "status": "FAIL",
+      "detail": "{\"remains\":true,\"unchangedStatus\":true,\"hierarchy\":\"Hierarchia celów tego wariantu (symulacja, niezatwierdzona): starszeństwo: najstarsze zlecenia mają pierwszeństwo (porównanie liczby zaplanowanych w kolejnych grupach wieku od najstarszej) → liczba zaplanowanych zleceń → km → minuty przejazdu → równomierność ekip → ta sama miejscowość (tylko remis).\",\"status\":\"Propozycja: wariant „Liczba i czas oczekiwania, potem km”, obliczona w 1010 ms. To symulacja: plan nie został zmieniony.\"}"
+    }
+  ],
+  "external": [],
+  "errors": []
+}

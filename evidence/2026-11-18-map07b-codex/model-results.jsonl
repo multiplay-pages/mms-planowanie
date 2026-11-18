@@ -1,0 +1,15 @@
+{"case":"bridge","variant":"AGE_FIRST","before":"PASS","after":"LIMIT","violations":["Przekroczono 30 km drogami między instalacjami (łącznie z pomiarami)."],"assignment":{"orderId":"TEST-006","teamId":"TEST-04","date":"2026-11-18","start":0,"origin":"AUTO","confirmed":false},"inputUnchanged":true,"structurallyValid":true}
+{"case":"bridge","variant":"COVERAGE_FIRST","before":"PASS","after":"LIMIT","violations":["Przekroczono 30 km drogami między instalacjami (łącznie z pomiarami)."],"assignment":{"orderId":"TEST-006","teamId":"TEST-04","date":"2026-11-18","start":0,"origin":"AUTO","confirmed":false},"inputUnchanged":true,"structurallyValid":true}
+{"case":"bridge","variant":"BALANCE_FIRST","before":"PASS","after":"LIMIT","violations":["Przekroczono 30 km drogami między instalacjami (łącznie z pomiarami)."],"assignment":{"orderId":"TEST-006","teamId":"TEST-04","date":"2026-11-18","start":0,"origin":"AUTO","confirmed":false},"inputUnchanged":true,"structurallyValid":true}
+{"case":"assignment-array-order","sameRoute":true,"sameTownA":0,"sameTownB":1}
+{"case":"time-budget","budgetMs":0,"wallMs":191,"elapsedMs":125,"truncated":true,"evaluations":50,"count":14,"km":154.85993299999998,"deterministic":null}
+{"case":"time-budget","budgetMs":1,"wallMs":117,"elapsedMs":74,"truncated":true,"evaluations":50,"count":14,"km":154.85993299999998,"deterministic":null}
+{"case":"skipped-no-experiment","rank":9,"id":"TEST-027","note":"To zlecenie jest starsze niż najmłodsze zaplanowane (11 dni): pominięcie wymaga uzasadnienia powyżej; próba wymiany jednej wizyty w tej ekipie nie dała wykonalnego miejsca (limity dróg, okna lub kwalifikacje). Wyszukiwanie jest ograniczone budżetem czasu — to nie dowód, że żaden inny plan nie istnieje."}
+{"case":"time-budget","budgetMs":3000,"wallMs":1342,"elapsedMs":1262,"truncated":false,"evaluations":304,"count":14,"km":106.362767,"deterministic":null}
+{"case":"time-budget","budgetMs":20000,"wallMs":1226,"elapsedMs":1186,"truncated":false,"evaluations":304,"count":14,"km":106.362767,"deterministic":true}
+{"case":"time-budget","budgetMs":20000,"wallMs":1103,"elapsedMs":1063,"truncated":false,"evaluations":304,"count":14,"km":106.362767,"deterministic":true}
+{"case":"reorder-occupancy","preserved":true,"assignments":13,"twoSlot":2}
+{"case":"benchmark-cohort","scenarioId":"EMPTY","common":31,"onlyMap06":{"installations":9,"measurements":0},"onlyCoverage":{"installations":9,"measurements":1}}
+{"case":"benchmark-cohort","scenarioId":"PROTECTED","common":30,"onlyMap06":{"installations":9,"measurements":0},"onlyCoverage":{"installations":8,"measurements":1}}
+{"case":"benchmark-cohort","scenarioId":"REDUCED","common":30,"onlyMap06":{"installations":6,"measurements":0},"onlyCoverage":{"installations":5,"measurements":1}}
+{"case":"benchmark-open-pair","id":"TEST-002","empty":2,"unjustified":0,"twoSlotAssignmentFeasible":true}
