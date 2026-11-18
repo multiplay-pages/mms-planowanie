@@ -64,11 +64,19 @@
             <p id="map-note" class="small"></p>
             <div class="map-tools" role="group" aria-label="Sterowanie mapą"><button type="button" data-map="in" aria-label="Przybliż mapę">+</button><button type="button" data-map="out" aria-label="Oddal mapę">−</button><button type="button" data-map="left" aria-label="Przesuń mapę w lewo">←</button><button type="button" data-map="up" aria-label="Przesuń mapę w górę">↑</button><button type="button" data-map="down" aria-label="Przesuń mapę w dół">↓</button><button type="button" data-map="right" aria-label="Przesuń mapę w prawo">→</button><button type="button" data-map="fit">Dopasuj widok</button><button type="button" data-map="all" aria-pressed="true">Cały zakres</button><button type="button" data-map="selected" aria-pressed="false">Wybrany adres</button></div>
             <div id="op-map-shell" class="op-map-shell" hidden>
-              <div class="op-toolbar">
-                <fieldset class="op-basemap"><legend>Podkład</legend><label><input type="radio" name="op-basemap" value="road" checked>Drogowa</label><label><input type="radio" name="op-basemap" value="satellite">Satelita</label><label><input type="radio" name="op-basemap" value="hybrid">Hybryda</label></fieldset>
-                <button type="button" id="op-fit-baskets">Dopasuj do koszyków</button><button type="button" id="op-fit-all">Cały zakres</button><button type="button" id="op-fit-selected">Wybrane zlecenie</button><button type="button" id="op-satellite-settings" class="secondary">Dostawca zdjęć…</button>
+              <div class="op-toolbar" role="toolbar" aria-label="Sterowanie mapą operacyjną">
+                <div class="op-ws-only op-ws-title"><strong>Mapa operacyjna</strong></div>
+                <label class="op-ws-only op-ws-date">Dzień<input id="op-date" type="date"></label>
+                <button type="button" id="op-generate" class="primary op-ws-only">Generuj koszyki ↗</button>
+                <fieldset class="op-basemap"><legend>Podkład</legend><label><input type="radio" name="op-basemap" value="road" checked>Drogowa</label><label class="op-unavailable" title="Warstwa niedostępna: prawa do ortofotomapy GUGiK nie są potwierdzone, a dostawca nie został skonfigurowany."><input type="radio" name="op-basemap" value="satellite" disabled>Satelita <small>niedostępna</small></label><label class="op-unavailable" title="Warstwa niedostępna: prawa do ortofotomapy GUGiK nie są potwierdzone, a dostawca nie został skonfigurowany."><input type="radio" name="op-basemap" value="hybrid" disabled>Hybryda <small>niedostępna</small></label></fieldset>
+                <label class="op-variant">Styl<select id="op-variant"><option value="light">Operational Light</option><option value="nav">Professional Navigation</option></select></label>
+                <button type="button" id="op-fit-baskets">Dopasuj do koszyków</button><button type="button" id="op-fit-all">Cały zakres</button><button type="button" id="op-fit-selected">Wybrane zlecenie</button>
+                <details id="op-layers-menu" class="op-menu"><summary>Warstwy</summary><div id="op-layers-menu-body" class="op-menu-body"></div></details>
+                <button type="button" id="op-workspace" aria-pressed="false">Duża mapa ⤢</button><button type="button" id="op-fullscreen" aria-pressed="false">Pełny ekran</button>
+                <button type="button" id="op-workspace-close" class="op-ws-only secondary">Zamknij ✕</button>
+                <button type="button" id="op-satellite-settings" class="secondary">Dostawca zdjęć…</button>
               </div>
-              <div class="op-body"><div id="operational-map" class="op-map"></div><aside id="op-layers" class="op-layers" aria-label="Warstwy, koszyki i kolejność wizyt"></aside></div>
+              <div class="op-body"><aside id="op-layers" class="op-layers" aria-label="Warstwy, koszyki i kolejność wizyt"></aside><div class="op-stage"><div id="operational-map" class="op-map"></div><div id="op-legend" class="op-legend-box" aria-label="Legenda mapy"></div><aside id="op-detail" class="op-detail" aria-label="Szczegóły wybranej instalacji" hidden></aside></div></div>
               <p id="op-status" class="small" role="status" aria-live="polite"></p>
               <ul id="op-gaps" class="op-gaps" aria-label="Braki danych na mapie"></ul>
             </div>
