@@ -22,6 +22,8 @@ FILES = {
     '/road-tile-client.mjs': ('road-tile-client.mjs', 'text/javascript; charset=utf-8'),
     '/embedded-data.mjs': ('embedded-data.mjs', 'text/javascript; charset=utf-8'),
     '/maplibre-view.mjs': ('maplibre-view.mjs', 'text/javascript; charset=utf-8'),
+    '/map-style.mjs': ('map-style.mjs', 'text/javascript; charset=utf-8'),
+    '/pmtiles-reader.mjs': ('pmtiles-reader.mjs', 'text/javascript; charset=utf-8'),
     '/vendor/maplibre-gl/maplibre-gl.mjs': ('vendor/maplibre-gl/maplibre-gl.mjs', 'text/javascript; charset=utf-8'),
     '/vendor/maplibre-gl/maplibre-gl-worker.mjs': ('vendor/maplibre-gl/maplibre-gl-worker.mjs', 'text/javascript; charset=utf-8'),
     '/vendor/maplibre-gl/maplibre-gl.css': ('vendor/maplibre-gl/maplibre-gl.css', 'text/css; charset=utf-8'),
@@ -30,6 +32,7 @@ FILES = {
     '/data/uug-geocoding.json': ('data/uug-geocoding.json', 'application/json; charset=utf-8'),
     '/data/local-routes.json': ('data/local-routes.json', 'application/json; charset=utf-8'),
     '/basemap/planner-compact.json': ('basemap/planner-compact.json', 'application/json; charset=utf-8'),
+    '/basemap/map-pack.pmtiles': ('basemap/map-pack.pmtiles', 'application/octet-stream'),
     '/index.html': ('index.html', 'text/html; charset=utf-8'),
     '/styles.css': ('styles.css', 'text/css; charset=utf-8'),
     '/app.mjs': ('app.mjs', 'text/javascript; charset=utf-8'),
@@ -80,6 +83,9 @@ class Handler(BaseHTTPRequestHandler):
             self.send_error(404)
             return
         try:
+            if entry[1] == 'application/octet-stream':
+                self.send_ranged(ROOT / entry[0], body=body)
+                return
             data = (ROOT / entry[0]).read_bytes()
             if TILE_ORIGINS and entry[0] == 'planner.html':
                 html = data.decode('utf-8')
@@ -98,6 +104,49 @@ class Handler(BaseHTTPRequestHandler):
         self.end_headers()
         if body:
             self.wfile.write(data)
+
+    def send_ranged(self, path, *, body):
+        """Serves the local map pack with HTTP range support so the browser reads only the tiles it needs."""
+        size = path.stat().st_size
+        start, end, status = 0, size - 1, 200
+        header = self.headers.get('Range') if body else None  # a HEAD answers with the full-resource metadata
+        if header:
+            match = re.fullmatch(r'bytes=([0-9]*)-([0-9]*)', header.strip())
+            if not match or (not match.group(1) and not match.group(2)):
+                self.send_error(416)
+                return
+            if match.group(1):
+                start = int(match.group(1))
+                end = min(int(match.group(2)), size - 1) if match.group(2) else size - 1
+            else:
+                start, end = max(0, size - int(match.group(2))), size - 1
+            if start > end or start >= size:
+                self.send_response(416)
+                self.send_header('Content-Range', f'bytes */{size}')
+                self.send_header('Content-Length', '0')
+                self.end_headers()
+                return
+            status = 206
+        length = end - start + 1
+        self.send_response(status)
+        self.send_header('Content-Type', 'application/octet-stream')
+        self.send_header('Accept-Ranges', 'bytes')
+        self.send_header('Content-Length', str(length))
+        if status == 206:
+            self.send_header('Content-Range', f'bytes {start}-{end}/{size}')
+        self.send_header('Cache-Control', 'no-store')
+        self.send_header('X-Content-Type-Options', 'nosniff')
+        self.end_headers()
+        if body:
+            with path.open('rb') as stream:
+                stream.seek(start)
+                remaining = length
+                while remaining:
+                    chunk = stream.read(min(remaining, 1 << 20))
+                    if not chunk:
+                        break
+                    self.wfile.write(chunk)
+                    remaining -= len(chunk)
 
 
 if __name__ == '__main__':
