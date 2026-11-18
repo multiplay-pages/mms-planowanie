@@ -81,7 +81,7 @@ export function createOperationalMapView({maplibregl,container,roadTiles,pack,to
     visits:{type:'geojson',data:OP_EMPTY,...OP_CLUSTER},
   };
   let activeVariant=MAP_VARIANTS[variant]?variant:DEFAULT_VARIANT;
-  const buildLayers=()=>[...baseLayers({variant:activeVariant,rich}),...opsLayers({variant:activeVariant})];
+  const buildLayers=()=>[...baseLayers({variant:activeVariant,rich,packPlaces:!pack?.layers||pack.layers.has('places')}),...opsLayers({variant:activeVariant})];
   const map=new maplibregl.Map({container,style:{version:8,sources,layers:buildLayers()},bounds:regionBounds??undefined,fitBoundsOptions:{padding:24},attributionControl:{compact:true},maxZoom:19,minZoom:5,dragRotate:true,pitchWithRotate:false,cooperativeGestures:false});
   map.addControl(new maplibregl.NavigationControl({visualizePitch:false}),'top-right');
   map.addControl(new maplibregl.ScaleControl({unit:'metric'}),'bottom-left');
@@ -186,9 +186,12 @@ export function createOperationalMapView({maplibregl,container,roadTiles,pack,to
     map.on('mouseenter',id,()=>{map.getCanvas().style.cursor='pointer';});
     map.on('mouseleave',id,()=>{map.getCanvas().style.cursor='';});
   }
-  map.on('error',event=>callbacks.onError?.(maskSecrets(event.error?.message??String(event.error??event))));
+  // Events of a destroyed view must never reach the planner: a replacement view may already be running.
+  let destroyed=false;
+  map.on('error',event=>{if(!destroyed)callbacks.onError?.(maskSecrets(event.error?.message??String(event.error??event)));});
   // A lost GPU context must not leave the coordinator without a map: the planner falls back to SVG.
-  map.getCanvas().addEventListener('webglcontextlost',()=>callbacks.onFatal?.('Utracono kontekst WebGL.'),{once:true});
+  const canvas=map.getCanvas(),onContextLost=()=>{if(!destroyed)callbacks.onFatal?.('Utracono kontekst WebGL.');};
+  canvas.addEventListener('webglcontextlost',onContextLost,{once:true});
   return {
     map,ready,rich,packLayers:pack?.layers??null,
     async update(layers) {
@@ -237,6 +240,10 @@ export function createOperationalMapView({maplibregl,container,roadTiles,pack,to
     get layers(){return lastLayers;},
     get packInfo(){return pack?{source:pack.source?.kind??'unknown',bounds:packHeader.bounds,minZoom:packHeader.minZoom,maxZoom:packHeader.maxZoom}:null;},
     resize(){map.resize();},
-    destroy(){popup?.remove();map.remove();},
+    destroy(){
+      if(destroyed)return;
+      destroyed=true;canvas.removeEventListener('webglcontextlost',onContextLost);popup?.remove();map.remove();
+      if(opCallbacks===callbacks){opCallbacks=null;opPack=null;opRoadTiles=null;} // a stale protocol handler must not keep reading the pack
+    },
   };
 }

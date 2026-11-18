@@ -64,3 +64,9 @@ test('cluster layers never draw as individual numbered markers',()=>{
   }
   for(const id of ['visits-cluster','unassigned-cluster'])assert.deepEqual(ops.find(layer=>layer.id===id).filter,['has','point_count']);
 });
+
+test('a pack without places still labels towns from the local towns source',()=>{
+  const ids=baseLayers({variant:'light',rich:true,packPlaces:false}).map(layer=>layer.id);
+  assert.ok(ids.includes('town-labels')&&!ids.includes('place-labels'));
+  assert.ok(baseLayers({variant:'light',rich:true}).some(layer=>layer.id==='place-labels'));
+});

@@ -189,3 +189,20 @@ test('basemap modes: hybrid keeps roads and labels but removes fills, satellite 
   await view.setBasemap('road');
   assert.equal(view.basemap,'road');assert.equal(map.layout['roads-fill.visibility'],'visible');assert.equal(map.layout['building.visibility'],'visible');assert.equal(map.layout['background.visibility'],'visible');assert.ok(!map.layers.has('satellite'));
 });
+
+test('a destroyed view never reports errors or a lost GPU context, and releases the pack protocol state',async()=>{
+  const window=new Window();globalThis.document=window.document;
+  document.body.innerHTML='<div class="op-map-shell"><div id="m"></div></div>';
+  const ctx=new Proxy({},{get:(_,k)=>k==='getImageData'?()=>({}):()=>{},set:()=>true});
+  window.HTMLCanvasElement.prototype.getContext=()=>ctx;
+  const ml=fakeMapLibre(),fatal=[],errors=[];
+  const view=createOperationalMapView({maplibregl:ml,container:document.getElementById('m'),roadTiles:null,pack:null,towns:{type:'FeatureCollection',features:[]},regionBounds:null,teams:[],callbacks:{onEdit(){},onFatal:m=>fatal.push(m),onError:m=>errors.push(m)}});
+  await view.ready;
+  const canvas=ml.state.maps.at(-1).canvas;
+  view.destroy();
+  canvas.dispatchEvent(new window.Event('webglcontextlost'));
+  for(const fn of ml.state.handlers.error??[])fn({error:new Error('late tile error')});
+  assert.deepEqual(fatal,[]);assert.deepEqual(errors,[]);
+  await assert.rejects(registeredProtocols.mmspack({url:'mmspack://5/1/1'},{signal:{aborted:false}}),/nie jest dostępny/);
+  view.destroy(); // idempotent
+});

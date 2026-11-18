@@ -574,3 +574,19 @@ test('MAP-08 satellite tooltips follow availability once a provider is configure
   const on=await mountMap(t,{tileOrigins:'http://localhost:9',saved:new Map([['mms-map06-satellite-v1',JSON.stringify(config)]])});
   assert.doesNotMatch(on.ui.$('input[name="op-basemap"][value="hybrid"]').closest('label').title,/niedostępna/);
 });
+
+test('MAP-08 after the pack fallback the real basemap is road and the user switches are carried over',async t=>{
+  const config={preset:'custom',url:'http://localhost:9/tiles/{z}/{x}/{y}.jpg',attribution:'© Test',consent:true};
+  const {ui,calls}=await mountMap(t,{tileOrigins:'http://localhost:9',saved:new Map([['mms-map06-satellite-v1',JSON.stringify(config)]])});
+  const radio=value=>ui.$(`input[name="op-basemap"][value="${value}"]`);
+  radio('hybrid').checked=true;radio('hybrid').dispatchEvent(new ui.window.Event('change',{bubbles:true}));
+  assert.match(ui.$('#op-status').textContent,/^Podkład: Hybryda/);
+  ui.change('#op-layers-menu-body [data-op-toggle="roads"]',false);ui.change('#op-layers-menu-body [data-op-flag="numbers"]',false);
+  const first=calls.callbacks;
+  first.onPackFailure('błąd odczytu kafla');
+  for(let i=0;i<8;i++)await new Promise(resolve=>setImmediate(resolve));
+  assert.equal(radio('road').checked,true);assert.match(ui.$('#op-status').textContent,/Pakiet mapy przestał działać.*Podkład: Drogowa/);
+  assert.doesNotMatch(ui.$('#op-status').textContent,/Hybryda/);
+  const last=JSON.parse(JSON.stringify(calls.flags.at(-1)));
+  assert.equal(last.roads,false);assert.equal(last.numbers,false);
+});

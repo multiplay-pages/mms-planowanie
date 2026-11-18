@@ -83,9 +83,9 @@ function placeLayers(p,v,rich,townsSource) {
 }
 
 /** Base cartography for a variant. `rich` is true when the PMTiles pack is the road source. */
-export function baseLayers({variant=DEFAULT_VARIANT,rich=false,townsSource='towns'}={}) {
+export function baseLayers({variant=DEFAULT_VARIANT,rich=false,townsSource='towns',packPlaces=true}={}) {
   const p=PALETTES[variant]??PALETTES[DEFAULT_VARIANT];
-  return [{id:'background',type:'background',paint:{'background-color':p.background}},...(rich?packLayers(p,variant):[]),...roadLayers(p,variant,rich),...placeLayers(p,variant,rich,townsSource)];
+  return [{id:'background',type:'background',paint:{'background-color':p.background}},...(rich?packLayers(p,variant):[]),...roadLayers(p,variant,rich),...placeLayers(p,variant,rich&&packPlaces,townsSource)];
 }
 
 /** Operational layers (routes, visits, queue). Shapes: MPL circle, BSA square, POMIAR diamond. */

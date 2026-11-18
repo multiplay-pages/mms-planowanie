@@ -407,7 +407,12 @@ async function fallBackToRoadsOnly(reason) {
   const view=opView;opView=null;$('operational-map').operationalView=null;
   try {view.destroy();} catch {}
   await initOperationalMap();
-  if(opView)setOpStatus('Pakiet mapy przestał działać — przełączono na podkład uproszczony (tylko drogi).');
+  if(opView) {
+    // The replacement view starts on defaults: carry the user's switches over and report the real basemap (road).
+    opState.basemap='road';document.querySelector('input[name="op-basemap"][value="road"]').checked=true;
+    opView.setFlags({...opState.flags,roads:opState.roads});
+    setOpStatus('Pakiet mapy przestał działać — przełączono na podkład uproszczony (tylko drogi).');
+  }
   showMessage(`Pakiet mapy: ${reason}. Plan pozostaje bez zmian.`,true);
 }
 
@@ -415,7 +420,7 @@ let operationalDisabled=false;
 function disableOperationalMap(reason) {
   if(operationalDisabled)return; // destroying the map fires further failure events; keep the first reason
   operationalDisabled=true;
-  const view=opView,tiles=roadTiles;opView=null;roadTiles=null;
+  const view=opView,tiles=roadTiles;opView=null;roadTiles=null;$('operational-map').operationalView=null;
   try {view?.destroy();} catch {}
   try {tiles?.destroy();} catch {}
   ensureSvgMap();
