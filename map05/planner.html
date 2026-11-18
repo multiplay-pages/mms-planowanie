@@ -6,6 +6,7 @@
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; object-src 'none'; base-uri 'none'; form-action 'none'">
   <title>MMS · Planer instalacji</title>
   <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./vendor/maplibre-gl/maplibre-gl.css">
   <link rel="stylesheet" href="./planner.css">
   <script type="module" src="./planner.mjs"></script>
 </head>
@@ -39,10 +40,19 @@
             <p id="routing-status" class="notice compact">Wczytywanie lokalnej oceny dróg…</p>
             <div id="baskets" class="baskets"></div>
           </section>
-          <section class="card" aria-labelledby="map-title">
+          <section id="map-card" class="card" aria-labelledby="map-title">
             <div class="panel-head"><div><p class="eyebrow">03 / PRZESTRZEŃ</p><h2 id="map-title">Mapa i lokalizacje</h2></div><span id="located-count" class="tag"></span></div>
             <p id="map-note" class="small"></p>
             <div class="map-tools" role="group" aria-label="Sterowanie mapą"><button type="button" data-map="in" aria-label="Przybliż mapę">+</button><button type="button" data-map="out" aria-label="Oddal mapę">−</button><button type="button" data-map="left" aria-label="Przesuń mapę w lewo">←</button><button type="button" data-map="up" aria-label="Przesuń mapę w górę">↑</button><button type="button" data-map="down" aria-label="Przesuń mapę w dół">↓</button><button type="button" data-map="right" aria-label="Przesuń mapę w prawo">→</button><button type="button" data-map="fit">Dopasuj widok</button><button type="button" data-map="all" aria-pressed="true">Cały zakres</button><button type="button" data-map="selected" aria-pressed="false">Wybrany adres</button></div>
+            <div id="op-map-shell" class="op-map-shell" hidden>
+              <div class="op-toolbar">
+                <fieldset class="op-basemap"><legend>Podkład</legend><label><input type="radio" name="op-basemap" value="road" checked>Drogowa</label><label><input type="radio" name="op-basemap" value="satellite">Satelita</label><label><input type="radio" name="op-basemap" value="hybrid">Hybryda</label></fieldset>
+                <button type="button" id="op-fit-baskets">Dopasuj do koszyków</button><button type="button" id="op-fit-all">Cały zakres</button><button type="button" id="op-fit-selected">Wybrane zlecenie</button><button type="button" id="op-satellite-settings" class="secondary">Dostawca zdjęć…</button>
+              </div>
+              <div class="op-body"><div id="operational-map" class="op-map"></div><aside id="op-layers" class="op-layers" aria-label="Warstwy, koszyki i kolejność wizyt"></aside></div>
+              <p id="op-status" class="small" role="status" aria-live="polite"></p>
+              <ul id="op-gaps" class="op-gaps" aria-label="Braki danych na mapie"></ul>
+            </div>
             <div class="map-wrap"><svg id="planner-map" viewBox="0 0 680 380" tabindex="0" role="group" aria-labelledby="map-title map-desc"><desc id="map-desc">Punkty budynków z lokalnej warstwy GUGiK. Nieustalone lokalizacje pozostają poza mapą. Podkład ulic obejmuje wyłącznie wycinek Opola.</desc></svg></div>
             <div class="map-legend"><span class="key mpl">MPL</span><span class="key bsa">BSA</span><span class="key measurement">Pomiar</span><span>Przerywany obrys: uwaga o kodzie</span><span class="key route">Droga koszyka</span></div>
             <p id="route-summary" class="small" role="status" aria-live="polite"></p>
@@ -61,6 +71,7 @@
       <footer><p id="source-detail"></p><p>Adresy z listy użytkownika. Typy, gotowość, wiek kolejki, wymagana liczba slotów i ekipy są syntetyczne. Regiony operacyjne, pokrycie i normy nie zostały niezależnie zweryfikowane. Brak zapisu do MMS, kontaktu z klientami i finalnej obsady D−1.</p><a href="./index.html">Starszy demonstrator MAP-04</a></footer>
     </div>
   </main>
+  <dialog id="satellite-dialog" aria-labelledby="satellite-title"><form id="satellite-form" method="dialog"><h2 id="satellite-title">Dostawca zdjęć satelitarnych</h2><p class="small">Zdjęcia są pobierane z internetu tylko po Twojej konfiguracji. Dostawca otrzyma adresy kafli, czyli <strong>widoczny obszar mapy</strong>, w tym okolice zleceń. Klucz API zostaje wyłącznie w tej przeglądarce; nie trafia do repozytorium ani do pliku planu.</p><label>Dostawca<select id="satellite-preset"><option value="gugik-orto">GUGiK — Ortofotomapa (WMS, bezpłatna)</option><option value="custom">Własny adres kafli (XYZ / WMS)</option></select></label><label>Adres kafli<input id="satellite-url" type="url" required placeholder="https://…/{z}/{x}/{y}.jpg"></label><label>Atrybucja<input id="satellite-attribution" type="text" required maxlength="200"></label><label class="consent"><input id="satellite-consent" type="checkbox"> Rozumiem, że widoczny obszar mapy będzie wysyłany do tego dostawcy.</label><div class="save-actions"><button id="satellite-clear" type="button" class="danger">Usuń konfigurację</button><button id="satellite-cancel" type="button" class="secondary">Anuluj</button><button id="satellite-save" type="submit" class="primary">Zapisz</button></div></form></dialog>
   <dialog id="reset-dialog" aria-labelledby="reset-title"><h2 id="reset-title">Wyczyścić lokalny plan testowy?</h2><p>Adresy pozostaną. Przydziały i zmiany dostępności wrócą do scenariusza początkowego. Tę operację można cofnąć.</p><div class="save-actions"><button id="cancel-reset" type="button" class="secondary">Anuluj</button><button id="accept-reset" type="button" class="danger">Wyczyść plan</button></div></dialog>
 </body>
 </html>

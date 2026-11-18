@@ -3,13 +3,19 @@ import {createMapFrame,projectMapPoint,mapGeometryPath} from './map.mjs';
 import {hasLocation,locationLabel,summarizeLocations,locationReasonText} from './locations.mjs';
 import {mergeRoutes,assessBasket,decodeRouteGeometry} from './routes.mjs';
 import {prepareMapFeatures,visibleMapFeatures,mapFeaturePath} from './planner-map.mjs';
+import {buildOperationalLayers,operationalTeamColor,operationalBounds} from './operational-map.mjs';
+import {createOperationalMapView,validateSatelliteConfig,SATELLITE_PRESETS} from './maplibre-view.mjs';
+import {decodeEmbeddedText} from './embedded-data.mjs';
+import {createWorkerRoadTiles,createInlineRoadTiles} from './road-tile-client.mjs';
 
 const $=id=>document.getElementById(id);
 const escapeText=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const state={date:'2026-11-18',city:'ALL',kind:'ALL',query:'',selectedId:null,mapMode:'scope',mapTeam:null};
-let scenario,plan,mapData,mapFrame=null,markerLayer=null,history=[],storageKey,storageAvailable=true,viewport=[0,0,680,380],drag=null;
+let scenario,plan,mapData,mapDeferred=false,roadTiles=null,mapFrame=null,markerLayer=null,history=[],storageKey,storageAvailable=true,viewport=[0,0,680,380],drag=null;
 let backgroundLayer,routeLayer,townLayer,scaleLayer,preparedMap=[],townLabels=[],lastMapView=null;
-const addressFor=order=>scenario.addresses.find(a=>a.id===order.addressId);
+// MAP-06 operational map: a view of plan; it holds only display preferences, never assignments.
+let opView=null;const opState={hidden:new Set(),showUnassigned:true,showRoutes:true,roads:true,basemap:'road'};
+const SATELLITE_KEY='mms-map06-satellite-v1';const addressFor=order=>scenario.addresses.find(a=>a.id===order.addressId);
 const orderById=id=>scenario.orders.find(o=>o.id===id);
 const onDay=()=>plan.assignments.filter(a=>a.date===state.date);
 const slotLabel=(start,count=1)=>`${scenario.windows[start][0]}–${scenario.windows[start+count-1][1]}`;
@@ -23,7 +29,7 @@ const occupies=(teamId,index)=>onDay().find(a=>a.teamId===teamId&&index>=a.start
 
 async function readData(id,url) {
   const bundled=$(id);
-  if(bundled) return JSON.parse(bundled.textContent);
+  if(bundled) return JSON.parse(await decodeEmbeddedText(bundled.textContent,bundled.dataset?.encoding));
   const response=await fetch(url,{cache:'no-store'});
   if(!response.ok) throw Error(`Brak pliku lokalnego: ${url} (${response.status}).`);
   return response.json();
@@ -39,7 +45,10 @@ async function loadPlanner() {
     catch(error) {if(!geocoding)throw error;scenario=createScenario(dataset);locationWarning=`Pominięto warstwę lokalizacji: ${error.message} Zachowano planer zasobowy.`;}
     try {const routes=await readData('routing-data','./data/local-routes.json');scenario.routing=mergeRoutes(scenario.datasetId,scenario.addresses,routes);}
     catch(error) {locationWarning+=` Lokalna ocena dróg nie jest dostępna: ${error.message} Zachowano planer zasobowy.`;}
-    try {mapData=await readData('basemap-data','./basemap/planner-compact.json');} catch {mapData=null;locationWarning+=' Lokalny podkład ulic nie jest dostępny.';}
+    // With WebGL and Web Workers the road tiles are built off the main thread from the raw data, so the
+    // 28 MB road snapshot is not parsed here; the SVG map loads it only if it has to take over.
+    mapDeferred=webglAvailable()&&typeof Worker==='function';
+    if(!mapDeferred) {try {mapData=await readData('basemap-data','./basemap/planner-compact.json');} catch {mapData=null;locationWarning+=' Lokalny podkład ulic nie jest dostępny.';}}
     plan=createPlan(scenario);storageKey=`mms-map05-plan-v1-${scenario.datasetId}`;
     let warning=locationWarning;
     try {
@@ -54,9 +63,9 @@ async function loadPlanner() {
     const provider=scenario.addresses.find(address=>address.geocoding)?.geocoding.source.provider;
     const providerName=provider==='GUGIK_UUG'?'GUGiK':provider==='Geoapify'?'Geoapify':'brak warstwy lokalizacji';
     $('geocoder-source').textContent=providerName;
-    $('map-desc').textContent=`Punkty budynków: ${providerName}. Przerywany obrys oznacza różny kod pocztowy w odpowiedzi usługi. Nieustalone lokalizacje pozostają poza mapą. Przesuwaj przeciągnięciem lub strzałkami; plus/minus zmieniają skalę, Home dopasowuje zakres. ${mapData?.regions?.PLANNER?'Regionalny podkład OSM obejmuje obszar zleceń; przybliż adres, aby zobaczyć ulice.':'Podkład ulic obejmuje wyłącznie wycinek Opola.'}`;
+    $('map-desc').textContent=`Punkty budynków: ${providerName}. Przerywany obrys oznacza różny kod pocztowy w odpowiedzi usługi. Nieustalone lokalizacje pozostają poza mapą. Przesuwaj przeciągnięciem lub strzałkami; plus/minus zmieniają skalę, Home dopasowuje zakres. ${mapData?.regions?.PLANNER||mapDeferred?'Regionalny podkład OSM obejmuje obszar zleceń; przybliż adres, aby zobaczyć ulice.':'Podkład ulic obejmuje wyłącznie wycinek Opola.'}`;
     $('routing-status').textContent=scenario.routing?'Drogi obliczane lokalnie na OSM. Generator i ręczna zmiana sprawdzają robocze limity 30 km, +10 km i dojazd z pracą w oknie. Czasy i normy pracy są szacunkowe; start ekipy i wjazd na posesję pozostają niepotwierdzone.':'Brak lokalnych wyników dróg — przydziały są propozycjami zasobowymi, bez oceny przejazdów.';
-    renderPlanner();drawPlannerMap();$('planner').hidden=false;
+    renderPlanner();if(!mapDeferred)drawPlannerMap();$('planner').hidden=false;initOperationalMap();
     if(warning) showMessage(warning,true);
   } catch(error) {$('failure-message').textContent=error.message;$('failure').hidden=false;}
   finally {$('loading').hidden=true;}
@@ -84,7 +93,7 @@ function perform(action,message) {
 
 function renderPlanner() {
   const active=document.activeElement,focusId=active?.id,focusOrder=active?.dataset?.order;
-  const focusContainer=active?.closest('#queue-list, #baskets, #planner-map, #location-review')?.id;
+  const focusContainer=active?.closest('#queue-list, #baskets, #planner-map, #location-review, #op-layers')?.id;
   const focusInDetails=Boolean(active?.closest('#order-details'));
   const queue=queueOrders(scenario,plan),visible=queue.filter(matches),day=onDay();
   const open=scenario.teams.reduce((sum,team)=>sum+slotsFor(team.id).length,0);
@@ -112,7 +121,10 @@ function renderPlanner() {
   $('undo').disabled=!history.length;
   $('storage-status').textContent=storageAvailable?'Zmiany są zapisywane lokalnie w tej przeglądarce, jeśli pozwalają na to jej ustawienia. JSON pozwala przenieść plan między kartami lub przeglądarkami.':'Pamięć przeglądarki jest niedostępna. Zmiany pozostają w tej sesji. Użyj „Zapisz plan JSON” przed zamknięciem.';
   renderOrderDetails();
+  renderMapSummary();
   if(mapFrame)renderMapMarkers();
+  // The operational panel is rebuilt before focus is restored, so a focused visit button survives.
+  updateOperationalMap();
   if(focusOrder&&focusContainer)$(focusContainer)?.querySelector(`[data-order="${focusOrder}"]`)?.focus();
   else if(focusId)$(focusId)?.focus();
   // Confirm, release and return-to-queue replace the activated button; keep keyboard users in the details panel.
@@ -216,14 +228,22 @@ function mapOrders() {
   return scenario.orders.filter(matches);
 }
 
-function renderMapMarkers() {
-  markerLayer.replaceChildren();
+function renderMapSummary() {
   const orders=mapOrders(),points=orders.filter(order=>hasLocation(addressFor(order))),summary=summarizeLocations(scenario.addresses);
   const scope=state.mapMode==='basket'?`Koszyk ${state.mapTeam} · ${state.date}`:state.mapMode==='selected'?'Wybrany adres':'Zakres według filtrów';
   const postalNotes=scenario.addresses.filter(address=>address.locationStatus==='MATCHED_BUILDING_POSTCODE_NOTE').length;
   $('located-count').textContent=`${summary.matched} / ${summary.total} adresów`;
-  $('map-note').textContent=`${scope}: ${points.length} punktów na mapie. W całym zbiorze: ${summary.review} nieustalonych lokalizacji poza mapą; ${postalNotes} punktów z różnym kodem pocztowym usługi (przerywany obrys, kod źródłowy zachowano). ${mapData?.regions?.PLANNER?'Regionalny podkład ulic obejmuje obszar zleceń; przybliż wybrany adres, aby zobaczyć lokalne ulice.':'Podkład ulic obejmuje wyłącznie wycinek Opola.'} ${scenario.routing?'Drogi są obliczane lokalnie; mapa niczego nie wysyła.':'Brak tras i oceny przejazdu.'}`;
+  $('map-note').textContent=`${scope}: ${points.length} punktów na mapie. W całym zbiorze: ${summary.review} nieustalonych lokalizacji poza mapą; ${postalNotes} punktów z różnym kodem pocztowym usługi (przerywany obrys, kod źródłowy zachowano). ${mapData?.regions?.PLANNER||mapDeferred?'Regionalny podkład ulic obejmuje obszar zleceń; przybliż wybrany adres, aby zobaczyć lokalne ulice.':'Podkład ulic obejmuje wyłącznie wycinek Opola.'} ${scenario.routing?'Drogi są obliczane lokalnie; mapa niczego nie wysyła.':'Brak tras i oceny przejazdu.'}`;
   if(!summary.matched&&!summary.review)$('map-note').textContent=`Brak współrzędnych ${summary.total} adresów. Podkład referencyjny Opola nie przedstawia zasięgu sieci ani rozmieszczenia zleceń.`;
+  const review=orders.filter(order=>['REVIEW_REQUIRED','MATCHED_BUILDING_POSTCODE_NOTE'].includes(addressFor(order).locationStatus));
+  $('location-review-count').textContent=`${review.length}`;
+  $('location-review').innerHTML=review.map(order=>`<button type="button" data-order="${order.id}" aria-pressed="${order.id===state.selectedId}"><strong>${order.id}</strong> ${escapeText(addressFor(order).label)}<span>${addressFor(order).geocoding.reasons.map(reason=>escapeText(locationReasonText(reason))).join(' · ')}</span></button>`).join('')||'<p class="small muted">Brak uwag do odpowiedzi usługi w tym zakresie.</p>';
+  document.querySelectorAll('[data-map="all"], [data-map="selected"]').forEach(button=>button.setAttribute('aria-pressed',String((button.dataset.map==='all'&&state.mapMode==='scope')||(button.dataset.map==='selected'&&state.mapMode==='selected'))));
+}
+
+function renderMapMarkers() {
+  markerLayer.replaceChildren();
+  const points=mapOrders().filter(order=>hasLocation(addressFor(order)));
   points.sort((a,b)=>Number(a.id===state.selectedId)-Number(b.id===state.selectedId));
   for(const order of points) {
     const address=addressFor(order),xy=projectMapPoint(address.coordinates,mapFrame),selected=order.id===state.selectedId;
@@ -232,15 +252,12 @@ function renderMapMarkers() {
     const title=svgNode('title');title.textContent=markerLabel;marker.append(title);markerLayer.append(marker);
     if(selected){const label=svgNode('text',{x:xy[0],y:xy[1],class:'map-selected-label','aria-hidden':'true'});label.textContent=order.id;markerLayer.append(label);}
   }
-  const review=orders.filter(order=>['REVIEW_REQUIRED','MATCHED_BUILDING_POSTCODE_NOTE'].includes(addressFor(order).locationStatus));
-  $('location-review-count').textContent=`${review.length}`;
-  $('location-review').innerHTML=review.map(order=>`<button type="button" data-order="${order.id}" aria-pressed="${order.id===state.selectedId}"><strong>${order.id}</strong> ${escapeText(addressFor(order).label)}<span>${addressFor(order).geocoding.reasons.map(reason=>escapeText(locationReasonText(reason))).join(' · ')}</span></button>`).join('')||'<p class="small muted">Brak uwag do odpowiedzi usługi w tym zakresie.</p>';
-  document.querySelectorAll('[data-map="all"], [data-map="selected"]').forEach(button=>button.setAttribute('aria-pressed',String((button.dataset.map==='all'&&state.mapMode==='scope')||(button.dataset.map==='selected'&&state.mapMode==='selected'))));
   renderBasketRoute();
   updateViewport();
 }
 
 function fitCurrentMap() {
+  if(!mapFrame)return;
   const orders=mapOrders().filter(order=>hasLocation(addressFor(order)));
   if(!orders.length||(state.mapMode==='scope'&&orders.length===scenario.addresses.filter(hasLocation).length)){viewport=[0,0,680,380];updateViewport();return;}
   const points=orders.map(order=>projectMapPoint(addressFor(order).coordinates,mapFrame));
@@ -255,6 +272,7 @@ function fitCurrentMap() {
 }
 
 function updateViewport() {
+  if(!mapFrame)return;
   $('planner-map').setAttribute('viewBox',viewport.map(n=>Number(n.toFixed(3))).join(' '));
   const factor=viewport[2]/680;
   document.querySelectorAll('#planner-map .map-marker').forEach(marker=>marker.setAttribute('r',String(7*factor)));
@@ -262,6 +280,7 @@ function updateViewport() {
   renderBasemapViewport();
 }
 function moveMap(command) {
+  if(!mapFrame)return;
   if(command==='all'||command==='selected'){state.mapMode=command==='all'?'scope':'selected';state.mapTeam=null;renderPlanner();fitCurrentMap();return;}
   if(command==='fit'){fitCurrentMap();return;}
   else if(command==='in'||command==='out') {
@@ -282,16 +301,156 @@ function selectMapOrder(id) {
   renderPlanner();if(state.mapMode==='selected')fitCurrentMap();
 }
 
+function webglAvailable() {
+  try {const canvas=document.createElement('canvas');return Boolean(canvas.getContext?.('webgl2')||canvas.getContext?.('webgl'));} catch {return false;}
+}
+
+async function loadMapLibre() {
+  if(globalThis.maplibregl)return globalThis.maplibregl;
+  // The offline artifact defines MapLibre in a deferred module script; the served view imports the vendored copy.
+  if($('maplibre-worker-source'))return new Promise(resolve=>addEventListener('maplibre-ready',()=>resolve(globalThis.maplibregl),{once:true}));
+  return import('./vendor/maplibre-gl/maplibre-gl.mjs');
+}
+
+// Road tiles are generated in a Web Worker; inline on the main thread only if the worker cannot be created.
+async function startRoadTiles() {
+  if(mapDeferred) {
+    try {
+      const bundled=$('basemap-data'),workerSource=$('road-tile-worker-source');
+      const source=bundled?{kind:'embedded',text:bundled.textContent,encoding:bundled.dataset?.encoding??'json'}:{kind:'url',url:new URL('./basemap/planner-compact.json',document.baseURI).href};
+      const worker=workerSource?new Worker(URL.createObjectURL(new Blob([workerSource.textContent],{type:'text/javascript'}))):new Worker(new URL('./road-tile-worker.mjs',document.baseURI),{type:'module'});
+      return createWorkerRoadTiles(worker,source);
+    } catch {
+      if(!mapData) {try {mapData=await readData('basemap-data','./basemap/planner-compact.json');} catch {mapData=null;}}
+    }
+  }
+  if(!mapData?.regions?.PLANNER)throw Error('Brak lokalnego podkładu dróg.');
+  return createInlineRoadTiles(mapData.regions.PLANNER);
+}
+
+async function initOperationalMap() {
+  // MapLibre itself needs Web Workers; without them (or WebGL) the SVG map stays.
+  if(!webglAvailable()||typeof Worker!=='function'||(!mapDeferred&&!mapData?.regions?.PLANNER))return;
+  try {
+    const maplibregl=await loadMapLibre(),worker=$('maplibre-worker-source');
+    if(worker)maplibregl.setWorkerUrl(URL.createObjectURL(new Blob([worker.textContent],{type:'text/javascript'})));
+    const towns=new Map();
+    for(const address of scenario.addresses.filter(hasLocation)){const t=towns.get(address.city)??{sum:[0,0],n:0};t.sum[0]+=address.coordinates[0];t.sum[1]+=address.coordinates[1];t.n++;towns.set(address.city,t);}
+    const townData={type:'FeatureCollection',features:[...towns].map(([name,t])=>({type:'Feature',geometry:{type:'Point',coordinates:[t.sum[0]/t.n,t.sum[1]/t.n]},properties:{name}}))};
+    roadTiles=await startRoadTiles();
+    const tiles=roadTiles;
+    tiles.failed.then(error=>{if(roadTiles===tiles)disableOperationalMap(error.message);});
+    $('op-map-shell').hidden=false;$('map-card').classList.add('op-active');
+    opView=createOperationalMapView({maplibregl,container:$('operational-map'),roadTiles,towns:townData,regionBounds:operationalBounds(townData),
+      teams:scenario.teams.map(team=>({teamId:team.id,color:operationalTeamColor(scenario,team.id)})),
+      callbacks:{onEdit:editFromMap,onSelect:id=>{if(id!==state.selectedId)selectMapOrder(id);},onError:message=>{$('op-status').textContent=`Mapa: ${message}`;},
+        onPopupClosed:id=>$('op-layers').querySelector(`[data-order="${id}"]`)?.focus(),onFatal:disableOperationalMap}});
+    // Read-only handle for real-browser acceptance checks; the plan is never reachable through it.
+    $('operational-map').operationalView=opView;
+    await opView.ready;
+    updateOperationalMap({fit:true});
+    $('op-status').textContent='Mapa operacyjna: lokalne drogi OSM, bez połączeń zewnętrznych. Zdjęcia satelitarne są wyłączone, dopóki nie skonfigurujesz dostawcy.';
+  } catch(error) {disableOperationalMap(error.message);}
+}
+
+let svgMapPromise=null;
+// The SVG map takes over when the operational map is unavailable; its data is loaded on demand.
+function ensureSvgMap() {
+  if(mapFrame)return Promise.resolve();
+  svgMapPromise??=(async()=>{
+    if(mapDeferred&&!mapData) {try {mapData=await readData('basemap-data','./basemap/planner-compact.json');} catch {mapData=null;}}
+    drawPlannerMap();renderPlanner();
+  })();
+  return svgMapPromise;
+}
+
+let operationalDisabled=false;
+function disableOperationalMap(reason) {
+  if(operationalDisabled)return; // destroying the map fires further failure events; keep the first reason
+  operationalDisabled=true;
+  const view=opView,tiles=roadTiles;opView=null;roadTiles=null;
+  try {view?.destroy();} catch {}
+  try {tiles?.destroy();} catch {}
+  ensureSvgMap();
+  $('op-map-shell').hidden=true;$('map-card').classList.remove('op-active');
+  showMessage(`Mapa operacyjna wyłączona (${reason}). Używam mapy uproszczonej; plan pozostaje bez zmian.`,true);
+}
+
+function operationalLayers() {
+  return buildOperationalLayers(scenario,plan,state.date,{hiddenTeams:[...opState.hidden],showUnassigned:opState.showUnassigned,showRoutes:opState.showRoutes,includeUnassigned:matches,selectedId:state.selectedId});
+}
+
+function updateOperationalMap({fit=false,team=null}={}) {
+  if(!opView)return;
+  const layers=operationalLayers();
+  opView.update(layers);renderOperationalPanel(layers);
+  if(fit) {
+    const visits=team?{type:'FeatureCollection',features:layers.visits.features.filter(f=>f.properties.teamId===team)}:layers.visits;
+    const routes=team?{type:'FeatureCollection',features:layers.routes.features.filter(f=>f.properties.teamId===team)}:layers.routes;
+    opView.fit(operationalBounds(visits,routes)??operationalBounds(layers.unassigned));
+  }
+}
+
+function renderOperationalPanel(layers) {
+  const km=m=>m===null?'droga nieustalona':`${(m/1000).toLocaleString('pl-PL',{maximumFractionDigits:1})} km`;
+  const check=status=>({PASS:'w limicie',LIMIT:'PRZEKROCZONY',UNASSESSED:'nieoceniony',NOT_APPLICABLE:'nie dotyczy'})[status];
+  const teams=layers.teams.map(team=>{
+    const visits=team.orders.map((id,index)=>{const order=orderById(id);return `<li><button type="button" data-order="${id}" data-op-fly="1" aria-pressed="${id===state.selectedId}"><span class="op-seq">${index+1}</span>${id} · ${order.type}<small>${escapeText(addressFor(order).city)}</small></button></li>`;}).join('');
+    return `<section class="op-team" data-team="${team.teamId}"><label><input type="checkbox" data-op-team="${team.teamId}" ${team.visible?'checked':''}><span class="op-swatch" data-color="${team.color}"></span><strong>${team.teamId}</strong> <span>${team.count} ${team.count===1?'wizyta':team.count>=2&&team.count<=4?'wizyty':'wizyt'}${team.count>1?' · '+km(team.distanceM):''}</span></label>${team.count>1?`<small class="op-checks">30 km: ${check(team.checks.installationDistance)} · +10 km: ${check(team.checks.measurementExtra)} · okna: ${check(team.checks.windows)}</small>`:''}${visits?`<ol>${visits}</ol>`:'<p class="small muted">Brak wizyt tego dnia.</p>'}</section>`;
+  }).join('');
+  $('op-layers').innerHTML=`<p class="eyebrow">KOSZYKI ${escapeText(state.date)}</p>${teams}<div class="op-toggles"><label><input type="checkbox" data-op-toggle="unassigned" ${opState.showUnassigned?'checked':''}>Nieprzydzielone (${layers.unassigned.features.length})</label><label><input type="checkbox" data-op-toggle="routes" ${opState.showRoutes?'checked':''}>Trasy koszyków</label><label><input type="checkbox" data-op-toggle="roads" ${opState.roads?'checked':''}>Podkład dróg</label></div><p class="op-legend small"><span class="op-key install"></span>Instalacja <span class="op-key measure"></span>Pomiar <span class="op-key queue"></span>Nieprzydzielone <span class="op-key confirmed"></span>Potwierdzone okno</p>`;
+  $('op-layers').querySelectorAll('.op-swatch').forEach(node=>node.style.setProperty('--team',node.dataset.color));
+  $('op-gaps').innerHTML=layers.gaps.map(gap=>`<li class="${gap.kind}">${escapeText(gap.message)}</li>`).join('');
+}
+
+function editFromMap(id) {
+  selectMapOrder(id);
+  $('order-details').scrollIntoView({block:'start',behavior:'smooth'});
+  ($('assignment-team')&&!$('assign-order')?.disabled?$('assignment-team'):$('order-title'))?.focus({preventScroll:true});
+  showMessage(`Edytujesz ${id} w planerze. Zmiany przechodzą przez zwykłe reguły i walidacje.`);
+}
+
+function satelliteConfig() {
+  try {return JSON.parse(localStorage.getItem(SATELLITE_KEY)??'null');} catch {return null;}
+}
+const allowedTileOrigins=()=>(document.querySelector('meta[name="mms-tile-origins"]')?.content??'').split(/\s+/).filter(Boolean);
+
+function setOperationalBasemap(mode) {
+  if(mode==='road'){opState.basemap='road';opView?.setBasemap('road');return;}
+  const config=satelliteConfig(),check=validateSatelliteConfig(config,allowedTileOrigins());
+  if(!check.ok) {
+    document.querySelector('input[name="op-basemap"][value="road"]').checked=true;opState.basemap='road';opView?.setBasemap('road');
+    showMessage(`Zdjęcia satelitarne wyłączone: ${check.reason}`,true);
+    if(!config)openSatelliteDialog();
+    return;
+  }
+  opState.basemap=mode;opView?.setBasemap(mode,config);
+  $('op-status').textContent=`Podkład: ${mode==='satellite'?'satelita':'hybryda'} — ${config.attribution}. Widoczny obszar jest wysyłany do ${check.origin}.`;
+}
+
+function openSatelliteDialog() {
+  const config=satelliteConfig(),preset=config?.preset??'gugik-orto';
+  $('satellite-preset').value=preset;
+  $('satellite-url').value=config?.url??SATELLITE_PRESETS['gugik-orto'].url;
+  $('satellite-attribution').value=config?.attribution??SATELLITE_PRESETS['gugik-orto'].attribution;
+  $('satellite-consent').checked=config?.consent===true;
+  $('satellite-dialog').showModal();
+}
+
 document.addEventListener('click',event=>{
   const item=event.target.closest('[data-order]');
-  if(item) {selectMapOrder(item.dataset.order);return;}
+  if(item) {
+    selectMapOrder(item.dataset.order);
+    if(item.dataset.opFly&&opView){const address=addressFor(orderById(item.dataset.order));if(hasLocation(address))opView.flyTo(address.coordinates,15);}
+    return;
+  }
   const basket=event.target.closest('[data-basket-map]');
-  if(basket){state.mapMode='basket';state.mapTeam=basket.dataset.basketMap;renderPlanner();fitCurrentMap();return;}
+  if(basket){state.mapMode='basket';state.mapTeam=basket.dataset.basketMap;opState.hidden.delete(state.mapTeam);renderPlanner();fitCurrentMap();updateOperationalMap({fit:true,team:state.mapTeam});return;}
   const mapButton=event.target.closest('[data-map]');if(mapButton)moveMap(mapButton.dataset.map);
 });
 $('generate').addEventListener('click',()=>{
   const ids=scenario.orders.filter(matches).map(o=>o.id);
-  if(perform({type:'GENERATE',date:state.date,orderIds:ids},'Wygenerowano propozycje.'))showMessage(`Plan ${state.date}: ${onDay().length} zleceń w koszykach. W kolejce ogółem: ${queueOrders(scenario,plan).length}. Powody pozostawienia w kolejce widoczne przy zleceniach. ${scenario.routing?'Wyniki lokalnych dróg i szacowanych okien są widoczne przy koszykach.':'Trasy pozostają nieocenione.'}`);
+  if(perform({type:'GENERATE',date:state.date,orderIds:ids},'Wygenerowano propozycje.'))updateOperationalMap({fit:true}),showMessage(`Plan ${state.date}: ${onDay().length} zleceń w koszykach. W kolejce ogółem: ${queueOrders(scenario,plan).length}. Powody pozostawienia w kolejce widoczne przy zleceniach. ${scenario.routing?'Wyniki lokalnych dróg i szacowanych okien są widoczne przy koszykach.':'Trasy pozostają nieocenione.'}`);
 });
 for(const [id,key] of [['city-filter','city'],['kind-filter','kind']])$(id).addEventListener('change',event=>{state[key]=event.target.value;state.mapMode='scope';renderPlanner();fitCurrentMap();});
 $('planning-date').addEventListener('change',event=>{
@@ -299,6 +458,8 @@ $('planning-date').addEventListener('change',event=>{
   state.date=event.target.value;renderPlanner();
   // The basket map follows the selected day; otherwise the previous day's zoom can hide every visit.
   if(state.mapMode==='basket')fitCurrentMap();
+  // The operational map shows only the chosen day: previous-day visits disappear and the view refits.
+  updateOperationalMap({fit:true});
 });
 $('queue-search').addEventListener('input',event=>{state.query=event.target.value;state.mapMode='scope';renderPlanner();fitCurrentMap();});
 $('availability').addEventListener('change',event=>{
@@ -362,4 +523,27 @@ $('planner-map').addEventListener('pointermove',event=>{
 });
 for(const event of ['pointerup','pointercancel','lostpointercapture'])$('planner-map').addEventListener(event,()=>{drag=null;});
 $('planner-map').addEventListener('wheel',event=>{event.preventDefault();moveMap(event.deltaY<0?'in':'out');},{passive:false});
+$('op-layers').addEventListener('change',event=>{
+  const team=event.target.dataset.opTeam,toggle=event.target.dataset.opToggle;
+  if(team){if(event.target.checked)opState.hidden.delete(team);else opState.hidden.add(team);}
+  if(toggle==='unassigned')opState.showUnassigned=event.target.checked;
+  if(toggle==='routes')opState.showRoutes=event.target.checked;
+  if(toggle==='roads'){opState.roads=event.target.checked;opView?.setRoadsVisible(opState.roads);}
+  const selector=team?`[data-op-team="${team}"]`:`[data-op-toggle="${toggle}"]`;
+  updateOperationalMap();$('op-layers').querySelector(selector)?.focus();
+});
+document.querySelectorAll('input[name="op-basemap"]').forEach(input=>input.addEventListener('change',()=>{if(input.checked)setOperationalBasemap(input.value);}));
+$('op-fit-baskets').addEventListener('click',()=>updateOperationalMap({fit:true}));
+$('op-fit-all').addEventListener('click',()=>opView?.fit(operationalBounds({features:scenario.addresses.filter(hasLocation).map(a=>({geometry:{type:'Point',coordinates:a.coordinates}}))}),{maxZoom:12}));
+$('op-fit-selected').addEventListener('click',()=>{const order=orderById(state.selectedId),address=order&&addressFor(order);if(address&&hasLocation(address))opView?.flyTo(address.coordinates,16);else showMessage('Wybrane zlecenie nie ma ustalonej pozycji.',true);});
+$('op-satellite-settings').addEventListener('click',openSatelliteDialog);
+$('satellite-preset').addEventListener('change',event=>{const preset=SATELLITE_PRESETS[event.target.value];if(preset){$('satellite-url').value=preset.url;$('satellite-attribution').value=preset.attribution;}else{$('satellite-url').value='';$('satellite-attribution').value='';}});
+$('satellite-cancel').addEventListener('click',()=>$('satellite-dialog').close());
+$('satellite-clear').addEventListener('click',()=>{try{localStorage.removeItem(SATELLITE_KEY);}catch{}setOperationalBasemap('road');document.querySelector('input[name="op-basemap"][value="road"]').checked=true;$('satellite-dialog').close();showMessage('Usunięto konfigurację dostawcy zdjęć. Mapa działa wyłącznie lokalnie.');});
+$('satellite-form').addEventListener('submit',event=>{
+  const config={preset:$('satellite-preset').value,url:$('satellite-url').value.trim(),attribution:$('satellite-attribution').value.trim(),consent:$('satellite-consent').checked};
+  const check=validateSatelliteConfig(config,allowedTileOrigins().length?allowedTileOrigins():[(()=>{try{return new URL(config.url.replaceAll('{','%7B').replaceAll('}','%7D')).origin;}catch{return '';}})()]);
+  if(!check.ok){event.preventDefault();showMessage(`Nie zapisano: ${check.reason}`,true);return;}
+  try{localStorage.setItem(SATELLITE_KEY,JSON.stringify(config));showMessage('Zapisano dostawcę zdjęć w tej przeglądarce. Wybierz „Satelita” lub „Hybryda”, aby go użyć.');}catch{showMessage('Pamięć przeglądarki jest niedostępna — konfiguracji nie zapisano.',true);}
+});
 loadPlanner();
