@@ -386,6 +386,9 @@ async function openMapPack() {
       return usablePack(await openPack(memorySource(bytes)));
     }
     if(location.protocol==='file:')return null; // a file:// page cannot read sibling files; the embedded pack or the roads-only map is used
+    // The local server knows whether its optional pack exists. Avoid requesting
+    // a missing file, which otherwise adds an unnecessary 404 to Chrome's console.
+    if(document.querySelector('meta[name="mms-map-pack-status"]')?.content==='unavailable')return null;
     return usablePack(await openPack(httpSource(new URL('./basemap/map-pack.pmtiles',document.baseURI).href)));
   } catch {return null;}
 }
