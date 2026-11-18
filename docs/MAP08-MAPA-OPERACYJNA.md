@@ -108,8 +108,8 @@ Wnioski:
 
 | Zakres | Wynik |
 | --- | --- |
-| `npm test` (Node) | 183/183 |
-| `python -X utf8 -m unittest discover -s map05/tests -p test_*.py` | patrz `map05/VERIFICATION.md` (aktualny wynik po przeglądzie T21) |
+| `npm test` (Node) | 186/186 |
+| `python -X utf8 -m unittest discover -s map05/tests -p test_*.py` | 105/105 |
 | Chrome 157, 1440×900 / 1920×1080 / 1366×768 (`map08.mjs`, 20 scenariuszy, 40 sprawdzeń) | 40/40 w każdej rozdzielczości |
 | Firefox 160.0.1 (BiDi): MAP-06.1 (`firefox-bidi.mjs`) / MAP-08 (`firefox-map08.mjs`) | 9/9 i 15/15 (serwer i plik offline z pakietem, 1920×1080 i 1366×768) |
 | Hybryda → Drogowa, lokalny dostawca testowy | 11/11 |
@@ -119,7 +119,7 @@ Wnioski:
 
 Scenariusze obowiązkowe z briefu: kilka ekip w różnych miejscowościach, jedna trasa z trzema wizytami, klaster wielu instalacji, wybór adresu z koszyka i z mapy, zmiana dnia, ponowne generowanie, brak internetu, punkt bez współrzędnych, przełączanie warstw, poprawność komunikatów podkładu — wszystkie w `map08.mjs`.
 
-Niezależny przegląd Codexa (T21, `evidence/2026-11-18-map08-codex/T21-REPORT.md`) potwierdził 3 × P2 i 3 × P3, wszystkie naprawione i pokryte testami: (P2) „Edytuj w planerze” w dużej mapie wychodzi teraz z widoku powiększonego; awaria WebGL nie zostawia nakładki; pakiet z samymi drogami jest opisywany jako niepełny i ma wyłączone przełączniki budynków/przyrody; ucięty pakiet jest odrzucany przy otwarciu, a pakiet, który po otwarciu przestaje działać, przełącza mapę na podkład uproszczony z komunikatem; (P3) filtr obwiedni w builderze zachowuje obiekty przecinające zasięg, `HEAD` ignoruje `Range`, dymek Satelita/Hybryda zgodny z dostępnością.
+Niezależny przegląd Codexa (T21 i re-check T22, `evidence/2026-11-18-map08-codex/`) potwierdził 3 × P2 i 3 × P3, a re-check jeszcze 2 × P2 i 1 × P3 w poprawkach (stan renderera po przełączeniu na drogi, zdarzenia zniszczonego widoku, martwe „Miejscowości”); wszystko naprawione i pokryte testami: (P2) „Edytuj w planerze” w dużej mapie wychodzi teraz z widoku powiększonego; awaria WebGL nie zostawia nakładki; pakiet z samymi drogami jest opisywany jako niepełny i ma wyłączone przełączniki budynków/przyrody; ucięty pakiet jest odrzucany przy otwarciu, a pakiet, który po otwarciu przestaje działać, przełącza mapę na podkład uproszczony z komunikatem; (P3) filtr obwiedni w builderze zachowuje obiekty przecinające zasięg, `HEAD` ignoruje `Range`, dymek Satelita/Hybryda zgodny z dostępnością.
 
 Naprawione przy okazji: dwie usterki znalezione przez Codexa (zasięg `Coverage.near` na długości geograficznej; zerowy kod offsetu pierwszego wpisu katalogu PMTiles akceptowany przez oba dekodery) oraz niestabilny test workera przy równoległym uruchomieniu.
 
