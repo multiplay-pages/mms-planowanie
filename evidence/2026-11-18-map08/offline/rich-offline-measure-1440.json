@@ -5,21 +5,21 @@
     1440,
     900
   ],
-  "bytes": 103498783,
-  "loadEventMs": 932,
-  "plannerVisibleMs": 2129,
-  "mapReadyMs": 3269,
+  "bytes": 103883019,
+  "loadEventMs": 923,
+  "plannerVisibleMs": 1993,
+  "mapReadyMs": 3093,
   "rich": true,
   "status": "Podkład: Drogowa — lokalny pakiet mapy OSM (drogi, nazwy, budynki, woda, tereny), bez połączeń zewnętrznych. Zdjęcia satelitarne są niedostępne, dopóki właściciel nie potwierdzi praw i nie skonfiguruje dostawcy.",
-  "heapAfterLoadMB": 53.3,
+  "heapAfterLoadMB": 55.7,
   "frames": {
-    "n": 677,
+    "n": 690,
     "p50": 16.7,
-    "p95": 16.8,
-    "max": 100
+    "p95": 17,
+    "max": 66.6
   },
-  "heapAfterInteractionMB": 67.9,
-  "totalJsHeapMB": 202.2,
+  "heapAfterInteractionMB": 54.2,
+  "totalJsHeapMB": 179.3,
   "externalRequests": [],
   "errors": []
 }

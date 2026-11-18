@@ -4,7 +4,7 @@
     1440,
     900
   ],
-  "loadMs": 2306,
+  "loadMs": 3517,
   "rich": true,
   "inlineMap": [
     392,
@@ -17,11 +17,11 @@
   ],
   "workspaceShare": 0.564,
   "perf": {
-    "frames": 435,
+    "frames": 437,
     "medianMs": 16.7,
-    "p95Ms": 16.8,
-    "worstMs": 33.4,
-    "heapMB": 70
+    "p95Ms": 16.9,
+    "worstMs": 33.3,
+    "heapMB": 254
   },
   "errors": [],
   "external": [],
@@ -205,7 +205,7 @@
     {
       "id": "perf: p95 frame time under 50 ms while flying across zoom levels",
       "ok": true,
-      "detail": "{\"frames\":435,\"medianMs\":16.7,\"p95Ms\":16.8,\"worstMs\":33.4,\"heapMB\":70}"
+      "detail": "{\"frames\":437,\"medianMs\":16.7,\"p95Ms\":16.9,\"worstMs\":33.3,\"heapMB\":254}"
     },
     {
       "id": "no console/page errors",

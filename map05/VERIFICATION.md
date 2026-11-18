@@ -16,7 +16,7 @@
 | Brak / uszkodzony pakiet | 10/10; tryb uproszczony z komunikatem |
 | Pakiet ucięty / przestający działać po otwarciu | 6/6; odrzucenie przy otwarciu / przełączenie na drogi z komunikatem |
 | Przegląd niezależny Codex T21 + re-check T22 | 5 × P2 i 4 × P3 potwierdzone i naprawione (patrz `docs/MAP08-MAPA-OPERACYJNA.md`) |
-| Pomiary (Chrome, offline, `file://`) | offline bez pakietu 32,4 MB: mapa gotowa 3,85 s, sterta 95 MB; offline z pakietem 103,5 MB: 3,67 s, 52 MB; klatka p95 ≈ 17 ms w obu |
+| Pomiary (Chrome, offline, `file://`) | offline bez pakietu 32,4 MB: mapa gotowa 3,85 s, sterta 95 MB; offline z pakietem 103,9 MB: 3,09 s, 54 MB; klatka p95 ≈ 17 ms w obu |
 
 Granice dowodów: Firefox headless przez BiDi (dotyk symulowany, brak GPU w oknie); brak czytnika ekranu; relacje wielokątowe OSM nie są składane; czas jazdy to szacunek lokalnego silnika. Wszystkie wartości z jednej maszyny (Windows 11, Chrome 157, Node 26).
 

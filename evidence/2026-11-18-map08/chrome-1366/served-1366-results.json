@@ -4,7 +4,7 @@
     1366,
     768
   ],
-  "loadMs": 1963,
+  "loadMs": 3523,
   "rich": true,
   "inlineMap": [
     355,
@@ -17,19 +17,15 @@
   ],
   "workspaceShare": 0.524,
   "perf": {
-    "frames": 438,
+    "frames": 436,
     "medianMs": 16.7,
     "p95Ms": 16.9,
-    "worstMs": 17,
+    "worstMs": 33.2,
     "heapMB": 83
   },
   "errors": [],
   "external": [],
   "failedRequests": [
-    "http://127.0.0.1:8765/basemap/map-pack.pmtiles",
-    "http://127.0.0.1:8765/basemap/map-pack.pmtiles",
-    "http://127.0.0.1:8765/basemap/map-pack.pmtiles",
-    "http://127.0.0.1:8765/basemap/map-pack.pmtiles",
     "http://127.0.0.1:8765/basemap/map-pack.pmtiles"
   ],
   "results": [
@@ -205,7 +201,7 @@
     {
       "id": "perf: p95 frame time under 50 ms while flying across zoom levels",
       "ok": true,
-      "detail": "{\"frames\":438,\"medianMs\":16.7,\"p95Ms\":16.9,\"worstMs\":17,\"heapMB\":83}"
+      "detail": "{\"frames\":436,\"medianMs\":16.7,\"p95Ms\":16.9,\"worstMs\":33.2,\"heapMB\":83}"
     },
     {
       "id": "no console/page errors",

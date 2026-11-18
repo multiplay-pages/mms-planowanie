@@ -36,7 +36,7 @@ Lokalny pakiet wektorowy `map05/basemap/map-pack.pmtiles` (PMTiles v3, kafle MVT
 | Cecha | Wartość |
 | --- | --- |
 | Zakres | [17,2; 49,9; 19,0; 51,5], z5–z14 (powyżej: overzoom do z19) |
-| Kafle | 11 001, 53 287 361 B, SHA-256 w `map-pack.manifest.json` |
+| Kafle | 11 310, 53 574 016 B, SHA-256 w `map-pack.manifest.json` |
 | Warstwy | drogi z hierarchią (`rank`) i nazwami, miejscowości, budynki (z14, w promieniu 3 km od 102 zlokalizowanych adresów), woda, ciek, użytki (las, park…), kolej |
 | Znaki polskie | etykiety rysowane lokalnie (`text-font: sans-serif`), bez serwera glifów |
 | Atrybucja | „© OpenStreetMap contributors (ODbL 1.0)” w kontrolce mapy, manifeście i dokumentacji |
@@ -88,8 +88,8 @@ Chrome 157, 1440×900, tryb offline przeglądarki, `file://`, WebGL; 24 kroki pr
 | Wariant | Rozmiar | Plik gotowy | Mapa gotowa | Sterta JS po interakcji | Klatka p50 / p95 / max |
 | --- | --- | --- | --- | --- | --- |
 | Poprzedni offline (MAP-06.1, drogi) / bieżący `planner-offline.html` bez pakietu | 32,4 MB | 1,75 s | 3,85 s | 95 MB | 16,7 / 16,9 / 83 ms |
-| **A:** `planner-offline-rich.html` (pakiet osadzony base64) | 103,5 MB | 2,49 s | 3,67 s | 52 MB | 16,7 / 16,8 / 100 ms |
-| **B:** serwer lokalny + `basemap/map-pack.pmtiles` (Range) | plik 32,4 MB + pakiet 53,3 MB osobno | ok. 1,9 s | — | 62–98 MB | 16,7 / 17 / 17 ms |
+| **A:** `planner-offline-rich.html` (pakiet osadzony base64) | 103,9 MB | 1,99 s | 3,09 s | 54 MB | 16,7 / 17 / ok. 100 ms |
+| **B:** serwer lokalny + `basemap/map-pack.pmtiles` (Range) | plik 32,4 MB + pakiet 53,6 MB osobno | ok. 1,9 s | — | 62–98 MB | 16,7 / 17 / 17 ms |
 
 Wnioski:
 
