@@ -20,7 +20,7 @@
           "loadStdev": 0.083,
           "violations": 0,
           "protectedKept": true,
-          "runtimeMs": 116
+          "runtimeMs": 109
         },
         "MAP07A": {
           "label": "MAP-07A (tylko kolejność w koszykach)",
@@ -37,7 +37,7 @@
           "loadStdev": 0.083,
           "violations": 0,
           "protectedKept": true,
-          "runtimeMs": 112
+          "runtimeMs": 120
         },
         "MAP07B_AGE_FIRST": {
           "label": "MAP-07B · Starszeństwo najpierw",
@@ -54,7 +54,7 @@
           "loadStdev": 0.113,
           "violations": 0,
           "protectedKept": true,
-          "runtimeMs": 4687
+          "runtimeMs": 4371
         },
         "MAP07B_COVERAGE_FIRST": {
           "label": "MAP-07B · Liczba i czas oczekiwania, potem km",
@@ -71,7 +71,7 @@
           "loadStdev": 0,
           "violations": 0,
           "protectedKept": true,
-          "runtimeMs": 4595
+          "runtimeMs": 4422
         },
         "MAP07B_BALANCE_FIRST": {
           "label": "MAP-07B · Równomierność przed kilometrami",
@@ -88,7 +88,7 @@
           "loadStdev": 0,
           "violations": 0,
           "protectedKept": true,
-          "runtimeMs": 4851
+          "runtimeMs": 4398
         }
       }
     },
@@ -110,7 +110,7 @@
           "loadStdev": 0.166,
           "violations": 0,
           "protectedKept": true,
-          "runtimeMs": 119
+          "runtimeMs": 111
         },
         "MAP07A": {
           "label": "MAP-07A (tylko kolejność w koszykach)",
@@ -127,7 +127,7 @@
           "loadStdev": 0.166,
           "violations": 0,
           "protectedKept": true,
-          "runtimeMs": 135
+          "runtimeMs": 125
         },
         "MAP07B_AGE_FIRST": {
           "label": "MAP-07B · Starszeństwo najpierw",
@@ -144,7 +144,7 @@
           "loadStdev": 0.166,
           "violations": 0,
           "protectedKept": true,
-          "runtimeMs": 3878
+          "runtimeMs": 3369
         },
         "MAP07B_COVERAGE_FIRST": {
           "label": "MAP-07B · Liczba i czas oczekiwania, potem km",
@@ -161,7 +161,7 @@
           "loadStdev": 0.166,
           "violations": 0,
           "protectedKept": true,
-          "runtimeMs": 3100
+          "runtimeMs": 3027
         },
         "MAP07B_BALANCE_FIRST": {
           "label": "MAP-07B · Równomierność przed kilometrami",
@@ -178,7 +178,7 @@
           "loadStdev": 0.166,
           "violations": 0,
           "protectedKept": true,
-          "runtimeMs": 3296
+          "runtimeMs": 2949
         }
       }
     },
@@ -200,7 +200,7 @@
           "loadStdev": 0,
           "violations": 0,
           "protectedKept": true,
-          "runtimeMs": 107
+          "runtimeMs": 137
         },
         "MAP07A": {
           "label": "MAP-07A (tylko kolejność w koszykach)",
@@ -217,7 +217,7 @@
           "loadStdev": 0,
           "violations": 0,
           "protectedKept": true,
-          "runtimeMs": 125
+          "runtimeMs": 136
         },
         "MAP07B_AGE_FIRST": {
           "label": "MAP-07B · Starszeństwo najpierw",
@@ -234,7 +234,7 @@
           "loadStdev": 0,
           "violations": 0,
           "protectedKept": true,
-          "runtimeMs": 3760
+          "runtimeMs": 3636
         },
         "MAP07B_COVERAGE_FIRST": {
           "label": "MAP-07B · Liczba i czas oczekiwania, potem km",
@@ -251,7 +251,7 @@
           "loadStdev": 0,
           "violations": 0,
           "protectedKept": true,
-          "runtimeMs": 4020
+          "runtimeMs": 3989
         },
         "MAP07B_BALANCE_FIRST": {
           "label": "MAP-07B · Równomierność przed kilometrami",
@@ -268,7 +268,7 @@
           "loadStdev": 0,
           "violations": 0,
           "protectedKept": true,
-          "runtimeMs": 4495
+          "runtimeMs": 4640
         }
       }
     }

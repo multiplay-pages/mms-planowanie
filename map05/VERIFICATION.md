@@ -4,7 +4,7 @@
 
 ## 18.11.2026 — MAP-07B (symulacja optymalizacji między koszykami)
 
-Gałąź `map07b-cross-basket-optimization`. `npm test` 162/162, `unittest map05` 82/82, `unittest map04` 24/24. Chrome 157 (GPU): audyt `evidence/2026-11-18-map07b/chrome/` — 26/26 w trybie serwera i 26/26 z pliku offline (symulacja, brak zapisu przed akceptacją, akceptacja i cofnięcie, odrzucenie, podgląd mapy, układ 1440–390 px, brak błędów i żądań zewnętrznych). Benchmark i otwarte decyzje: `docs/MAP07B-OPTYMALIZACJA.md`. Niezależny przegląd Codex T15 (T15: P1 + 2 × P2 na 7b5427b; T16: P1 + 2 × P2 na 6a9bd57; naprawione, kolejny re-check w toku): `evidence/2026-11-18-map07b-codex/`. NOT TESTED: fizyczny dotyk, Safari/Edge, czytnik ekranu, Firefox dla nowego panelu.
+Gałąź `map07b-cross-basket-optimization`. `npm test` 163/163, `unittest map05` 82/82, `unittest map04` 24/24. Chrome 157 (GPU): audyt `evidence/2026-11-18-map07b/chrome/` — 26/26 w trybie serwera i 26/26 z pliku offline (symulacja, brak zapisu przed akceptacją, akceptacja i cofnięcie, odrzucenie, podgląd mapy, układ 1440–390 px, brak błędów i żądań zewnętrznych). Benchmark i otwarte decyzje: `docs/MAP07B-OPTYMALIZACJA.md`. Niezależny przegląd Codex T15 (T15: P1 + 2 × P2 na 7b5427b; T16: P1 + 2 × P2 na 6a9bd57; naprawione, kolejny re-check w toku): `evidence/2026-11-18-map07b-codex/`. NOT TESTED: fizyczny dotyk, Safari/Edge, czytnik ekranu, Firefox dla nowego panelu.
 
 ## 18.11.2026 — MAP-06.1 (optymalizacja, worker kafli, Firefox)
 

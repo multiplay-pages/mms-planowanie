@@ -213,3 +213,15 @@ test('a missing road leg cannot be moved from one basket to another unnoticed (C
     assert.equal(result.plan.assignments.filter(item=>item.teamId==='TEST-02'&&item.date===DATE).length,3,`${variant}: TEST-02 keeps a link between A and C`);
   }
 });
+
+test('a new missing direct leg between protected visits is not hidden by an older gap in the same basket (Codex T17 P2)',()=>{
+  const {synthetic,edge,seed,mpl}=syntheticScenario(),[a,b,c]=mpl;
+  edge(a,b,20000);edge(b,c,null);edge(a,c,null);
+  // Existing gap: B -> C is unassessable. Removing B would replace it with a different one: A -> C.
+  const base=seed(['TEST-02',[row(a,'MANUAL',true),row(b,'AUTO'),row(c)]]);
+  assert.equal(evaluateDay(synthetic,base,DATE).gaps.has(`TEST-02/leg/${b.id}/${c.id}`),true);
+  for(const variant of Object.keys(VARIANTS)) {
+    const result=proposeDayPlan(synthetic,base,DATE,{variant,orderIds:[b.id],budgetMs:1000});
+    assert.equal(evaluateDay(synthetic,result.plan,DATE).gaps.has(`TEST-02/leg/${a.id}/${c.id}`),false,`${variant}: no new unassessable A -> C`);
+  }
+});

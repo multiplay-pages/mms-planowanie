@@ -58,6 +58,7 @@ export function evaluateDay(scenario,plan,date,baseline=null) {
     for(let i=1;i<towns.length;i++)if(towns[i]===towns[i-1])totals.sameTown++;
     totals.violations+=assessment.violations.length;
     if(orders.length>1&&assessment.distanceM===null)gaps.add(`${team.id}/legs`);
+    for(const leg of assessment.legs)if(leg.status!=='OK')gaps.add(`${team.id}/leg/${leg.from}/${leg.to}`);
     if(assessment.installationDistance.status==='UNASSESSED')gaps.add(`${team.id}/installationDistance`);
     if(assessment.measurementExtra.status==='UNASSESSED')gaps.add(`${team.id}/measurementExtra`);
     for(const issue of assessment.issues)issueMap.set(`${team.id}/${issue.key}`,issue.excess);
@@ -303,12 +304,12 @@ function explainProposal(scenario,current,plan,date,{pool,flexible,keys,excluded
       ...[...blocked].map(([teamId,errors])=>({teamId,blocked:true,verdict:`niewykonalne: ${errors.slice(0,2).map(error=>error.count>1?`${error.message} (×${error.count})`:error.message).join(' / ')}`})),
     ];
     const basket=assessBasket(scenario,plan,own.teamId,date),windowLabel=slotText(scenario,own.start,order.slotsRequired);
-    const feasible=new Set([...options.map(option=>option.teamId),own.teamId]).size;
+    const feasibleTeams=new Set([...options.map(option=>option.teamId),own.teamId]),feasible=feasibleTeams.size,blockedOthers=[...blocked.keys()].filter(teamId=>!feasibleTeams.has(teamId)).length;
     const nearest=others.slice().sort((x,y)=>x.figures.km-y.figures.km)[0];
     explanations[order.id]={orderId:order.id,status:'SCHEDULED',ageDays:ageDays(order,date),teamId:own.teamId,windowLabel,
       basket:{orders:basket.orders,distanceM:basket.distanceM,estimatedDurationS:basket.estimatedDurationS},
       alternatives,consideredBaskets:scenario.teams.length,feasibleBaskets:feasible,
-      reason:`${order.id} (${ageDays(order,date)} dni w kolejce) → ${own.teamId}, okno ${windowLabel}. Rozważono ${scenario.teams.length} koszyków: ${feasible} wykonalnych, ${blocked.size} niewykonalnych.${nearest?` Najkrótsza inna wykonalna: ${nearest.teamId} (${nearest.figures.km-total.km>=0?'+':''}${km(nearest.figures.km-total.km)} dla dnia) — ${describeDifference(firstDifference(nearest.figures,total,keys))}.`:' Brak innej wykonalnej alternatywy.'}`};
+      reason:`${order.id} (${ageDays(order,date)} dni w kolejce) → ${own.teamId}, okno ${windowLabel}. Rozważono ${scenario.teams.length} koszyków: ${feasible} wykonalnych, ${blockedOthers} niewykonalnych.${nearest?` Najkrótsza inna wykonalna: ${nearest.teamId} (${nearest.figures.km-total.km>=0?'+':''}${km(nearest.figures.km-total.km)} dla dnia) — ${describeDifference(firstDifference(nearest.figures,total,keys))}.`:' Brak innej wykonalnej alternatywy.'}`};
   }
   // Skipped orders: the reason is computed per order; the oldest ones also get the best "swap in" experiment.
   const oldestWaiting=new Set(waiting.slice(0,8).map(order=>order.id));
