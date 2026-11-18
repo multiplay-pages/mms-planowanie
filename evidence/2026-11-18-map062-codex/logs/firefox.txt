@@ -1,0 +1,21 @@
+contexts [["about:home","default",null]]
+Firefox 160.0.1 windows
+[PASS] F1 Firefox, plik offline (file://): planer startuje, mapa operacyjna (WebGL + worker) albo bezpieczny SVG
+   {"operational":true,"loaded":true,"zoom":7.13067390467604,"webgl":true,"svgPaths":0}; błędy konsoli []; ostrzeżenia 0; zewnętrzne żądania 0
+[PASS] F2 Firefox: lokalne kafle dróg rysowane (wątek roboczy)
+   {"roads":703,"zoom":13}
+[PASS] F3 Firefox: generowanie koszyków i filtr ekipy aktualizują mapę bez przeładowania
+   {"all":13,"hidden":10,"restored":13,"teams":5}
+[PASS] F4 Firefox: kliknięcie myszą w wizytę otwiera popup, „Edytuj w planerze” wybiera zlecenie
+   {"target":{"x":597,"y":709,"id":"TEST-013"},"popup":true,"edited":{"selected":"TEST-013","focus":"assignment-team"}}
+[PASS] F5 Firefox: kółko myszy zmienia skalę, przeciągnięcie przesuwa mapę
+   {"before":{"z":15,"c":{"lng":17.6164817378619,"lat":50.7491282196604}},"afterWheel":15.402190330605787,"afterDrag":{"z":15.402190330605787,"c":{"lng":17.614365068700522,"lat":50.749795969558846}}}
+[PASS] F6 Firefox: dotyk (tap) w wizytę otwiera popup (symulowane wejście dotykowe BiDi, nie fizyczny ekran)
+   {"target":{"x":597,"y":692,"id":"TEST-049"},"popup":true}
+[PASS] F7 Firefox: szerokość 390 px bez poziomego przewijania
+   {"scrollW":390,"innerW":390,"mapW":327}
+[PASS] F8 Firefox, wariant z serwera (moduły ES, worker modułowy)
+   {"operational":true,"loaded":true,"zoom":7.13067390467604,"webgl":true,"svgPaths":0}; błędy konsoli []; zewnętrzne żądania 0
+[PASS] F9 Firefox: brak żądań poza file:/loopback i brak błędów konsoli w całym przebiegu
+   {"external":[],"errors":[],"warnings":[]}
+9/9 PASS; 0 FAIL; 0 BLOCKED

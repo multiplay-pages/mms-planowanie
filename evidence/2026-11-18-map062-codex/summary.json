@@ -1,0 +1,73 @@
+{
+  "commit": "6c829e76daa0246c9aed36beb5b356625b592201",
+  "applicationFilesChanged": false,
+  "results": [
+    {
+      "file": "address-results.json",
+      "PASS": 47,
+      "FAIL": 0,
+      "BLOCKED": 0
+    },
+    {
+      "file": "followup-results.json",
+      "PASS": 19,
+      "FAIL": 0,
+      "BLOCKED": 0
+    },
+    {
+      "file": "firefox/map061-firefox-results.json",
+      "PASS": 9,
+      "FAIL": 0,
+      "BLOCKED": 0
+    },
+    {
+      "file": "m06-offline/map06-results-offline.json",
+      "PASS": 13,
+      "FAIL": 0,
+      "BLOCKED": 0
+    },
+    {
+      "file": "m06-served/map06-results-served.json",
+      "PASS": 14,
+      "FAIL": 0,
+      "BLOCKED": 0
+    },
+    {
+      "file": "m061/map061-chrome-results.json",
+      "PASS": 4,
+      "FAIL": 0,
+      "BLOCKED": 0
+    },
+    {
+      "file": "svg-offline/results-offline-svg.json",
+      "PASS": 10,
+      "FAIL": 0,
+      "BLOCKED": 0
+    },
+    {
+      "file": "svg-served/results-served-svg.json",
+      "PASS": 10,
+      "FAIL": 0,
+      "BLOCKED": 0
+    },
+    {
+      "file": "touch-offline/map061-touch-offline.json",
+      "PASS": 5,
+      "FAIL": 0,
+      "BLOCKED": 0
+    },
+    {
+      "file": "touch-served/map061-touch-served.json",
+      "PASS": 5,
+      "FAIL": 0,
+      "BLOCKED": 0
+    }
+  ],
+  "automatedTests": {
+    "javascript": 141,
+    "pythonMap05": 82,
+    "pythonMap04": 24
+  },
+  "ownedServersStopped": true,
+  "screenshots": 78
+}

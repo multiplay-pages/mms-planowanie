@@ -1,0 +1,107 @@
+{
+  "reasons": {
+    "Brak gotowości — scenariusz testowy.": 7,
+    "Brak wolnego slotu kwalifikowanej ekipy w tym dniu.": 77,
+    "Brak 2 sąsiednich dostępnych slotów jednej kwalifikowanej ekipy.": 7,
+    "Brak ustalonej lokalizacji — pozostawiono bez pozycji zgodnie z decyzją użytkownika.": 6
+  },
+  "onDay": [
+    {
+      "orderId": "TEST-013",
+      "teamId": "TEST-01",
+      "date": "2026-11-19",
+      "start": 0,
+      "origin": "AUTO",
+      "confirmed": false
+    },
+    {
+      "orderId": "TEST-025",
+      "teamId": "TEST-02",
+      "date": "2026-11-19",
+      "start": 0,
+      "origin": "AUTO",
+      "confirmed": false
+    },
+    {
+      "orderId": "TEST-037",
+      "teamId": "TEST-04",
+      "date": "2026-11-19",
+      "start": 0,
+      "origin": "AUTO",
+      "confirmed": false
+    },
+    {
+      "orderId": "TEST-049",
+      "teamId": "TEST-01",
+      "date": "2026-11-19",
+      "start": 1,
+      "origin": "AUTO",
+      "confirmed": false
+    },
+    {
+      "orderId": "TEST-061",
+      "teamId": "TEST-05",
+      "date": "2026-11-19",
+      "start": 0,
+      "origin": "AUTO",
+      "confirmed": false
+    },
+    {
+      "orderId": "TEST-085",
+      "teamId": "TEST-04",
+      "date": "2026-11-19",
+      "start": 1,
+      "origin": "AUTO",
+      "confirmed": false
+    },
+    {
+      "orderId": "TEST-002",
+      "teamId": "TEST-05",
+      "date": "2026-11-19",
+      "start": 1,
+      "origin": "AUTO",
+      "confirmed": false
+    },
+    {
+      "orderId": "TEST-062",
+      "teamId": "TEST-02",
+      "date": "2026-11-19",
+      "start": 1,
+      "origin": "AUTO",
+      "confirmed": false
+    },
+    {
+      "orderId": "TEST-074",
+      "teamId": "TEST-04",
+      "date": "2026-11-19",
+      "start": 2,
+      "origin": "AUTO",
+      "confirmed": false
+    },
+    {
+      "orderId": "TEST-003",
+      "teamId": "TEST-03",
+      "date": "2026-11-19",
+      "start": 0,
+      "origin": "AUTO",
+      "confirmed": false
+    },
+    {
+      "orderId": "TEST-039",
+      "teamId": "TEST-02",
+      "date": "2026-11-19",
+      "start": 2,
+      "origin": "AUTO",
+      "confirmed": false
+    },
+    {
+      "orderId": "TEST-067",
+      "teamId": "TEST-03",
+      "date": "2026-11-19",
+      "start": 1,
+      "origin": "AUTO",
+      "confirmed": false
+    }
+  ],
+  "message": "notice success: Plan 2026-11-19: 12 zleceń w koszykach. W kolejce ogółem: 97. Powody pozostawienia w kolejce widoczne przy zleceniach. Wyniki lokalnych dróg i szacowanych okien są widoczne przy koszykach."
+}

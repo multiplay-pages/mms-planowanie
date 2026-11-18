@@ -1,0 +1,11 @@
+[PASS] K1 Chrome (dotyk CDP): tap w wizytę otwiera popup
+   {"target":{"x":547,"y":450,"id":"TEST-013"},"popup":true}
+[PASS] K2 Chrome (dotyk CDP): przeciągnięcie jednym palcem przesuwa mapę
+   {"before":{"z":15,"lng":17.6164817378619,"lat":50.7491282196604},"after":{"z":15,"lng":17.613892480369486,"lat":50.749947346258836}}
+[PASS] K3 Chrome (dotyk CDP): szczypnięcie dwoma palcami zmienia skalę
+   {"z0":15,"z1":17.72883233555065}
+[PASS] K4 Chrome (dotyk CDP): przewijanie dotykiem poza mapą (strona lub lista kolejki) działa
+   {"y0":0,"y1":0,"listTop":225,"out":{"x":83,"y":860},"hit":"SPAN#.address"}
+[PASS] K5 Chrome (dotyk CDP): brak błędów strony i konsoli w całym przebiegu
+   []
+5/5 PASS

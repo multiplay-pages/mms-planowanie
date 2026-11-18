@@ -1,0 +1,249 @@
+{
+  "schemaVersion": 1,
+  "datasetId": "f7037869ea5bed2d5c0b05416198feda9619b79351f2056501e3b64a79d3d08c",
+  "availability": [
+    {
+      "teamId": "TEST-01",
+      "date": "2026-11-18",
+      "slots": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "teamId": "TEST-02",
+      "date": "2026-11-18",
+      "slots": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "teamId": "TEST-03",
+      "date": "2026-11-18",
+      "slots": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "teamId": "TEST-04",
+      "date": "2026-11-18",
+      "slots": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "teamId": "TEST-05",
+      "date": "2026-11-18",
+      "slots": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "teamId": "TEST-01",
+      "date": "2026-11-19",
+      "slots": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "teamId": "TEST-02",
+      "date": "2026-11-19",
+      "slots": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "teamId": "TEST-03",
+      "date": "2026-11-19",
+      "slots": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "teamId": "TEST-04",
+      "date": "2026-11-19",
+      "slots": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "teamId": "TEST-05",
+      "date": "2026-11-19",
+      "slots": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "teamId": "TEST-01",
+      "date": "2026-11-20",
+      "slots": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "teamId": "TEST-02",
+      "date": "2026-11-20",
+      "slots": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "teamId": "TEST-03",
+      "date": "2026-11-20",
+      "slots": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "teamId": "TEST-04",
+      "date": "2026-11-20",
+      "slots": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "teamId": "TEST-05",
+      "date": "2026-11-20",
+      "slots": [
+        0,
+        1,
+        2
+      ]
+    }
+  ],
+  "assignments": [
+    {
+      "orderId": "TEST-013",
+      "teamId": "TEST-01",
+      "date": "2026-11-19",
+      "start": 0,
+      "origin": "MANUAL",
+      "confirmed": true,
+      "releaseReason": "Test przeglądarki S6"
+    },
+    {
+      "orderId": "TEST-025",
+      "teamId": "TEST-02",
+      "date": "2026-11-19",
+      "start": 0,
+      "origin": "AUTO",
+      "confirmed": false
+    },
+    {
+      "orderId": "TEST-037",
+      "teamId": "TEST-04",
+      "date": "2026-11-19",
+      "start": 0,
+      "origin": "AUTO",
+      "confirmed": false
+    },
+    {
+      "orderId": "TEST-049",
+      "teamId": "TEST-01",
+      "date": "2026-11-19",
+      "start": 1,
+      "origin": "AUTO",
+      "confirmed": false
+    },
+    {
+      "orderId": "TEST-061",
+      "teamId": "TEST-05",
+      "date": "2026-11-19",
+      "start": 0,
+      "origin": "AUTO",
+      "confirmed": false
+    },
+    {
+      "orderId": "TEST-085",
+      "teamId": "TEST-04",
+      "date": "2026-11-19",
+      "start": 1,
+      "origin": "AUTO",
+      "confirmed": false
+    },
+    {
+      "orderId": "TEST-002",
+      "teamId": "TEST-05",
+      "date": "2026-11-19",
+      "start": 1,
+      "origin": "AUTO",
+      "confirmed": false
+    },
+    {
+      "orderId": "TEST-062",
+      "teamId": "TEST-02",
+      "date": "2026-11-19",
+      "start": 1,
+      "origin": "AUTO",
+      "confirmed": false
+    },
+    {
+      "orderId": "TEST-074",
+      "teamId": "TEST-04",
+      "date": "2026-11-19",
+      "start": 2,
+      "origin": "AUTO",
+      "confirmed": false
+    },
+    {
+      "orderId": "TEST-003",
+      "teamId": "TEST-03",
+      "date": "2026-11-19",
+      "start": 0,
+      "origin": "AUTO",
+      "confirmed": false
+    },
+    {
+      "orderId": "TEST-039",
+      "teamId": "TEST-02",
+      "date": "2026-11-19",
+      "start": 2,
+      "origin": "AUTO",
+      "confirmed": false
+    },
+    {
+      "orderId": "TEST-017",
+      "teamId": "TEST-01",
+      "date": "2026-11-19",
+      "start": 2,
+      "origin": "AUTO",
+      "confirmed": false
+    },
+    {
+      "orderId": "TEST-067",
+      "teamId": "TEST-03",
+      "date": "2026-11-19",
+      "start": 1,
+      "origin": "AUTO",
+      "confirmed": false
+    }
+  ],
+  "manualExclusions": []
+}

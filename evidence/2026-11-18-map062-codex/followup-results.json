@@ -1,0 +1,266 @@
+[
+  {
+    "id": "full-window-TEST-013",
+    "status": "PASS",
+    "actual": {
+      "n": 1,
+      "line": "2026-11-19 · TEST-01 · 08:00–11:00"
+    }
+  },
+  {
+    "id": "full-window-TEST-025",
+    "status": "PASS",
+    "actual": {
+      "n": 1,
+      "line": "2026-11-19 · TEST-02 · 08:00–11:00"
+    }
+  },
+  {
+    "id": "full-window-TEST-037",
+    "status": "PASS",
+    "actual": {
+      "n": 1,
+      "line": "2026-11-19 · TEST-04 · 08:00–11:00"
+    }
+  },
+  {
+    "id": "full-window-TEST-049",
+    "status": "PASS",
+    "actual": {
+      "n": 1,
+      "line": "2026-11-19 · TEST-01 · 11:00–14:00"
+    }
+  },
+  {
+    "id": "full-window-TEST-061",
+    "status": "PASS",
+    "actual": {
+      "n": 1,
+      "line": "2026-11-19 · TEST-05 · 08:00–11:00"
+    }
+  },
+  {
+    "id": "full-window-TEST-085",
+    "status": "PASS",
+    "actual": {
+      "n": 1,
+      "line": "2026-11-19 · TEST-04 · 11:00–14:00"
+    }
+  },
+  {
+    "id": "full-window-TEST-002",
+    "status": "PASS",
+    "actual": {
+      "n": 2,
+      "line": "2026-11-19 · TEST-05 · 11:00–17:00"
+    }
+  },
+  {
+    "id": "full-window-TEST-062",
+    "status": "PASS",
+    "actual": {
+      "n": 1,
+      "line": "2026-11-19 · TEST-02 · 11:00–14:00"
+    }
+  },
+  {
+    "id": "full-window-TEST-074",
+    "status": "PASS",
+    "actual": {
+      "n": 1,
+      "line": "2026-11-19 · TEST-04 · 14:00–17:00"
+    }
+  },
+  {
+    "id": "full-window-TEST-003",
+    "status": "PASS",
+    "actual": {
+      "n": 1,
+      "line": "2026-11-19 · TEST-03 · 08:00–11:00"
+    }
+  },
+  {
+    "id": "full-window-TEST-039",
+    "status": "PASS",
+    "actual": {
+      "n": 1,
+      "line": "2026-11-19 · TEST-02 · 14:00–17:00"
+    }
+  },
+  {
+    "id": "full-window-TEST-017",
+    "status": "PASS",
+    "actual": {
+      "n": 1,
+      "line": "2026-11-19 · TEST-01 · 14:00–17:00"
+    }
+  },
+  {
+    "id": "full-window-TEST-067",
+    "status": "PASS",
+    "actual": {
+      "n": 2,
+      "line": "2026-11-19 · TEST-03 · 11:00–17:00"
+    }
+  },
+  {
+    "id": "long-address-assigned",
+    "status": "PASS",
+    "actual": "Zapisano ręczną propozycję. Generator zachowa tę korektę."
+  },
+  {
+    "id": "long-basket-1600",
+    "status": "PASS",
+    "actual": {
+      "width": 1600,
+      "scrollWidth": 1600,
+      "slot": {
+        "street": "ul. Kardynała Stefana Wyszyńskiego 7/24",
+        "width": 270,
+        "scroll": 270,
+        "color": "rgb(23, 38, 29)",
+        "background": "rgb(240, 246, 236)",
+        "font": "13px",
+        "weight": "700"
+      },
+      "layer": {
+        "text": "ul. Kardynała Stefana Wyszyńskiego 7/24 47-100 Strzelce Opolskie",
+        "width": 118,
+        "scroll": 118
+      },
+      "panel": {
+        "color": "rgb(23, 38, 29)",
+        "background": "rgb(240, 246, 236)",
+        "slot": "2026-11-20 · TEST-02 · 08:00–11:00"
+      },
+      "contrast": {
+        "slot": 14.344538158314515,
+        "panel": 14.344538158314515
+      }
+    }
+  },
+  {
+    "id": "long-basket-1440",
+    "status": "PASS",
+    "actual": {
+      "width": 1440,
+      "scrollWidth": 1440,
+      "slot": {
+        "street": "ul. Kardynała Stefana Wyszyńskiego 7/24",
+        "width": 191,
+        "scroll": 191,
+        "color": "rgb(23, 38, 29)",
+        "background": "rgb(240, 246, 236)",
+        "font": "13px",
+        "weight": "700"
+      },
+      "layer": {
+        "text": "ul. Kardynała Stefana Wyszyńskiego 7/24 47-100 Strzelce Opolskie",
+        "width": 118,
+        "scroll": 118
+      },
+      "panel": {
+        "color": "rgb(23, 38, 29)",
+        "background": "rgb(240, 246, 236)",
+        "slot": "2026-11-20 · TEST-02 · 08:00–11:00"
+      },
+      "contrast": {
+        "slot": 14.344538158314515,
+        "panel": 14.344538158314515
+      }
+    }
+  },
+  {
+    "id": "long-basket-1150",
+    "status": "PASS",
+    "actual": {
+      "width": 1150,
+      "scrollWidth": 1150,
+      "slot": {
+        "street": "ul. Kardynała Stefana Wyszyńskiego 7/24",
+        "width": 215,
+        "scroll": 215,
+        "color": "rgb(23, 38, 29)",
+        "background": "rgb(240, 246, 236)",
+        "font": "13px",
+        "weight": "700"
+      },
+      "layer": {
+        "text": "ul. Kardynała Stefana Wyszyńskiego 7/24 47-100 Strzelce Opolskie",
+        "width": 118,
+        "scroll": 118
+      },
+      "panel": {
+        "color": "rgb(23, 38, 29)",
+        "background": "rgb(240, 246, 236)",
+        "slot": "2026-11-20 · TEST-02 · 08:00–11:00"
+      },
+      "contrast": {
+        "slot": 14.344538158314515,
+        "panel": 14.344538158314515
+      }
+    }
+  },
+  {
+    "id": "long-basket-700",
+    "status": "PASS",
+    "actual": {
+      "width": 700,
+      "scrollWidth": 700,
+      "slot": {
+        "street": "ul. Kardynała Stefana Wyszyńskiego 7/24",
+        "width": 185,
+        "scroll": 185,
+        "color": "rgb(23, 38, 29)",
+        "background": "rgb(240, 246, 236)",
+        "font": "13px",
+        "weight": "700"
+      },
+      "layer": {
+        "text": "ul. Kardynała Stefana Wyszyńskiego 7/24 47-100 Strzelce Opolskie",
+        "width": 320,
+        "scroll": 320
+      },
+      "panel": {
+        "color": "rgb(23, 38, 29)",
+        "background": "rgb(240, 246, 236)",
+        "slot": "2026-11-20 · TEST-02 · 08:00–11:00"
+      },
+      "contrast": {
+        "slot": 14.344538158314515,
+        "panel": 14.344538158314515
+      }
+    }
+  },
+  {
+    "id": "long-basket-390",
+    "status": "PASS",
+    "actual": {
+      "width": 390,
+      "scrollWidth": 390,
+      "slot": {
+        "street": "ul. Kardynała Stefana Wyszyńskiego 7/24",
+        "width": 90,
+        "scroll": 90,
+        "color": "rgb(23, 38, 29)",
+        "background": "rgb(240, 246, 236)",
+        "font": "13px",
+        "weight": "700"
+      },
+      "layer": {
+        "text": "ul. Kardynała Stefana Wyszyńskiego 7/24 47-100 Strzelce Opolskie",
+        "width": 196,
+        "scroll": 196
+      },
+      "panel": {
+        "color": "rgb(23, 38, 29)",
+        "background": "rgb(240, 246, 236)",
+        "slot": "2026-11-20 · TEST-02 · 08:00–11:00"
+      },
+      "contrast": {
+        "slot": 14.344538158314515,
+        "panel": 14.344538158314515
+      }
+    }
+  }
+]

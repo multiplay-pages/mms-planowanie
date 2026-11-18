@@ -1,0 +1,34 @@
+{
+  "results": [
+    {
+      "id": "K1",
+      "title": "Chrome (dotyk CDP): tap w wizytę otwiera popup",
+      "status": "PASS",
+      "actual": "{\"target\":{\"x\":547,\"y\":450,\"id\":\"TEST-013\"},\"popup\":true}"
+    },
+    {
+      "id": "K2",
+      "title": "Chrome (dotyk CDP): przeciągnięcie jednym palcem przesuwa mapę",
+      "status": "PASS",
+      "actual": "{\"before\":{\"z\":15,\"lng\":17.6164817378619,\"lat\":50.7491282196604},\"after\":{\"z\":15,\"lng\":17.613892480369486,\"lat\":50.749947346258836}}"
+    },
+    {
+      "id": "K3",
+      "title": "Chrome (dotyk CDP): szczypnięcie dwoma palcami zmienia skalę",
+      "status": "PASS",
+      "actual": "{\"z0\":15,\"z1\":17.72883233555065}"
+    },
+    {
+      "id": "K4",
+      "title": "Chrome (dotyk CDP): przewijanie dotykiem poza mapą (strona lub lista kolejki) działa",
+      "status": "PASS",
+      "actual": "{\"y0\":0,\"y1\":0,\"listTop\":225,\"out\":{\"x\":83,\"y\":860},\"hit\":\"SPAN#.address\"}"
+    },
+    {
+      "id": "K5",
+      "title": "Chrome (dotyk CDP): brak błędów strony i konsoli w całym przebiegu",
+      "status": "PASS",
+      "actual": "[]"
+    }
+  ]
+}
