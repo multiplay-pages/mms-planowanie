@@ -42,6 +42,25 @@ jobs:
           grep -q 'PODGLĄD PROPOZYCJI' map05/planner-offline.html
           grep -q 'op-workspace' map05/planner-offline.html
           wc -c map05/planner-offline.html
+      - name: Prepare real Chrome QA
+        run: |
+          npm install --no-save --prefix map05 playwright-core@1.56.1
+          if command -v google-chrome >/dev/null; then
+            echo 'CI_CHROME_CHANNEL=chrome' >> "$GITHUB_ENV"
+          else
+            (cd map05 && npx playwright-core install chromium)
+          fi
+      - name: Run local server and real Chrome served/offline integration smoke
+        run: |
+          python -X utf8 map05/serve.py > /tmp/mms-plan-server.log 2>&1 &
+          PID=$!
+          trap 'kill "$PID" || true' EXIT
+          for i in $(seq 1 40); do
+            if curl -fsS http://127.0.0.1:8765/ -o /dev/null; then break; fi
+            sleep 1
+          done
+          curl -fsS http://127.0.0.1:8765/ -o /dev/null
+          node evidence/2026-11-18-integration/integration-browser.mjs
       - name: Commit rebuilt offline artifact only on integration branch
         if: github.event_name == 'push' && github.ref == 'refs/heads/map07b08-integration'
         run: |
