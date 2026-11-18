@@ -18,7 +18,7 @@ Adresy i dane dróg nie trafiają do serwera zewnętrznego. Serwer nie zapisuje 
 
 ## Uruchomienie jednym kliknięciem (Windows)
 
-Dwuklik w `Uruchom-planer.bat` (katalog główny repozytorium) startuje lokalny serwer (tylko `127.0.0.1`, bez internetu) i otwiera planer pod `http://127.0.0.1:8765/`. Okno z serwerem musi pozostać otwarte; jego zamknięcie zatrzymuje serwer — adres `127.0.0.1:8765` działa tylko, gdy serwer jest uruchomiony. Wymaga Pythona (`py` lub `python`). Bez Pythona plik otwiera samodzielną wersję `map05\planner-offline.html`, która nie wymaga serwera i można ją też otworzyć dwuklikiem.
+Dwuklik w `Uruchom-planer.bat` (katalog główny repozytorium) startuje lokalny serwer (`127.0.0.1`) i otwiera planer pod `http://127.0.0.1:8765/`. Ten plik dopuszcza połączenie z serwerem ortofotomapy GUGiK (`https://mapy.geoportal.gov.pl`), dzięki czemu działają przyciski **Satelita** i **Hybryda**: zdjęcia są pobierane dopiero po wybraniu przycisku i zaznaczeniu zgody w oknie „Dostawca zdjęć” (wysyłany jest widoczny obszar mapy). `Uruchom-planer-bez-satelity.bat` uruchamia planer całkowicie bez połączeń zewnętrznych (Satelita/Hybryda wyłączone). Samodzielny plik `planner-offline.html` nigdy nie pobiera zdjęć. Okno z serwerem musi pozostać otwarte; jego zamknięcie zatrzymuje serwer — adres `127.0.0.1:8765` działa tylko, gdy serwer jest uruchomiony. Wymaga Pythona (`py` lub `python`). Bez Pythona plik otwiera samodzielną wersję `map05\planner-offline.html`, która nie wymaga serwera i można ją też otworzyć dwuklikiem.
 
 ## Mapa operacyjna MAP-06 (gałąź `map06-interactive-map`)
 

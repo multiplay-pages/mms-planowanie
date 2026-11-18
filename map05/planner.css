@@ -54,3 +54,12 @@ main{max-width:1780px;margin:auto;padding:30px 3% 16px}.heading{display:flex;ali
 #satellite-dialog label{display:grid;gap:4px;font-size:13px}
 #satellite-dialog label.consent{display:flex;gap:8px;align-items:flex-start}
 @media (max-width:900px){.op-body{grid-template-columns:1fr}.op-map{height:62vh;min-height:340px}.op-layers{max-height:none}}
+
+/* MAP-06.2: wyeksponowany adres wizyty w koszykach, na liście warstw i w panelu wybranego zlecenia. */
+.slot button .visit-address{display:block;margin:3px 0 2px}.slot button .visit-address b{display:block;font-size:13px;font-weight:700;line-height:1.25;color:#17261d}.slot button .visit-address i{display:block;font-style:normal;font-size:11px;color:#3d4a40}
+.op-address{display:block;font-size:11px}.op-address b{font-weight:700;color:#17261d}
+.address-card{margin:12px 0;padding:12px 14px;border:2px solid var(--green);border-radius:8px;background:#f0f6ec;display:grid;gap:2px}
+.address-caption{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.address-street{font-size:22px;line-height:1.2;font-weight:800;color:#17261d;overflow-wrap:anywhere}
+.address-place{font-size:15px;font-weight:600;color:#2d3a31}
+.address-slot{margin-top:6px;padding-top:6px;border-top:1px solid #c4d5be;font-size:12px;font-weight:600;color:#2d3a31}

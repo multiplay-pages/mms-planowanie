@@ -1,6 +1,10 @@
 @echo off
 rem MMS Planowanie 2.0 - uruchomienie lokalnego planera jednym klikiem.
-rem Startuje lokalny serwer (tylko 127.0.0.1, bez internetu) i otwiera planer w przegladarce.
+rem Startuje lokalny serwer (tylko 127.0.0.1) i otwiera planer w przegladarce.
+rem Zdjecia satelitarne (przyciski Satelita/Hybryda): ten plik dopuszcza polaczenie z serwerem ortofotomapy
+rem GUGiK (mapy.geoportal.gov.pl), ale zdjecia sa pobierane dopiero po wybraniu Satelity/Hybrydy i zaznaczeniu
+rem zgody w oknie Dostawca zdjec (wysylany jest widoczny obszar mapy). Bez tej zgody nic nie wychodzi z komputera.
+rem Wersja calkowicie bez polaczen zewnetrznych: Uruchom-planer-bez-satelity.bat
 rem Zamkniecie tego okna zatrzymuje serwer.
 cd /d "%~dp0"
 set "PY="
@@ -15,9 +19,10 @@ if not exist "map05\basemap\planner-compact.json" (
 
 echo.
 echo Planer: http://127.0.0.1:8765/   (zamknij to okno, aby zatrzymac serwer)
+echo Satelita/Hybryda: wybierz przycisk na mapie i zaznacz zgode w oknie Dostawca zdjec.
 echo.
 start "" cmd /c "timeout /t 2 /nobreak >nul & start "" http://127.0.0.1:8765/"
-%PY% -X utf8 map05\serve.py
+%PY% -X utf8 map05\serve.py --allow-tile-origin https://mapy.geoportal.gov.pl
 goto :eof
 
 :nopython

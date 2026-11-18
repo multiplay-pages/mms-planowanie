@@ -23,7 +23,7 @@ export function validateSatelliteConfig(config,allowedOrigins=[]) {
   if(url.protocol!=='https:'&&!loopback)return {ok:false,reason:'Dostawca musi używać HTTPS.'};
   if(!/\{(z|bbox-epsg-3857)\}/.test(config.url))return {ok:false,reason:'Adres musi zawierać {z}/{x}/{y} albo {bbox-epsg-3857}.'};
   if(!String(config.attribution??'').trim())return {ok:false,reason:'Podaj atrybucję wymaganą przez dostawcę.'};
-  if(!allowedOrigins.includes(url.origin))return {ok:false,reason:`Ten widok blokuje połączenia z ${url.origin}. Uruchom serwer z: python -X utf8 map05/serve.py --allow-tile-origin ${url.origin}. Plik offline nie pobiera zdjęć satelitarnych.`};
+  if(!allowedOrigins.includes(url.origin))return {ok:false,reason:`Ten widok blokuje połączenia z ${url.origin}. Uruchom planer plikiem Uruchom-planer.bat (albo: python -X utf8 map05/serve.py --allow-tile-origin ${url.origin}). Samodzielny plik planner-offline.html nie pobiera zdjęć satelitarnych.`};
   return {ok:true,origin:url.origin};
 }
 

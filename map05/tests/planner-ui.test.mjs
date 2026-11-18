@@ -282,6 +282,30 @@ test('changing the day in basket map mode fits the basket of the new day',async 
   assert.ok(x>=left&&x<=left+width&&y>=top&&y<=top+height,'the new day basket is inside the map view');
   assert.match(ui.$('#map-note').textContent,/Koszyk TEST-02 · 2026-11-19: 1 punktów/);
 });
+test('the full street address is prominent in basket cards, the layer list and the selected-order panel',async t=>{
+  const scenario=modelApi.createScenario(dataset,uug),order=scenario.orders.find(o=>o.ready&&o.type==='MPL'&&o.slotsRequired===1),address=scenario.addresses.find(a=>a.id===order.addressId);
+  let plan=modelApi.createPlan(scenario);
+  plan=modelApi.applyAction(scenario,plan,{type:'ASSIGN',orderId:order.id,teamId:'TEST-02',date:'2026-11-19',start:0});
+  const ui=await mount(t,{geocoding:uug,saved:new Map([[`mms-map05-plan-v1-${scenario.datasetId}`,JSON.stringify(plan)]])});
+  ui.change('#planning-date','2026-11-19');
+  const street=address.label.slice(`${address.postcode} ${address.city}, `.length),place=`${address.postcode} ${address.city}`;
+  assert.ok(street.length>0&&street!==address.label);
+  // Basket card: street line in bold, then postcode and town (not just the town).
+  const card=ui.$(`#baskets button[data-order="${order.id}"]`);
+  assert.equal(card.querySelector('.visit-address b').textContent,street);
+  assert.match(card.querySelector('.visit-address i').textContent,new RegExp(place));
+  // Selected order panel: a dedicated address card with the slot of the assignment.
+  ui.click(`#baskets button[data-order="${order.id}"]`);
+  const panel=ui.$('#order-details .address-card');
+  assert.equal(panel.querySelector('.address-street').textContent,street);
+  assert.equal(panel.querySelector('.address-place').textContent,place);
+  assert.match(panel.querySelector('.address-slot').textContent,/2026-11-19 · TEST-02 · 08:00/);
+  // A queued (unassigned) order shows the address card without a slot line.
+  const queued=scenario.orders.find(o=>o.id!==order.id&&o.ready);
+  ui.click(`#queue-list button[data-order="${queued.id}"]`);
+  assert.ok(ui.$('#order-details .address-card .address-street').textContent.length>0);
+  assert.equal(ui.$('#order-details .address-card .address-slot'),null);
+});
 test('operational map panel follows the plan for every basket and keeps keyboard focus on a visit',async t=>{
   const updates=[],fits=[];
   const fakeView=()=>({ready:Promise.resolve(),update:layers=>updates.push(layers),fit:bounds=>fits.push(bounds),flyTo(){},setRoadsVisible(){},setBasemap(){},destroy(){},resize(){}});

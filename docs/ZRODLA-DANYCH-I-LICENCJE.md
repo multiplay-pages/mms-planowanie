@@ -54,7 +54,7 @@ Uwaga: plik `local-routes.json` powinien zawierać własne pole licencji i atryb
 
 ## 5. Zdjęcia satelitarne i hybryda
 
-Nie wdrożono żadnego dostawcy. Funkcja jest opt-in (konfiguracja, zgoda, origin dopuszczony przy starcie serwera) i była testowana wyłącznie lokalną atrapą. **Status: niewdrożone, niezweryfikowane.**
+Domyślnie nie wdrożono żadnego dostawcy: funkcja jest opt-in (konfiguracja, zgoda, origin dopuszczony przy starcie serwera). 18.11.2026 sprawdzono technicznie (jedna krótka sesja w Chrome, nieklienckie lokalizacje: Opole centrum i okolice Brzeszcz), że preset „GUGiK ORTO” zwraca obrazy JPEG (HTTP 200) i że Satelita oraz Hybryda (zdjęcia + lokalne drogi i etykiety) się rysują; `Uruchom-planer.bat` dopuszcza ten origin. **Status: działa technicznie; warunki licencyjne usługi WMS niepotwierdzone (poniżej), więc nadal bez zatwierdzenia licencyjnego.**
 
 Preset „GUGiK ORTO” (WMS `PZGIK/ORTO/WMS/StandardResolution`):
 
