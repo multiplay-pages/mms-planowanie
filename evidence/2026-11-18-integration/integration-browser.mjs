@@ -1,6 +1,8 @@
 // MAP-07B + MAP-08 integration E2E, real Chrome. No customer data or external URLs.
 import assert from 'node:assert/strict';
-import {chromium} from 'playwright-core';
+import {createRequire} from 'node:module';
+const require=createRequire(new URL('../../map05/package.json',import.meta.url));
+const {chromium}=require('playwright-core');
 import {resolve} from 'node:path';
 import {pathToFileURL} from 'node:url';
 
