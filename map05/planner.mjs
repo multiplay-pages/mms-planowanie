@@ -7,6 +7,8 @@ import {buildOperationalLayers,operationalTeamColor,operationalBounds} from './o
 import {createOperationalMapView,validateSatelliteConfig,SATELLITE_PRESETS} from './maplibre-view.mjs';
 import {decodeEmbeddedText} from './embedded-data.mjs';
 import {createWorkerRoadTiles,createInlineRoadTiles} from './road-tile-client.mjs';
+import {openPack,memorySource,httpSource} from './pmtiles-reader.mjs';
+import {MAP_VARIANTS} from './map-style.mjs';
 
 const $=id=>document.getElementById(id);
 const escapeText=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -14,7 +16,8 @@ const state={date:'2026-11-18',city:'ALL',kind:'ALL',query:'',selectedId:null,ma
 let scenario,plan,mapData,mapDeferred=false,roadTiles=null,mapFrame=null,markerLayer=null,history=[],storageKey,storageAvailable=true,viewport=[0,0,680,380],drag=null;
 let backgroundLayer,routeLayer,townLayer,scaleLayer,preparedMap=[],townLabels=[],lastMapView=null;
 // MAP-06 operational map: a view of plan; it holds only display preferences, never assignments.
-let opView=null;const opState={hidden:new Set(),showUnassigned:true,showRoutes:true,roads:true,basemap:'road'};
+let opView=null;const opState={hidden:new Set(),showUnassigned:true,showRoutes:true,roads:true,basemap:'road',focusTeam:null,variant:'light',workspace:false,detail:false,flags:{arrows:true,legs:true,numbers:true,buildings:true,streets:true,places:true,nature:true}};
+const VARIANT_KEY='mms-map08-variant-v1';
 const SATELLITE_KEY='mms-map06-satellite-v1';const addressFor=order=>scenario.addresses.find(a=>a.id===order.addressId);
 const orderById=id=>scenario.orders.find(o=>o.id===id);
 const onDay=()=>plan.assignments.filter(a=>a.date===state.date);
@@ -304,7 +307,7 @@ function moveMap(command) {
 }
 
 function selectMapOrder(id) {
-  state.selectedId=id;
+  state.selectedId=id;opState.detail=true;
   const a=assignmentFor(id);
   if(state.mapMode==='basket'&&(!a||a.date!==state.date||a.teamId!==state.mapTeam))state.mapMode='scope';
   renderPlanner();if(state.mapMode==='selected')fitCurrentMap();
@@ -346,11 +349,15 @@ async function initOperationalMap() {
     const towns=new Map();
     for(const address of scenario.addresses.filter(hasLocation)){const t=towns.get(address.city)??{sum:[0,0],n:0};t.sum[0]+=address.coordinates[0];t.sum[1]+=address.coordinates[1];t.n++;towns.set(address.city,t);}
     const townData={type:'FeatureCollection',features:[...towns].map(([name,t])=>({type:'Feature',geometry:{type:'Point',coordinates:[t.sum[0]/t.n,t.sum[1]/t.n]},properties:{name}}))};
-    roadTiles=await startRoadTiles();
+    // The rich local pack (roads, names, places, buildings, water) is preferred; without it the MAP-06 roads-only tiles are used.
+    const pack=await openMapPack();
+    roadTiles=pack?null:await startRoadTiles();
     const tiles=roadTiles;
-    tiles.failed.then(error=>{if(roadTiles===tiles)disableOperationalMap(error.message);});
+    tiles?.failed.then(error=>{if(roadTiles===tiles)disableOperationalMap(error.message);});
+    try {const saved=localStorage.getItem(VARIANT_KEY);if(MAP_VARIANTS[saved])opState.variant=saved;} catch {}
+    $('op-variant').value=opState.variant;
     $('op-map-shell').hidden=false;$('map-card').classList.add('op-active');
-    opView=createOperationalMapView({maplibregl,container:$('operational-map'),roadTiles,towns:townData,regionBounds:operationalBounds(townData),
+    opView=createOperationalMapView({maplibregl,container:$('operational-map'),roadTiles,pack,variant:opState.variant,towns:townData,regionBounds:operationalBounds(townData),
       teams:scenario.teams.map(team=>({teamId:team.id,color:operationalTeamColor(scenario,team.id)})),
       callbacks:{onEdit:editFromMap,onSelect:id=>{if(id!==state.selectedId)selectMapOrder(id);},onError:message=>{$('op-status').textContent=`Mapa: ${message}`;},
         onPopupClosed:id=>$('op-layers').querySelector(`[data-order="${id}"]`)?.focus(),onFatal:disableOperationalMap}});
@@ -358,8 +365,21 @@ async function initOperationalMap() {
     $('operational-map').operationalView=opView;
     await opView.ready;
     updateOperationalMap({fit:true});
-    $('op-status').textContent='Mapa operacyjna: lokalne drogi OSM, bez połączeń zewnętrznych. Zdjęcia satelitarne są wyłączone, dopóki nie skonfigurujesz dostawcy.';
+    renderOpLegend();syncSatelliteAvailability();setOpStatus();
   } catch(error) {disableOperationalMap(error.message);}
+}
+
+async function openMapPack() {
+  try {
+    const embedded=$('map-pack-data');
+    if(embedded) {
+      const raw=atob(embedded.textContent.trim()),bytes=new Uint8Array(raw.length);
+      for(let i=0;i<raw.length;i++)bytes[i]=raw.charCodeAt(i);
+      return await openPack(memorySource(bytes));
+    }
+    if(location.protocol==='file:')return null; // a file:// page cannot read sibling files; the embedded pack or the roads-only map is used
+    return await openPack(httpSource(new URL('./basemap/map-pack.pmtiles',document.baseURI).href));
+  } catch {return null;}
 }
 
 let svgMapPromise=null;
@@ -386,13 +406,14 @@ function disableOperationalMap(reason) {
 }
 
 function operationalLayers() {
-  return buildOperationalLayers(scenario,plan,state.date,{hiddenTeams:[...opState.hidden],showUnassigned:opState.showUnassigned,showRoutes:opState.showRoutes,includeUnassigned:matches,selectedId:state.selectedId});
+  return buildOperationalLayers(scenario,plan,state.date,{hiddenTeams:[...opState.hidden],showUnassigned:opState.showUnassigned,showRoutes:opState.showRoutes,includeUnassigned:matches,selectedId:state.selectedId,focusTeam:opState.focusTeam});
 }
 
 function updateOperationalMap({fit=false,team=null}={}) {
   if(!opView)return;
   const layers=operationalLayers();
-  opView.update(layers);renderOperationalPanel(layers);
+  opView.update(layers);renderOperationalPanel(layers);renderOpDetail(layers);
+  if($('op-date').value!==state.date)$('op-date').value=state.date;
   if(fit) {
     const visits=team?{type:'FeatureCollection',features:layers.visits.features.filter(f=>f.properties.teamId===team)}:layers.visits;
     const routes=team?{type:'FeatureCollection',features:layers.routes.features.filter(f=>f.properties.teamId===team)}:layers.routes;
@@ -400,16 +421,52 @@ function updateOperationalMap({fit=false,team=null}={}) {
   }
 }
 
+const opKm=meters=>`${(meters/1000).toLocaleString('pl-PL',{minimumFractionDigits:1,maximumFractionDigits:1})} km`;
+const opMin=seconds=>seconds>=3600?`${Math.floor(seconds/3600)} h ${Math.round(seconds%3600/60)} min`:`${Math.max(1,Math.round(seconds/60))} min`;
+const opShape={MPL:'circle',BSA:'square',POMIAR:'diamond'};
+
 function renderOperationalPanel(layers) {
-  const km=m=>m===null?'droga nieustalona':`${(m/1000).toLocaleString('pl-PL',{maximumFractionDigits:1})} km`;
   const check=status=>({PASS:'w limicie',LIMIT:'PRZEKROCZONY',UNASSESSED:'nieoceniony',NOT_APPLICABLE:'nie dotyczy'})[status];
+  const plural=n=>n===1?'wizyta':n>=2&&n<=4?'wizyty':'wizyt';
   const teams=layers.teams.map(team=>{
-    const visits=team.orders.map((id,index)=>{const order=orderById(id);return `<li><button type="button" data-order="${id}" data-op-fly="1" aria-pressed="${id===state.selectedId}"><span class="op-seq">${index+1}</span>${id} · ${order.type}<small class="op-address"><b>${escapeText(addressParts(addressFor(order)).street)}</b> ${escapeText(addressParts(addressFor(order)).place)}</small></button></li>`;}).join('');
-    return `<section class="op-team" data-team="${team.teamId}"><label><input type="checkbox" data-op-team="${team.teamId}" ${team.visible?'checked':''}><span class="op-swatch" data-color="${team.color}"></span><strong>${team.teamId}</strong> <span>${team.count} ${team.count===1?'wizyta':team.count>=2&&team.count<=4?'wizyty':'wizyt'}${team.count>1?' · '+km(team.distanceM):''}</span></label>${team.count>1?`<small class="op-checks">30 km: ${check(team.checks.installationDistance)} · +10 km: ${check(team.checks.measurementExtra)} · okna: ${check(team.checks.windows)}</small>`:''}${visits?`<ol>${visits}</ol>`:'<p class="small muted">Brak wizyt tego dnia.</p>'}</section>`;
+    const legTo=new Map(team.legs.map(leg=>[leg.to,leg]));
+    const visits=team.orders.map((id,index)=>{
+      const order=orderById(id),parts=addressParts(addressFor(order)),nopos=team.unlocated.includes(id),leg=legTo.get(id);
+      const legRow=index&&leg?`<li class="op-leg${leg.status==='OK'?'':' unknown'}">${leg.status==='OK'?`${opKm(leg.distanceM)}${leg.durationS?` · ok. ${opMin(leg.durationS)}`:''}`:'odcinek nieustalony — brak znanej drogi (nie rysowany)'}</li>`:'';
+      return `${legRow}<li><button type="button" class="${nopos?'op-visit-nopos':''}" data-order="${id}"${nopos?'':' data-op-fly="1"'} aria-pressed="${id===state.selectedId}"><span class="op-seq ${opShape[order.type]??'circle'}${nopos?' nopos':''}"><span>${nopos?'!':index+1}</span></span>${id} · ${order.type}<small class="op-address"><b>${escapeText(parts.street)}</b> ${escapeText(parts.place)}${nopos?' — brak zweryfikowanej pozycji, poza mapą':''}</small></button></li>`;
+    }).join('');
+    const sum=team.count>1?(team.distanceM!==null?`${opKm(team.distanceM)}${team.estimatedDurationS?` · ok. ${opMin(team.estimatedDurationS)} jazdy`:''}`:`<span class="warn">${team.knownDistanceM?`co najmniej ${opKm(team.knownDistanceM)}, `:''}część odcinków nieustalona</span>`):'';
+    return `<section class="op-team${team.focused?' focused':''}" data-team="${team.teamId}" data-color="${team.color}"><div class="op-team-head"><label><input type="checkbox" data-op-team="${team.teamId}" ${team.visible?'checked':''}><span class="op-swatch" data-color="${team.color}"></span><strong>${team.teamId}</strong></label><span class="op-team-actions"><button type="button" class="secondary" data-op-focus="${team.teamId}" aria-pressed="${team.focused}" title="Podkreśl trasę tej ekipy i dopasuj widok">Podkreśl</button><button type="button" class="secondary" data-op-solo="${team.teamId}" title="Pokaż tylko tę ekipę">Tylko ta</button></span></div><span class="op-sum">${team.count} ${plural(team.count)}${sum?' · '+sum:''}</span>${team.count>1?`<small class="op-checks">30 km: ${check(team.checks.installationDistance)} · +10 km: ${check(team.checks.measurementExtra)} · okna: ${check(team.checks.windows)}</small>`:''}${visits?`<ol>${visits}</ol>`:'<p class="small muted">Brak wizyt tego dnia.</p>'}</section>`;
   }).join('');
-  $('op-layers').innerHTML=`<p class="eyebrow">KOSZYKI ${escapeText(state.date)}</p>${teams}<div class="op-toggles"><label><input type="checkbox" data-op-toggle="unassigned" ${opState.showUnassigned?'checked':''}>Nieprzydzielone (${layers.unassigned.features.length})</label><label><input type="checkbox" data-op-toggle="routes" ${opState.showRoutes?'checked':''}>Trasy koszyków</label><label><input type="checkbox" data-op-toggle="roads" ${opState.roads?'checked':''}>Podkład dróg</label></div><p class="op-legend small"><span class="op-key install"></span>Instalacja <span class="op-key measure"></span>Pomiar <span class="op-key queue"></span>Nieprzydzielone <span class="op-key confirmed"></span>Potwierdzone okno</p>`;
-  $('op-layers').querySelectorAll('.op-swatch').forEach(node=>node.style.setProperty('--team',node.dataset.color));
+  const anyHidden=opState.hidden.size>0||opState.focusTeam;
+  $('op-layers').innerHTML=`<p class="eyebrow">KOSZYKI ${escapeText(state.date)}</p><div class="op-all"><button type="button" class="secondary" data-op-all="1" ${anyHidden?'':'disabled'}>Wszystkie trasy</button></div>${teams}`;
+  $('op-layers').querySelectorAll('[data-color]').forEach(node=>node.style.setProperty('--team',node.dataset.color));
+  renderLayersMenu(layers);
   $('op-gaps').innerHTML=layers.gaps.map(gap=>`<li class="${gap.kind}">${escapeText(gap.message)}</li>`).join('');
+}
+
+function renderLayersMenu(layers) {
+  const row=(attr,key,label,checked,disabled=false)=>`<label><input type="checkbox" ${attr}="${key}" ${checked?'checked':''} ${disabled?'disabled':''}>${label}</label>`;
+  const rich=Boolean(opView?.rich),open=$('op-layers-menu').open;
+  $('op-layers-menu-body').innerHTML=`<h4>WIZYTY I TRASY</h4>${row('data-op-toggle','routes','Trasy koszyków',opState.showRoutes)}${row('data-op-flag','arrows','Kierunek jazdy (strzałki)',opState.flags.arrows)}${row('data-op-flag','legs','Długości odcinków',opState.flags.legs)}${row('data-op-flag','numbers','Numery wizyt',opState.flags.numbers)}${row('data-op-toggle','unassigned',`Nieprzydzielone (${layers.unassigned.features.length})`,opState.showUnassigned)}<h4>PODKŁAD${rich?'':' (uproszczony: tylko drogi)'}</h4>${row('data-op-toggle','roads','Drogi',opState.roads)}${row('data-op-flag','streets','Nazwy ulic',opState.flags.streets)}${row('data-op-flag','places','Miejscowości',opState.flags.places)}${row('data-op-flag','buildings','Budynki',opState.flags.buildings,!rich)}${row('data-op-flag','nature','Woda, lasy, kolej',opState.flags.nature,!rich)}`;
+  $('op-layers-menu').open=open;
+}
+
+function renderOpLegend() {
+  $('op-legend').innerHTML=`<details open><summary>LEGENDA</summary><div class="op-legend-grid"><span class="op-key mpl"></span><span>Instalacja MPL</span><span class="op-key bsa"></span><span>Instalacja BSA</span><span class="op-key pom"></span><span>Pomiar</span><span class="op-key confirmed"></span><span>Potwierdzone okno</span><span class="op-key queue"></span><span>Nieprzydzielone</span><span class="op-key cluster"></span><span>Grupa (przybliż, by rozdzielić)</span><span class="op-key route"></span><span>Trasa ekipy (kolor = ekipa)</span><span class="op-key nopos"></span><span>Bez pozycji — tylko na liście</span></div></details>`;
+}
+
+function renderOpDetail(layers) {
+  const box=$('op-detail'),order=opState.detail&&state.selectedId&&orderById(state.selectedId);
+  if(!order){box.hidden=true;box.textContent='';return;}
+  const address=addressFor(order),parts=addressParts(address),a=assignmentFor(order.id),located=hasLocation(address);
+  const team=a&&a.date===state.date?layers.teams.find(t=>t.teamId===a.teamId):null,index=team?team.orders.indexOf(order.id):-1;
+  const leg=target=>target?(target.status==='OK'?`${opKm(target.distanceM)}${target.durationS?` · ok. ${opMin(target.durationS)}`:''}`:'nieustalony (brak znanej drogi)'):null;
+  const prev=team&&index>0?leg(team.legs[index-1]):null,next=team&&index>=0&&index<team.orders.length-1?leg(team.legs[index]):null;
+  const where=a?`${a.date} · ${a.teamId}${team?` · wizyta ${index+1} z ${team.orders.length}`:''} · ${slotLabel(a.start,order.slotsRequired)}`:'Nieprzydzielone (kolejka)';
+  const origin=a?(a.confirmed?'okno potwierdzone (test)':a.origin==='MANUAL'?'ręczna propozycja':'automatyczna propozycja'):order.ready?'gotowe — parametr testowy':'brak gotowości — parametr testowy';
+  box.hidden=false;
+  box.innerHTML=`<div class="op-detail-title"><h3>${escapeText(order.id)} <span class="type ${order.type}">${order.type}</span></h3></div><dl><dt>Adres</dt><dd><b>${escapeText(parts.street)}</b> ${escapeText(parts.place)}</dd><dt>Termin</dt><dd>${escapeText(where)}</dd><dt>Stan</dt><dd>${escapeText(origin)}</dd>${prev?`<dt>Dojazd</dt><dd>${escapeText(prev)} od poprzedniej wizyty</dd>`:''}${next?`<dt>Dalej</dt><dd>${escapeText(next)} do następnej wizyty</dd>`:''}</dl>${located?'':'<p class="op-warn">Brak zweryfikowanych współrzędnych — punkt nie jest rysowany na mapie (nie zgadujemy pozycji).</p>'}<div class="op-detail-actions"><button type="button" class="primary" data-op-edit="1">Edytuj w planerze</button>${located?'<button type="button" class="secondary" data-op-zoom="1">Pokaż na mapie</button>':''}<button type="button" class="secondary" data-op-close="1">Zamknij</button></div>`;
 }
 
 function editFromMap(id) {
@@ -424,17 +481,38 @@ function satelliteConfig() {
 }
 const allowedTileOrigins=()=>(document.querySelector('meta[name="mms-tile-origins"]')?.content??'').split(/\s+/).filter(Boolean);
 
+function opBaseDescription() {
+  return opView?.rich?'lokalny pakiet mapy OSM (drogi, nazwy, budynki, woda, tereny)':'lokalne drogi OSM — pakiet mapy niedostępny, podkład uproszczony (tylko drogi)';
+}
+// The status line always describes the basemap that is really active, including after leaving satellite/hybrid.
+function setOpStatus(extra='') {
+  const mode=opState.basemap,config=satelliteConfig();
+  const text=mode==='road'?`Podkład: Drogowa — ${opBaseDescription()}, bez połączeń zewnętrznych. Zdjęcia satelitarne są niedostępne, dopóki właściciel nie potwierdzi praw i nie skonfiguruje dostawcy.`
+    :`Podkład: ${mode==='satellite'?'Satelita':'Hybryda'} — ${config?.attribution??''}. Widoczny obszar jest wysyłany do dostawcy zdjęć.${mode==='hybrid'?` Drogi i etykiety: ${opBaseDescription()}.`:''}`;
+  $('op-status').textContent=extra?`${extra} ${text}`:text;
+}
+// Satellite and hybrid stay disabled until a provider is configured and validated: the interface is ready, the layer is honestly unavailable.
+function syncSatelliteAvailability() {
+  const config=satelliteConfig(),ok=validateSatelliteConfig(config,allowedTileOrigins()).ok;
+  for(const value of ['satellite','hybrid']) {
+    const input=document.querySelector(`input[name="op-basemap"][value="${value}"]`);
+    input.disabled=!ok;
+    const label=input.closest('label');label.classList.toggle('op-unavailable',!ok);
+    const note=label.querySelector('small');if(note)note.textContent=ok?'dostawca skonfigurowany':'niedostępna';
+  }
+}
+
 function setOperationalBasemap(mode) {
-  if(mode==='road'){opState.basemap='road';opView?.setBasemap('road');return;}
+  if(mode==='road'){opState.basemap='road';opView?.setBasemap('road');setOpStatus();return;}
   const config=satelliteConfig(),check=validateSatelliteConfig(config,allowedTileOrigins());
   if(!check.ok) {
     document.querySelector('input[name="op-basemap"][value="road"]').checked=true;opState.basemap='road';opView?.setBasemap('road');
-    showMessage(`Zdjęcia satelitarne wyłączone: ${check.reason}`,true);
+    showMessage(`Zdjęcia satelitarne wyłączone: ${check.reason}`,true);setOpStatus();
     if(!config)openSatelliteDialog();
     return;
   }
   opState.basemap=mode;opView?.setBasemap(mode,config);
-  $('op-status').textContent=`Podkład: ${mode==='satellite'?'satelita':'hybryda'} — ${config.attribution}. Widoczny obszar jest wysyłany do ${check.origin}.`;
+  setOpStatus();
 }
 
 function openSatelliteDialog() {
@@ -532,15 +610,70 @@ $('planner-map').addEventListener('pointermove',event=>{
 });
 for(const event of ['pointerup','pointercancel','lostpointercapture'])$('planner-map').addEventListener(event,()=>{drag=null;});
 $('planner-map').addEventListener('wheel',event=>{event.preventDefault();moveMap(event.deltaY<0?'in':'out');},{passive:false});
+function setFocusTeam(teamId,{fit=false}={}) {
+  opState.focusTeam=teamId;
+  if(teamId)opState.hidden.delete(teamId);
+  updateOperationalMap(fit&&teamId?{fit:true,team:teamId}:{});
+}
 $('op-layers').addEventListener('change',event=>{
-  const team=event.target.dataset.opTeam,toggle=event.target.dataset.opToggle;
-  if(team){if(event.target.checked)opState.hidden.delete(team);else opState.hidden.add(team);}
+  const team=event.target.dataset.opTeam;if(!team)return;
+  if(event.target.checked)opState.hidden.delete(team);else {opState.hidden.add(team);if(opState.focusTeam===team)opState.focusTeam=null;}
+  updateOperationalMap();$('op-layers').querySelector(`[data-op-team="${team}"]`)?.focus();
+});
+$('op-layers').addEventListener('click',event=>{
+  const focus=event.target.closest('[data-op-focus]'),solo=event.target.closest('[data-op-solo]'),all=event.target.closest('[data-op-all]');
+  if(focus){const id=focus.dataset.opFocus;setFocusTeam(opState.focusTeam===id?null:id,{fit:true});$('op-layers').querySelector(`[data-op-focus="${id}"]`)?.focus();}
+  else if(solo){const id=solo.dataset.opSolo;opState.hidden=new Set(scenario.teams.map(t=>t.id).filter(t=>t!==id));opState.focusTeam=id;updateOperationalMap({fit:true,team:id});$('op-layers').querySelector(`[data-op-solo="${id}"]`)?.focus();}
+  else if(all){opState.hidden.clear();opState.focusTeam=null;updateOperationalMap({fit:true});$('op-layers').querySelector('[data-op-team]')?.focus();}
+});
+$('op-layers-menu-body').addEventListener('change',event=>{
+  const toggle=event.target.dataset.opToggle,flag=event.target.dataset.opFlag;
   if(toggle==='unassigned')opState.showUnassigned=event.target.checked;
   if(toggle==='routes')opState.showRoutes=event.target.checked;
-  if(toggle==='roads'){opState.roads=event.target.checked;opView?.setRoadsVisible(opState.roads);}
-  const selector=team?`[data-op-team="${team}"]`:`[data-op-toggle="${toggle}"]`;
-  updateOperationalMap();$('op-layers').querySelector(selector)?.focus();
+  if(toggle==='roads'){opState.roads=event.target.checked;opView?.setFlags({roads:opState.roads});}
+  if(flag){opState.flags[flag]=event.target.checked;opView?.setFlags({[flag]:event.target.checked});}
+  updateOperationalMap();$('op-layers-menu-body').querySelector(`[data-op-${toggle?'toggle':'flag'}="${toggle??flag}"]`)?.focus();
 });
+$('op-variant').addEventListener('change',event=>{
+  opState.variant=event.target.value;opView?.setVariant(opState.variant);
+  try{localStorage.setItem(VARIANT_KEY,opState.variant);}catch{}
+});
+$('op-detail').addEventListener('click',event=>{
+  const id=state.selectedId;
+  if(event.target.closest('[data-op-edit]')&&id)editFromMap(id);
+  else if(event.target.closest('[data-op-zoom]')&&id){const address=addressFor(orderById(id));if(hasLocation(address))opView?.flyTo(address.coordinates,16);}
+  else if(event.target.closest('[data-op-close]')){opState.detail=false;renderOpDetail(opView?.layers??operationalLayers());$('op-fit-selected').focus();}
+});
+// "Duża mapa": the same map card and the same plan state, laid out over the whole window. Nothing is copied.
+function setWorkspace(on) {
+  opState.workspace=on;
+  $('map-card').classList.toggle('op-workspace',on);document.body.classList.toggle('op-ws-open',on);
+  $('op-workspace').setAttribute('aria-pressed',String(on));$('op-workspace').textContent=on?'Mała mapa ⤡':'Duża mapa ⤢';
+  $('op-date').value=state.date;
+  if(!on&&document.fullscreenElement)document.exitFullscreen?.().catch(()=>{});
+  const nextFrame=typeof requestAnimationFrame==='function'?requestAnimationFrame:callback=>setTimeout(callback,0);
+  nextFrame(()=>{opView?.resize();updateOperationalMap({fit:true});});
+  if(on)$('op-workspace-close').focus({preventScroll:true});else $('op-workspace').focus({preventScroll:true});
+}
+$('op-workspace').addEventListener('click',()=>setWorkspace(!opState.workspace));
+$('op-workspace-close').addEventListener('click',()=>setWorkspace(false));
+$('op-fullscreen').addEventListener('click',async()=>{
+  if(document.fullscreenElement){await document.exitFullscreen().catch(()=>{});return;}
+  if(!opState.workspace)setWorkspace(true);
+  try{await $('map-card').requestFullscreen();}catch{showMessage('Przeglądarka nie pozwoliła na tryb pełnoekranowy; mapa pozostaje w dużym widoku.',true);}
+});
+document.addEventListener('fullscreenchange',()=>{$('op-fullscreen').setAttribute('aria-pressed',String(Boolean(document.fullscreenElement)));requestAnimationFrame(()=>opView?.resize());});
+document.addEventListener('keydown',event=>{
+  // Escape peels one layer at a time: an open popup first, then the details panel, then the large map.
+  if(event.key!=='Escape'||!opState.workspace||document.fullscreenElement||document.querySelector('dialog[open]')||document.querySelector('.maplibregl-popup'))return;
+  if(opState.detail){opState.detail=false;renderOpDetail(opView?.layers??operationalLayers());return;}
+  setWorkspace(false);
+});
+$('op-date').addEventListener('change',event=>{
+  if(!event.target.value)return;
+  $('planning-date').value=event.target.value;$('planning-date').dispatchEvent(new Event('change'));
+});
+$('op-generate').addEventListener('click',()=>$('generate').click());
 document.querySelectorAll('input[name="op-basemap"]').forEach(input=>input.addEventListener('change',()=>{if(input.checked)setOperationalBasemap(input.value);}));
 $('op-fit-baskets').addEventListener('click',()=>updateOperationalMap({fit:true}));
 $('op-fit-all').addEventListener('click',()=>opView?.fit(operationalBounds({features:scenario.addresses.filter(hasLocation).map(a=>({geometry:{type:'Point',coordinates:a.coordinates}}))}),{maxZoom:12}));
@@ -548,11 +681,11 @@ $('op-fit-selected').addEventListener('click',()=>{const order=orderById(state.s
 $('op-satellite-settings').addEventListener('click',openSatelliteDialog);
 $('satellite-preset').addEventListener('change',event=>{const preset=SATELLITE_PRESETS[event.target.value];if(preset){$('satellite-url').value=preset.url;$('satellite-attribution').value=preset.attribution;}else{$('satellite-url').value='';$('satellite-attribution').value='';}});
 $('satellite-cancel').addEventListener('click',()=>$('satellite-dialog').close());
-$('satellite-clear').addEventListener('click',()=>{try{localStorage.removeItem(SATELLITE_KEY);}catch{}setOperationalBasemap('road');document.querySelector('input[name="op-basemap"][value="road"]').checked=true;$('satellite-dialog').close();showMessage('Usunięto konfigurację dostawcy zdjęć. Mapa działa wyłącznie lokalnie.');});
+$('satellite-clear').addEventListener('click',()=>{try{localStorage.removeItem(SATELLITE_KEY);}catch{}setOperationalBasemap('road');syncSatelliteAvailability();document.querySelector('input[name="op-basemap"][value="road"]').checked=true;$('satellite-dialog').close();showMessage('Usunięto konfigurację dostawcy zdjęć. Mapa działa wyłącznie lokalnie.');});
 $('satellite-form').addEventListener('submit',event=>{
   const config={preset:$('satellite-preset').value,url:$('satellite-url').value.trim(),attribution:$('satellite-attribution').value.trim(),consent:$('satellite-consent').checked};
   const check=validateSatelliteConfig(config,allowedTileOrigins().length?allowedTileOrigins():[(()=>{try{return new URL(config.url.replaceAll('{','%7B').replaceAll('}','%7D')).origin;}catch{return '';}})()]);
   if(!check.ok){event.preventDefault();showMessage(`Nie zapisano: ${check.reason}`,true);return;}
-  try{localStorage.setItem(SATELLITE_KEY,JSON.stringify(config));showMessage('Zapisano dostawcę zdjęć w tej przeglądarce. Wybierz „Satelita” lub „Hybryda”, aby go użyć.');}catch{showMessage('Pamięć przeglądarki jest niedostępna — konfiguracji nie zapisano.',true);}
+  try{localStorage.setItem(SATELLITE_KEY,JSON.stringify(config));syncSatelliteAvailability();showMessage('Zapisano dostawcę zdjęć w tej przeglądarce. Wybierz „Satelita” lub „Hybryda”, aby go użyć.');}catch{showMessage('Pamięć przeglądarki jest niedostępna — konfiguracji nie zapisano.',true);}
 });
 loadPlanner();

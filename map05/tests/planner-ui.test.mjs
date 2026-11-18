@@ -13,6 +13,8 @@ import * as plannerMapApi from '../planner-map.mjs';
 import * as operationalApi from '../operational-map.mjs';
 import * as embeddedApi from '../embedded-data.mjs';
 import * as tileClientApi from '../road-tile-client.mjs';
+import * as packApi from '../pmtiles-reader.mjs';
+import {MAP_VARIANTS} from '../map-style.mjs';
 import {validateSatelliteConfig,SATELLITE_PRESETS} from '../maplibre-view.mjs';
 import {roadFixture} from './road-fixture.mjs';
 const [markup,source,dataset,basemap,geocoding,uug]=await Promise.all([
@@ -27,6 +29,7 @@ async function mount(t,options={}) {
   const window=new Window({settings:{enableJavaScriptEvaluation:false,disableJavaScriptFileLoading:true,enableCSSFileLoading:false,enableImageFileLoading:false,enableIframePageLoading:false,navigation:{disableMainFrameNavigation:true,disableChildFrameNavigation:true,disableChildPageNavigation:true,disableFallbackToSetURL:true}}});
   const requests=[],errors=[];const deny=async url=>{requests.push(String(url));throw Error('No network');};window.fetch=deny;
   window.document.write(markup.replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi,'').replace(/<link\b[^>]*>/gi,''));
+  if(options.tileOrigins){const meta=window.document.createElement('meta');meta.name='mms-tile-origins';meta.content=options.tileOrigins;window.document.head.append(meta);}
   for(const [id,value] of [['address-data',dataset],['basemap-data',options.basemap??basemap],['geocoding-data',options.geocoding??null],['routing-data',options.routing??null]]) {const node=window.document.createElement('script');node.id=id;node.type='application/json';node.textContent=JSON.stringify(value);if(options.compress&&(id==='basemap-data'||id==='routing-data')){node.type='text/plain';node.dataset.encoding='gzip-base64';node.textContent=gzipSync(Buffer.from(JSON.stringify(value))).toString('base64');}window.document.body.append(node);}
   const saved=options.saved??new Map();
   const storage={getItem:key=>saved.get(key)??null,setItem:(key,value)=>{if(options.denyStorage)throw Error('Storage disabled');saved.set(key,value);}};
@@ -35,7 +38,7 @@ async function mount(t,options={}) {
   if(options.Worker)window.happyDOM.setURL('http://localhost/map05/planner.html');
   if(options.createOperationalMapView)window.HTMLCanvasElement.prototype.getContext=function(type){return /webgl/.test(type)?{}:null;};
   const mapAdapter=options.createOperationalMapView??(()=>{throw Error('MapLibre is not available in DOM tests');});
-  vm.runInContext(source.replace(/^import[^\n]*\n/gm,''),vm.createContext({document:window.document,fetch:deny,localStorage:storage,URL,Blob,Intl,console,...modelApi,...mapApi,...locationApi,...roadApi,...plannerMapApi,...operationalApi,...embeddedApi,...tileClientApi,atob,Response,DecompressionStream,Uint8Array,Worker:options.Worker,createOperationalMapView:mapAdapter,validateSatelliteConfig,SATELLITE_PRESETS,maplibregl:options.createOperationalMapView?{setWorkerUrl(){}}:undefined}),{timeout:10000});
+  vm.runInContext(source.replace(/^import[^\n]*\n/gm,''),vm.createContext({document:window.document,Event:window.Event,fetch:deny,localStorage:storage,URL,Blob,Intl,console,...modelApi,...mapApi,...locationApi,...roadApi,...plannerMapApi,...operationalApi,...embeddedApi,...tileClientApi,...packApi,MAP_VARIANTS,requestAnimationFrame:cb=>setTimeout(cb,0),atob,Response,DecompressionStream,Uint8Array,Worker:options.Worker,createOperationalMapView:mapAdapter,validateSatelliteConfig,SATELLITE_PRESETS,maplibregl:options.createOperationalMapView?{setWorkerUrl(){}}:undefined}),{timeout:10000});
   await new Promise(resolve=>setImmediate(resolve));
   const $=s=>window.document.querySelector(s),all=s=>[...window.document.querySelectorAll(s)];
   const click=s=>{assert.ok($(s),s);$(s).dispatchEvent(new window.MouseEvent('click',{bubbles:true,cancelable:true}));};
@@ -407,7 +410,7 @@ test('a tile worker that dies after the map is ready also hands over to the SVG 
   await until(()=>FakeWorker.created.length===1);
   const worker=FakeWorker.created[0];
   worker.onmessage({data:{type:'ready',roads:1}});
-  await until(()=>ui.$('#op-status').textContent.startsWith('Mapa operacyjna'));
+  await until(()=>ui.$('#op-status').textContent.startsWith('Podkład: Drogowa'));
   assert.equal(ui.$('#op-map-shell').hidden,false);
   worker.onerror({message:'Worker crashed after start.'});
   await until(()=>ui.all('#planner-map .map-ground').length>0);
@@ -422,4 +425,102 @@ test('without the Worker API the SVG map stays and the operational map is never 
   for(let i=0;i<5;i++)await new Promise(resolve=>setImmediate(resolve));
   assert.equal(created,0);assert.equal(ui.$('#op-map-shell').hidden,true);
   assert.ok(ui.all('#planner-map .map-ground').length>0);
+});
+
+// ---- MAP-08: large operational map, route controls, details, honest basemap messages -------------
+const regionalFixture={regions:{PLANNER:{encoding:'polyline5-indexed',categories:['primary'],names:[''],bounds:[17.2,49.9,19,51.5],features:[]}}};
+async function mountMap(t,options={}) {
+  const calls={updates:[],fits:[],flags:[],variants:[],basemaps:[]};
+  const fakeView=()=>({ready:Promise.resolve(),rich:true,layers:null,update(layers){calls.updates.push(layers);this.layers=layers;},fit:(bounds,opts)=>calls.fits.push([bounds,opts]),flyTo(){},setFlags:flags=>calls.flags.push(flags),setVariant:id=>calls.variants.push(id),setBasemap:(mode,config)=>calls.basemaps.push([mode,config]),destroy(){},resize(){}});
+  const scenario=modelApi.createScenario(dataset,uug),routing=roadFixture(scenario);
+  const ui=await mount(t,{geocoding:uug,routing,basemap:regionalFixture,Worker:recordingWorker(),createOperationalMapView:fakeView,...options});
+  for(let i=0;i<5;i++)await new Promise(resolve=>setImmediate(resolve));
+  ui.change('#planning-date','2026-11-19');ui.click('#generate');
+  return {ui,calls};
+}
+
+test('MAP-08 team panel: totals, leg lengths, solo / focus / all routes never touch the plan',async t=>{
+  const {ui,calls}=await mountMap(t);
+  const plan=()=>[...ui.saved.values()].find(value=>value.includes('assignments'));
+  const before=plan();
+  const team=ui.all('#op-layers .op-team').find(node=>node.querySelectorAll('li button[data-order]').length>=2);
+  assert.ok(team,'a basket with several visits exists on the day');
+  const id=team.dataset.team;
+  assert.match(team.querySelector('.op-sum').textContent,/\d+ wizy\w+ · /,'basket total is shown');
+  assert.ok(team.querySelectorAll('.op-leg').length>=1,'the distance between consecutive visits is listed');
+  ui.click(`[data-op-solo="${id}"]`);
+  let layers=calls.updates.at(-1);
+  assert.ok(layers.visits.features.length>0&&layers.visits.features.every(f=>f.properties.teamId===id),'solo shows only that team');
+  assert.ok(layers.routes.features.every(f=>f.properties.focused===true));
+  assert.equal(ui.$('[data-op-all]').disabled,false);
+  ui.click('[data-op-all]');
+  layers=calls.updates.at(-1);
+  assert.ok(new Set(layers.visits.features.map(f=>f.properties.teamId)).size>=2,'all teams are back');
+  assert.equal(ui.$('[data-op-all]').disabled,true);
+  ui.click(`[data-op-focus="${id}"]`);
+  layers=calls.updates.at(-1);
+  assert.ok(layers.routes.features.filter(f=>f.properties.teamId===id).every(f=>f.properties.active===true));
+  assert.ok(layers.routes.features.filter(f=>f.properties.teamId!==id).every(f=>f.properties.active===false),'other routes are dimmed, not hidden');
+  assert.equal(plan(),before,'map controls never touch the plan');
+});
+
+test('MAP-08 details open only after an explicit selection; Escape closes the details before the large map',async t=>{
+  const {ui}=await mountMap(t);
+  assert.equal(ui.$('#op-detail').hidden,true,'no details cover the map before the user selects something');
+  const id=ui.$('#op-layers button[data-order]').dataset.order;
+  ui.click(`#op-layers button[data-order="${id}"]`);
+  assert.equal(ui.$('#op-detail').hidden,false);assert.match(ui.$('#op-detail').textContent,new RegExp(id));
+  ui.click('#op-workspace');assert.ok(ui.$('#map-card').classList.contains('op-workspace'));assert.ok(ui.window.document.body.classList.contains('op-ws-open'));
+  const escape=()=>ui.window.document.dispatchEvent(new ui.window.KeyboardEvent('keydown',{key:'Escape',bubbles:true}));
+  escape();
+  assert.equal(ui.$('#op-detail').hidden,true,'first Escape closes the details');assert.ok(ui.$('#map-card').classList.contains('op-workspace'));
+  escape();
+  assert.ok(!ui.$('#map-card').classList.contains('op-workspace'),'second Escape leaves the large map');
+});
+
+test('MAP-08 large map is the same card and the same state: date and generator work from inside it',async t=>{
+  const {ui,calls}=await mountMap(t);
+  ui.click('#op-workspace');
+  assert.equal(ui.$('#op-workspace').getAttribute('aria-pressed'),'true');assert.equal(ui.$('#op-date').value,'2026-11-19');
+  const day=calls.updates.at(-1).visits.features.length;assert.ok(day>0);
+  ui.change('#op-date','2026-11-18');
+  assert.equal(ui.$('#planning-date').value,'2026-11-18');assert.equal(calls.updates.at(-1).visits.features.length,0,'the map follows the date without a refresh');
+  ui.click('#op-generate');
+  assert.ok(calls.updates.at(-1).visits.features.length>0,'generating from the large map redraws it');
+  ui.change('#op-date','2026-11-19');assert.equal(calls.updates.at(-1).visits.features.length,day);
+  ui.click('#op-workspace-close');assert.ok(!ui.$('#map-card').classList.contains('op-workspace'));
+});
+
+test('MAP-08 layer menu and style variant call the view and are not part of the plan',async t=>{
+  const {ui,calls}=await mountMap(t);
+  ui.change('#op-layers-menu-body [data-op-flag="buildings"]',false);ui.change('#op-layers-menu-body [data-op-flag="streets"]',false);
+  assert.deepEqual(JSON.parse(JSON.stringify(calls.flags)),[{buildings:false},{streets:false}]);
+  ui.change('#op-layers-menu-body [data-op-toggle="roads"]',false);assert.equal(JSON.stringify(calls.flags.at(-1)),'{"roads":false}');
+  ui.change('#op-layers-menu-body [data-op-toggle="routes"]',false);assert.equal(calls.updates.at(-1).routes.features.length,0);
+  ui.change('#op-variant','nav');assert.deepEqual(calls.variants,['nav']);
+});
+
+test('MAP-08 satellite and hybrid are honestly unavailable until a provider is configured; status always names the active basemap',async t=>{
+  const {ui,calls}=await mountMap(t);
+  const radio=value=>ui.$(`input[name="op-basemap"][value="${value}"]`);
+  assert.equal(radio('satellite').disabled,true);assert.equal(radio('hybrid').disabled,true);
+  assert.match(radio('hybrid').closest('label').textContent,/niedostępna/);
+  assert.match(ui.$('#op-status').textContent,/^Podkład: Drogowa/);
+  assert.doesNotMatch(ui.$('#op-status').textContent,/Hybryda|Satelita/);
+  assert.deepEqual(calls.basemaps.filter(([mode])=>mode!=='road'),[],'no imagery layer is ever requested without a provider');
+});
+
+test('MAP-08 after Hybrid → Road the status matches the real mode (audit regression)',async t=>{
+  const config={preset:'custom',url:'http://localhost:9/tiles/{z}/{x}/{y}.jpg',attribution:'© Test provider',consent:true};
+  const {ui,calls}=await mountMap(t,{tileOrigins:'http://localhost:9',saved:new Map([['mms-map06-satellite-v1',JSON.stringify(config)]])});
+  const radio=value=>ui.$(`input[name="op-basemap"][value="${value}"]`);
+  const choose=value=>{radio(value).checked=true;radio(value).dispatchEvent(new ui.window.Event('change',{bubbles:true}));};
+  assert.equal(radio('hybrid').disabled,false,'a validated provider makes the layers selectable');
+  choose('hybrid');
+  assert.match(ui.$('#op-status').textContent,/^Podkład: Hybryda — © Test provider/);assert.equal(calls.basemaps.at(-1)[0],'hybrid');
+  choose('road');
+  assert.match(ui.$('#op-status').textContent,/^Podkład: Drogowa/);assert.doesNotMatch(ui.$('#op-status').textContent,/Hybryda|Satelita/);
+  assert.equal(calls.basemaps.at(-1)[0],'road');
+  choose('satellite');assert.match(ui.$('#op-status').textContent,/^Podkład: Satelita/);
+  choose('road');assert.match(ui.$('#op-status').textContent,/^Podkład: Drogowa/);
 });

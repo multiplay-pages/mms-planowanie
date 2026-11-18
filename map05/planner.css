@@ -63,3 +63,79 @@ main{max-width:1780px;margin:auto;padding:30px 3% 16px}.heading{display:flex;ali
 .address-street{font-size:22px;line-height:1.2;font-weight:800;color:#17261d;overflow-wrap:anywhere}
 .address-place{font-size:15px;font-weight:600;color:#2d3a31}
 .address-slot{margin-top:6px;padding-top:6px;border-top:1px solid #c4d5be;font-size:12px;font-weight:600;color:#2d3a31}
+
+/* MAP-08: large operational map, route-first panel, legend, details */
+.op-ws-only{display:none!important}
+.op-body{grid-template-columns:minmax(0,1fr) 260px}
+.op-body .op-layers{order:2;max-height:560px}
+.op-stage{position:relative;min-width:0}
+.op-map{height:560px}
+body.op-ws-open{overflow:hidden}
+#map-card.op-workspace{position:fixed;inset:0;z-index:100;margin:0;border-radius:0;display:flex;flex-direction:column;padding:8px 10px;overflow:hidden;background:#fff;max-width:none}
+#map-card.op-workspace>.panel-head,#map-card.op-workspace>#map-note,#map-card.op-workspace>.location-review-panel{display:none}
+#map-card.op-workspace .op-ws-only{display:inline-flex!important}
+#map-card.op-workspace .op-map-shell{flex:1;min-height:0}
+#map-card.op-workspace .op-body{flex:1;min-height:0;grid-template-columns:350px minmax(0,1fr)}
+#map-card.op-workspace .op-body .op-layers{order:0;max-height:none;height:100%}
+#map-card.op-workspace .op-map{height:100%;min-height:0}
+#map-card.op-workspace .op-stage{height:100%}
+#map-card.op-workspace .attribution{margin:2px 0 0;font-size:11px}
+.op-map-shell:fullscreen{padding:0;background:#fff}
+#map-card:fullscreen{overflow:auto;padding:8px 10px;background:#fff}
+.op-ws-title{align-items:center;font-size:15px;margin-right:6px}
+.op-ws-date{display:inline-flex;align-items:center;gap:6px;font-size:12px}
+.op-ws-date input{font-size:12px;padding:4px 6px;min-height:32px}
+.op-variant{display:inline-flex;align-items:center;gap:6px;font-size:12px}
+.op-variant select{font-size:12px;padding:4px 6px;min-height:32px}
+.op-basemap .op-unavailable{opacity:.55;cursor:not-allowed}
+.op-basemap small{font-size:10px;color:#7a4b12;font-weight:400}
+.op-menu{position:relative}
+.op-menu>summary{list-style:none;cursor:pointer;font-size:12px;padding:6px 10px;min-height:32px;border:1px solid #cfd8c7;border-radius:8px;background:#fff;display:inline-flex;align-items:center}
+.op-menu>summary::-webkit-details-marker{display:none}
+.op-menu[open]>summary{background:#deedda}
+.op-menu-body{position:absolute;z-index:30;top:36px;left:0;min-width:230px;background:#fff;border:1px solid #cfd8c7;border-radius:10px;padding:8px 10px;box-shadow:0 8px 24px rgba(17,24,39,.18);display:grid;gap:2px}
+.op-menu-body label{display:flex;gap:8px;align-items:center;font-size:12.5px;min-height:28px;cursor:pointer}
+.op-menu-body h4{margin:6px 0 2px;font-size:10.5px;letter-spacing:.06em;color:var(--muted)}
+.op-legend-box{position:absolute;left:10px;bottom:34px;z-index:5;background:rgba(255,255,255,.94);border:1px solid #d9e0d2;border-radius:10px;padding:6px 10px;font-size:11.5px;box-shadow:0 2px 10px rgba(17,24,39,.12);max-width:230px}
+.op-legend-box summary{cursor:pointer;font-weight:700;font-size:11px;letter-spacing:.05em;color:#33433a}
+.op-legend-grid{display:grid;grid-template-columns:auto 1fr;gap:3px 8px;align-items:center;margin-top:5px}
+.op-key{width:14px;height:14px;display:inline-block;background:#24332c;border:2px solid #fff;box-shadow:0 0 0 1px #8b958d;box-sizing:border-box;vertical-align:middle}
+.op-key.mpl,.op-key.install{border-radius:50%}
+.op-key.bsa{border-radius:3px}
+.op-key.pom,.op-key.measure{transform:rotate(45deg) scale(.78);border-radius:2px}
+.op-key.queue{border-radius:50%;background:#9aa19a}
+.op-key.confirmed{border-radius:50%;background:#24332c;border:3px solid #111827;box-shadow:none;outline:1px solid #fff;outline-offset:-4px}
+.op-key.cluster{border-radius:50%;width:16px;height:16px}
+.op-key.route{height:4px;width:16px;background:#0072B2;border:0;box-shadow:0 0 0 2px #fff;border-radius:2px}
+.op-key.nopos{border-radius:3px;background:#fff;border:2px dashed #a15c07;box-shadow:none}
+.op-detail{position:static;background:#fff;border:1px solid #d9e0d2;border-radius:10px;padding:10px 12px;margin-top:8px;font-size:12.5px;display:grid;gap:4px}
+#map-card.op-workspace .op-detail{position:absolute;top:10px;right:54px;width:300px;max-height:calc(100% - 60px);overflow:auto;margin:0;z-index:6;box-shadow:0 8px 24px rgba(17,24,39,.2)}
+.op-detail[hidden]{display:none}
+.op-detail-title{display:flex;align-items:center;gap:8px}
+.op-detail h3{margin:0;font-size:14px}
+.op-detail .op-detail-actions{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px}
+.op-detail .op-detail-actions button{font-size:12px;min-height:30px;padding:4px 10px}
+.op-detail dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:2px 10px}
+.op-detail dt{color:var(--muted)}.op-detail dd{margin:0}
+.op-detail .op-warn{color:#8a4a06;font-weight:600}
+.op-team-head{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+.op-team-head label{display:flex;align-items:center;gap:6px;cursor:pointer;font-weight:700}
+.op-team .op-sum{display:block;color:#33433a;margin:2px 0 0 22px;font-size:11.5px}
+.op-team .op-sum .warn{color:#8a4a06}
+.op-team-actions{display:flex;gap:4px;margin-left:auto}
+.op-team-actions button{font-size:11px;min-height:26px;padding:2px 8px}
+.op-team.focused{background:#f3f7ee;box-shadow:inset 3px 0 0 var(--team)}
+.op-seq.circle{border-radius:50%}.op-seq.square{border-radius:4px}.op-seq.diamond{border-radius:3px;transform:rotate(45deg) scale(.82)}
+.op-seq.diamond>span{display:inline-block;transform:rotate(-45deg)}
+.op-seq{background:var(--team,#24332c)}
+.op-seq.nopos{background:#fff;color:#8a4a06;border:2px dashed #a15c07}
+.op-leg{display:flex;align-items:center;gap:6px;margin:0 0 0 14px;font-size:11px;color:#33433a;list-style:none}
+.op-leg::before{content:"";width:2px;height:12px;background:var(--team,#8b958d);margin:0 8px}
+.op-leg.unknown{color:#8a4a06}
+.op-visit-nopos small.op-address{color:#8a4a06}
+@media (max-width:900px){
+  .op-body{grid-template-columns:1fr}.op-body .op-layers{order:2}.op-map{height:62vh;min-height:340px}
+  #map-card.op-workspace .op-body{grid-template-columns:1fr;grid-template-rows:minmax(0,1fr) 38%}
+  #map-card.op-workspace .op-body .op-layers{order:2;height:auto}
+  #map-card.op-workspace .op-detail{right:8px;left:8px;width:auto}
+}

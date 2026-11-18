@@ -3,8 +3,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "test": "node --test tests/model.test.mjs tests/map.test.mjs tests/ui.test.mjs tests/planner-model.test.mjs tests/planner-ui.test.mjs tests/locations.test.mjs tests/routes.test.mjs tests/planner-routing.test.mjs tests/planner-map.test.mjs tests/real-routes.test.mjs tests/road-tiles.test.mjs tests/operational-map.review.test.mjs tests/maplibre-view.test.mjs tests/road-tile-worker.test.mjs",
-    "test:planner": "node --test tests/planner-model.test.mjs tests/planner-ui.test.mjs tests/locations.test.mjs tests/routes.test.mjs tests/planner-routing.test.mjs tests/planner-map.test.mjs tests/real-routes.test.mjs tests/road-tiles.test.mjs tests/operational-map.review.test.mjs tests/maplibre-view.test.mjs tests/road-tile-worker.test.mjs",
+    "test": "node --test tests/model.test.mjs tests/map.test.mjs tests/ui.test.mjs tests/planner-model.test.mjs tests/planner-ui.test.mjs tests/locations.test.mjs tests/routes.test.mjs tests/planner-routing.test.mjs tests/planner-map.test.mjs tests/real-routes.test.mjs tests/road-tiles.test.mjs tests/operational-map.review.test.mjs tests/maplibre-view.test.mjs tests/road-tile-worker.test.mjs tests/map-style.test.mjs tests/pmtiles-reader.test.mjs",
+    "test:planner": "node --test tests/planner-model.test.mjs tests/planner-ui.test.mjs tests/locations.test.mjs tests/routes.test.mjs tests/planner-routing.test.mjs tests/planner-map.test.mjs tests/real-routes.test.mjs tests/road-tiles.test.mjs tests/operational-map.review.test.mjs tests/maplibre-view.test.mjs tests/road-tile-worker.test.mjs tests/map-style.test.mjs tests/pmtiles-reader.test.mjs",
     "build": "python build_offline.py && python build_planner.py"
   },
   "devDependencies": {

@@ -280,3 +280,34 @@ test('O26 selection marks only its matching assigned or queue feature and never 
   assert.deepEqual(queued.unassigned.features.filter(feature=>feature.properties.selected).map(feature=>feature.properties.orderId),['TEST-001']);
   assert.deepEqual(plan,before);
 });
+
+// ---- MAP-08: marker shape, leg list, focus, unlocated list ------------------------------------
+test('M08-01 visits carry a marker shape per installation type and the team lists every leg with its length',()=>{
+  const f=fixture(),plan=chain(f),layers=project(f,plan),team=entry(layers);
+  assert.deepEqual(layers.visits.features.map(feature=>[feature.properties.orderId,feature.properties.shape]),layers.visits.features.map(feature=>[feature.properties.orderId,({MPL:'circle',BSA:'square',POMIAR:'diamond'})[sourceScenario.orders.find(order=>order.id===feature.properties.orderId).type]]));
+  assert.equal(team.legs.length,team.orders.length-1);
+  assert.ok(team.legs.every(leg=>leg.status==='OK'&&leg.distanceM>0));
+  assert.equal(Math.round(team.legs.reduce((sum,leg)=>sum+leg.distanceM,0)),Math.round(team.distanceM));
+  assert.equal(team.incomplete,false);
+});
+test('M08-02 a missing leg is listed as unknown, totals become partial and no line is drawn for it',()=>{
+  const f=fixture({fourWindows:true,editLayer:layer=>setLeg(layer,MEASUREMENT,B,missingLeg('NO_PATH'))}),layers=project(f,chain(f,[A,MEASUREMENT,B,C])),team=entry(layers);
+  assert.ok(team.legs.some(leg=>leg.status!=='OK'));assert.equal(team.incomplete,true);assert.equal(team.distanceM,null);
+  assert.ok(team.knownDistanceM>0,'the known part of the km sum is still reported');
+  assert.ok(!pairs(layers).some(([from,to])=>from===MEASUREMENT&&to===B),'no fictional road for an unknown leg');
+});
+test('M08-03 focus dims other routes without hiding them and marks the focused basket',()=>{
+  const f=fixture();let plan=assign(f,f.plan,A,0,'TEST-01');plan=assign(f,plan,B,1,'TEST-01');plan=assign(f,plan,C,0,TEAM);plan=assign(f,plan,'TEST-013',1,TEAM);const base=project(f,plan);
+  const other=base.teams.find(team=>team.teamId!==TEAM&&team.count>0);
+  if(!other)return;
+  const layers=project(f,plan,DAY,{focusTeam:TEAM});
+  assert.equal(entry(layers).focused,true);assert.equal(layers.teams.find(team=>team.teamId===other.teamId).focused,false);
+  assert.ok(layers.routes.features.filter(r=>r.properties.teamId===TEAM).every(r=>r.properties.active===true&&r.properties.focused===true));
+  assert.ok(layers.routes.features.filter(r=>r.properties.teamId!==TEAM).every(r=>r.properties.active===false));
+  assert.equal(layers.routes.features.length,base.routes.features.length,'dimming never removes a route');
+});
+test('M08-04 an unlocated order assigned in a basket is listed as unlocated and stays off the map',()=>{
+  const f=fixture(),layers=project(f,chain(f));
+  assert.ok(entry(layers).unlocated.every(id=>!visit(layers,id)));
+  assert.ok(Array.isArray(entry(layers).unlocated));
+});
