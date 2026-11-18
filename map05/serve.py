@@ -87,10 +87,16 @@ class Handler(BaseHTTPRequestHandler):
                 self.send_ranged(ROOT / entry[0], body=body)
                 return
             data = (ROOT / entry[0]).read_bytes()
-            if TILE_ORIGINS and entry[0] == 'planner.html':
+            if entry[0] == 'planner.html':
                 html = data.decode('utf-8')
-                meta = '<meta name="mms-tile-origins" content="' + ' '.join(TILE_ORIGINS) + '">'
-                html = re.sub(r'(<meta http-equiv="Content-Security-Policy" content=")([^"]+)(">)', lambda m: m.group(1) + tile_csp(m.group(2), TILE_ORIGINS) + m.group(3) + '\n  ' + meta, html, count=1)
+                # Only disclose whether the operator has installed the optional local
+                # PMTiles pack. Without it the client uses the roads-only fallback,
+                # rather than issuing a noisy 404 for a known-absent resource.
+                pack_status = 'available' if (ROOT / 'basemap/map-pack.pmtiles').is_file() else 'unavailable'
+                html = html.replace('</head>', f'  <meta name="mms-map-pack-status" content="{pack_status}">\n</head>')
+                if TILE_ORIGINS:
+                    meta = '<meta name="mms-tile-origins" content="' + ' '.join(TILE_ORIGINS) + '">'
+                    html = re.sub(r'(<meta http-equiv="Content-Security-Policy" content=")([^"]+)(">)', lambda m: m.group(1) + tile_csp(m.group(2), TILE_ORIGINS) + m.group(3) + '\n  ' + meta, html, count=1)
                 data = html.encode('utf-8')
         except OSError:
             self.send_error(404, 'Required local file is unavailable')
