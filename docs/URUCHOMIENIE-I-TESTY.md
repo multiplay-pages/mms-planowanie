@@ -70,6 +70,20 @@ python -X utf8 -m unittest discover -s map04/tests -v
 
 Nie ma komendy TypeScript/typecheck ani lint. Dodatkowo stosowano `node --check` do modułów i połączonych skryptów offline oraz `ast.parse` do źródeł Python. Testy dostarczania kontrolują zgodność osadzonych danych i hashy CSP. Nie uruchamiaj pobierania map ani geokodowania jako części testów.
 
+## MAP-08: pakiet mapy i duża mapa
+
+```text
+python -X utf8 map05/basemap/build_map_pack.py            # buduje map05/basemap/map-pack.pmtiles (ok. 25 min; wymaga plików PBF w basemap/public-pbf/)
+python -X utf8 map05/build_planner.py                     # planner-offline.html (tryb uproszczony: drogi)
+python -X utf8 map05/build_planner.py --rich              # planner-offline-rich.html (pakiet osadzony, ok. 103 MB; nie jest commitowany)
+node --test map05/tests/map-style.test.mjs map05/tests/pmtiles-reader.test.mjs
+python -X utf8 -m unittest map05/tests/test_map_pack.py
+```
+
+`map-pack.pmtiles` nie jest w repozytorium (53 MB, ODbL). Serwer lokalny podaje go z obsługą `Range`; bez pliku (lub gdy jest uszkodzony) mapa działa w trybie uproszczonym i mówi o tym w komunikacie „Podkład”. Szczegóły i pomiary: `docs/MAP08-MAPA-OPERACYJNA.md`.
+
+Testy przeglądarkowe MAP-08 (poza `npm test`; skrypty w `evidence/2026-11-18-map08/scripts/`): `map08.mjs` (audyt, `W`/`H` ustawiają okno), `map08-offline.mjs`, `map08-hybrid.mjs` (wymaga atrapy dostawcy na `127.0.0.1:9911` i serwera z `--allow-tile-origin http://127.0.0.1:9911`), `map08-fallback.mjs`, `firefox-map08.mjs`.
+
 ## Zawężone sprawdzenia
 
 ```text
