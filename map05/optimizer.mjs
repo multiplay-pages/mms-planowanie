@@ -39,7 +39,7 @@ const withAdded=(plan,assignment)=>withAssignments(plan,[...plan.assignments,ass
 
 /** Aggregate figures of one day, shared by the optimizer, the UI comparison and the benchmark. */
 /**
- * `baseline` (optional) is the issueMap of the protected-only plan. A candidate that introduces or worsens a limit issue in ANY basket
+ * `baseline` (optional) is {issueMap,unassessedBaskets} of the current plan. A candidate that introduces or worsens a limit issue in ANY basket
  * (also in a basket an order was moved out of, where removal can create a new long leg) is flagged `invalid`.
  */
 export function evaluateDay(scenario,plan,date,baseline=null) {
@@ -54,14 +54,14 @@ export function evaluateDay(scenario,plan,date,baseline=null) {
     totals.ageSum+=orders.reduce((sum,order)=>sum+ageDays(order,date),0);
     for(const order of orders){const days=ageDays(order,date);ageHist[days]=(ageHist[days]??0)+1;}
     totals.km+=distanceM;totals.minutes+=durationS;totals.sumsq+=orders.length*orders.length;
-    const towns=orders.map(order=>addressOf(scenario,order).city);
+    const towns=assessment.orders.map(id=>addressOf(scenario,orderOf(scenario,id)).city);
     for(let i=1;i<towns.length;i++)if(towns[i]===towns[i-1])totals.sameTown++;
     totals.violations+=assessment.violations.length;
     for(const issue of assessment.issues)issueMap.set(`${team.id}/${issue.key}`,issue.excess);
     rows.push({teamId:team.id,orders:assessment.orders,visits:orders.length,distanceM:assessment.distanceM,estimatedDurationS:assessment.estimatedDurationS,violations:assessment.violations,checks:{installationDistance:assessment.installationDistance.status,measurementExtra:assessment.measurementExtra.status,windows:assessment.windows.status}});
   }
   for(let i=0;i<ageHist.length;i++)ageHist[i]??=0;
-  const invalid=baseline?[...issueMap].some(([key,excess])=>excess>(baseline.get(key)??0)):false;
+  const invalid=baseline?([...issueMap].some(([key,excess])=>excess>(baseline.issueMap.get(key)??0))||totals.unassessedBaskets>baseline.unassessedBaskets):false;
   return {date,teams:rows,...totals,ageHist,issueMap,invalid};
 }
 
@@ -130,7 +130,7 @@ export function proposeDayPlan(scenario,current,date,{variant='COVERAGE_FIRST',o
   const pool=rawPool.filter(order=>!assignedElsewhere.has(order.id)).sort((a,b)=>a.createdOn.localeCompare(b.createdOn)||a.id.localeCompare(b.id));
   let evaluations=0,truncated=false,iterations=0;
   // Baseline = limit issues of the CURRENT plan (before any order is released): removing a visit can create a new long leg, which must count as new.
-  const baseline=before.issueMap;
+  const baseline={issueMap:before.issueMap,unassessedBaskets:before.unassessedBaskets};
   const evaluate=candidate=>{evaluations++;return evaluateDay(scenario,candidate,date,baseline);};
   const place=(base,order,position)=>{
     const assignment=proposalOf(order.id,position.teamId,date,position.start);
@@ -222,6 +222,7 @@ export function proposeDayPlan(scenario,current,date,{variant='COVERAGE_FIRST',o
     startedFrom,evaluations,iterations,truncated,elapsedMs:Math.round(nowMs()-started),ruleStatus:RULE_STATUS,simulation:true};
   result.changes=diffPlans(scenario,current,plan,date);
   result.explanations=explainProposal(scenario,current,plan,date,{pool,flexible,keys,excluded,baseline});
+  result.elapsedMs=Math.round(nowMs()-started);
   return result;
 }
 
@@ -329,7 +330,7 @@ function explainProposal(scenario,current,plan,date,{pool,flexible,keys,excluded
       reason:`${order.id} (${age} dni) pozostaje w kolejce: ${why}`,
       blockedBy:occupiers.sort((x,y)=>y.age-x.age).slice(0,5),constraints:groups,
       swapTried:swap?{victimId:swap.victimId,victimAgeDays:swap.victimAge,team:swap.position.teamId,windowLabel:slotText(scenario,swap.position.start,order.slotsRequired),deltaM:swap.figures.km-total.km,deltaS:swap.figures.minutes-total.minutes,verdict:`wymiana za ${swap.victimId} (${swap.victimAge} dni) odrzucona: ${describeDifference(firstDifference(swap.figures,total,keys))}`}:null,
-      note:older?`To zlecenie jest starsze niż najmłodsze zaplanowane (${youngestScheduled} dni): pominięcie wymaga uzasadnienia powyżej${swap?' i wyniku próby wymiany':'; próba wymiany jednej wizyty w tej ekipie nie dała wykonalnego miejsca (limity dróg, okna lub kwalifikacje)'}. Wyszukiwanie jest ograniczone budżetem czasu — to nie dowód, że żaden inny plan nie istnieje.`:null};
+      note:older?`To zlecenie jest starsze niż najmłodsze zaplanowane (${youngestScheduled} dni): pominięcie wymaga uzasadnienia powyżej${swap?' i wyniku próby wymiany':oldestWaiting.has(order.id)?'; próba wymiany jednej wizyty w tej ekipie nie dała wykonalnego miejsca (limity dróg, okna lub kwalifikacje)':'; próby wymiany wykonano tylko dla 8 najstarszych pominiętych zleceń, więc dla tego zlecenia jej nie sprawdzono'}. Wyszukiwanie jest ograniczone budżetem czasu — to nie dowód, że żaden inny plan nie istnieje.`:null};
   }
   for(const item of excluded)explanations[item.orderId]={orderId:item.orderId,status:'EXCLUDED',reason:item.reason};
   return explanations;
