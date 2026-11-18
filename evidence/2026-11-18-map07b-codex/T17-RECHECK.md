@@ -56,3 +56,23 @@ $env:MMS_AUDIT_PREFIX='T17-'
 node evidence/2026-11-18-map07b-codex/browser.mjs
 node evidence/2026-11-18-map07b-codex/browser.mjs --supplement
 ```
+
+## Re-check `074a473`
+
+**NO-GO dla Draft PR na `074a473`.** Brak nowego P1. Brak przejeżdżanego odcinka i niezgodność sumy koszyków są domknięte. W pozostałym P2 chroniony pomiar może wypaść poza łańcuch instalacji, a zmiana przyczyny nieocenialności pozostaje niewidoczna dla porównania planów.
+
+| Próba | Wynik |
+| --- | --- |
+| `new-leg-within-already-unassessed-basket` | **3/3 PASS**. Oba klucze mają teraz identyfikatory skierowanego odcinka. TEST-006 pozostaje w źródle, a TEST-005→TEST-009 nie pojawia się jako nowy brak. |
+| `legacy-no-alternative` | **3/3 PASS** dla licznika. Zachowany plan, „1 wykonalnych, 4 niewykonalnych” z 5. |
+| `new-reference-leg-within-unassessed-measurement` | **3/3 odtwarza P2**. Podmiana brakującego odcinka odniesienia TEST-005→TEST-006 na TEST-005→TEST-009 nadal ma `invalid=false` przy znanych nogach przejazdu. Scenariusz ma cztery syntetyczne okna. |
+| `remove-measurement-boundary-with-legacy-gap` | **3/3 odtwarza P2 w trzech standardowych oknach**. Wczytany TEST-02 ma potwierdzoną instalację TEST-005, ręczny pomiar TEST-004 i instalację AUTO TEST-006. Znane nogi biegną przez pomiar, ale bezpośrednia droga odniesienia TEST-005→TEST-006 jest niedostępna. Optymalizator przenosi ostatnią instalację do TEST-01. Ocena +10 km zmienia powód z „Brak odcinka drogi” na „Brak znanego punktu startowego/końcowego ekipy dla pomiaru poza instalacjami”. Kandydat przechodzi jako `invalid=false`, bo w obu stanach pozostaje ten sam klucz `TEST-02/measurementExtra`. |
+| Pozostałe odtworzenia modelu z T16 i T17 | Nadal zgodne. Trzy niezamienne łączniki i dwuslotowa wizyta zachowane, bez nowych przekroczeń. |
+
+Luka jest w `map05/optimizer.mjs:62–68` i `map05/routes.mjs:79–86`. Tożsamości braków oceny pomiaru powinny obejmować skierowaną parę odcinka odniesienia, a dla pomiaru wypadającego poza instalacje konkretną brakującą granicę. Przejeżdżane nogi mogą pozostać w pełni znane w obu przypadkach.
+
+Dowód modelowy: `T17-074a473-model.jsonl` i `T17-074a473-model-t16-replay.jsonl`, z modułami wczytanymi z Git przez `pinned.mjs`. Testy modelowe nowej wersji w `T17-model.mjs`.
+
+Chrome 157 przeszedł główny zestaw 18/18 na loopbackie oraz 18/18 na pliku. Ponieważ w trakcie uzupełnienia lider zmieniał drzewo, trzy przypadki wyścigu powtórzyłem oddzielnie na module optymalizatora, planera, modelu i tras z `074a473` oraz bajtowo identycznym pliku offline z tego commitu. Wynik **3/3 w każdym trybie**, bez błędów strony i prób zewnętrznych. Dowód `T17-074a473-chrome-pinned.json`. Tymczasową kopię pliku usunięto, a serwer 8782 zatrzymano. Odtworzenie `node evidence/2026-11-18-map07b-codex/T17-browser-pinned.mjs 074a473`.
+
+Pełne `npm test` **163/163 PASS**. Python MAP-05 **82/82 PASS**, MAP-04 **24/24 PASS**. Logi `T17-074a473-*.txt`. Nadal nie sprawdzano Firefoksa i akceptacji syntetycznej propozycji dotyczącej pomiaru w UI.

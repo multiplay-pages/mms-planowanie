@@ -40,7 +40,7 @@ function addBridge(s,{teamId,orders:[first,bridge,last]}){
 
 const roadHealth=(s,plan,teamId)=>{
   const view=assessBasket(s.scenario,plan,teamId,date);
-  return {teamId,issues:view.issues,missing:view.legs.filter(leg=>leg.status!=='OK').map(({from,to,status})=>({from,to,status})),measurement:view.measurementExtra.status,
+  return {teamId,issues:view.issues,missing:view.legs.filter(leg=>leg.status!=='OK').map(({from,to,status})=>({from,to,status})),measurement:view.measurementExtra.status,measurementNote:view.measurementExtra.reason,
     orderIds:view.orders,distanceM:view.distanceM};
 };
 function run(name,s,groups,budgetMs){
@@ -111,4 +111,15 @@ function run(name,s,groups,budgetMs){
   s.edge(a,b,null);s.edge(a,c,null);
   s.plan=restorePlan(s.scenario,JSON.stringify(s.plan));
   run('new-reference-leg-within-unassessed-measurement',s,[group],1000);
+}
+{
+  const s=scenarioFixture();
+  const teamId='TEST-02',group={teamId,orders:[a,measurement,b],bridge:b};
+  s.edge(a,measurement,4000);s.edge(measurement,b,8000);s.edge(a,b,8000);
+  for(const [start,order] of group.orders.entries())s.plan=applyAction(s.scenario,s.plan,{type:'ASSIGN',orderId:order.id,teamId,date,start});
+  s.plan=applyAction(s.scenario,s.plan,{type:'CONFIRM',orderId:a.id});
+  s.plan.assignments.find(row=>row.orderId===b.id).origin='AUTO';
+  s.edge(a,b,null);
+  s.plan=restorePlan(s.scenario,JSON.stringify(s.plan));
+  run('remove-measurement-boundary-with-legacy-gap',s,[group],1000);
 }

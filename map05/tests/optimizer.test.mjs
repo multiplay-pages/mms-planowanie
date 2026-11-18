@@ -163,16 +163,18 @@ test('moving an automatic visit out of a basket cannot create a new limit violat
 });
 
 // Synthetic road layer for the T16 regressions: every pair 1 km unless an edge says otherwise.
-function syntheticScenario() {
+function syntheticScenario(extraWindow=false) {
   const located=createScenario(dataset,geocoding),addresses=located.addresses.filter(address=>address.coordinates);
   const layer={schemaVersion:1,datasetId:located.datasetId,source:{provider:'LOCAL_OSM',profile:'shortest-distance',roadsSha256:'b'.repeat(64),engineSha256:'c'.repeat(64)},
     points:addresses.map(address=>({addressId:address.id,coordinates:address.coordinates,snap:{status:'OK',distanceM:0,coordinates:address.coordinates}})),segments:['_sdpH_gs~B?_pR'],
     routes:Object.fromEntries(addresses.map(from=>[from.id,Object.fromEntries(addresses.map(to=>[to.id,{status:'OK',distanceM:from.id===to.id?0:1000,estimatedDurationS:from.id===to.id?0:60,path:from.id===to.id?[]:[1]}]))]))};
   const synthetic=createScenario(dataset,geocoding,layer);
   for(const address of synthetic.addresses)address.city='Miasto '+address.id;
+  if(extraWindow)synthetic.windows.push(['17:00','20:00']);
   const edge=(from,to,meters)=>Object.assign(synthetic.routing.routes[from.addressId][to.addressId],meters===null?{status:'NO_PATH',distanceM:null,estimatedDurationS:null,path:[]}:{distanceM:meters,estimatedDurationS:60});
   const seed=(...baskets)=>{
     let plan=createPlan(synthetic);
+    if(extraWindow)plan={...plan,availability:plan.availability.map(item=>({...item,slots:[0,1,2,3]}))};
     for(const [team,orders] of baskets)for(const [start,{order,origin='MANUAL',confirmed=false}] of orders.entries()) {
       plan=applyAction(synthetic,plan,{type:'ASSIGN',orderId:order.id,date:DATE,teamId:team,start});
       if(confirmed)plan=applyAction(synthetic,plan,{type:'CONFIRM',orderId:order.id});
@@ -181,7 +183,8 @@ function syntheticScenario() {
     return plan;
   };
   const mpl=synthetic.orders.filter(order=>order.ready&&order.type==='MPL'&&order.slotsRequired===1&&addresses.some(address=>address.id===order.addressId));
-  return {synthetic,edge,seed,mpl};
+  const pomiar=synthetic.orders.filter(order=>order.ready&&order.type==='POMIAR'&&order.slotsRequired===1&&addresses.some(address=>address.id===order.addressId));
+  return {synthetic,edge,seed,mpl,pomiar};
 }
 const row=(order,origin='MANUAL',confirmed=false)=>({order,origin,confirmed});
 
@@ -223,5 +226,17 @@ test('a new missing direct leg between protected visits is not hidden by an olde
   for(const variant of Object.keys(VARIANTS)) {
     const result=proposeDayPlan(synthetic,base,DATE,{variant,orderIds:[b.id],budgetMs:1000});
     assert.equal(evaluateDay(synthetic,result.plan,DATE).gaps.has(`TEST-02/leg/${a.id}/${c.id}`),false,`${variant}: no new unassessable A -> C`);
+  }
+});
+
+test('the identity of a missing +10 km reference leg cannot change unnoticed inside an already unassessed basket (Codex T17 P2)',()=>{
+  const {synthetic,edge,seed,mpl,pomiar}=syntheticScenario(true),[a,b,c]=mpl,[m]=pomiar;
+  edge(a,m,5000);edge(m,b,5000);edge(b,c,5000);edge(m,c,5000);edge(a,b,null);edge(a,c,null);
+  // Basket A, M, B, C: the reference leg A -> B is missing (measurement extra unassessable). Without B it would be A -> C instead.
+  const base=seed(['TEST-02',[row(a,'MANUAL',true),row(m,'MANUAL'),row(b,'AUTO'),row(c)]]);
+  assert.equal(evaluateDay(synthetic,base,DATE).gaps.has(`TEST-02/ref/${a.id}/${b.id}`),true);
+  for(const variant of Object.keys(VARIANTS)) {
+    const result=proposeDayPlan(synthetic,base,DATE,{variant,orderIds:[b.id],budgetMs:1000});
+    assert.equal(evaluateDay(synthetic,result.plan,DATE).gaps.has(`TEST-02/ref/${a.id}/${c.id}`),false,`${variant}: reference leg A -> C must not become the new unassessable one`);
   }
 });

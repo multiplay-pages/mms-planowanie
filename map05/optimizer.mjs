@@ -3,7 +3,7 @@
 // All hard constraints come from the existing model (validatePlan + local road assessment through placementError); the order of the
 // objectives is NOT an approved business rule, so it is an explicit, named simulation variant.
 import {placementError,validatePlan,applyAction} from './planner-model.mjs';
-import {assessBasket} from './routes.mjs';
+import {assessBasket,routeLeg} from './routes.mjs';
 
 const clone=value=>JSON.parse(JSON.stringify(value));
 const DAY_MS=86400000;
@@ -59,6 +59,11 @@ export function evaluateDay(scenario,plan,date,baseline=null) {
     totals.violations+=assessment.violations.length;
     if(orders.length>1&&assessment.distanceM===null)gaps.add(`${team.id}/legs`);
     for(const leg of assessment.legs)if(leg.status!=='OK')gaps.add(`${team.id}/leg/${leg.from}/${leg.to}`);
+    // Reference legs of the +10 km measurement check (installation to installation): the identity of a missing one matters too.
+    if(assessment.hasMeasurements) {
+      const installs=assessment.orders.map(id=>orderOf(scenario,id)).filter(order=>order.type!=='POMIAR');
+      for(let i=1;i<installs.length;i++)if(routeLeg(scenario.routing,installs[i-1].addressId,installs[i].addressId).status!=='OK')gaps.add(`${team.id}/ref/${installs[i-1].id}/${installs[i].id}`);
+    }
     if(assessment.installationDistance.status==='UNASSESSED')gaps.add(`${team.id}/installationDistance`);
     if(assessment.measurementExtra.status==='UNASSESSED')gaps.add(`${team.id}/measurementExtra`);
     for(const issue of assessment.issues)issueMap.set(`${team.id}/${issue.key}`,issue.excess);
