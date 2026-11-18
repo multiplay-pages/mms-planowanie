@@ -114,7 +114,13 @@ class DeliveryTests(unittest.TestCase):
         self.assertEqual(request('/map04/fixtures.json')[1], (ROOT.parent / 'map04/fixtures.json').read_bytes())
         self.assertEqual(request('/basemap/data.json')[1], (ROOT / 'basemap/data.json').read_bytes())
         self.assertEqual(request('/', 'HEAD')[1], b'')
-        self.assertEqual(request('/')[1], (ROOT / 'planner.html').read_bytes())
+        # The served HTML is byte-exact except for the server-provided, local
+        # optional-pack availability indicator. No remote URLs or addresses leak.
+        served_html = request('/')[1]
+        pack_status = 'available' if (ROOT / 'basemap/map-pack.pmtiles').is_file() else 'unavailable'
+        pack_meta = f'  <meta name="mms-map-pack-status" content="{pack_status}">\\n'.replace('\\n', '\n').encode('ascii')
+        self.assertIn(pack_meta, served_html)
+        self.assertEqual(served_html.replace(pack_meta, b''), (ROOT / 'planner.html').read_bytes())
         self.assertEqual(request('/data/addresses.json')[1], (ROOT / 'data/addresses.json').read_bytes())
         for name in ['maplibre-gl.mjs', 'maplibre-gl-worker.mjs', 'maplibre-gl.css']:
             self.assertEqual(request('/vendor/maplibre-gl/' + name)[1], (ROOT / 'vendor/maplibre-gl' / name).read_bytes())
