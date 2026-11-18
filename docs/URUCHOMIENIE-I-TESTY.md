@@ -16,6 +16,10 @@ Następnie otwórz `http://127.0.0.1:8765`. `/` to planer; `/index.html` to star
 
 Adresy i dane dróg nie trafiają do serwera zewnętrznego. Serwer nie zapisuje planu; UI zapisuje go lokalnie w pamięci przeglądarki lub pliku JSON. Jeżeli pamięć jest wyłączona, komunikat kieruje do eksportu JSON. Przechowuj własną kopię planu przed zmianą przeglądarki lub czyszczeniem jej danych.
 
+## Uruchomienie jednym kliknięciem (Windows)
+
+Dwuklik w `Uruchom-planer.bat` (katalog główny repozytorium) startuje lokalny serwer (tylko `127.0.0.1`, bez internetu) i otwiera planer pod `http://127.0.0.1:8765/`. Okno z serwerem musi pozostać otwarte; jego zamknięcie zatrzymuje serwer — adres `127.0.0.1:8765` działa tylko, gdy serwer jest uruchomiony. Wymaga Pythona (`py` lub `python`). Bez Pythona plik otwiera samodzielną wersję `map05\planner-offline.html`, która nie wymaga serwera i można ją też otworzyć dwuklikiem.
+
 ## Mapa operacyjna MAP-06 (gałąź `map06-interactive-map`)
 
 Planer (offline i `serve.py`) uruchamia interaktywną mapę MapLibre, jeżeli przeglądarka ma WebGL. W przeciwnym razie zostaje dotychczasowa mapa SVG. Mapa pokazuje wszystkie koszyki wybranego dnia: kolor ekipy, numer wizyty, koło dla instalacji, romb dla pomiaru. Pokazuje też trasy wyłącznie po zapisanych lokalnych drogach, nieprzydzielone zlecenia (szare) i listę braków danych. Panel obok mapy pozwala ukrywać koszyki i warstwy, a numerowana lista wizyt obsługuje klawiaturę. Kliknięcie punktu → „Edytuj w planerze”.
