@@ -1,0 +1,171 @@
+{
+  "url": "offline",
+  "computeMs": 982,
+  "compare": [
+    [
+      "Zaplanowane zlecenia",
+      "0",
+      "14"
+    ],
+    [
+      "w tym instalacje",
+      "0",
+      "14"
+    ],
+    [
+      "Dni oczekiwania zaplanowanych zleceń",
+      "0",
+      "232"
+    ],
+    [
+      "Łączna odległość koszyków",
+      "0 km",
+      "106,4 km"
+    ],
+    [
+      "Szacowany czas dojazdów",
+      "0 min",
+      "174 min"
+    ],
+    [
+      "Naruszenia limitów (30 km, +10 km, okna)",
+      "0",
+      "0"
+    ],
+    [
+      "Wolne otwarte sloty",
+      "15",
+      "0"
+    ]
+  ],
+  "longTasks": [
+    871,
+    177,
+    1068,
+    52,
+    923,
+    777,
+    728,
+    726
+  ],
+  "errors": [],
+  "external": [],
+  "results": [
+    {
+      "id": "panel visible, simulation labelled",
+      "ok": true
+    },
+    {
+      "id": "hierarchy marked as not approved",
+      "ok": true
+    },
+    {
+      "id": "proposal computed within 10 s",
+      "ok": true,
+      "detail": "982 ms"
+    },
+    {
+      "id": "status says simulation, plan unchanged",
+      "ok": true,
+      "detail": "Propozycja: wariant „Liczba i czas oczekiwania, potem km”, obliczona w 822 ms. To symulacja: plan nie został zmieniony."
+    },
+    {
+      "id": "nothing stored by computing",
+      "ok": true
+    },
+    {
+      "id": "comparison table has 7 measures",
+      "ok": true
+    },
+    {
+      "id": "5 baskets compared",
+      "ok": true
+    },
+    {
+      "id": "scheduled explanations show alternatives",
+      "ok": true
+    },
+    {
+      "id": "skipped explanations show reasons",
+      "ok": true
+    },
+    {
+      "id": "rules classified",
+      "ok": true
+    },
+    {
+      "id": "map preview shows proposal visits and banner",
+      "ok": true,
+      "detail": "0 -> 14"
+    },
+    {
+      "id": "preview does not store anything",
+      "ok": true
+    },
+    {
+      "id": "current plan view restored",
+      "ok": true
+    },
+    {
+      "id": "reject hides result, plan untouched",
+      "ok": true
+    },
+    {
+      "id": "accept dialog open and informative",
+      "ok": true
+    },
+    {
+      "id": "cancel keeps plan",
+      "ok": true
+    },
+    {
+      "id": "accepted proposal stored as plan",
+      "ok": true,
+      "detail": "14 visits"
+    },
+    {
+      "id": "undo available after accept",
+      "ok": true
+    },
+    {
+      "id": "no limit violation shown in baskets",
+      "ok": true
+    },
+    {
+      "id": "undo restores empty plan",
+      "ok": true
+    },
+    {
+      "id": "no horizontal overflow at 1440px",
+      "ok": true,
+      "detail": "doc 0 card 0"
+    },
+    {
+      "id": "no horizontal overflow at 1150px",
+      "ok": true,
+      "detail": "doc 0 card 0"
+    },
+    {
+      "id": "no horizontal overflow at 700px",
+      "ok": true,
+      "detail": "doc 0 card 0"
+    },
+    {
+      "id": "no horizontal overflow at 390px",
+      "ok": true,
+      "detail": "doc 0 card 0"
+    },
+    {
+      "id": "no console/page errors",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "no external requests",
+      "ok": true,
+      "detail": ""
+    }
+  ],
+  "pass": 26,
+  "fail": 0
+}
