@@ -22,8 +22,12 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Update exact package lock for security-patched happy-dom
+        run: npm install --package-lock-only --ignore-scripts --prefix map05
       - name: Install dependencies
         run: npm ci --prefix map05
+      - name: Audit installed test dependencies
+        run: npm audit --prefix map05 --audit-level=high
       - name: Check JS syntax
         run: node --check map05/planner.mjs && node --check map05/tests/planner-ui.test.mjs
       - name: Run combined JavaScript regressions
@@ -61,15 +65,15 @@ jobs:
           done
           curl -fsS http://127.0.0.1:8765/ -o /dev/null
           node evidence/2026-11-18-integration/integration-browser.mjs
-      - name: Commit rebuilt offline artifact only on integration branch
+      - name: Commit verified lockfile and rebuilt offline artifact on integration branch
         if: github.event_name == 'push' && github.ref == 'refs/heads/map07b08-integration'
         run: |
-          git add map05/planner-offline.html
+          git add map05/package-lock.json map05/planner-offline.html
           if git diff --cached --quiet; then
             echo 'Integrated offline artifact already up-to-date'
           else
             git config user.name 'github-actions[bot]'
             git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-            git commit -m 'build: regenerate MAP-07B + MAP-08 offline planner'
+            git commit -m 'build: pin patched test dependencies and regenerate offline planner'
             git push origin HEAD:map07b08-integration
           fi
