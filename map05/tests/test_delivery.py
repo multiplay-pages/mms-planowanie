@@ -118,7 +118,7 @@ class DeliveryTests(unittest.TestCase):
         # optional-pack availability indicator. No remote URLs or addresses leak.
         served_html = request('/')[1]
         pack_status = 'available' if (ROOT / 'basemap/map-pack.pmtiles').is_file() else 'unavailable'
-        pack_meta = f'  <meta name="mms-map-pack-status" content="{pack_status}">\\n'.replace('\\n', '\n').encode('ascii')
+        pack_meta = f'  <meta name="mms-map-pack-status" content="{pack_status}">\n'.encode('ascii')
         self.assertIn(pack_meta, served_html)
         self.assertEqual(served_html.replace(pack_meta, b''), (ROOT / 'planner.html').read_bytes())
         self.assertEqual(request('/data/addresses.json')[1], (ROOT / 'data/addresses.json').read_bytes())
