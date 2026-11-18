@@ -1,6 +1,6 @@
 {
   "url": "offline",
-  "computeMs": 960,
+  "computeMs": 894,
   "compare": [
     [
       "Zaplanowane zlecenia",
@@ -39,14 +39,14 @@
     ]
   ],
   "longTasks": [
-    860,
-    130,
-    920,
-    50,
-    796,
-    748,
-    722,
-    716
+    811,
+    121,
+    808,
+    754,
+    686,
+    648,
+    278,
+    739
   ],
   "errors": [],
   "external": [],
@@ -62,12 +62,12 @@
     {
       "id": "proposal computed within 10 s",
       "ok": true,
-      "detail": "960 ms"
+      "detail": "894 ms"
     },
     {
       "id": "status says simulation, plan unchanged",
       "ok": true,
-      "detail": "Propozycja: wariant „Liczba i czas oczekiwania, potem km”, obliczona w 852 ms. To symulacja: plan nie został zmieniony."
+      "detail": "Propozycja: wariant „Liczba i czas oczekiwania, potem km”, obliczona w 804 ms. To symulacja: plan nie został zmieniony."
     },
     {
       "id": "nothing stored by computing",

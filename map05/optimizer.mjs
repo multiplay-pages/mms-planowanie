@@ -65,7 +65,8 @@ export function evaluateDay(scenario,plan,date,baseline=null) {
       for(let i=1;i<installs.length;i++)if(routeLeg(scenario.routing,installs[i-1].addressId,installs[i].addressId).status!=='OK')gaps.add(`${team.id}/ref/${installs[i-1].id}/${installs[i].id}`);
     }
     if(assessment.installationDistance.status==='UNASSESSED')gaps.add(`${team.id}/installationDistance`);
-    if(assessment.measurementExtra.status==='UNASSESSED')gaps.add(`${team.id}/measurementExtra`);
+    // The reason matters: a measurement that falls outside the installation chain is a different problem from a missing road leg.
+    if(assessment.measurementExtra.status==='UNASSESSED')gaps.add(`${team.id}/measurementExtra/${assessment.measurementExtra.reason??'unassessed'}`);
     for(const issue of assessment.issues)issueMap.set(`${team.id}/${issue.key}`,issue.excess);
     rows.push({teamId:team.id,orders:assessment.orders,visits:orders.length,distanceM:assessment.distanceM,estimatedDurationS:assessment.estimatedDurationS,violations:assessment.violations,checks:{installationDistance:assessment.installationDistance.status,measurementExtra:assessment.measurementExtra.status,windows:assessment.windows.status}});
   }

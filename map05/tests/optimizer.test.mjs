@@ -240,3 +240,17 @@ test('the identity of a missing +10 km reference leg cannot change unnoticed ins
     assert.equal(evaluateDay(synthetic,result.plan,DATE).gaps.has(`TEST-02/ref/${a.id}/${c.id}`),false,`${variant}: reference leg A -> C must not become the new unassessable one`);
   }
 });
+
+test('a protected measurement must not fall outside the installation chain after an automatic visit is moved away (Codex T17 P2)',()=>{
+  const {synthetic,edge,seed,mpl,pomiar}=syntheticScenario(),[a,b]=mpl,[m]=pomiar;
+  edge(a,m,5000);edge(m,b,5000);edge(a,b,null);
+  // A (confirmed) -> M (protected measurement) -> B (automatic). The reference leg A -> B is missing (legacy gap), the measurement is bounded by B.
+  const base=seed(['TEST-02',[row(a,'MANUAL',true),row(m,'MANUAL'),row(b,'AUTO')]]);
+  const baseline=evaluateDay(synthetic,base,DATE).gaps;
+  assert.equal([...baseline].some(key=>key.startsWith('TEST-02/measurementExtra/')),true,'the legacy gap is assessable only as a missing leg');
+  for(const variant of Object.keys(VARIANTS)) {
+    const result=proposeDayPlan(synthetic,base,DATE,{variant,orderIds:[b.id],budgetMs:1000});
+    const gaps=[...evaluateDay(synthetic,result.plan,DATE).gaps].filter(key=>key.startsWith('TEST-02/measurementExtra/'));
+    assert.ok(gaps.every(key=>baseline.has(key)),`${variant}: no new reason for an unassessable measurement (${gaps.join('; ')})`);
+  }
+});
