@@ -51,6 +51,13 @@ Zewnętrzne geokodowanie było oddzielną, jednorazowo zatwierdzoną operacją p
 | `map05/locations.mjs` | Walidacja i połączenie geokodowania; rozróżnienie lokalizacji używalnych i kandydatów. |
 | `map05/routes.mjs` | Walidacja lokalnego snapshotu dróg, dekoder geometrii, ocena całego koszyka. |
 | `map05/map.mjs` | Wspólne rzutowanie Web Mercator i geometria SVG; nie wyznacza tras. |
+| `map05/operational-map.mjs` | MAP-06: czysta projekcja `(scenario, plan, dzień, opcje widoku)` → GeoJSON wizyt/tras/kolejki + lista braków. Nie przechowuje przydziałów. |
+| `map05/road-tiles.mjs` | MAP-06: lokalne kafle wektorowe MVT generowane w przeglądarce z `planner-compact.json` (protokół `mmsroads://`). |
+| `map05/maplibre-view.mjs` | MAP-06: adapter MapLibre GL (warstwy, kontrolki, popup, podkład drogowa/satelita/hybryda). Edycje deleguje do planera. |
+| `map05/road-tile-worker.mjs` | MAP-06.1: usługa kafli w Web Workerze (`init`/`tile`/`cancel`); sama rozpakowuje i parsuje podkład, buduje indeks i koduje MVT; kolejka LIFO, jeden kafel na zadanie. |
+| `map05/road-tile-client.mjs` | MAP-06.1: klient w wątku głównym (`tile(z,x,y,signal)`, `ready`, `failed`, `destroy`); wariant workerowy i inline (gdy brak Workera). Awaria workera jest terminalna i sygnalizowana planerowi. |
+| `map05/embedded-data.mjs` | MAP-06.1: dekoder osadzonych bloków (`json`, `gzip-base64` przez `DecompressionStream`). |
+| `map05/vendor/maplibre-gl/` | MapLibre GL JS 6.19.0 (BSD-3), niemodyfikowany, z manifestem SHA256 i notami stron trzecich. |
 | `map05/planner-map.mjs` | Przygotowanie regionalnego podkładu, filtrowanie widoku, poziom szczegółu i leniwe dekodowanie ulic. Klasa drogi zależy od zbliżenia. Powyżej limitu (domyślnie 1 600 ścieżek) pomijane są odcinki krótsze niż ~1 px ekranu, a pozostałe sortowane są według klasy i długości. Etykiety i skala w SVG muszą mieć `vector-effect:non-scaling-stroke`, bo viewBox skaluje obwódki. |
 | `map05/planner.mjs` | Powiązanie kontrolek, kolejki, koszyków, szczegółów, dostępności, mapy, historii sesji i importu/eksportu. |
 | `map05/planner.html`, `planner.css` | Struktura i wygląd nowego interfejsu. |
@@ -167,3 +174,10 @@ SVG pokazuje tylko geometrię przecinającą viewport, z poziomem szczegółu za
 Duże publiczne wejścia `regional-roads.json` i `planner-data.json` są przechowywane w repo jako bezstratne `.json.gz`, z manifestem rozmiarów i hashy. `prepare_assets.py` odtwarza dokładne bajty lokalnie i nie nadpisuje zmienionego pliku. Publiczne PBF oraz cache wierszy nie są częścią historii Git; pozostają odtwarzalnymi plikami roboczymi. Dane potrzebne do używania aplikacji i komplet źródeł do jej dalszego rozwoju są w repo.
 
 Hashe XLSX, CSV i MAP-04 są stałymi kontrolami niezmienności źródeł. `.gitattributes` wyłącza normalizację bajtów tych plików; JavaScript/Python/HTML mają LF. To istotne dla fingerprintu silnika i CSP. Nie uruchamiać formatowania wielomegabajtowych snapshotów jako refaktoru.
+
+## Kafle dróg w Web Workerze i spakowane dane (MAP-06.1)
+
+- Bloki `basemap-data` i `routing-data` w `planner-offline.html` są `type="text/plain"` z `data-encoding="gzip-base64"` (gzip 9, `mtime=0`, odtwarzalnie); serwerowy `planner.html` nadal czyta zwykłe JSON-y. Hasze CSP obejmują wszystkie bloki inline, w tym kod workera kafli i teksty licencji.
+- `mapDeferred` (WebGL + Worker): wątek główny nie wczytuje podkładu dróg; podkład dostaje worker (tekst osadzony lub URL). Mapa SVG i jej dane są ładowane dopiero przy przejściu awaryjnym (`ensureSvgMap`).
+- Protokół `mmsroads://z/x/y` w wątku głównym tylko przekazuje żądanie do klienta kafli i obsługuje `AbortSignal`; kafel wraca jako `ArrayBuffer` (transfer).
+- Każda awaria (start workera, awaria po starcie, nieczytelna wiadomość, brak API) kończy się przejściem na SVG z komunikatem; dane planu i przydziały nie są dotykane.

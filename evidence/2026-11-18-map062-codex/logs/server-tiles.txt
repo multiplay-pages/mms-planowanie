@@ -1,0 +1,30 @@
+Satellite tiles allowed only from: http://127.0.0.1:8791
+MAP-05: http://127.0.0.1:8772  (Ctrl+C to stop)
+127.0.0.1 - - [18/Nov/2026 11:12:57] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [18/Nov/2026 11:14:02] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [18/Nov/2026 11:14:02] "GET /vendor/maplibre-gl/maplibre-gl.css HTTP/1.1" 200 -
+127.0.0.1 - - [18/Nov/2026 11:14:02] "GET /planner.css HTTP/1.1" 200 -
+127.0.0.1 - - [18/Nov/2026 11:14:02] "GET /planner.mjs HTTP/1.1" 200 -
+127.0.0.1 - - [18/Nov/2026 11:14:02] "GET /planner-model.mjs HTTP/1.1" 200 -
+127.0.0.1 - - [18/Nov/2026 11:14:02] "GET /map.mjs HTTP/1.1" 200 -
+127.0.0.1 - - [18/Nov/2026 11:14:02] "GET /routes.mjs HTTP/1.1" 200 -
+127.0.0.1 - - [18/Nov/2026 11:14:02] "GET /planner-map.mjs HTTP/1.1" 200 -
+127.0.0.1 - - [18/Nov/2026 11:14:02] "GET /locations.mjs HTTP/1.1" 200 -
+127.0.0.1 - - [18/Nov/2026 11:14:02] "GET /operational-map.mjs HTTP/1.1" 200 -
+127.0.0.1 - - [18/Nov/2026 11:14:02] "GET /maplibre-view.mjs HTTP/1.1" 200 -
+127.0.0.1 - - [18/Nov/2026 11:14:02] "GET /embedded-data.mjs HTTP/1.1" 200 -
+127.0.0.1 - - [18/Nov/2026 11:14:02] "GET /road-tile-client.mjs HTTP/1.1" 200 -
+127.0.0.1 - - [18/Nov/2026 11:14:02] "GET /road-tiles.mjs HTTP/1.1" 200 -
+127.0.0.1 - - [18/Nov/2026 11:14:02] "GET /data/addresses.json HTTP/1.1" 200 -
+127.0.0.1 - - [18/Nov/2026 11:14:02] "GET /favicon.svg HTTP/1.1" 200 -
+127.0.0.1 - - [18/Nov/2026 11:14:02] "GET /data/uug-geocoding.json HTTP/1.1" 200 -
+127.0.0.1 - - [18/Nov/2026 11:14:02] "GET /data/local-routes.json HTTP/1.1" 200 -
+127.0.0.1 - - [18/Nov/2026 11:14:03] "GET /vendor/maplibre-gl/maplibre-gl.mjs HTTP/1.1" 200 -
+127.0.0.1 - - [18/Nov/2026 11:14:03] "GET /road-tile-worker.mjs HTTP/1.1" 200 -
+127.0.0.1 - - [18/Nov/2026 11:14:03] "GET /vendor/maplibre-gl/maplibre-gl-worker.mjs?v=6.19.0 HTTP/1.1" 200 -
+127.0.0.1 - - [18/Nov/2026 11:14:03] "GET /road-tiles.mjs HTTP/1.1" 200 -
+127.0.0.1 - - [18/Nov/2026 11:14:03] "GET /embedded-data.mjs HTTP/1.1" 200 -
+127.0.0.1 - - [18/Nov/2026 11:14:03] "GET /routes.mjs HTTP/1.1" 200 -
+127.0.0.1 - - [18/Nov/2026 11:14:03] "GET /basemap/planner-compact.json HTTP/1.1" 200 -
+
+exit=null

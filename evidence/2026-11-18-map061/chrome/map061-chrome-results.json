@@ -1,0 +1,32 @@
+{
+  "results": [
+    {
+      "id": "W1",
+      "title": "Plik offline: drogi z lokalnego Web Workera, bez mapy SVG na głównym wątku",
+      "expected": "kafle dróg rysowane (>0 odcinków), 2+ workery (MapLibre + kafle), brak ścieżek SVG, dane gzip-base64",
+      "actual": "odcinki dróg w widoku 703; workery [\"blob:null/ac9c2feb-d462-43d9-b8f5-10c778f9c6c3\",\"data:text/javascript;charset=utf-8,%2F**%0A*%20MapLibre%20GL%20JS%0A*%20%40licen\"]; {\"tileWorkerSource\":true,\"basemapEncoding\":\"gzip-base64\",\"routingEncoding\":\"gzip-base64\",\"svgPaths\":0,\"opShellHidden\":false}; zewnętrzne 0; konsola []; błędy []",
+      "status": "PASS"
+    },
+    {
+      "id": "W2",
+      "title": "Blokada pliku workera: automatyczne przejście na mapę SVG, planer działa",
+      "expected": "mapa operacyjna ukryta, SVG z drogami, komunikat, kolejka 109, generator działa",
+      "actual": "{\"message\":\"Mapa operacyjna wyłączona (Błąd wątku kafli dróg.). Używam mapy uproszczonej; plan pozostaje bez zmian.\",\"svgPaths\":1600,\"queue\":109}; zlecenia w koszykach po generowaniu 15; zewnętrzne 0",
+      "status": "PASS"
+    },
+    {
+      "id": "W3",
+      "title": "Brak API Worker: mapa SVG działa, planer bez błędów",
+      "expected": "SVG z drogami, kolejka 109, brak błędów strony",
+      "actual": "{\"svgPaths\":1600,\"queue\":109}; błędy strony []; zewnętrzne 0",
+      "status": "PASS"
+    },
+    {
+      "id": "W4",
+      "title": "Dane zapakowane (gzip-base64) dają ten sam planer co dane niepakowane z serwera",
+      "expected": "identyczne liczniki: zlokalizowane, kolejka, status dróg",
+      "actual": "offline {\"located\":\"102 / 109 adresów\",\"routing\":\"Drogi obliczane lokalnie na OSM. Generator i ręczna zmiana s\",\"queue\":109,\"summary\":\"109 unikalnych adresów · 80 miejscowości · pominięte powtórzenia: 1\"} | serwer {\"located\":\"102 / 109 adresów\",\"routing\":\"Drogi obliczane lokalnie na OSM. Generator i ręczna zmiana s\",\"queue\":109,\"summary\":\"109 unikalnych adresów · 80 miejscowości · pominięte powtórzenia: 1\"}",
+      "status": "PASS"
+    }
+  ]
+}

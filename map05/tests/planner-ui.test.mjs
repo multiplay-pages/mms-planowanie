@@ -2,6 +2,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
+import {gzipSync} from 'node:zlib';
 import vm from 'node:vm';
 import {Window} from 'happy-dom';
 import * as modelApi from '../planner-model.mjs';
@@ -9,6 +10,10 @@ import * as mapApi from '../map.mjs';
 import * as locationApi from '../locations.mjs';
 import * as roadApi from '../routes.mjs';
 import * as plannerMapApi from '../planner-map.mjs';
+import * as operationalApi from '../operational-map.mjs';
+import * as embeddedApi from '../embedded-data.mjs';
+import * as tileClientApi from '../road-tile-client.mjs';
+import {validateSatelliteConfig,SATELLITE_PRESETS} from '../maplibre-view.mjs';
 import {roadFixture} from './road-fixture.mjs';
 const [markup,source,dataset,basemap,geocoding,uug]=await Promise.all([
   readFile(new URL('../planner.html',import.meta.url),'utf8'),
@@ -22,11 +27,15 @@ async function mount(t,options={}) {
   const window=new Window({settings:{enableJavaScriptEvaluation:false,disableJavaScriptFileLoading:true,enableCSSFileLoading:false,enableImageFileLoading:false,enableIframePageLoading:false,navigation:{disableMainFrameNavigation:true,disableChildFrameNavigation:true,disableChildPageNavigation:true,disableFallbackToSetURL:true}}});
   const requests=[],errors=[];const deny=async url=>{requests.push(String(url));throw Error('No network');};window.fetch=deny;
   window.document.write(markup.replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi,'').replace(/<link\b[^>]*>/gi,''));
-  for(const [id,value] of [['address-data',dataset],['basemap-data',options.basemap??basemap],['geocoding-data',options.geocoding??null],['routing-data',options.routing??null]]) {const node=window.document.createElement('script');node.id=id;node.type='application/json';node.textContent=JSON.stringify(value);window.document.body.append(node);}
+  for(const [id,value] of [['address-data',dataset],['basemap-data',options.basemap??basemap],['geocoding-data',options.geocoding??null],['routing-data',options.routing??null]]) {const node=window.document.createElement('script');node.id=id;node.type='application/json';node.textContent=JSON.stringify(value);if(options.compress&&(id==='basemap-data'||id==='routing-data')){node.type='text/plain';node.dataset.encoding='gzip-base64';node.textContent=gzipSync(Buffer.from(JSON.stringify(value))).toString('base64');}window.document.body.append(node);}
   const saved=options.saved??new Map();
   const storage={getItem:key=>saved.get(key)??null,setItem:(key,value)=>{if(options.denyStorage)throw Error('Storage disabled');saved.set(key,value);}};
   window.addEventListener('error',event=>errors.push(event.error?.message??event.message));
-  vm.runInContext(source.replace(/^import[^\n]*\n/gm,''),vm.createContext({document:window.document,fetch:deny,localStorage:storage,URL,Blob,Intl,console,...modelApi,...mapApi,...locationApi,...roadApi,...plannerMapApi}),{timeout:10000});
+  // WebGL is absent in Happy DOM, so the SVG fallback is used unless a test injects a fake map adapter.
+  if(options.Worker)window.happyDOM.setURL('http://localhost/map05/planner.html');
+  if(options.createOperationalMapView)window.HTMLCanvasElement.prototype.getContext=function(type){return /webgl/.test(type)?{}:null;};
+  const mapAdapter=options.createOperationalMapView??(()=>{throw Error('MapLibre is not available in DOM tests');});
+  vm.runInContext(source.replace(/^import[^\n]*\n/gm,''),vm.createContext({document:window.document,fetch:deny,localStorage:storage,URL,Blob,Intl,console,...modelApi,...mapApi,...locationApi,...roadApi,...plannerMapApi,...operationalApi,...embeddedApi,...tileClientApi,atob,Response,DecompressionStream,Uint8Array,Worker:options.Worker,createOperationalMapView:mapAdapter,validateSatelliteConfig,SATELLITE_PRESETS,maplibregl:options.createOperationalMapView?{setWorkerUrl(){}}:undefined}),{timeout:10000});
   await new Promise(resolve=>setImmediate(resolve));
   const $=s=>window.document.querySelector(s),all=s=>[...window.document.querySelectorAll(s)];
   const click=s=>{assert.ok($(s),s);$(s).dispatchEvent(new window.MouseEvent('click',{bubbles:true,cancelable:true}));};
@@ -272,4 +281,145 @@ test('changing the day in basket map mode fits the basket of the new day',async 
   assert.notEqual(`${left} ${top} ${width} ${height}`,before);
   assert.ok(x>=left&&x<=left+width&&y>=top&&y<=top+height,'the new day basket is inside the map view');
   assert.match(ui.$('#map-note').textContent,/Koszyk TEST-02 · 2026-11-19: 1 punktów/);
+});
+test('the full street address is prominent in basket cards, the layer list and the selected-order panel',async t=>{
+  const scenario=modelApi.createScenario(dataset,uug),order=scenario.orders.find(o=>o.ready&&o.type==='MPL'&&o.slotsRequired===1),address=scenario.addresses.find(a=>a.id===order.addressId);
+  let plan=modelApi.createPlan(scenario);
+  plan=modelApi.applyAction(scenario,plan,{type:'ASSIGN',orderId:order.id,teamId:'TEST-02',date:'2026-11-19',start:0});
+  const ui=await mount(t,{geocoding:uug,saved:new Map([[`mms-map05-plan-v1-${scenario.datasetId}`,JSON.stringify(plan)]])});
+  ui.change('#planning-date','2026-11-19');
+  const street=address.label.slice(`${address.postcode} ${address.city}, `.length),place=`${address.postcode} ${address.city}`;
+  assert.ok(street.length>0&&street!==address.label);
+  // Basket card: street line in bold, then postcode and town (not just the town).
+  const card=ui.$(`#baskets button[data-order="${order.id}"]`);
+  assert.equal(card.querySelector('.visit-address b').textContent,street);
+  assert.match(card.querySelector('.visit-address i').textContent,new RegExp(place));
+  // Selected order panel: a dedicated address card with the slot of the assignment.
+  ui.click(`#baskets button[data-order="${order.id}"]`);
+  const panel=ui.$('#order-details .address-card');
+  assert.equal(panel.querySelector('.address-street').textContent,street);
+  assert.equal(panel.querySelector('.address-place').textContent,place);
+  assert.match(panel.querySelector('.address-slot').textContent,/2026-11-19 · TEST-02 · 08:00/);
+  // A queued (unassigned) order shows the address card without a slot line.
+  const queued=scenario.orders.find(o=>o.id!==order.id&&o.ready);
+  ui.click(`#queue-list button[data-order="${queued.id}"]`);
+  assert.ok(ui.$('#order-details .address-card .address-street').textContent.length>0);
+  assert.equal(ui.$('#order-details .address-card .address-slot'),null);
+});
+test('addresses without a street name lead with the town, others keep the street line',async t=>{
+  const scenario=modelApi.createScenario(dataset,uug),bare=scenario.addresses.find(a=>/^\d/.test(a.label.slice(`${a.postcode} ${a.city}, `.length))),withStreet=scenario.addresses.find(a=>/^(ul\.|al\.|pl\.)/.test(a.label.slice(`${a.postcode} ${a.city}, `.length)));
+  assert.ok(bare&&withStreet);
+  const order=id=>scenario.orders.find(o=>o.addressId===id&&o.ready);
+  const ui=await mount(t,{geocoding:uug,saved:new Map()});
+  const ob=order(bare.id)??scenario.orders.find(o=>o.addressId===bare.id),ow=order(withStreet.id)??scenario.orders.find(o=>o.addressId===withStreet.id);
+  ui.click(`#queue-list button[data-order="${ob.id}"]`);
+  assert.equal(ui.$('#order-details .address-street').textContent,`${bare.city} ${bare.label.slice(`${bare.postcode} ${bare.city}, `.length)}`);
+  ui.click(`#queue-list button[data-order="${ow.id}"]`);
+  assert.equal(ui.$('#order-details .address-street').textContent,withStreet.label.slice(`${withStreet.postcode} ${withStreet.city}, `.length));
+});
+test('operational map panel follows the plan for every basket and keeps keyboard focus on a visit',async t=>{
+  const updates=[],fits=[];
+  const fakeView=()=>({ready:Promise.resolve(),update:layers=>updates.push(layers),fit:bounds=>fits.push(bounds),flyTo(){},setRoadsVisible(){},setBasemap(){},destroy(){},resize(){}});
+  const regional={regions:{PLANNER:{encoding:'polyline5-indexed',categories:['primary'],names:[''],bounds:[17.2,49.9,19,51.5],features:[]}}};
+  const scenario=modelApi.createScenario(dataset,uug),routing=roadFixture(scenario);
+  const ui=await mount(t,{geocoding:uug,routing,basemap:regional,Worker:recordingWorker(),createOperationalMapView:fakeView});
+  for(let i=0;i<5;i++)await new Promise(resolve=>setImmediate(resolve));
+  assert.equal(ui.$('#op-map-shell').hidden,false,'the operational map replaces the SVG view');
+  ui.change('#planning-date','2026-11-19');ui.click('#generate');
+  const plan=JSON.parse([...ui.saved.values()][0]),day=plan.assignments.filter(a=>a.date==='2026-11-19');
+  const visits=updates.at(-1).visits.features.map(f=>f.properties);
+  assert.ok(day.length>3);
+  assert.deepEqual(visits.map(v=>v.orderId).sort(),day.map(a=>a.orderId).sort(),'map shows exactly the planned visits of the day');
+  assert.equal(ui.all('#op-layers [data-op-team]').length,scenario.teams.length);
+  // Keyboard: activating a numbered visit keeps focus on that visit after the planner re-renders.
+  const button=ui.$('#op-layers button[data-order]'),id=button.dataset.order;
+  button.focus();ui.click(`#op-layers button[data-order="${id}"]`);
+  assert.equal(ui.window.document.activeElement.dataset.order,id);
+  assert.match(ui.$('#order-title').textContent,new RegExp(id));
+  // Return to queue goes through the model and the map drops the visit without a second store.
+  ui.click('#remove-order');
+  const after=updates.at(-1).visits.features.map(f=>f.properties.orderId);
+  const stillPlanned=JSON.parse([...ui.saved.values()][0]).assignments.some(a=>a.orderId===id);
+  assert.equal(after.includes(id),stillPlanned);
+  // Changing the day removes the previous day's visits and refits.
+  const fitCount=fits.length;ui.change('#planning-date','2026-11-18');
+  assert.equal(updates.at(-1).visits.features.length,0);assert.ok(fits.length>fitCount);
+});
+test('gzip-base64 data blocks give the same planner as plain JSON blocks',async t=>{
+  const scenario=modelApi.createScenario(dataset,uug),routing=roadFixture(scenario);
+  const plain=await mount(t,{geocoding:uug,routing});
+  const packed=await mount(t,{geocoding:uug,routing,compress:true});
+  await until(()=>!packed.$('#planner').hidden&&packed.$('#located-count').textContent!=='');
+  for(const selector of ['#located-count','#routing-status','#dataset-summary','#map-note'])assert.equal(packed.$(selector).textContent,plain.$(selector).textContent,selector);
+  assert.deepEqual(packed.ids(),plain.ids());
+  assert.ok(packed.all('#planner-map path').length>0,'the SVG map still draws the decoded road snapshot');
+});
+
+// Records what the planner hands to the road-tile worker.
+async function until(condition,limit=400) {for(let i=0;i<limit&&!condition();i++)await new Promise(resolve=>setTimeout(resolve,5));assert.ok(condition(),'condition was not reached');}
+
+function recordingWorker() {
+  const created=[];
+  class FakeWorker {
+    constructor(url,options){this.url=String(url);this.options=options;this.sent=[];this.terminated=false;created.push(this);}
+    postMessage(message){this.sent.push(message);}
+    terminate(){this.terminated=true;}
+  }
+  FakeWorker.created=created;
+  return FakeWorker;
+}
+
+test('with WebGL and workers the road snapshot goes to the tile worker and is not parsed or drawn on the main thread',async t=>{
+  const regional={regions:{PLANNER:{encoding:'polyline5-indexed',categories:['primary'],names:[''],bounds:[17.2,49.9,19,51.5],features:[]}}};
+  const scenario=modelApi.createScenario(dataset,uug),routing=roadFixture(scenario),FakeWorker=recordingWorker();
+  const ui=await mount(t,{geocoding:uug,routing,basemap:regional,compress:true,Worker:FakeWorker,createOperationalMapView:()=>({ready:Promise.resolve(),update(){},fit(){},flyTo(){},setRoadsVisible(){},setBasemap(){},destroy(){},resize(){}})});
+  await until(()=>FakeWorker.created.length===1);
+  assert.equal(FakeWorker.created.length,1);
+  const worker=FakeWorker.created[0],init=worker.sent[0];
+  assert.equal(worker.url,'http://localhost/map05/road-tile-worker.mjs');assert.equal(worker.options.type,'module');
+  assert.equal(init.type,'init');assert.equal(init.source.kind,'embedded');assert.equal(init.source.encoding,'gzip-base64');
+  assert.equal(init.source.text,ui.$('#basemap-data').textContent,'the worker receives the embedded block as is');
+  assert.equal(ui.all('#planner-map path').length,0,'no SVG road map is built while the operational map is active');
+  assert.match(ui.$('#located-count').textContent,/ \/ 109 adresów/,'location summary does not depend on the SVG map');
+  assert.match(ui.$('#map-note').textContent,/Regionalny podkład ulic obejmuje obszar zleceń/);assert.doesNotMatch(ui.$('#map-note').textContent,/wyłącznie wycinek Opola/,'the regional base map is announced even though its data lives in the worker');
+  assert.equal(ui.$('#op-map-shell').hidden,false);
+});
+
+test('a failing tile worker hands the map over to the SVG view and loads the road data then',async t=>{
+  const regional={regions:{PLANNER:{encoding:'polyline5-indexed',categories:['primary'],names:[''],bounds:[17.2,49.9,19,51.5],features:[]}}};
+  const scenario=modelApi.createScenario(dataset,uug),routing=roadFixture(scenario),FakeWorker=recordingWorker();
+  const ui=await mount(t,{geocoding:uug,routing,basemap:regional,compress:true,Worker:FakeWorker,createOperationalMapView:()=>({ready:new Promise(()=>{}),update(){},fit(){},flyTo(){},setRoadsVisible(){},setBasemap(){},destroy(){},resize(){}})});
+  await until(()=>FakeWorker.created.length===1);
+  const worker=FakeWorker.created[0];
+  worker.onmessage({data:{type:'error',message:'Worker failed to load.'}});
+  await until(()=>ui.all('#planner-map .map-ground').length>0);
+  assert.equal(worker.terminated,true);
+  assert.equal(ui.$('#op-map-shell').hidden,true);
+  assert.match(ui.$('#message').textContent,/Worker failed to load/);
+  assert.ok(ui.all('#planner-map .map-ground').length>0,'the SVG map is drawn after the hand-over');
+  assert.equal(ui.$('#planner').hidden,false);
+});
+
+test('a tile worker that dies after the map is ready also hands over to the SVG view',async t=>{
+  const regional={regions:{PLANNER:{encoding:'polyline5-indexed',categories:['primary'],names:[''],bounds:[17.2,49.9,19,51.5],features:[]}}};
+  const scenario=modelApi.createScenario(dataset,uug),routing=roadFixture(scenario),FakeWorker=recordingWorker();
+  const ui=await mount(t,{geocoding:uug,routing,basemap:regional,compress:true,Worker:FakeWorker,createOperationalMapView:()=>({ready:Promise.resolve(),update(){},fit(){},flyTo(){},setRoadsVisible(){},setBasemap(){},destroy(){},resize(){}})});
+  await until(()=>FakeWorker.created.length===1);
+  const worker=FakeWorker.created[0];
+  worker.onmessage({data:{type:'ready',roads:1}});
+  await until(()=>ui.$('#op-status').textContent.startsWith('Mapa operacyjna'));
+  assert.equal(ui.$('#op-map-shell').hidden,false);
+  worker.onerror({message:'Worker crashed after start.'});
+  await until(()=>ui.all('#planner-map .map-ground').length>0);
+  assert.equal(worker.terminated,true);assert.equal(ui.$('#op-map-shell').hidden,true);
+  assert.match(ui.$('#message').textContent,/crashed after start/);
+});
+
+test('without the Worker API the SVG map stays and the operational map is never started',async t=>{
+  const regional={regions:{PLANNER:{encoding:'polyline5-indexed',categories:['primary'],names:[''],bounds:[17.2,49.9,19,51.5],features:[]}}};
+  const scenario=modelApi.createScenario(dataset,uug),routing=roadFixture(scenario);let created=0;
+  const ui=await mount(t,{geocoding:uug,routing,basemap:regional,createOperationalMapView:()=>{created++;throw Error('must not start');}});
+  for(let i=0;i<5;i++)await new Promise(resolve=>setImmediate(resolve));
+  assert.equal(created,0);assert.equal(ui.$('#op-map-shell').hidden,true);
+  assert.ok(ui.all('#planner-map .map-ground').length>0);
 });

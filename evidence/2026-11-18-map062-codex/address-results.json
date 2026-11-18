@@ -1,0 +1,658 @@
+[
+  {
+    "id": "gpu",
+    "status": "PASS",
+    "actual": {
+      "chrome": "157.0.8103.79",
+      "gpu": "ANGLE (Intel, Intel(R) UHD Graphics 630 (0x00003E9B) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+    }
+  },
+  {
+    "id": "every-slot-address",
+    "status": "PASS",
+    "actual": [
+      {
+        "id": "TEST-013",
+        "street": "ul. Rynek 25/2",
+        "place": "49-340 Lewin Brzeski"
+      },
+      {
+        "id": "TEST-049",
+        "street": "ul. Jakuba Kani 5/12",
+        "place": "49-345 Skorogoszcz"
+      },
+      {
+        "id": "TEST-017",
+        "street": "ul. Rozmarynowa 6/1",
+        "place": "45-403 Opole"
+      },
+      {
+        "id": "TEST-025",
+        "street": "17D",
+        "place": "56-410 Białe Błoto"
+      },
+      {
+        "id": "TEST-062",
+        "street": "36G",
+        "place": "56-400 Cieśle"
+      },
+      {
+        "id": "TEST-039",
+        "street": "100PB",
+        "place": "56-400 Sokołowice"
+      },
+      {
+        "id": "TEST-003",
+        "street": "ul. Mieszka I 23A/9",
+        "place": "44-194 Knurów"
+      },
+      {
+        "id": "TEST-067",
+        "street": "ul. Arki Bożka 51I",
+        "place": "44-213 Rybnik"
+      },
+      {
+        "id": "TEST-067",
+        "street": "ul. Arki Bożka 51I",
+        "place": "44-213 Rybnik · ciąg dalszy"
+      },
+      {
+        "id": "TEST-037",
+        "street": "5",
+        "place": "46-333 Ligota Oleska"
+      },
+      {
+        "id": "TEST-085",
+        "street": "ul. Borecka 6",
+        "place": "46-312 Kucoby"
+      },
+      {
+        "id": "TEST-074",
+        "street": "169",
+        "place": "46-275 Chudoba"
+      },
+      {
+        "id": "TEST-061",
+        "street": "101",
+        "place": "46-250 Szum"
+      },
+      {
+        "id": "TEST-002",
+        "street": "ul. Główna 20",
+        "place": "46-250 Wąsice"
+      },
+      {
+        "id": "TEST-002",
+        "street": "ul. Główna 20",
+        "place": "46-250 Wąsice · ciąg dalszy"
+      }
+    ]
+  },
+  {
+    "id": "every-layer-address",
+    "status": "PASS",
+    "actual": [
+      {
+        "id": "TEST-013",
+        "street": "ul. Rynek 25/2"
+      },
+      {
+        "id": "TEST-049",
+        "street": "ul. Jakuba Kani 5/12"
+      },
+      {
+        "id": "TEST-017",
+        "street": "ul. Rozmarynowa 6/1"
+      },
+      {
+        "id": "TEST-025",
+        "street": "17D"
+      },
+      {
+        "id": "TEST-062",
+        "street": "36G"
+      },
+      {
+        "id": "TEST-039",
+        "street": "100PB"
+      },
+      {
+        "id": "TEST-003",
+        "street": "ul. Mieszka I 23A/9"
+      },
+      {
+        "id": "TEST-067",
+        "street": "ul. Arki Bożka 51I"
+      },
+      {
+        "id": "TEST-037",
+        "street": "5"
+      },
+      {
+        "id": "TEST-085",
+        "street": "ul. Borecka 6"
+      },
+      {
+        "id": "TEST-074",
+        "street": "169"
+      },
+      {
+        "id": "TEST-061",
+        "street": "101"
+      },
+      {
+        "id": "TEST-002",
+        "street": "ul. Główna 20"
+      }
+    ]
+  },
+  {
+    "id": "panel-TEST-013-true",
+    "status": "PASS",
+    "actual": {
+      "caption": "Adres wizyty",
+      "street": "ul. Rynek 25/2",
+      "place": "49-340 Lewin Brzeski",
+      "slot": "2026-11-19 · TEST-01 · 08:00–11:00"
+    }
+  },
+  {
+    "id": "slot-line-TEST-013",
+    "status": "PASS",
+    "actual": {
+      "slot": "2026-11-19 · TEST-01 · 08:00–11:00",
+      "start": 0
+    }
+  },
+  {
+    "id": "panel-TEST-025-true",
+    "status": "PASS",
+    "actual": {
+      "caption": "Adres wizyty",
+      "street": "17D",
+      "place": "56-410 Białe Błoto",
+      "slot": "2026-11-19 · TEST-02 · 08:00–11:00"
+    }
+  },
+  {
+    "id": "slot-line-TEST-025",
+    "status": "PASS",
+    "actual": {
+      "slot": "2026-11-19 · TEST-02 · 08:00–11:00",
+      "start": 0
+    }
+  },
+  {
+    "id": "panel-TEST-037-true",
+    "status": "PASS",
+    "actual": {
+      "caption": "Adres wizyty",
+      "street": "5",
+      "place": "46-333 Ligota Oleska",
+      "slot": "2026-11-19 · TEST-04 · 08:00–11:00"
+    }
+  },
+  {
+    "id": "slot-line-TEST-037",
+    "status": "PASS",
+    "actual": {
+      "slot": "2026-11-19 · TEST-04 · 08:00–11:00",
+      "start": 0
+    }
+  },
+  {
+    "id": "panel-TEST-049-true",
+    "status": "PASS",
+    "actual": {
+      "caption": "Adres wizyty",
+      "street": "ul. Jakuba Kani 5/12",
+      "place": "49-345 Skorogoszcz",
+      "slot": "2026-11-19 · TEST-01 · 11:00–14:00"
+    }
+  },
+  {
+    "id": "slot-line-TEST-049",
+    "status": "PASS",
+    "actual": {
+      "slot": "2026-11-19 · TEST-01 · 11:00–14:00",
+      "start": 1
+    }
+  },
+  {
+    "id": "panel-TEST-061-true",
+    "status": "PASS",
+    "actual": {
+      "caption": "Adres wizyty",
+      "street": "101",
+      "place": "46-250 Szum",
+      "slot": "2026-11-19 · TEST-05 · 08:00–11:00"
+    }
+  },
+  {
+    "id": "slot-line-TEST-061",
+    "status": "PASS",
+    "actual": {
+      "slot": "2026-11-19 · TEST-05 · 08:00–11:00",
+      "start": 0
+    }
+  },
+  {
+    "id": "panel-TEST-085-true",
+    "status": "PASS",
+    "actual": {
+      "caption": "Adres wizyty",
+      "street": "ul. Borecka 6",
+      "place": "46-312 Kucoby",
+      "slot": "2026-11-19 · TEST-04 · 11:00–14:00"
+    }
+  },
+  {
+    "id": "slot-line-TEST-085",
+    "status": "PASS",
+    "actual": {
+      "slot": "2026-11-19 · TEST-04 · 11:00–14:00",
+      "start": 1
+    }
+  },
+  {
+    "id": "panel-TEST-002-true",
+    "status": "PASS",
+    "actual": {
+      "caption": "Adres wizyty",
+      "street": "ul. Główna 20",
+      "place": "46-250 Wąsice",
+      "slot": "2026-11-19 · TEST-05 · 11:00–17:00"
+    }
+  },
+  {
+    "id": "slot-line-TEST-002",
+    "status": "PASS",
+    "actual": {
+      "slot": "2026-11-19 · TEST-05 · 11:00–17:00",
+      "start": 1
+    }
+  },
+  {
+    "id": "panel-TEST-062-true",
+    "status": "PASS",
+    "actual": {
+      "caption": "Adres wizyty",
+      "street": "36G",
+      "place": "56-400 Cieśle",
+      "slot": "2026-11-19 · TEST-02 · 11:00–14:00"
+    }
+  },
+  {
+    "id": "slot-line-TEST-062",
+    "status": "PASS",
+    "actual": {
+      "slot": "2026-11-19 · TEST-02 · 11:00–14:00",
+      "start": 1
+    }
+  },
+  {
+    "id": "panel-TEST-074-true",
+    "status": "PASS",
+    "actual": {
+      "caption": "Adres wizyty",
+      "street": "169",
+      "place": "46-275 Chudoba",
+      "slot": "2026-11-19 · TEST-04 · 14:00–17:00"
+    }
+  },
+  {
+    "id": "slot-line-TEST-074",
+    "status": "PASS",
+    "actual": {
+      "slot": "2026-11-19 · TEST-04 · 14:00–17:00",
+      "start": 2
+    }
+  },
+  {
+    "id": "panel-TEST-003-true",
+    "status": "PASS",
+    "actual": {
+      "caption": "Adres wizyty",
+      "street": "ul. Mieszka I 23A/9",
+      "place": "44-194 Knurów",
+      "slot": "2026-11-19 · TEST-03 · 08:00–11:00"
+    }
+  },
+  {
+    "id": "slot-line-TEST-003",
+    "status": "PASS",
+    "actual": {
+      "slot": "2026-11-19 · TEST-03 · 08:00–11:00",
+      "start": 0
+    }
+  },
+  {
+    "id": "panel-TEST-039-true",
+    "status": "PASS",
+    "actual": {
+      "caption": "Adres wizyty",
+      "street": "100PB",
+      "place": "56-400 Sokołowice",
+      "slot": "2026-11-19 · TEST-02 · 14:00–17:00"
+    }
+  },
+  {
+    "id": "slot-line-TEST-039",
+    "status": "PASS",
+    "actual": {
+      "slot": "2026-11-19 · TEST-02 · 14:00–17:00",
+      "start": 2
+    }
+  },
+  {
+    "id": "panel-TEST-017-true",
+    "status": "PASS",
+    "actual": {
+      "caption": "Adres wizyty",
+      "street": "ul. Rozmarynowa 6/1",
+      "place": "45-403 Opole",
+      "slot": "2026-11-19 · TEST-01 · 14:00–17:00"
+    }
+  },
+  {
+    "id": "slot-line-TEST-017",
+    "status": "PASS",
+    "actual": {
+      "slot": "2026-11-19 · TEST-01 · 14:00–17:00",
+      "start": 2
+    }
+  },
+  {
+    "id": "panel-TEST-067-true",
+    "status": "PASS",
+    "actual": {
+      "caption": "Adres wizyty",
+      "street": "ul. Arki Bożka 51I",
+      "place": "44-213 Rybnik",
+      "slot": "2026-11-19 · TEST-03 · 11:00–17:00"
+    }
+  },
+  {
+    "id": "slot-line-TEST-067",
+    "status": "PASS",
+    "actual": {
+      "slot": "2026-11-19 · TEST-03 · 11:00–17:00",
+      "start": 1
+    }
+  },
+  {
+    "id": "apartment-number",
+    "status": "PASS",
+    "actual": {
+      "street": "ul. Rynek 25/2"
+    }
+  },
+  {
+    "id": "panel-TEST-013-true",
+    "status": "PASS",
+    "actual": {
+      "caption": "Adres wizyty",
+      "street": "ul. Rynek 25/2",
+      "place": "49-340 Lewin Brzeski",
+      "slot": "2026-11-19 · TEST-01 · 08:00–11:00"
+    }
+  },
+  {
+    "id": "panel-TEST-013-true",
+    "status": "PASS",
+    "actual": {
+      "caption": "Adres wizyty",
+      "street": "ul. Rynek 25/2",
+      "place": "49-340 Lewin Brzeski",
+      "slot": "2026-11-19 · TEST-01 · 08:00–11:00"
+    }
+  },
+  {
+    "id": "confirmed-address",
+    "status": "PASS",
+    "actual": {
+      "caption": "Adres wizyty",
+      "street": "ul. Rynek 25/2",
+      "place": "49-340 Lewin Brzeski",
+      "slot": "2026-11-19 · TEST-01 · 08:00–11:00"
+    }
+  },
+  {
+    "id": "panel-TEST-013-true",
+    "status": "PASS",
+    "actual": {
+      "caption": "Adres wizyty",
+      "street": "ul. Rynek 25/2",
+      "place": "49-340 Lewin Brzeski",
+      "slot": "2026-11-20 · TEST-02 · 08:00–11:00"
+    }
+  },
+  {
+    "id": "moved-slot",
+    "status": "PASS",
+    "actual": {
+      "moved": {
+        "orderId": "TEST-013",
+        "teamId": "TEST-02",
+        "date": "2026-11-20",
+        "start": 0,
+        "origin": "MANUAL",
+        "confirmed": false
+      },
+      "movedCard": {
+        "caption": "Adres wizyty",
+        "street": "ul. Rynek 25/2",
+        "place": "49-340 Lewin Brzeski",
+        "slot": "2026-11-20 · TEST-02 · 08:00–11:00"
+      }
+    }
+  },
+  {
+    "id": "panel-TEST-013-true",
+    "status": "PASS",
+    "actual": {
+      "caption": "Adres wizyty",
+      "street": "ul. Rynek 25/2",
+      "place": "49-340 Lewin Brzeski",
+      "slot": "2026-11-20 · TEST-02 · 08:00–11:00"
+    }
+  },
+  {
+    "id": "panel-TEST-013-false",
+    "status": "PASS",
+    "actual": {
+      "caption": "Adres wizyty",
+      "street": "ul. Rynek 25/2",
+      "place": "49-340 Lewin Brzeski",
+      "slot": null
+    }
+  },
+  {
+    "id": "returned-to-queue",
+    "status": "PASS",
+    "actual": "Zlecenie wróciło do kolejki."
+  },
+  {
+    "id": "layout-1600",
+    "status": "PASS",
+    "actual": {
+      "id": "TEST-107",
+      "expected": {
+        "street": "ul. Kardynała Stefana Wyszyńskiego 7/24",
+        "place": "47-100 Strzelce Opolskie",
+        "label": "47-100 Strzelce Opolskie, ul. Kardynała Stefana Wyszyńskiego 7/24"
+      },
+      "scrollWidth": 1600,
+      "width": 1600,
+      "workspaceDisplay": "grid",
+      "columns": "340.797px 780.172px 349.031px",
+      "cardWidth": 309.03125,
+      "streetWidth": 277.03125,
+      "streetHeight": 52.78125,
+      "lineHeight": "26.4px",
+      "font": "22px",
+      "weight": "800",
+      "color": "rgb(23, 38, 29)",
+      "background": "rgb(240, 246, 236)",
+      "slotFont": "13px",
+      "slotWeight": "700",
+      "slotColor": "rgb(23, 38, 29)",
+      "basketOverflow": [],
+      "panelOverflow": false
+    }
+  },
+  {
+    "id": "layout-1440",
+    "status": "PASS",
+    "actual": {
+      "id": "TEST-107",
+      "expected": {
+        "street": "ul. Kardynała Stefana Wyszyńskiego 7/24",
+        "place": "47-100 Strzelce Opolskie",
+        "label": "47-100 Strzelce Opolskie, ul. Kardynała Stefana Wyszyńskiego 7/24"
+      },
+      "scrollWidth": 1440,
+      "width": 1440,
+      "workspaceDisplay": "grid",
+      "columns": "305.938px 700.359px 313.328px",
+      "cardWidth": 273.328125,
+      "streetWidth": 241.328125,
+      "streetHeight": 52.78125,
+      "lineHeight": "26.4px",
+      "font": "22px",
+      "weight": "800",
+      "color": "rgb(23, 38, 29)",
+      "background": "rgb(240, 246, 236)",
+      "slotFont": "13px",
+      "slotWeight": "700",
+      "slotColor": "rgb(23, 38, 29)",
+      "basketOverflow": [],
+      "panelOverflow": false
+    }
+  },
+  {
+    "id": "layout-1150",
+    "status": "PASS",
+    "actual": {
+      "id": "TEST-107",
+      "expected": {
+        "street": "ul. Kardynała Stefana Wyszyńskiego 7/24",
+        "place": "47-100 Strzelce Opolskie",
+        "label": "47-100 Strzelce Opolskie, ul. Kardynała Stefana Wyszyńskiego 7/24"
+      },
+      "scrollWidth": 1150,
+      "width": 1150,
+      "workspaceDisplay": "grid",
+      "columns": "290px 774px",
+      "cardWidth": 1041,
+      "streetWidth": 1009,
+      "streetHeight": 26.390625,
+      "lineHeight": "26.4px",
+      "font": "22px",
+      "weight": "800",
+      "color": "rgb(23, 38, 29)",
+      "background": "rgb(240, 246, 236)",
+      "slotFont": "13px",
+      "slotWeight": "700",
+      "slotColor": "rgb(23, 38, 29)",
+      "basketOverflow": [],
+      "panelOverflow": false
+    }
+  },
+  {
+    "id": "layout-700",
+    "status": "PASS",
+    "actual": {
+      "id": "TEST-107",
+      "expected": {
+        "street": "ul. Kardynała Stefana Wyszyńskiego 7/24",
+        "place": "47-100 Strzelce Opolskie",
+        "label": "47-100 Strzelce Opolskie, ul. Kardynała Stefana Wyszyńskiego 7/24"
+      },
+      "scrollWidth": 700,
+      "width": 700,
+      "workspaceDisplay": "flex",
+      "columns": "290px minmax(340px, 1fr)",
+      "cardWidth": 612,
+      "streetWidth": 580,
+      "streetHeight": 26.390625,
+      "lineHeight": "26.4px",
+      "font": "22px",
+      "weight": "800",
+      "color": "rgb(23, 38, 29)",
+      "background": "rgb(240, 246, 236)",
+      "slotFont": "13px",
+      "slotWeight": "700",
+      "slotColor": "rgb(23, 38, 29)",
+      "basketOverflow": [],
+      "panelOverflow": false
+    }
+  },
+  {
+    "id": "layout-390",
+    "status": "PASS",
+    "actual": {
+      "id": "TEST-107",
+      "expected": {
+        "street": "ul. Kardynała Stefana Wyszyńskiego 7/24",
+        "place": "47-100 Strzelce Opolskie",
+        "label": "47-100 Strzelce Opolskie, ul. Kardynała Stefana Wyszyńskiego 7/24"
+      },
+      "scrollWidth": 390,
+      "width": 390,
+      "workspaceDisplay": "flex",
+      "columns": "290px minmax(340px, 1fr)",
+      "cardWidth": 326.8125,
+      "streetWidth": 294.8125,
+      "streetHeight": 52.78125,
+      "lineHeight": "26.4px",
+      "font": "22px",
+      "weight": "800",
+      "color": "rgb(23, 38, 29)",
+      "background": "rgb(240, 246, 236)",
+      "slotFont": "13px",
+      "slotWeight": "700",
+      "slotColor": "rgb(23, 38, 29)",
+      "basketOverflow": [],
+      "panelOverflow": false
+    }
+  },
+  {
+    "id": "satellite-no-flag",
+    "status": "PASS",
+    "actual": {
+      "message": "Zdjęcia satelitarne wyłączone: Ten widok blokuje połączenia z http://127.0.0.1:8791. Uruchom planer plikiem Uruchom-planer.bat (albo: python -X utf8 map05/serve.py --allow-tile-origin http://127.0.0.1:8791). Samodzielny plik planner-offline.html nie pobiera zdjęć satelitarnych.",
+      "tiles": 0,
+      "satellite": false,
+      "road": true
+    }
+  },
+  {
+    "id": "satellite-file",
+    "status": "PASS",
+    "actual": {
+      "message": "Zdjęcia satelitarne wyłączone: Ten widok blokuje połączenia z http://127.0.0.1:8791. Uruchom planer plikiem Uruchom-planer.bat (albo: python -X utf8 map05/serve.py --allow-tile-origin http://127.0.0.1:8791). Samodzielny plik planner-offline.html nie pobiera zdjęć satelitarnych.",
+      "tiles": 0,
+      "satellite": false,
+      "road": true
+    }
+  },
+  {
+    "id": "panel-TEST-013-true",
+    "status": "PASS",
+    "actual": {
+      "caption": "Adres wizyty",
+      "street": "ul. Rynek 25/2",
+      "place": "49-340 Lewin Brzeski",
+      "slot": "2026-11-19 · TEST-01 · 08:00–11:00"
+    }
+  },
+  {
+    "id": "svg-address",
+    "status": "PASS",
+    "actual": {
+      "street": "ul. Rynek 25/2",
+      "markers": 102
+    }
+  }
+]

@@ -1,5 +1,6 @@
 """Bundle the local address planner. No source workbook writes or network calls."""
 import base64
+import gzip
 import hashlib
 import json
 from pathlib import Path
@@ -11,6 +12,52 @@ ROOT = Path(__file__).resolve().parent
 
 def token(text):
     return "'sha256-" + base64.b64encode(hashlib.sha256(text.encode('utf-8')).digest()).decode('ascii') + "'"
+
+
+def maplibre_bundle():
+    """Inline the vendored, hash-checked MapLibre build for the single-file planner."""
+    manifest = json.loads((ROOT / 'vendor' / 'maplibre-gl' / 'MANIFEST.json').read_text(encoding='utf-8'))
+    for name, meta in manifest['files'].items():
+        if hashlib.sha256((ROOT / 'vendor' / 'maplibre-gl' / name).read_bytes()).hexdigest() != meta['sha256']:
+            raise ValueError(f'Vendored MapLibre file changed: {name}')
+
+    def read(name):
+        text = (ROOT / 'vendor' / 'maplibre-gl' / name).read_text(encoding='utf-8')
+        return re.sub(r'\n?(//# sourceMappingURL=[^\n]*|/\*# sourceMappingURL=[^*]*\*/)\s*$', '\n', text)
+
+    module = read('maplibre-gl.mjs')
+    match = re.search(r'export\{([^}]*)\};?\s*$', module)
+    if not match:
+        raise ValueError('Unexpected MapLibre module format.')
+    pairs = []
+    for item in match.group(1).split(','):
+        local, _, exported = item.strip().partition(' as ')
+        pairs.append(f'{json.dumps(exported or local)}:{local}')
+    # The module exposes the same API object the served view imports, then signals readiness.
+    module = module[:match.start()] + 'globalThis.maplibregl=Object.freeze({' + ','.join(pairs) + '});globalThis.dispatchEvent(new Event("maplibre-ready"));\n'
+    worker = read('maplibre-gl-worker.mjs')
+    for text in (module, worker):
+        if re.search(r'</script', text, flags=re.IGNORECASE):
+            raise ValueError('MapLibre source contains a closing script tag.')
+    licenses = '\n'.join([(ROOT / 'vendor' / 'maplibre-gl' / 'LICENSE.txt').read_text(encoding='utf-8'), (ROOT / 'vendor' / 'maplibre-gl' / 'THIRD-PARTY-LICENSES.txt').read_text(encoding='utf-8')])
+    if re.search(r'</script', licenses, flags=re.IGNORECASE):
+        raise ValueError('License text contains a closing script tag.')
+    return {'module': module, 'worker': worker, 'css': read('maplibre-gl.css'), 'licenses': licenses}
+
+
+def strip_modules(names):
+    """Concatenates ES modules into one classic script body: exports and imports removed."""
+    code = []
+    for name in names:
+        part = (ROOT / name).read_text(encoding='utf-8')
+        part = re.sub(r'^export (function|const|class|async function) ', r'\1 ', part, flags=re.MULTILINE)
+        code.append(re.sub(r'^import[^\n]*\n', '', part, flags=re.MULTILINE))
+    return '\n'.join(code)
+
+
+def gzip_base64(text):
+    """Deterministic gzip (mtime 0, level 9) of a JSON text, base64-encoded for an inline script block."""
+    return base64.b64encode(gzip.compress(text.encode('utf-8'), compresslevel=9, mtime=0)).decode('ascii')
 
 
 def build():
@@ -38,27 +85,31 @@ def build():
     engine_sha = hashlib.sha256((ROOT / 'local_routing.py').read_bytes()).hexdigest()
     if routing['source']['roadsSha256'] != road_sha or routing['source']['engineSha256'] != engine_sha:
         raise ValueError('Road snapshot or engine changed. Rebuild local routes first.')
-    css = (ROOT / 'planner.css').read_text(encoding='utf-8')
-    code = []
-    for name in ['locations.mjs', 'routes.mjs', 'planner-model.mjs', 'map.mjs', 'planner-map.mjs', 'planner.mjs']:
-        part = (ROOT / name).read_text(encoding='utf-8').replace('export function ', 'function ')
-        code.append(re.sub(r'^import[^\n]*\n', '', part, flags=re.MULTILINE))
-    script = '(function(){\n"use strict";\n' + '\n'.join(code) + '\n})();'
+    vendor = maplibre_bundle()
+    css = vendor['css'] + '\n' + (ROOT / 'planner.css').read_text(encoding='utf-8')
+    body = strip_modules(['locations.mjs', 'routes.mjs', 'planner-model.mjs', 'map.mjs', 'planner-map.mjs', 'operational-map.mjs', 'embedded-data.mjs', 'road-tiles.mjs', 'road-tile-client.mjs', 'maplibre-view.mjs', 'planner.mjs'])
+    # The road-tile Web Worker is a classic script started from a blob: URL (works from file://).
+    tile_worker = '(function(){\n"use strict";\n' + strip_modules(['routes.mjs', 'embedded-data.mjs', 'road-tiles.mjs', 'road-tile-worker.mjs']) + '\n})();'
+    script = '(function(){\n"use strict";\n' + body + '\n})();'
     script = re.sub(r'</script', r'<\\/script', script, flags=re.IGNORECASE)
+    tile_worker = re.sub(r'</script', r'<\\/script', tile_worker, flags=re.IGNORECASE)
     address_data = json.dumps(dataset, ensure_ascii=False, separators=(',', ':')).replace('<', '\\u003c')
-    map_data = json.dumps(basemap, ensure_ascii=False, separators=(',', ':')).replace('<', '\\u003c')
+    map_data = gzip_base64(json.dumps(basemap, ensure_ascii=False, separators=(',', ':')))
     geocoding_data = json.dumps(geocoding, ensure_ascii=False, separators=(',', ':')).replace('<', '\\u003c')
-    routing_data = json.dumps(routing, ensure_ascii=False, separators=(',', ':')).replace('<', '\\u003c')
-    hashes = ' '.join(map(token, [script, address_data, map_data, geocoding_data, routing_data]))
-    csp = f"default-src 'none'; connect-src 'none'; script-src {hashes}; style-src {token(css)}; img-src data:; object-src 'none'; base-uri 'none'; form-action 'none'"
+    routing_data = gzip_base64(json.dumps(routing, ensure_ascii=False, separators=(',', ':')))
+    hashes = ' '.join(map(token, [script, address_data, map_data, geocoding_data, routing_data, tile_worker, vendor['module'], vendor['worker'], vendor['licenses']]))
+    # MapLibre in an opaque (file://) origin reads its worker source back with fetch(blob:) and starts it
+    # from a data: URL. Only in-memory blob:/data: are allowed; every network scheme stays blocked.
+    csp = f"default-src 'none'; connect-src blob:; script-src {hashes}; worker-src blob: data:; style-src {token(css)}; img-src data: blob:; object-src 'none'; base-uri 'none'; form-action 'none'"
     html = (ROOT / 'planner.html').read_text(encoding='utf-8')
     html = re.sub(r'<meta http-equiv="Content-Security-Policy"[^>]+>', f'<meta http-equiv="Content-Security-Policy" content="{csp}">', html)
+    html = html.replace('  <link rel="stylesheet" href="./vendor/maplibre-gl/maplibre-gl.css">\n', '')
     html = html.replace('<link rel="stylesheet" href="./planner.css">', '<style>' + css + '</style>')
     favicon = base64.b64encode((ROOT / 'favicon.svg').read_bytes()).decode('ascii')
     html = html.replace('href="./favicon.svg"', f'href="data:image/svg+xml;base64,{favicon}"')
     html = html.replace('  <script type="module" src="./planner.mjs"></script>\n', '')
     html = html.replace('href="./planner.html"', 'href="./planner-offline.html"').replace('href="./index.html"', 'href="./offline.html"')
-    html = html.replace('</body>', '<script id="address-data" type="application/json">' + address_data + '</script>\n<script id="basemap-data" type="application/json">' + map_data + '</script>\n<script id="geocoding-data" type="application/json">' + geocoding_data + '</script>\n<script id="routing-data" type="application/json">' + routing_data + '</script>\n<script>' + script + '</script>\n</body>')
+    html = html.replace('</body>', '<script id="address-data" type="application/json">' + address_data + '</script>\n<script id="basemap-data" type="text/plain" data-encoding="gzip-base64">' + map_data + '</script>\n<script id="geocoding-data" type="application/json">' + geocoding_data + '</script>\n<script id="routing-data" type="text/plain" data-encoding="gzip-base64">' + routing_data + '</script>\n<script id="road-tile-worker-source" type="text/plain">' + tile_worker + '</script>\n<script id="maplibre-worker-source" type="text/plain">' + vendor['worker'] + '</script>\n<script id="third-party-licenses" type="text/plain">' + vendor['licenses'] + '</script>\n<script>' + script + '</script>\n<script id="maplibre-bundle" type="module">' + vendor['module'] + '</script>\n</body>')
     (ROOT / 'planner-offline.html').write_text(html, encoding='utf-8', newline='\n')
     print(f'Built map05/planner-offline.html ({len(html.encode("utf-8"))} bytes), {len(dataset["addresses"])} addresses; matches: {geocoding["summary"]["matched"]}, review: {geocoding["summary"]["review"]}; source SHA256: {dataset["source"]["sha256"]}')
     return html

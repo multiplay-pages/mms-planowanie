@@ -16,6 +16,24 @@ Następnie otwórz `http://127.0.0.1:8765`. `/` to planer; `/index.html` to star
 
 Adresy i dane dróg nie trafiają do serwera zewnętrznego. Serwer nie zapisuje planu; UI zapisuje go lokalnie w pamięci przeglądarki lub pliku JSON. Jeżeli pamięć jest wyłączona, komunikat kieruje do eksportu JSON. Przechowuj własną kopię planu przed zmianą przeglądarki lub czyszczeniem jej danych.
 
+## Uruchomienie jednym kliknięciem (Windows)
+
+Dwuklik w `Uruchom-planer.bat` (katalog główny repozytorium) startuje lokalny serwer (`127.0.0.1`) i otwiera planer pod `http://127.0.0.1:8765/`. Ten plik dopuszcza połączenie z serwerem ortofotomapy GUGiK (`https://mapy.geoportal.gov.pl`), dzięki czemu działają przyciski **Satelita** i **Hybryda**: zdjęcia są pobierane dopiero po wybraniu przycisku i zaznaczeniu zgody w oknie „Dostawca zdjęć” (wysyłany jest widoczny obszar mapy). `Uruchom-planer-bez-satelity.bat` uruchamia planer całkowicie bez połączeń zewnętrznych (Satelita/Hybryda wyłączone). Samodzielny plik `planner-offline.html` nigdy nie pobiera zdjęć. Okno z serwerem musi pozostać otwarte; jego zamknięcie zatrzymuje serwer — adres `127.0.0.1:8765` działa tylko, gdy serwer jest uruchomiony. Wymaga Pythona (`py` lub `python`). Bez Pythona plik otwiera samodzielną wersję `map05\planner-offline.html`, która nie wymaga serwera i można ją też otworzyć dwuklikiem.
+
+## Mapa operacyjna MAP-06 (gałąź `map06-interactive-map`)
+
+Planer (offline i `serve.py`) uruchamia interaktywną mapę MapLibre, jeżeli przeglądarka ma WebGL. W przeciwnym razie zostaje dotychczasowa mapa SVG. Mapa pokazuje wszystkie koszyki wybranego dnia: kolor ekipy, numer wizyty, koło dla instalacji, romb dla pomiaru. Pokazuje też trasy wyłącznie po zapisanych lokalnych drogach, nieprzydzielone zlecenia (szare) i listę braków danych. Panel obok mapy pozwala ukrywać koszyki i warstwy, a numerowana lista wizyt obsługuje klawiaturę. Kliknięcie punktu → „Edytuj w planerze”.
+
+Domyślnie aplikacja nie wykonuje żadnych żądań zewnętrznych. Zdjęcia satelitarne (Satelita/Hybryda) to opcja wymagająca trzech kroków:
+
+1. Uruchom serwer z jawnie dopuszczonym originem dostawcy, np. `python -X utf8 map05/serve.py --allow-tile-origin https://mapy.geoportal.gov.pl`. Plik offline nie pobiera zdjęć.
+2. W planerze wybierz „Dostawca zdjęć…”, ustaw adres kafli i atrybucję, zaznacz zgodę na wysyłanie widocznego obszaru. Klucz API zostaje tylko w `localStorage` tej przeglądarki.
+3. Wybierz „Satelita” lub „Hybryda”. Powrót do „Drogowa” usuwa źródło rastrów i zatrzymuje żądania.
+
+Aktualizacja vendorowanego MapLibre (świadoma, z sieci npm): `cd map05 && npm ci` → `python -X utf8 map05/vendor_maplibre.py` → przegląd diffu → build. Sprawdzenie bez sieci: `python -X utf8 map05/vendor_maplibre.py --check`.
+
+Scenariusze akceptacyjne MAP-06 w Chrome: `evidence/2026-11-17-map06/scripts/map06.mjs` (instrukcja jak dla `scenarios.mjs`, do testu satelity atrapa `mock_tiles.py 8791` i drugi serwer z `--allow-tile-origin http://127.0.0.1:8791`).
+
 ## Środowisko deweloperskie
 
 Testowane lokalnie: Python 3.12.10, Node.js 26.13.0, openpyxl 3.1.5 i happy-dom 21.0.3. Użyj wybranego środowiska Python; nie zmieniaj globalnej instalacji bez potrzeby. `requirements-dev.txt` dotyczy importera/testów XLSX. Aplikacja uruchamia się bez openpyxl i npm.
@@ -137,3 +155,22 @@ node perf.mjs file:///<repo>/map05/planner-offline.html offline
 ```
 
 Wynik: `results-<tag>.json` z oczekiwanym/rzeczywistym rezultatem, statusem i dowodem dla każdego scenariusza oraz pełnym logiem konsoli i żądań. Do tego zrzuty PNG. Skrypt rejestruje każde żądanie spoza `127.0.0.1`/`file:` jako błąd S10. Samo przejście skryptu nie zastępuje obejrzenia zrzutów: B1 (zasłonięte ulice) przechodził kontrole liczbowe i był widoczny dopiero na obrazie.
+
+## MAP-06.1: rozmiar pliku, worker kafli i ponowne pomiary
+
+- `python -X utf8 map05/build_planner.py` (z katalogu głównego) buduje `planner-offline.html` ≈ 32,4 MB: bloki `basemap-data` i `routing-data` są spakowane gzip+base64 i rozpakowywane w przeglądarce (`DecompressionStream`: Chrome 80+, Firefox 113+, Safari 16.4+). Kafle dróg liczy Web Worker; w `file://` jest to worker z adresu `blob:`, w `serve.py` worker modułowy.
+- Ręczny test w Windows: otwórz `map05\planner-offline.html` w Chrome lub Firefoksie (dwuklik lub `file:///…`), poczekaj ok. 1–3 s na planer, wybierz dzień 2026-11-19, „Generuj”, potem przesuwaj i przybliżaj mapę. Jeśli przeglądarka nie ma WebGL/Workera, zobaczysz komunikat i mapę uproszczoną SVG.
+- Skrypty Chrome/Firefox są w `evidence/2026-11-18-map061/scripts/` (instalacja `playwright-core` jak wyżej; Firefox przez WebDriver BiDi, bez dodatkowych pakietów):
+
+```text
+node map061.mjs file:///<repo>/map05/planner-offline.html http://127.0.0.1:8765/
+node map061-touch.mjs file:///<repo>/map05/planner-offline.html offline
+node firefox-bidi.mjs file:///<repo>/map05/planner-offline.html http://127.0.0.1:8765/
+node map061-perf.mjs <url> <znacznik-before|after> <numer-przebiegu>
+node aggregate-perf.mjs <katalog z wynikami>
+```
+
+- Ścieżkę mapy SVG (bez WebGL) sprawdza się, uruchamiając Chrome z `CHROME_ARGS="--disable-gpu --disable-3d-apis --disable-webgl"` i `scenarios.mjs`.
+- Przy aktywnym WebGL scenariusze `scenarios.mjs` S1, S2, S4 i S9 (części dotyczące mapy SVG) nie mają zastosowania — mapę SVG zastępuje mapa operacyjna; zob. `evidence/2026-11-18-map061/README.md`.
+- Bieżące liczby: `npm test` 140, `unittest map05` 82, `unittest map04` 24.
+- Licencje i pochodzenie danych: `docs/ZRODLA-DANYCH-I-LICENCJE.md`.

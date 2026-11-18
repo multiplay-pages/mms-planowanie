@@ -1,0 +1,42 @@
+[
+  {
+    "tag": "address",
+    "exit": 0,
+    "elapsedMs": 39580
+  },
+  {
+    "tag": "m06-served",
+    "exit": 0,
+    "elapsedMs": 36135
+  },
+  {
+    "tag": "m06-offline",
+    "exit": 0,
+    "elapsedMs": 28091
+  },
+  {
+    "tag": "svg-served",
+    "exit": 0,
+    "elapsedMs": 50223
+  },
+  {
+    "tag": "svg-offline",
+    "exit": 0,
+    "elapsedMs": 50564
+  },
+  {
+    "tag": "m061",
+    "exit": 0,
+    "elapsedMs": 15814
+  },
+  {
+    "tag": "touch-served",
+    "exit": 0,
+    "elapsedMs": 12227
+  },
+  {
+    "tag": "touch-offline",
+    "exit": 0,
+    "elapsedMs": 11807
+  }
+]

@@ -1,0 +1,19 @@
+{
+  "preset": "gugik-orto",
+  "saveMessage": "Mapa operacyjna: lokalne drogi OSM, bez połączeń zewnętrznych. Zdjęcia satelitarne są wyłączone, dopóki nie skonfigurujesz dostawcy.",
+  "satelliteTiles": 9,
+  "statuses": [
+    200
+  ],
+  "types": [
+    "image/jpeg"
+  ],
+  "message": "Zapisano dostawcę zdjęć w tej przeglądarce. Wybierz „Satelita” lub „Hybryda”, aby go użyć.",
+  "layers": {
+    "satellite": "visible",
+    "roads": "visible"
+  },
+  "attribution": "Ortofotomapa © GUGiK | © OpenStreetMap contributors (ODbL), lokalny podkład",
+  "errors": [],
+  "ok": true
+}

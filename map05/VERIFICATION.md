@@ -1,6 +1,40 @@
 # MAP-05 — weryfikacja, aktualizacja 17.11.2026
 
-**STATUS AKTUALNY (Aion UI, 17.11.2026, etap „prawdziwa przeglądarka”): 10/10 scenariuszy runbooka PASS w prawdziwym Chrome 157 — zarówno modułowy widok przez `serve.py`, jak i zbudowany `planner-offline.html` przez `file://`. Wykryto i naprawiono 7 usterek, w tym P1 wizualne zasłonięcie ulic przy zbliżeniu. Testy: npm 86/86, Python map05 80/80, map04 24/24 — łącznie 190/190 PASS; build PASS. 0 żądań poza loopback/`file:`, 0 błędów konsoli. Nie testowano innych przeglądarek, trybu z oknem/GPU, urządzeń dotykowych ani czytnika ekranu. Prototyp nie jest gotowy produkcyjnie. Sekcje poniżej nowej są historyczne.**
+**STATUS HISTORYCZNY etapu „prawdziwa przeglądarka” (aktualny stan MAP-06 jest w sekcji poniżej): 10/10 scenariuszy runbooka PASS w prawdziwym Chrome 157 — zarówno modułowy widok przez `serve.py`, jak i zbudowany `planner-offline.html` przez `file://`. Wykryto i naprawiono 7 usterek, w tym P1 wizualne zasłonięcie ulic przy zbliżeniu. Testy: npm 86/86, Python map05 80/80, map04 24/24 — łącznie 190/190 PASS; build PASS. 0 żądań poza loopback/`file:`, 0 błędów konsoli. Nie testowano innych przeglądarek, trybu z oknem/GPU, urządzeń dotykowych ani czytnika ekranu. Prototyp nie jest gotowy produkcyjnie. Sekcje poniżej nowej są historyczne.**
+
+## 18.11.2026 — MAP-06.1 (optymalizacja, worker kafli, Firefox)
+
+**Status: technicznie zatwierdzony prototyp — optymalizacja i odbiór użytkownika w toku.** Nie scalono z `main`. Pełny opis, tabela PRZED/PO i ograniczenia: `evidence/2026-11-18-map061/README.md`.
+
+| Sprawdzenie | Wynik |
+| --- | --- |
+| `npm test` (map05) | **140/140 PASS** |
+| `unittest map05` / `unittest map04` | **82/82** / **24/24 PASS** (razem 246; punkt odniesienia 231) |
+| Rozmiar `planner-offline.html` | 71 343 809 → **32 403 512 B** |
+| Chrome 157 GPU: M0–M13 serwer / offline | **14/14** / **13/13 PASS** |
+| Chrome: regresja MAP-05 na ścieżce SVG, serwer / offline | **10/10** / **10/10 PASS** |
+| Chrome: W1–W4 (worker, brak Worker, zablokowany worker, identyczność danych) | **4/4 PASS** |
+| Chrome: dotyk (zdarzenia CDP) serwer / offline | **5/5** / **5/5 PASS** |
+| Firefox 160.0.1 (BiDi, headless): offline + serwer | **9/9 PASS** |
+| Wydajność wątku głównego (3 + 3 przebiegi naprzemiennie) | wycieczka: 0 długich zadań (było ~1,1 s), mediana najgorszej klatki ~440 → ~51 ms (jeden odstający przebieg PO: 407 ms bez długiego zadania JS); interakcje planera bez poprawy (170–350 ms przy „generuj wszystkie”); pamięć całego Chrome +~100 MB na starcie, −~400 MB na końcu |
+| Codex T10 / T11 | CHANGES REQUESTED (2 × P2, 1 × P3, naprawione) / APPROVE |
+| NOT TESTED | fizyczny ekran dotykowy, Safari, Edge, czytnik ekranu, wydajność w Firefoksie |
+| Satelita / hybryda | **niewdrożone, niezweryfikowane** (brak licencjonowanego dostawcy); mechanizm opt-in sprawdzony tylko atrapą na loopback |
+
+## 17.11.2026 — MAP-06 interaktywna mapa operacyjna (prototyp na gałęzi `map06-interactive-map`)
+
+**Status: prototyp gotowy do oceny, NIE scalony z `main` (uzupełnienie: MAP-06.1 powyżej).** Mapa MapLibre GL JS 6.19.0 z lokalnymi kaflami dróg, wszystkimi koszykami dnia, kolorami ekip, numeracją wizyt, przełącznikami warstw, popupem z przejściem do edycji, synchronizacją z planem oraz podkładem satelita/hybryda (opt-in) i fallbackiem SVG. Plan, dowody i ograniczenia: `docs/MAP06-PLAN.md`, `evidence/2026-11-17-map06/README.md`. Przegląd Codexa: `evidence/2026-11-17-map06-codex/` (T4 plan i ryzyka, T5 niezależne testy projekcji 29/29).
+
+| Polecenie | Wynik |
+| --- | --- |
+| `npm test` (map05) | **125/125 PASS** (86 + 5 kafli MVT + 1 integracja mapy w DOM + 29 niezależnych testów projekcji Codexa + 4 testy adaptera po review: odświeżanie popupu bez kradzieży fokusu, walidacja adresu dostawcy, fallback przy błędzie startu) |
+| `python -X utf8 -m unittest discover -s map05/tests -p test_*.py -v` | **82/82 PASS** (kontrakt CSP offline, opt-in originów, vendor) |
+| `python -X utf8 -m unittest discover -s map04/tests -v` | **24/24 PASS** |
+| `npm run build` | PASS; `planner-offline.html` 71 343 809 B (+1,82 MB MapLibre i pełne noty licencji), `offline.html` bez zmian |
+| Chrome 157 (GPU): akceptacja MAP-06 | served **14/14**, offline (sieć wyłączona) **13/13**; satelita testowany atrapą na loopback |
+| Chrome: regresja MAP-05 na ścieżce SVG | **10/10 PASS** |
+
+Zmiany kontraktów świadome i przetestowane: CSP artefaktu offline `connect-src blob:` zamiast `'none'` (wymagane przez worker MapLibre w `file://`, bez schematów sieciowych; test parsuje dyrektywy), `worker-src blob: data:`, `img-src data: blob:`. Bez zmian: `datasetId`, ID zleceń, fixture MAP-04, schemat planu v1, silnik routingu, reguły generatora i ochrony potwierdzeń.
 
 ## 17.11.2026 — Aion UI: weryfikacja w prawdziwej przeglądarce i poprawki
 

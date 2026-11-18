@@ -192,6 +192,18 @@ Codex niezależnie potwierdził baseline 180/180 i zreprodukował 3 usterki w mo
 
 Pracę podzielono na rozłączne pliki. Codex poprawił model i jego testy (komunikat zajętego okna, zachowanie `releaseReason` przy przeniesieniu). Claude Code poprawił CSS, wybór dróg i fokus/mapę w `planner.mjs` oraz testy UI/mapy, a potem zintegrował zmiany i przebudował artefakt. Każdy test regresyjny odtwarzający usterkę był najpierw RED; dodatkowy test kontrolny wolnych okien był celowo zielony przed i po zmianie. Po integracji: 190/190 testów PASS, build PASS oraz 10/10 scenariuszy w Chrome dla widoku modułowego i offline. Codex wykonał niezależny review końcowego diffu przed publikacją (`evidence/2026-11-17-codex/`). Dowody i tabela scenariuszy: `evidence/2026-11-17-browser/README.md`. Opublikowano commit `1359cdeedc7590262e7066891b5ce6b183f9f12f` na `main` (fast-forward, bez force); zdalny HEAD i drzewo potwierdzono przez `git ls-remote` i GitHub API.
 
+## 17.11.2026 — MAP-06: interaktywna mapa operacyjna (gałąź)
+
+Użytkownik zlecił przebudowę mapy na mapę operacyjną „wygodną jak Mapy Google” (MapLibre lub uzasadniony wariant), z wszystkimi koszykami dnia, kolorami ekip, numeracją, warstwami, popupem i edycją, synchronizacją z planem, trasami tylko z lokalnych wyników, satelitą jako opcją wymagającą jawnej konfiguracji oraz pracą offline. Prototyp miał powstać na osobnej gałęzi, bez merge/push na `main` bez akceptacji.
+
+Claude Code wykonał audyt i plan (`docs/MAP06-PLAN.md`), a spike'iem potwierdził, że MapLibre 6.19 rysuje polskie etykiety lokalnie, bez serwera glifów. Następnie zaimplementował projekcję, lokalne kafle MVT, adapter i integrację. Codex niezależnie ocenił plan (T4): wykrył ryzyko P1 workera MapLibre w `file://`, które zreprodukowano w Chrome i naprawiono w CSP, oraz ryzyka P2 zaadresowane w kodzie. Codex napisał też 29 niezależnych testów projekcji (T5). Akceptacja w prawdziwym Chrome z GPU: served 14/14, offline 13/13 przy wyłączonej sieci. Satelitę sprawdzono wyłącznie atrapą na loopback. Testy: 121 JS + 82 Python + 24 MAP-04.
+
+Końcowy przegląd Codexa (T6) zgłosił 5 × P2 i 1 × P3 (popup z nieaktualnym przydziałem, URL dostawcy z poświadczeniami, zbyt luźny `valid_origin`, brak fallbacku SVG po błędzie startu mapy, niepełne noty licencyjne, słabe asercje M4/M6). Wszystkie poprawiono i potwierdzono testami (125 JS, 82 + 24 Python) oraz ponownym przebiegiem w Chrome (14/14, 13/13, 10/10). Szczegóły: `evidence/2026-11-17-map06/README.md`.
+
+## 18.11.2026 — MAP-06.1: optymalizacja i przygotowanie do odbioru
+
+Użytkownik zatwierdził: zmniejszenie pliku offline, przeniesienie kafli do Web Workera i warunkową publikację gałęzi (bez scalenia do `main` i bez wdrożenia). Claude Code zapakował duże bloki danych gzip+base64 (71,3 → 32,4 MB), przeniósł rozpakowanie, parsowanie i kodowanie kafli dróg do workera (offline: worker z `blob:`), dodał bezpieczne przejścia na mapę SVG i zmierzył PRZED/PO (3 + 3 przebiegi naprzemiennie w Chrome z GPU). Codex wykonał audyt przedpublikacyjny (T9: brak sekretów; otwarte sprawy praw do utrwalonych wyników GUGiK UUG/Geoapify i atrybucji — udokumentowane w `docs/ZRODLA-DANYCH-I-LICENCJE.md`), przegląd implementacji (T10: 2 × P2 i 1 × P3 — awaria workera po starcie, nieograniczone anulowania, tekst opisu mapy; naprawione) i re-check (T11: APPROVE). Dodano testy w Firefoksie (WebDriver BiDi) i dotykowe w Chrome. Szczegóły: `evidence/2026-11-18-map061/README.md`. Context7 i Notion nie były dostępne w tej sesji.
+
 ## Co świadomie pozostaje ograniczeniem prototypu
 
 - 7 adresów pozostaje bez współrzędnych na wyraźne polecenie użytkownika.
