@@ -1,0 +1,427 @@
+{
+  "tag": "after",
+  "run": "2",
+  "url": "file:///<path>/planner-offline.html",
+  "plannerVisibleMs": 1113,
+  "firstIdleMs": 3066,
+  "startup": {
+    "longTasks": {
+      "count": 7,
+      "totalMs": 1056,
+      "maxMs": 530
+    },
+    "heapMB": 148,
+    "process": {
+      "processes": 8,
+      "privateMB": 823,
+      "workingSetMB": 1050
+    }
+  },
+  "tour": [
+    {
+      "lon": 18.1,
+      "lat": 50.6,
+      "zoom": 7,
+      "idleMs": 1586,
+      "frames": 70,
+      "worstFrameMs": 21,
+      "framesOver50ms": 0,
+      "longTasks": {
+        "count": 0,
+        "totalMs": 0,
+        "maxMs": 0
+      }
+    },
+    {
+      "lon": 18.1,
+      "lat": 50.6,
+      "zoom": 9,
+      "idleMs": 1568,
+      "frames": 70,
+      "worstFrameMs": 21,
+      "framesOver50ms": 0,
+      "longTasks": {
+        "count": 0,
+        "totalMs": 0,
+        "maxMs": 0
+      }
+    },
+    {
+      "lon": 17.92,
+      "lat": 50.67,
+      "zoom": 12,
+      "idleMs": 1939,
+      "frames": 69,
+      "worstFrameMs": 22,
+      "framesOver50ms": 0,
+      "longTasks": {
+        "count": 0,
+        "totalMs": 0,
+        "maxMs": 0
+      }
+    },
+    {
+      "lon": 17.92,
+      "lat": 50.67,
+      "zoom": 15,
+      "idleMs": 1576,
+      "frames": 68,
+      "worstFrameMs": 48,
+      "framesOver50ms": 0,
+      "longTasks": {
+        "count": 0,
+        "totalMs": 0,
+        "maxMs": 0
+      }
+    },
+    {
+      "lon": 18.66,
+      "lat": 50.22,
+      "zoom": 14,
+      "idleMs": 1899,
+      "frames": 69,
+      "worstFrameMs": 20,
+      "framesOver50ms": 0,
+      "longTasks": {
+        "count": 0,
+        "totalMs": 0,
+        "maxMs": 0
+      }
+    },
+    {
+      "lon": 18.66,
+      "lat": 50.22,
+      "zoom": 17,
+      "idleMs": 1581,
+      "frames": 69,
+      "worstFrameMs": 19,
+      "framesOver50ms": 0,
+      "longTasks": {
+        "count": 0,
+        "totalMs": 0,
+        "maxMs": 0
+      }
+    },
+    {
+      "lon": 17.6,
+      "lat": 50.4,
+      "zoom": 11,
+      "idleMs": 1550,
+      "frames": 70,
+      "worstFrameMs": 21,
+      "framesOver50ms": 0,
+      "longTasks": {
+        "count": 0,
+        "totalMs": 0,
+        "maxMs": 0
+      }
+    },
+    {
+      "lon": 18.9,
+      "lat": 50,
+      "zoom": 13,
+      "idleMs": 1544,
+      "frames": 69,
+      "worstFrameMs": 19,
+      "framesOver50ms": 0,
+      "longTasks": {
+        "count": 0,
+        "totalMs": 0,
+        "maxMs": 0
+      }
+    },
+    {
+      "lon": 18.3,
+      "lat": 51,
+      "zoom": 10,
+      "idleMs": 1564,
+      "frames": 69,
+      "worstFrameMs": 20,
+      "framesOver50ms": 0,
+      "longTasks": {
+        "count": 0,
+        "totalMs": 0,
+        "maxMs": 0
+      }
+    },
+    {
+      "lon": 18.1,
+      "lat": 50.6,
+      "zoom": 8,
+      "idleMs": 1549,
+      "frames": 69,
+      "worstFrameMs": 21,
+      "framesOver50ms": 0,
+      "longTasks": {
+        "count": 0,
+        "totalMs": 0,
+        "maxMs": 0
+      }
+    }
+  ],
+  "tourSummary": {
+    "worstFrameMs": 48,
+    "medianWorstFrameMs": 21,
+    "framesOver50ms": 0,
+    "longTaskTotalMs": 0,
+    "longTaskMaxMs": 0,
+    "medianIdleMs": 1576
+  },
+  "afterTour": {
+    "heapMB": 270,
+    "process": {
+      "processes": 8,
+      "privateMB": 1135,
+      "workingSetMB": 1390
+    }
+  },
+  "manyViews": {
+    "count": 60,
+    "medianIdleMs": 613,
+    "p95IdleMs": 651,
+    "maxIdleMs": 654,
+    "longTasks": {
+      "count": 0,
+      "totalMs": 0,
+      "maxMs": 0
+    },
+    "heapMB": 61,
+    "process": {
+      "processes": 8,
+      "privateMB": 664,
+      "workingSetMB": 943
+    }
+  },
+  "interactions": [
+    {
+      "label": "generate all baskets",
+      "latencyMs": 242,
+      "worstFrameMs": 242,
+      "visits": 13,
+      "routes": 8,
+      "before": {
+        "visits": 0,
+        "routes": 0
+      },
+      "longTasks": {
+        "count": 1,
+        "totalMs": 232,
+        "maxMs": 232
+      }
+    },
+    {
+      "label": "hide team TEST-01",
+      "latencyMs": 8,
+      "worstFrameMs": 8,
+      "visits": 10,
+      "routes": 6,
+      "before": {
+        "visits": 13,
+        "routes": 8
+      },
+      "longTasks": {
+        "count": 0,
+        "totalMs": 0,
+        "maxMs": 0
+      }
+    },
+    {
+      "label": "show team TEST-01",
+      "latencyMs": 11,
+      "worstFrameMs": 11,
+      "visits": 13,
+      "routes": 8,
+      "before": {
+        "visits": 10,
+        "routes": 6
+      },
+      "longTasks": {
+        "count": 0,
+        "totalMs": 0,
+        "maxMs": 0
+      }
+    },
+    {
+      "label": "hide team TEST-02",
+      "latencyMs": 12,
+      "worstFrameMs": 12,
+      "visits": 10,
+      "routes": 6,
+      "before": {
+        "visits": 13,
+        "routes": 8
+      },
+      "longTasks": {
+        "count": 0,
+        "totalMs": 0,
+        "maxMs": 0
+      }
+    },
+    {
+      "label": "show team TEST-02",
+      "latencyMs": 18,
+      "worstFrameMs": 18,
+      "visits": 13,
+      "routes": 8,
+      "before": {
+        "visits": 10,
+        "routes": 6
+      },
+      "longTasks": {
+        "count": 0,
+        "totalMs": 0,
+        "maxMs": 0
+      }
+    },
+    {
+      "label": "hide team TEST-03",
+      "latencyMs": 22,
+      "worstFrameMs": 22,
+      "visits": 11,
+      "routes": 7,
+      "before": {
+        "visits": 13,
+        "routes": 8
+      },
+      "longTasks": {
+        "count": 0,
+        "totalMs": 0,
+        "maxMs": 0
+      }
+    },
+    {
+      "label": "show team TEST-03",
+      "latencyMs": 14,
+      "worstFrameMs": 14,
+      "visits": 13,
+      "routes": 8,
+      "before": {
+        "visits": 11,
+        "routes": 7
+      },
+      "longTasks": {
+        "count": 0,
+        "totalMs": 0,
+        "maxMs": 0
+      }
+    },
+    {
+      "label": "hide routes layer",
+      "latencyMs": 11,
+      "worstFrameMs": 11,
+      "visits": 13,
+      "routes": 0,
+      "before": {
+        "visits": 13,
+        "routes": 8
+      },
+      "longTasks": {
+        "count": 0,
+        "totalMs": 0,
+        "maxMs": 0
+      }
+    },
+    {
+      "label": "show routes layer",
+      "latencyMs": 12,
+      "worstFrameMs": 12,
+      "visits": 13,
+      "routes": 8,
+      "before": {
+        "visits": 13,
+        "routes": 0
+      },
+      "longTasks": {
+        "count": 0,
+        "totalMs": 0,
+        "maxMs": 0
+      }
+    },
+    {
+      "label": "return a visit to the queue",
+      "latencyMs": 172,
+      "worstFrameMs": 172,
+      "visits": 12,
+      "routes": 7,
+      "before": {
+        "visits": 13,
+        "routes": 8
+      },
+      "longTasks": {
+        "count": 1,
+        "totalMs": 161,
+        "maxMs": 161
+      }
+    },
+    {
+      "label": "undo (visit returns)",
+      "latencyMs": 92,
+      "worstFrameMs": 92,
+      "visits": 13,
+      "routes": 8,
+      "before": {
+        "visits": 12,
+        "routes": 7
+      },
+      "longTasks": {
+        "count": 1,
+        "totalMs": 78,
+        "maxMs": 78
+      }
+    },
+    {
+      "label": "change day to 2026-11-18",
+      "latencyMs": 90,
+      "worstFrameMs": 90,
+      "visits": 0,
+      "routes": 0,
+      "before": {
+        "visits": 13,
+        "routes": 8
+      },
+      "longTasks": {
+        "count": 1,
+        "totalMs": 75,
+        "maxMs": 75
+      }
+    },
+    {
+      "label": "change day back to 2026-11-19",
+      "latencyMs": 99,
+      "worstFrameMs": 99,
+      "visits": 13,
+      "routes": 8,
+      "before": {
+        "visits": 0,
+        "routes": 0
+      },
+      "longTasks": {
+        "count": 1,
+        "totalMs": 86,
+        "maxMs": 86
+      }
+    }
+  ],
+  "interactionSummary": {
+    "medianLatencyMs": 18,
+    "maxLatencyMs": 242,
+    "worstFrameMs": 242,
+    "longTaskMaxMs": 232,
+    "timedOut": []
+  },
+  "final": {
+    "heapMB": 103,
+    "process": {
+      "processes": 8,
+      "privateMB": 873,
+      "workingSetMB": 1150
+    },
+    "longTasksTotal": {
+      "count": 16,
+      "totalMs": 1946,
+      "maxMs": 530
+    },
+    "pageErrors": []
+  },
+  "peakHeapMB": 270
+}

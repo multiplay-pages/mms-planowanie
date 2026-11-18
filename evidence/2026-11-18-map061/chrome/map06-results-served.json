@@ -1,0 +1,141 @@
+{
+  "url": "http://127.0.0.1:8765/",
+  "results": [
+    {
+      "id": "M0",
+      "title": "Mapa operacyjna startuje lokalnie (WebGL)",
+      "expected": "MapLibre aktywny, podkład z lokalnych kafli, 0 żądań zewnętrznych",
+      "actual": "przeglądarka offline=false; wizyty 0, nieprzydzielone 102, warstwy {\"roads-fill\":\"visible\",\"road-labels\":\"visible\",\"routes\":\"visible\",\"visits-installation\":\"visible\",\"unassigned\":\"visible\",\"satellite\":\"absent\"}, zoom 7.1",
+      "status": "PASS",
+      "evidence": [
+        "M0-served-initial.png"
+      ]
+    },
+    {
+      "id": "M1",
+      "title": "Wszystkie koszyki dnia, kolor ekipy, numeracja, spójność z planem",
+      "expected": "każda wizyta dnia z pozycją jest na mapie z poprawną ekipą/kolorem/numerem; brak nadmiarowych",
+      "actual": "plan 13 wizyt, mapa 13; ekipy TEST-01,TEST-02,TEST-03,TEST-04,TEST-05; rodzaje {\"installation\":13}; trasy 8 nóg; bez pozycji []; zgodność {\"ok\":true,\"missing\":[],\"wrong\":[],\"extra\":[]}",
+      "status": "PASS",
+      "evidence": [
+        "M1-served-all-baskets.png"
+      ]
+    },
+    {
+      "id": "M2",
+      "title": "Kliknięcie punktu: szczegóły i przejście do edycji",
+      "expected": "popup ze zleceniem, ekipą, numerem; „Edytuj w planerze” wybiera zlecenie i ustawia fokus w formularzu",
+      "actual": "popup: \"TEST-013 · MPL | Koszyk TEST-01 · wizyta nr 1 · 08:00–11:00 | Automatyczna propozycja | 49-340 Lewin Brzeski, ul. Rynek 25/2 | Edytuj w planerze\"; po edycji tytuł \"TEST-013 MPL\", fokus assignment-team, popup otwarty=false",
+      "status": "PASS",
+      "evidence": [
+        "M2-served-popup.png"
+      ]
+    },
+    {
+      "id": "M3",
+      "title": "Przeniesienie instalacji aktualizuje markery i trasy bez przeładowania",
+      "expected": "po zmianie w planerze punkt ma nową ekipę/kolor/numer lub znika z dnia; trasy przeliczone; strona nieprzeładowana",
+      "actual": "TEST-013 TEST-01 → {\"team\":\"TEST-02\",\"day\":\"2026-11-20\",\"slot\":\"0\"} (próby: TEST-05/2026-11-19/2: notice error: Slot jest zajęty przez inne zlecenie (wspólny zasób instalacji i pomiarów). ; TEST-01/2026-11-19/2: notice error: Slot jest zajęty przez inne zlecenie (wspólny zasób instalacji i pomiarów). ; TEST-02/2026-11-20/0: notice success: Zapisano ręczną propozycję. Generator zachowa tę korektę.); na mapie: brak (inny dzień); trasy 8→7; zgodność {\"ok\":true,\"missing\":[],\"wrong\":[],\"extra\":[]}; bez przeładowania=true",
+      "status": "PASS",
+      "evidence": [
+        "M3-served-after-move.png"
+      ]
+    },
+    {
+      "id": "M4",
+      "title": "Cofnięcie i powrót do kolejki aktualizują mapę",
+      "expected": "po cofnięciu punkt wraca do koszyka; po „Wróć do kolejki” znika z koszyka (albo odmowa reguły bez zmian)",
+      "actual": "po cofnięciu TEST-01 nr 1, zgodność true; powrót do kolejki: notice success: Zlecenie wróciło do kolejki. → usunięty z mapy=true, skuteczne usunięcie z planu=true, zgodność true",
+      "status": "PASS",
+      "evidence": []
+    },
+    {
+      "id": "M5",
+      "title": "Zmiana daty bez wizyt z poprzedniego dnia",
+      "expected": "na 18.11 tylko wizyty 18.11; powrót na 19.11 przywraca koszyki",
+      "actual": "18.11: 0 wizyt, pozostałości [], panel \"KOSZYKI 2026-11-18\"; 19.11: 13 wizyt",
+      "status": "PASS",
+      "evidence": []
+    },
+    {
+      "id": "M6",
+      "title": "Ukrywanie/pokazywanie koszyka, nieprzydzielonych, tras i podkładu",
+      "expected": "ukrycie TEST-02 usuwa tylko jego punkty/trasy bez renumeracji innych; przełączniki działają i wracają",
+      "actual": "TEST-02 ukryty ok=true; po wyłączeniu: nieprzydzielone 0, trasy 0, drogi none; po włączeniu: nieprzydzielone 89, trasy 8, drogi visible",
+      "status": "PASS",
+      "evidence": [
+        "M6-served-layers-off.png"
+      ]
+    },
+    {
+      "id": "M7",
+      "title": "Satelita bez konfiguracji nie wysyła żądań",
+      "expected": "pozostaje podkład drogowy, komunikat i dialog konfiguracji; 0 żądań do dostawców",
+      "actual": "komunikat: notice error: Zdjęcia satelitarne wyłączone: Nie skonfigurowano dostawcy zdjęć.; dialog=true; źródło satelity=false; radio drogowa=true; żądania kafli 0",
+      "status": "PASS",
+      "evidence": []
+    },
+    {
+      "id": "M8",
+      "title": "Zachowanie planu po odświeżeniu",
+      "expected": "plan identyczny; mapa odtwarza te same wizyty",
+      "actual": "plan identyczny=true; wizyty 13; zgodność {\"ok\":true,\"missing\":[],\"wrong\":[],\"extra\":[]}",
+      "status": "PASS",
+      "evidence": []
+    },
+    {
+      "id": "M9",
+      "title": "Import planu aktualizuje mapę",
+      "expected": "po imporcie planu bez koszyka TEST-01 mapa nie pokazuje jego wizyt",
+      "actual": "komunikat: notice success: Wczytano i zweryfikowano plan lokalny. Poprzedni stan można cofn; wizyty TEST-01: 0; razem 10",
+      "status": "PASS",
+      "evidence": []
+    },
+    {
+      "id": "M10",
+      "title": "Klawiatura (lista wizyt) i widok mobilny",
+      "expected": "Enter na pozycji listy wybiera zlecenie i zachowuje fokus; na 390 px mapa pełnej szerokości, panel pod mapą, brak poziomego przewijania",
+      "actual": "klawiatura: fokus TEST-013, szczegóły \"TEST-013 MPL\"; mobile: mapa 327×523, panel pod mapą=true, scrollWidth 390/390",
+      "status": "PASS",
+      "evidence": [
+        "M10-served-mobile.png"
+      ]
+    },
+    {
+      "id": "M11",
+      "title": "Satelita i hybryda wyłącznie po konfiguracji, zgodzie i dopuszczeniu originu",
+      "expected": "bez zgody zapis odrzucony; satelita: raster widoczny, drogi ukryte; hybryda: raster + drogi + etykiety; atrybucja jako tekst; powrót do drogowej usuwa źródło i zatrzymuje żądania; klucz nie pokazany",
+      "actual": "bez zgody: notice error: Nie zapisano: Brak potwierdzenia, że widoczny obszar mapy będzie wysyłany do; zapis: notice success: Zapisano dostawcę zdjęć w tej przeglądarce. ; satelita: warstwy {\"roads-fill\":\"none\",\"road-labels\":\"none\",\"routes\":\"visible\",\"visits-installation\":\"visible\",\"unassigned\":\"visible\",\"satellite\":\"visible\"}, kafle 4; hybryda: {\"roads-fill\":\"visible\",\"road-labels\":\"visible\",\"routes\":\"visible\",\"visits-installation\":\"visible\",\"unassigned\":\"visible\",\"satellite\":\"visible\"}; atrybucja HTML zawiera <b>=false; drogowa: źródło=false, nowe kafle po zoomie 0; status \"Podkład: hybryda — Atrapa <b>testowa</b>. Widoczny obszar jest wysyłany do http://127.0.0.1:8791.\" klucz widoczny=false",
+      "status": "PASS",
+      "evidence": [
+        "M11-served-satellite.png",
+        "M11-served-hybrid.png"
+      ]
+    },
+    {
+      "id": "M12",
+      "title": "Brak WebGL → mapa uproszczona (SVG)",
+      "expected": "mapa operacyjna ukryta, SVG z 102 punktami, generowanie działa",
+      "actual": "op ukryta=true; SVG widoczne=true, markery 102; generowanie: notice success: Plan 2026-11-18: 13 zleceń w koszykach. W ko",
+      "status": "PASS",
+      "evidence": []
+    },
+    {
+      "id": "M13",
+      "title": "Konsola i sieć",
+      "expected": "0 błędów konsoli/strony, 0 żądań poza loopback/file (atrapa dostawcy tylko w M11)",
+      "actual": "konsola []; pageerror []; nieudane []; nieudane blob []; zewnętrzne []; kafle atrapy 4; wszystkich 98",
+      "status": "PASS",
+      "evidence": []
+    }
+  ],
+  "network": {
+    "total": 98,
+    "external": [],
+    "tiles": 4,
+    "failed": [],
+    "blobFailed": [],
+    "console": [],
+    "pageErrors": []
+  }
+}

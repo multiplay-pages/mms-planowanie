@@ -1,0 +1,37 @@
+✔ O01 empty real plan yields 102 located queue points and seven aggregate location gaps (25.9738ms)
+✔ O02 all selected-day baskets are projected together with their own colours and summaries (25.8804ms)
+✔ O03 team palette follows the declared team index and stays stable across days and visibility (19.023ms)
+✔ O04 shuffled assignments are numbered by slot and connected in that same canonical order (16.9917ms)
+✔ O05 a two-slot assignment remains one numbered visit with its full time window (15.964ms)
+✔ O06 changing to another or empty day never retains visits or legs from the previous day (17.491ms)
+✔ O07 hiding a basket changes only visibility and never returns its visits to the queue (16.2843ms)
+✔ O08 routes and queue switches do not alter visits, summaries, or the underlying plan (18.3777ms)
+✔ O09 a measurement between installations keeps its sequence and team colour but has a distinct kind (15.5243ms)
+✔ O10 an unlocated middle visit leaves sequence 1 and 3 without inventing an A-to-C shortcut (15.1867ms)
+✔ O11 a signed multi-segment leg preserves all road vertices and its direction (17.3538ms)
+✔ O12 NO_PATH produces a typed gap and null totals, never a straight or zero-distance road (18.3142ms)
+✔ O12 SNAP_UNCERTAIN produces a typed gap and null totals, never a straight or zero-distance road (16.229ms)
+✔ O12 LOCATION_UNKNOWN produces a typed gap and null totals, never a straight or zero-distance road (17.4542ms)
+✔ O13 a missing middle leg separates two known legs and preserves their leg numbers (17.2913ms)
+✔ O14 an OK leg with disconnected geometry is reported and omitted without breaking visits (13.3491ms)
+✔ O14 an OK leg with truncated polyline geometry is reported and omitted without breaking visits (15.9549ms)
+✔ O15 empty and singleton baskets do not manufacture a commute, a return, or assessed zero totals (15.0187ms)
+✔ O16 seven unresolved positions remain accounted for when one is assigned to a hidden basket (14.2295ms)
+✔ O17 all six postcode-note positions remain usable at original coordinates with the source label (13.3704ms)
+✔ O18 an assignment on another day is absent from this day and never reclassified as global queue (19.943ms)
+✔ O19 move, removal, undo snapshots and JSON import always project their supplied current state (20.2233ms)
+✔ O20 AUTO, confirmation and released MANUAL status are reflected without changing road geometry (33.3209ms)
+✔ O21 frozen inputs and repeated calls are deterministic and do not mutate scenario, plan or options (49.3369ms)
+✔ O22 absent routing retains visits and emits NO_ROUTING instead of a synthetic line (3.35ms)
+✔ O23 queue predicates do not hide or renumber assigned visits and their routes (17.9495ms)
+✔ O24 bounds include every line vertex and point across all supplied collections (0.3706ms)
+✔ O25 no located features yields null bounds rather than a made-up viewport (0.115ms)
+✔ O26 selection marks only its matching assigned or queue feature and never changes the plan (15.4583ms)
+ℹ tests 29
+ℹ suites 0
+ℹ pass 29
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 649.6465

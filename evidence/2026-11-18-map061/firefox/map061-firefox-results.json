@@ -1,0 +1,65 @@
+{
+  "firefox": {
+    "browserName": "firefox",
+    "browserVersion": "160.0.1",
+    "platformName": "windows",
+    "headless": true,
+    "buildID": "20261116130455"
+  },
+  "results": [
+    {
+      "id": "F1",
+      "title": "Firefox, plik offline (file://): planer startuje, mapa operacyjna (WebGL + worker) albo bezpieczny SVG",
+      "status": "PASS",
+      "actual": "{\"operational\":true,\"loaded\":true,\"zoom\":7.13067390467604,\"webgl\":true,\"svgPaths\":0}; błędy konsoli []; ostrzeżenia 0; zewnętrzne żądania 0"
+    },
+    {
+      "id": "F2",
+      "title": "Firefox: lokalne kafle dróg rysowane (wątek roboczy)",
+      "status": "PASS",
+      "actual": "{\"roads\":703,\"zoom\":13}"
+    },
+    {
+      "id": "F3",
+      "title": "Firefox: generowanie koszyków i filtr ekipy aktualizują mapę bez przeładowania",
+      "status": "PASS",
+      "actual": "{\"all\":13,\"hidden\":10,\"restored\":13,\"teams\":5}"
+    },
+    {
+      "id": "F4",
+      "title": "Firefox: kliknięcie myszą w wizytę otwiera popup, „Edytuj w planerze” wybiera zlecenie",
+      "status": "PASS",
+      "actual": "{\"target\":{\"x\":597,\"y\":709,\"id\":\"TEST-013\"},\"popup\":true,\"edited\":{\"selected\":\"TEST-013\",\"focus\":\"assignment-team\"}}"
+    },
+    {
+      "id": "F5",
+      "title": "Firefox: kółko myszy zmienia skalę, przeciągnięcie przesuwa mapę",
+      "status": "PASS",
+      "actual": "{\"before\":{\"z\":15,\"c\":{\"lng\":17.6164817378619,\"lat\":50.7491282196604}},\"afterWheel\":15.402190330605787,\"afterDrag\":{\"z\":15.402190330605787,\"c\":{\"lng\":17.6144399175721,\"lat\":50.74977229081216}}}"
+    },
+    {
+      "id": "F6",
+      "title": "Firefox: dotyk (tap) w wizytę otwiera popup (symulowane wejście dotykowe BiDi, nie fizyczny ekran)",
+      "status": "PASS",
+      "actual": "{\"target\":{\"x\":597,\"y\":692,\"id\":\"TEST-049\"},\"popup\":true}"
+    },
+    {
+      "id": "F7",
+      "title": "Firefox: szerokość 390 px bez poziomego przewijania",
+      "status": "PASS",
+      "actual": "{\"scrollW\":390,\"innerW\":390,\"mapW\":327}"
+    },
+    {
+      "id": "F8",
+      "title": "Firefox, wariant z serwera (moduły ES, worker modułowy)",
+      "status": "PASS",
+      "actual": "{\"operational\":true,\"loaded\":true,\"zoom\":7.13067390467604,\"webgl\":true,\"svgPaths\":0}; błędy konsoli []; zewnętrzne żądania 0"
+    },
+    {
+      "id": "F9",
+      "title": "Firefox: brak żądań poza file:/loopback i brak błędów konsoli w całym przebiegu",
+      "status": "PASS",
+      "actual": "{\"external\":[],\"errors\":[],\"warnings\":[]}"
+    }
+  ]
+}

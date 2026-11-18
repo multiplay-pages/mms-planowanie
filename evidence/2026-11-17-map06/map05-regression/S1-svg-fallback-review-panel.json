@@ -1,0 +1,21 @@
+{
+  "queue": "109",
+  "located": "102 / 109 adresów",
+  "review": [
+    "TEST-019 46-023 Osowiec, ul. Dworcowa 7B/2Różny kod pocztowy usługi — zachowano ",
+    "TEST-021 47-325 Kamień Śląski, ul. Wapienna 1Różny kod pocztowy usługi — zachowa",
+    "TEST-067 44-213 Rybnik, ul. Arki Bożka 51IRóżny kod pocztowy usługi — zachowano ",
+    "TEST-069 46-211 Maciejów, 39/2Brak lub różny kod pocztowy",
+    "TEST-073 56-400 Boguszyce, 22E/2Usługa nie zwróciła punktu — adres źródłowy zach",
+    "TEST-077 49-100 Brzęczkowice, 15AUsługa nie zwróciła punktu — adres źródłowy zac",
+    "TEST-080 44-213 Rybnik, ul. Jodłowa 68Różny kod pocztowy usługi — zachowano kod ",
+    "TEST-082 47-120 Zawadzkie, ul. Miarki 7/7Różny kod pocztowy usługi — zachowano k",
+    "TEST-096 47-316 Malnia, ul. Sosnowa 7Różny kod pocztowy usługi — zachowano kod ź",
+    "TEST-097 46-320 Sołtysy, BNUsługa nie zwróciła punktu — adres źródłowy zachowano",
+    "TEST-105 44-177 Paniówki, ul. Gliwicka BN3Błąd odpowiedzi usługi — nie oznacza b",
+    "TEST-108 46-100 Namysłów, ul. Kazimierza Pułaskiego 18/2Usługa nie zwróciła punk",
+    "TEST-109 46-048 Zębowice, ul. Leśna BN1Błąd odpowiedzi usługi — nie oznacza błęd"
+  ],
+  "markers": 102,
+  "dashed": 6
+}
