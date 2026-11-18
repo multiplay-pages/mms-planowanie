@@ -1,5 +1,6 @@
 // MAP-07B optimizer: hard rules, protection of confirmed/manual assignments, determinism, explanations. Real saved local roads, no network.
 import test from 'node:test';
+import vm from 'node:vm';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import {createScenario,createPlan,applyAction,validatePlan,placementError} from '../planner-model.mjs';
@@ -126,4 +127,14 @@ test('a proposal cannot be built on a plan from another dataset and eligibility 
   assert.ok(pool.length>50&&excluded.length>10);
   assert.ok(excluded.every(item=>item.reason.length>5));
   assert.equal(placementError(scenario,createPlan(scenario),{orderId:'TEST-001',teamId:'TEST-01',date:DATE,start:0,origin:'AUTO',confirmed:false})?.kind,'resource');
+});
+
+test('the modules still concatenate into the single offline script scope without duplicate top-level names',async()=>{
+  // build_planner.py strips imports/exports and concatenates the modules; a clash is a SyntaxError that module-based tests cannot see.
+  const names=['locations.mjs','routes.mjs','planner-model.mjs','optimizer.mjs','map.mjs','planner-map.mjs','operational-map.mjs','embedded-data.mjs','road-tiles.mjs','road-tile-client.mjs','maplibre-view.mjs','planner.mjs'];
+  const parts=await Promise.all(names.map(name=>readFile(new URL('../'+name,import.meta.url),'utf8')));
+  const build=await readFile(new URL('../build_planner.py',import.meta.url),'utf8');
+  for(const name of names)assert.ok(build.includes(`'${name}'`),`${name} is part of the offline build`);
+  const body=parts.map(part=>part.replace(/^export (function|const|class|async function) /gm,'$1 ').replace(/^import[^\n]*\n/gm,'')).join('\n');
+  assert.doesNotThrow(()=>new vm.Script('(function(){"use strict";\n'+body+'\n})();'));
 });

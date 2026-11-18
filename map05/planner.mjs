@@ -561,8 +561,8 @@ $('satellite-form').addEventListener('submit',event=>{
 
 // MAP-07B: simulation of cross-basket optimisation. The proposal is a separate plan object; it never replaces `plan`
 // until the user accepts it in the dialog, and it is never persisted.
-const optState={view:'current'};let proposal=null,optApplied=false;
-const previewPlan=()=>proposal&&optState.view==='proposal'&&proposal.base===plan&&proposal.date===state.date?proposal.result.plan:plan;
+const optState={view:'current'};let optProposal=null,optApplied=false;
+const previewPlan=()=>optProposal&&optState.view==='proposal'&&optProposal.base===plan&&optProposal.date===state.date?optProposal.result.plan:plan;
 const optKm=m=>m===null||m===undefined?'—':`${(m/1000).toLocaleString('pl-PL',{maximumFractionDigits:1})} km`;
 const optMin=s=>`${Math.round(s/60)} min`;
 function setOptStatus(message,error=false) {
@@ -574,8 +574,8 @@ function protectedPreserved(base,next) {
 function syncOptimizer() {
   const spec=VARIANTS[$('opt-variant').value];
   $('opt-hierarchy').textContent=spec?`Hierarchia celów tego wariantu (symulacja, niezatwierdzona): ${spec.hierarchy.join(' → ')}.`:'';
-  if(proposal&&(proposal.base!==plan||proposal.date!==state.date)) {
-    proposal=null;optState.view='current';
+  if(optProposal&&(optProposal.base!==plan||optProposal.date!==state.date)) {
+    optProposal=null;optState.view='current';
     document.querySelector('input[name="opt-view"][value="current"]').checked=true;
     $('opt-result').hidden=true;
     setOptStatus(optApplied?'Propozycja została zastosowana do planu. Można ją cofnąć przyciskiem „Cofnij zmianę”.':'Plan lub dzień zmienił się — poprzednia propozycja została wycofana. Oblicz ją ponownie.');optApplied=false;
@@ -585,8 +585,8 @@ function syncOptimizer() {
 }
 function optOrderLabel(id) {const order=orderById(id);return `${id} (${escapeText(addressFor(order).city)})`;}
 function renderOptimizer() {
-  if(!proposal)return;
-  const {result}=proposal,before=result.before,after=result.after;
+  if(!optProposal)return;
+  const {result}=optProposal,before=result.before,after=result.after;
   const open=teams=>teams.reduce((sum,team)=>sum+slotsFor(team.id).length,0);
   const occupiedBy=day=>day.teams.reduce((sum,team)=>sum+team.orders.reduce((s,id)=>s+orderById(id).slotsRequired,0),0);
   const freeBefore=open(scenario.teams)-occupiedBy(before),freeAfter=open(scenario.teams)-occupiedBy(after);
@@ -629,36 +629,36 @@ $('opt-run').addEventListener('click',()=>{
     try {
       const base=plan,date=state.date;
       const result=proposeDayPlan(scenario,base,date,{variant:$('opt-variant').value,budgetMs:3000});
-      proposal={result,base,date};optState.view='current';
+      optProposal={result,base,date};optState.view='current';
       document.querySelector('input[name="opt-view"][value="current"]').checked=true;
       renderOptimizer();updateOperationalMap();
-    } catch(error) {proposal=null;$('opt-result').hidden=true;setOptStatus(`Nie udało się obliczyć propozycji: ${error.message}`,true);}
+    } catch(error) {optProposal=null;$('opt-result').hidden=true;setOptStatus(`Nie udało się obliczyć propozycji: ${error.message}`,true);}
     finally {$('opt-run').disabled=!scenario.routing;}
   },30);
 });
 document.querySelectorAll('input[name="opt-view"]').forEach(input=>input.addEventListener('change',()=>{
-  if(!input.checked||!proposal)return;
+  if(!input.checked||!optProposal)return;
   optState.view=input.value;updateOperationalMap({fit:true});
 }));
 $('opt-reject').addEventListener('click',()=>{
-  proposal=null;optState.view='current';document.querySelector('input[name="opt-view"][value="current"]').checked=true;
+  optProposal=null;optState.view='current';document.querySelector('input[name="opt-view"][value="current"]').checked=true;
   $('opt-result').hidden=true;setOptStatus('Propozycja odrzucona. Plan pozostał bez zmian.');updateOperationalMap({fit:true});
 });
 $('opt-accept').addEventListener('click',()=>{
-  if(!proposal||proposal.base!==plan||proposal.date!==state.date){setOptStatus('Plan zmienił się po obliczeniu propozycji. Oblicz ją ponownie.',true);return;}
-  const {result}=proposal,added=result.changes.filter(c=>c.type==='ADDED').length,moved=result.changes.filter(c=>c.type==='MOVED').length,removed=result.changes.filter(c=>c.type==='REMOVED').length;
-  $('opt-dialog-text').textContent=`Dzień ${proposal.date}: ${added} nowych, ${moved} przeniesionych, ${removed} usuniętych wizyt. Zaplanowane zlecenia ${result.before.count} → ${result.after.count}, odległość koszyków ${optKm(result.before.km)} → ${optKm(result.after.km)}. Zamienione zostaną tylko automatyczne, niepotwierdzone propozycje tego dnia; potwierdzone i ręczne przydziały pozostają. Zmianę można cofnąć przyciskiem „Cofnij zmianę”.`;
+  if(!optProposal||optProposal.base!==plan||optProposal.date!==state.date){setOptStatus('Plan zmienił się po obliczeniu propozycji. Oblicz ją ponownie.',true);return;}
+  const {result}=optProposal,added=result.changes.filter(c=>c.type==='ADDED').length,moved=result.changes.filter(c=>c.type==='MOVED').length,removed=result.changes.filter(c=>c.type==='REMOVED').length;
+  $('opt-dialog-text').textContent=`Dzień ${optProposal.date}: ${added} nowych, ${moved} przeniesionych, ${removed} usuniętych wizyt. Zaplanowane zlecenia ${result.before.count} → ${result.after.count}, odległość koszyków ${optKm(result.before.km)} → ${optKm(result.after.km)}. Zamienione zostaną tylko automatyczne, niepotwierdzone propozycje tego dnia; potwierdzone i ręczne przydziały pozostają. Zmianę można cofnąć przyciskiem „Cofnij zmianę”.`;
   $('opt-dialog').showModal();
 });
 $('opt-dialog-cancel').addEventListener('click',()=>{$('opt-dialog').close();$('opt-accept').focus();});
 $('opt-dialog-accept').addEventListener('click',()=>{
   $('opt-dialog').close();
-  if(!proposal||proposal.base!==plan||proposal.date!==state.date){setOptStatus('Plan zmienił się po obliczeniu propozycji. Oblicz ją ponownie.',true);return;}
-  const next=proposal.result.plan,summary=proposal.result;
+  if(!optProposal||optProposal.base!==plan||optProposal.date!==state.date){setOptStatus('Plan zmienił się po obliczeniu propozycji. Oblicz ją ponownie.',true);return;}
+  const next=optProposal.result.plan,summary=optProposal.result;
   if(!protectedPreserved(plan,next)){setOptStatus('Propozycja naruszałaby potwierdzony lub ręczny przydział i została odrzucona.',true);return;}
   try {
     optState.view='current';optApplied=true;
-    updatePlan(next,`Zastosowano propozycję optymalizacji (${summary.variantLabel}): ${summary.after.count} zleceń w koszykach ${proposal?.date??state.date}, odległość ${optKm(summary.after.km)}. Można cofnąć.`);
+    updatePlan(next,`Zastosowano propozycję optymalizacji (${summary.variantLabel}): ${summary.after.count} zleceń w koszykach ${optProposal?.date??state.date}, odległość ${optKm(summary.after.km)}. Można cofnąć.`);
     updateOperationalMap({fit:true});$('undo').focus();
   } catch(error) {optApplied=false;showMessage(`Nie zastosowano propozycji: ${error.message}`,true);}
 });
