@@ -16,3 +16,6 @@ map05/basemap/planner-data.json
 map05/basemap/regional-osm.json.gz
 map05/basemap/regional-part-*.json.gz
 map05/data/local-route-cache/
+
+map05/planner-offline-rich.html
+map05/basemap/map-pack.pmtiles
