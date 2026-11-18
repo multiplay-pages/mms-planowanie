@@ -8,7 +8,7 @@ import tempfile
 import unittest
 
 from map05.basemap import pmtiles_io as pmtiles
-from map05.basemap.build_map_pack import Coverage, Tiler, decode_polyline5, road_max_rank
+from map05.basemap.build_map_pack import Coverage, Tiler, decode_polyline5, meets_bounds, present_layers, road_max_rank
 from map05.basemap.vector_tiles import Layer, clip_line, clip_polygon, decode_tile, encode_tile, ring_area
 
 
@@ -227,6 +227,17 @@ class MapPackBuilderTests(unittest.TestCase):
 
 
 class Map08RegressionTests(unittest.TestCase):
+    def test_features_crossing_the_area_edge_are_kept(self):
+        bounds = (0, 0, 10, 10)
+        self.assertTrue(meets_bounds([5, -20], [3, 3], bounds))
+        self.assertTrue(meets_bounds([4, 5], [4, 4], bounds))
+        self.assertFalse(meets_bounds([-20, -5], [3, 3], bounds))
+        self.assertFalse(meets_bounds([4, 5], [11, 12], bounds))
+
+    def test_only_layers_with_features_are_announced(self):
+        self.assertEqual(present_layers({('roads', 5): 3, ('building', 14): 0, ('places', 5): 1}), ['roads', 'places'])
+        self.assertEqual(present_layers({}), [])
+
     def test_coverage_reaches_points_across_longitude_at_high_latitude(self):
         self.assertTrue(Coverage([(-0.001, 50)], 15).near(0.204, 50))
         self.assertFalse(Coverage([(-0.001, 50)], 15).near(0.30, 50))

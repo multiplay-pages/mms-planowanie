@@ -430,8 +430,8 @@ test('without the Worker API the SVG map stays and the operational map is never 
 // ---- MAP-08: large operational map, route controls, details, honest basemap messages -------------
 const regionalFixture={regions:{PLANNER:{encoding:'polyline5-indexed',categories:['primary'],names:[''],bounds:[17.2,49.9,19,51.5],features:[]}}};
 async function mountMap(t,options={}) {
-  const calls={updates:[],fits:[],flags:[],variants:[],basemaps:[]};
-  const fakeView=()=>({ready:Promise.resolve(),rich:true,layers:null,update(layers){calls.updates.push(layers);this.layers=layers;},fit:(bounds,opts)=>calls.fits.push([bounds,opts]),flyTo(){},setFlags:flags=>calls.flags.push(flags),setVariant:id=>calls.variants.push(id),setBasemap:(mode,config)=>calls.basemaps.push([mode,config]),destroy(){},resize(){}});
+  const calls={updates:[],fits:[],flags:[],variants:[],basemaps:[],packLayers:options.packLayers};
+  const fakeView=options=>({ready:Promise.resolve(),rich:true,packLayers:calls.packLayers??null,layers:null,callbacks:calls.callbacks=options.callbacks,update(layers){calls.updates.push(layers);this.layers=layers;},fit:(bounds,opts)=>calls.fits.push([bounds,opts]),flyTo(){},setFlags:flags=>calls.flags.push(flags),setVariant:id=>calls.variants.push(id),setBasemap:(mode,config)=>calls.basemaps.push([mode,config]),destroy(){},resize(){}});
   const scenario=modelApi.createScenario(dataset,uug),routing=roadFixture(scenario);
   const ui=await mount(t,{geocoding:uug,routing,basemap:regionalFixture,Worker:recordingWorker(),createOperationalMapView:fakeView,...options});
   for(let i=0;i<5;i++)await new Promise(resolve=>setImmediate(resolve));
@@ -523,4 +523,54 @@ test('MAP-08 after Hybrid → Road the status matches the real mode (audit regre
   assert.equal(calls.basemaps.at(-1)[0],'road');
   choose('satellite');assert.match(ui.$('#op-status').textContent,/^Podkład: Satelita/);
   choose('road');assert.match(ui.$('#op-status').textContent,/^Podkład: Drogowa/);
+});
+
+test('MAP-08 "Edytuj w planerze" leaves the large map so the order panel is not hidden under the overlay',async t=>{
+  const {ui}=await mountMap(t);
+  const id=ui.$('#op-layers button[data-order]').dataset.order;
+  ui.click(`#op-layers button[data-order="${id}"]`);ui.click('#op-workspace');
+  assert.ok(ui.$('#map-card').classList.contains('op-workspace'));
+  ui.click('#op-detail [data-op-edit]');
+  assert.ok(!ui.$('#map-card').classList.contains('op-workspace'));assert.ok(!ui.window.document.body.classList.contains('op-ws-open'));
+  assert.match(ui.$('#order-title').textContent,new RegExp(id));
+});
+
+test('MAP-08 a fatal map failure inside the large map leaves no overlay behind',async t=>{
+  const {ui,calls}=await mountMap(t);
+  ui.click('#op-workspace');assert.ok(ui.window.document.body.classList.contains('op-ws-open'));
+  calls.callbacks.onFatal('Utracono kontekst WebGL.');
+  assert.ok(!ui.window.document.body.classList.contains('op-ws-open'));assert.ok(!ui.$('#map-card').classList.contains('op-workspace'));
+  assert.equal(ui.$('#op-map-shell').hidden,true);assert.equal(ui.$('#planner').hidden,false);
+  assert.match(ui.$('#message').textContent,/Utracono kontekst WebGL/);
+});
+
+test('MAP-08 a pack without buildings and water is described as incomplete and its switches are disabled',async t=>{
+  const {ui}=await mountMap(t,{packLayers:new Set(['roads','places'])});
+  assert.equal(ui.$('[data-op-flag="buildings"]').disabled,true);assert.equal(ui.$('[data-op-flag="nature"]').disabled,true);
+  assert.equal(ui.$('[data-op-flag="streets"]').disabled,false);
+  assert.match(ui.$('#op-status').textContent,/niepełny, brak warstw: budynki, woda, tereny/);
+  assert.doesNotMatch(ui.$('#op-status').textContent,/\(drogi, nazwy, budynki, woda, tereny\)/);
+});
+
+test('MAP-08 a pack that keeps failing after it opened is replaced by the roads-only map with an honest status',async t=>{
+  const {ui,calls}=await mountMap(t);
+  const created=()=>calls.updates.length;
+  const before=created();
+  calls.callbacks.onPackFailure('błąd odczytu kafla');
+  for(let i=0;i<8;i++)await new Promise(resolve=>setImmediate(resolve));
+  assert.match(ui.$('#op-status').textContent,/Pakiet mapy przestał działać — przełączono na podkład uproszczony/);
+  assert.match(ui.$('#message').textContent,/błąd odczytu kafla/);
+  assert.equal(ui.$('#op-map-shell').hidden,false,'the operational map stays available');
+  assert.ok(calls.updates.length>before,'the new view is fed the same plan');
+  const again=calls.callbacks;calls.callbacks.onPackFailure('drugi raz');
+  for(let i=0;i<3;i++)await new Promise(resolve=>setImmediate(resolve));
+  assert.equal(again,calls.callbacks);
+});
+
+test('MAP-08 satellite tooltips follow availability once a provider is configured',async t=>{
+  const config={preset:'custom',url:'http://localhost:9/tiles/{z}/{x}/{y}.jpg',attribution:'© Test',consent:true};
+  const off=await mountMap(t);
+  assert.match(off.ui.$('input[name="op-basemap"][value="hybrid"]').closest('label').title,/niedostępna/);
+  const on=await mountMap(t,{tileOrigins:'http://localhost:9',saved:new Map([['mms-map06-satellite-v1',JSON.stringify(config)]])});
+  assert.doesNotMatch(on.ui.$('input[name="op-basemap"][value="hybrid"]').closest('label').title,/niedostępna/);
 });

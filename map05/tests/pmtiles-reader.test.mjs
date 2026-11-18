@@ -150,6 +150,7 @@ test('httpSource uses byte ranges with HTTP 206 and forwards the tile abort sign
   const end = secondStart + secondLength - 1;
   assert.deepEqual(calls, [
     {range: 'bytes=0-16383', signal: undefined},
+    {range: `bytes=${end}-${end}`, signal: undefined}, // open-time probe: the data section is really there
     {range: `bytes=${start}-${secondStart - 1}`, signal},
     {range: `bytes=${secondStart}-${end}`, signal},
   ]);
@@ -173,4 +174,16 @@ test('httpSource slices and caches the full response when HTTP 200 ignores Range
 
 test('a directory whose first entry has a zero offset code is rejected',()=>{
   assert.throws(()=>parseDirectory(Uint8Array.of(1,0,1,1,0)),/katalog/i);
+});
+
+test('a pack cut off inside the data section is rejected when it is opened, not at the first tile', async () => {
+  const header = parseHeader(archive);
+  const cut = archive.subarray(0, header.dataOffset + 3);
+  await assert.rejects(openPack(memorySource(cut)), /ucięty/);
+});
+
+test('openPack lists the layers the pack really contains', async () => {
+  const pack = await openPack(memorySource(archive));
+  assert.ok(pack.layers instanceof Set);
+  assert.deepEqual([...pack.layers].sort(), (metadata.vector_layers ?? []).map((layer) => layer.id).sort());
 });

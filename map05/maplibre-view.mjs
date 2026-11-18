@@ -19,7 +19,7 @@ export const OP_LAYER_GROUPS={
 };
 const OP_FILL_LAYERS=['landuse-forest','landuse-park','landuse-residential','landuse-industrial','landuse-cemetery','water','waterway','rail-casing','rail','building','building-line'];
 export const OP_DEFAULT_FLAGS={routes:true,arrows:true,legs:true,numbers:true,unassigned:true,buildings:true,streets:true,places:true,nature:true,roads:true};
-let opRoadTiles=null,opPack=null,opProtocolRegistered=false;
+let opRoadTiles=null,opPack=null,opProtocolRegistered=false,opCallbacks=null,opPackFailures=0,opPackReported=false;
 const opEscape=text=>String(text).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 /** Hides API keys/tokens in URLs before a message is shown or logged. */
 export const maskSecrets=text=>String(text).replace(/([?&](?:key|apikey|api_key|token|access_token|signature)=)[^&\s"']+/gi,'$1***').replace(/([a-z][a-z0-9+.-]*:\/\/)[^\s/?#"'@]*@/gi,'$1***@');
@@ -44,7 +44,7 @@ export function validateSatelliteConfig(config,allowedOrigins=[]) {
 
 export function createOperationalMapView({maplibregl,container,roadTiles,pack,towns,regionBounds,teams,callbacks,variant=DEFAULT_VARIANT}) {
   // Base tiles come from the rich local pack when present, otherwise from the roads-only generator (MAP-06).
-  opRoadTiles=roadTiles??null;opPack=pack??null;
+  opRoadTiles=roadTiles??null;opPack=pack??null;opCallbacks=callbacks;opPackFailures=0;opPackReported=false;
   const rich=Boolean(pack);
   if(!opProtocolRegistered) {
     opProtocolRegistered=true;
@@ -58,7 +58,13 @@ export function createOperationalMapView({maplibregl,container,roadTiles,pack,to
       const match=/mmspack:\/\/(\d+)\/(\d+)\/(\d+)/.exec(params.url);
       if(!match)throw Error('Nieprawidłowy adres kafla pakietu mapy.');
       if(!opPack)throw Error('Pakiet mapy nie jest dostępny.');
-      const data=await opPack.tile(Number(match[1]),Number(match[2]),Number(match[3]),abortController?.signal);
+      let data;
+      try {data=await opPack.tile(Number(match[1]),Number(match[2]),Number(match[3]),abortController?.signal);}
+      catch(error) {
+        // Cancelled requests are normal; repeated real read errors mean the pack itself is unusable: let the planner fall back to roads.
+        if(!abortController?.signal?.aborted&&++opPackFailures>=3&&!opPackReported){opPackReported=true;opCallbacks?.onPackFailure?.(error.message);}
+        throw error;
+      }
       // A tile missing from the archive is simply empty (outside coverage); never an error.
       return {data:data?data.buffer.slice(data.byteOffset,data.byteOffset+data.byteLength):new ArrayBuffer(0)};
     });
@@ -184,7 +190,7 @@ export function createOperationalMapView({maplibregl,container,roadTiles,pack,to
   // A lost GPU context must not leave the coordinator without a map: the planner falls back to SVG.
   map.getCanvas().addEventListener('webglcontextlost',()=>callbacks.onFatal?.('Utracono kontekst WebGL.'),{once:true});
   return {
-    map,ready,rich,
+    map,ready,rich,packLayers:pack?.layers??null,
     async update(layers) {
       await ready;lastLayers=layers;
       map.getSource('visits').setData(layers.visits);map.getSource('routes').setData(layers.routes);map.getSource('unassigned').setData(layers.unassigned);

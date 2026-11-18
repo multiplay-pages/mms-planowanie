@@ -184,6 +184,21 @@ class Coverage:
         return False
 
 
+def meets_bounds(lons, lats, bounds):
+    """True when the bounding box of a feature meets the pack area (centre inside is not required)."""
+    west, south, east, north = bounds
+    return min(lons) <= east and max(lons) >= west and min(lats) <= north and max(lats) >= south
+
+
+PACK_LAYERS = ('roads', 'places', 'building', 'landuse', 'water', 'waterway', 'rail')
+
+
+def present_layers(counts):
+    """Only layers that really hold features are announced, so a roads-only pack is not presented as a full one."""
+    have = {layer for (layer, _zoom), count in counts.items() if count}
+    return [name for name in PACK_LAYERS if name in have]
+
+
 def read_pbf_features(path, bounds, coverage, log):
     """Two sequential passes over one regional file: ways of interest, then only the nodes they need."""
     west, south, east, north = bounds
@@ -268,7 +283,8 @@ def build(args, log=print):
                 continue
             lons, lats = [p[0] for p in ring], [p[1] for p in ring]
             clon, clat = (min(lons) + max(lons)) / 2, (min(lats) + max(lats)) / 2
-            if not (west <= clon <= east and south <= clat <= north):
+            # Keep every object whose bounding box meets the pack area, not only those whose centre lies inside it.
+            if not meets_bounds(lons, lats, bounds):
                 continue
             layer, value = kind
             closed = ring[0] == ring[-1]
@@ -300,7 +316,7 @@ def build(args, log=print):
             encoded[key] = data
     metadata = {'name': 'MMS Planowanie map pack', 'format': 'pbf', 'type': 'baselayer', 'attribution': ATTRIBUTION, 'license': 'ODbL-1.0',
                 'copyright_url': 'https://www.openstreetmap.org/copyright', 'schema': 'mms-map-pack-1',
-                'vector_layers': [{'id': name, 'minzoom': args.min_zoom, 'maxzoom': args.max_zoom} for name in ('roads', 'places', 'building', 'landuse', 'water', 'waterway', 'rail')],
+                'vector_layers': [{'id': name, 'minzoom': args.min_zoom, 'maxzoom': args.max_zoom} for name in present_layers(tiler.counts)],
                 'minzoom': args.min_zoom, 'maxzoom': args.max_zoom, 'bounds': list(bounds)}
     center = ((west + east) / 2, (south + north) / 2, min(max(args.min_zoom + 3, 8), args.max_zoom))
     summary = write_pmtiles(args.out, encoded, min_zoom=args.min_zoom, max_zoom=args.max_zoom, bounds=bounds, center=center, metadata=metadata)

@@ -7,7 +7,7 @@
       "id": "served-1",
       "title": "Firefox served: mapa operacyjna startuje, pakiet mapy wczytany",
       "status": "PASS",
-      "actual": "{\"facts\":{\"operational\":true,\"loaded\":true,\"zoom\":7.061661407098927,\"webgl\":true,\"svgPaths\":0},\"rich\":true}"
+      "actual": "{\"facts\":{\"operational\":true,\"loaded\":true,\"zoom\":7.047476248511694,\"webgl\":true,\"svgPaths\":0},\"rich\":true}"
     },
     {
       "id": "served-ws1920",
@@ -49,7 +49,7 @@
       "id": "rich-offline-1",
       "title": "Firefox rich-offline: mapa operacyjna startuje, pakiet mapy wczytany",
       "status": "PASS",
-      "actual": "{\"facts\":{\"operational\":true,\"loaded\":true,\"zoom\":7.086879060570307,\"webgl\":true,\"svgPaths\":0},\"rich\":true}"
+      "actual": "{\"facts\":{\"operational\":true,\"loaded\":true,\"zoom\":7.047476248511694,\"webgl\":true,\"svgPaths\":0},\"rich\":true}"
     },
     {
       "id": "rich-offline-ws1920",

@@ -108,7 +108,7 @@ class Handler(BaseHTTPRequestHandler):
         """Serves the local map pack with HTTP range support so the browser reads only the tiles it needs."""
         size = path.stat().st_size
         start, end, status = 0, size - 1, 200
-        header = self.headers.get('Range')
+        header = self.headers.get('Range') if body else None  # a HEAD answers with the full-resource metadata
         if header:
             match = re.fullmatch(r'bytes=([0-9]*)-([0-9]*)', header.strip())
             if not match or (not match.group(1) and not match.group(2)):

@@ -66,7 +66,7 @@ export function parseHeader(bytes) {
 }
 
 /** Source over an in-memory buffer (offline file, tests). */
-export const memorySource=bytes=>({kind:'memory',getBytes:async(offset,length)=>bytes.subarray(offset,offset+length)});
+export const memorySource=bytes=>({kind:'memory',getBytes:async(offset,length)=>bytes.subarray(offset,Math.min(bytes.length,offset+length))});
 
 /** Source over HTTP range requests; falls back to slicing when the server ignores Range. */
 export function httpSource(url,fetchImpl=fetch) {
@@ -83,7 +83,9 @@ export function httpSource(url,fetchImpl=fetch) {
 export async function openPack(source) {
   const first=await source.getBytes(0,INITIAL_BYTES);
   const header=parseHeader(first);
-  const slice=async(offset,length)=>offset+length<=first.length?first.subarray(offset,offset+length):source.getBytes(offset,length);
+  // A short answer means a truncated archive: fail now instead of at the first tile.
+  const read=async(offset,length,signal)=>{const bytes=await source.getBytes(offset,length,signal);if(bytes.length!==length)throw Error('Pakiet mapy jest ucięty lub uszkodzony.');return bytes;};
+  const slice=async(offset,length)=>offset+length<=first.length?first.subarray(offset,offset+length):read(offset,length);
   const decode=async(bytes,compression)=>compression===2?gunzip(bytes):bytes;
   const root=parseDirectory(await decode(await slice(header.rootOffset,header.rootLength),header.internalCompression));
   const leaves=new Map();
@@ -96,14 +98,19 @@ export async function openPack(source) {
       const entry=findEntry(entries,id);
       if(!entry)return null;
       if(entry.run>0) {
-        const bytes=await source.getBytes(header.dataOffset+entry.offset,entry.length,signal);
+        const bytes=await read(header.dataOffset+entry.offset,entry.length,signal);
         return decode(bytes,header.tileCompression);
       }
       const key=entry.offset;
-      if(!leaves.has(key))leaves.set(key,parseDirectory(await decode(await source.getBytes(header.leafOffset+entry.offset,entry.length,signal),header.internalCompression)));
+      if(!leaves.has(key))leaves.set(key,parseDirectory(await decode(await read(header.leafOffset+entry.offset,entry.length,signal),header.internalCompression)));
       entries=leaves.get(key);
     }
     throw Error('Zbyt głęboki katalog pakietu mapy.');
   }
-  return {header,metadata,tile,source};
+  // The directory can be intact while the data sections are missing: probe the last byte each declared section must hold.
+  if(header.leafLength>0)await read(header.leafOffset+header.leafLength-1,1);
+  if(header.dataLength>0)await read(header.dataOffset+header.dataLength-1,1);
+  const meta=await metadata();
+  const layers=new Set(Array.isArray(meta.vector_layers)?meta.vector_layers.map(layer=>layer.id):[]);
+  return {header,metadata,tile,source,layers};
 }

@@ -233,6 +233,22 @@ class RangeTests(unittest.TestCase):
         head, body = self.fetch('bytes=95-500')
         self.assertIn('bytes 95-99/100', head);self.assertEqual(len(body), 5)
 
+    def test_head_ignores_range_and_reports_the_whole_resource(self):
+        import tempfile
+        with tempfile.TemporaryDirectory() as folder:
+            target = Path(folder) / 'pack.bin'
+            target.write_bytes(bytes(10))
+
+            class HeadHandler(QuietHandler):
+                def do_HEAD(self):
+                    self.send_ranged(target, body=False)
+
+            connection = LocalConnection(b'HEAD /x HTTP/1.0\r\nHost: localhost\r\nRange: bytes=2-3\r\n\r\n')
+            HeadHandler(connection, ('127.0.0.1', 1), object())
+            head, body = connection.output.getvalue().split(b'\r\n\r\n', 1)
+        head = head.decode('ascii')
+        self.assertIn('200', head.splitlines()[0]);self.assertIn('Content-Length: 10', head);self.assertNotIn('Content-Range', head);self.assertEqual(body, b'')
+
     def test_full_response_advertises_ranges(self):
         head, body = self.fetch(None)
         self.assertIn('200', head.splitlines()[0]);self.assertIn('Accept-Ranges: bytes', head);self.assertEqual(len(body), 100)

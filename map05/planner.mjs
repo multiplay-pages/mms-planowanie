@@ -350,7 +350,7 @@ async function initOperationalMap() {
     for(const address of scenario.addresses.filter(hasLocation)){const t=towns.get(address.city)??{sum:[0,0],n:0};t.sum[0]+=address.coordinates[0];t.sum[1]+=address.coordinates[1];t.n++;towns.set(address.city,t);}
     const townData={type:'FeatureCollection',features:[...towns].map(([name,t])=>({type:'Feature',geometry:{type:'Point',coordinates:[t.sum[0]/t.n,t.sum[1]/t.n]},properties:{name}}))};
     // The rich local pack (roads, names, places, buildings, water) is preferred; without it the MAP-06 roads-only tiles are used.
-    const pack=await openMapPack();
+    const pack=packDisabled?null:await openMapPack();
     roadTiles=pack?null:await startRoadTiles();
     const tiles=roadTiles;
     tiles?.failed.then(error=>{if(roadTiles===tiles)disableOperationalMap(error.message);});
@@ -360,7 +360,7 @@ async function initOperationalMap() {
     opView=createOperationalMapView({maplibregl,container:$('operational-map'),roadTiles,pack,variant:opState.variant,towns:townData,regionBounds:operationalBounds(townData),
       teams:scenario.teams.map(team=>({teamId:team.id,color:operationalTeamColor(scenario,team.id)})),
       callbacks:{onEdit:editFromMap,onSelect:id=>{if(id!==state.selectedId)selectMapOrder(id);},onError:message=>{$('op-status').textContent=`Mapa: ${message}`;},
-        onPopupClosed:id=>$('op-layers').querySelector(`[data-order="${id}"]`)?.focus(),onFatal:disableOperationalMap}});
+        onPopupClosed:id=>$('op-layers').querySelector(`[data-order="${id}"]`)?.focus(),onFatal:disableOperationalMap,onPackFailure:fallBackToRoadsOnly}});
     // Read-only handle for real-browser acceptance checks; the plan is never reachable through it.
     $('operational-map').operationalView=opView;
     await opView.ready;
@@ -369,16 +369,22 @@ async function initOperationalMap() {
   } catch(error) {disableOperationalMap(error.message);}
 }
 
+// A pack without road geometry cannot replace the roads-only map.
+function usablePack(pack) {
+  if(pack.layers&&!pack.layers.has('roads'))throw Error('Pakiet mapy nie zawiera dróg.');
+  return pack;
+}
+
 async function openMapPack() {
   try {
     const embedded=$('map-pack-data');
     if(embedded) {
       const raw=atob(embedded.textContent.trim()),bytes=new Uint8Array(raw.length);
       for(let i=0;i<raw.length;i++)bytes[i]=raw.charCodeAt(i);
-      return await openPack(memorySource(bytes));
+      return usablePack(await openPack(memorySource(bytes)));
     }
     if(location.protocol==='file:')return null; // a file:// page cannot read sibling files; the embedded pack or the roads-only map is used
-    return await openPack(httpSource(new URL('./basemap/map-pack.pmtiles',document.baseURI).href));
+    return usablePack(await openPack(httpSource(new URL('./basemap/map-pack.pmtiles',document.baseURI).href)));
   } catch {return null;}
 }
 
@@ -393,6 +399,18 @@ function ensureSvgMap() {
   return svgMapPromise;
 }
 
+let packDisabled=false;
+// A pack that opened but keeps failing to deliver tiles: rebuild the map on the roads-only tiles and say so.
+async function fallBackToRoadsOnly(reason) {
+  if(packDisabled||!opView?.rich||operationalDisabled)return;
+  packDisabled=true;
+  const view=opView;opView=null;$('operational-map').operationalView=null;
+  try {view.destroy();} catch {}
+  await initOperationalMap();
+  if(opView)setOpStatus('Pakiet mapy przestał działać — przełączono na podkład uproszczony (tylko drogi).');
+  showMessage(`Pakiet mapy: ${reason}. Plan pozostaje bez zmian.`,true);
+}
+
 let operationalDisabled=false;
 function disableOperationalMap(reason) {
   if(operationalDisabled)return; // destroying the map fires further failure events; keep the first reason
@@ -401,6 +419,9 @@ function disableOperationalMap(reason) {
   try {view?.destroy();} catch {}
   try {tiles?.destroy();} catch {}
   ensureSvgMap();
+  // The large-map overlay and its close button live inside the hidden shell: never leave the page covered.
+  opState.workspace=false;$('map-card').classList.remove('op-workspace');document.body.classList.remove('op-ws-open');
+  if(document.fullscreenElement)document.exitFullscreen?.().catch(()=>{});
   $('op-map-shell').hidden=true;$('map-card').classList.remove('op-active');
   showMessage(`Mapa operacyjna wyłączona (${reason}). Używam mapy uproszczonej; plan pozostaje bez zmian.`,true);
 }
@@ -447,8 +468,8 @@ function renderOperationalPanel(layers) {
 
 function renderLayersMenu(layers) {
   const row=(attr,key,label,checked,disabled=false)=>`<label><input type="checkbox" ${attr}="${key}" ${checked?'checked':''} ${disabled?'disabled':''}>${label}</label>`;
-  const rich=Boolean(opView?.rich),open=$('op-layers-menu').open;
-  $('op-layers-menu-body').innerHTML=`<h4>WIZYTY I TRASY</h4>${row('data-op-toggle','routes','Trasy koszyków',opState.showRoutes)}${row('data-op-flag','arrows','Kierunek jazdy (strzałki)',opState.flags.arrows)}${row('data-op-flag','legs','Długości odcinków',opState.flags.legs)}${row('data-op-flag','numbers','Numery wizyt',opState.flags.numbers)}${row('data-op-toggle','unassigned',`Nieprzydzielone (${layers.unassigned.features.length})`,opState.showUnassigned)}<h4>PODKŁAD${rich?'':' (uproszczony: tylko drogi)'}</h4>${row('data-op-toggle','roads','Drogi',opState.roads)}${row('data-op-flag','streets','Nazwy ulic',opState.flags.streets)}${row('data-op-flag','places','Miejscowości',opState.flags.places)}${row('data-op-flag','buildings','Budynki',opState.flags.buildings,!rich)}${row('data-op-flag','nature','Woda, lasy, kolej',opState.flags.nature,!rich)}`;
+  const rich=Boolean(opView?.rich),open=$('op-layers-menu').open,hasBuildings=rich&&opHasLayer('building'),hasNature=rich&&['water','landuse','rail','waterway'].some(opHasLayer);
+  $('op-layers-menu-body').innerHTML=`<h4>WIZYTY I TRASY</h4>${row('data-op-toggle','routes','Trasy koszyków',opState.showRoutes)}${row('data-op-flag','arrows','Kierunek jazdy (strzałki)',opState.flags.arrows)}${row('data-op-flag','legs','Długości odcinków',opState.flags.legs)}${row('data-op-flag','numbers','Numery wizyt',opState.flags.numbers)}${row('data-op-toggle','unassigned',`Nieprzydzielone (${layers.unassigned.features.length})`,opState.showUnassigned)}<h4>PODKŁAD${rich?'':' (uproszczony: tylko drogi)'}</h4>${row('data-op-toggle','roads','Drogi',opState.roads)}${row('data-op-flag','streets','Nazwy ulic',opState.flags.streets)}${row('data-op-flag','places','Miejscowości',opState.flags.places)}${row('data-op-flag','buildings','Budynki',opState.flags.buildings,!hasBuildings)}${row('data-op-flag','nature','Woda, lasy, kolej',opState.flags.nature,!hasNature)}`;
   $('op-layers-menu').open=open;
 }
 
@@ -470,6 +491,8 @@ function renderOpDetail(layers) {
 }
 
 function editFromMap(id) {
+  // The order panel lies under the large-map overlay: leave the large map first so the edit is visible and focusable.
+  if(opState.workspace)setWorkspace(false);
   selectMapOrder(id);
   $('order-details').scrollIntoView({block:'start',behavior:'smooth'});
   ($('assignment-team')&&!$('assign-order')?.disabled?$('assignment-team'):$('order-title'))?.focus({preventScroll:true});
@@ -481,8 +504,13 @@ function satelliteConfig() {
 }
 const allowedTileOrigins=()=>(document.querySelector('meta[name="mms-tile-origins"]')?.content??'').split(/\s+/).filter(Boolean);
 
+// The pack announces which layers it really contains; a pack without buildings or water is described as such.
+const opHasLayer=name=>!opView?.packLayers||opView.packLayers.has(name);
 function opBaseDescription() {
-  return opView?.rich?'lokalny pakiet mapy OSM (drogi, nazwy, budynki, woda, tereny)':'lokalne drogi OSM — pakiet mapy niedostępny, podkład uproszczony (tylko drogi)';
+  if(!opView?.rich)return 'lokalne drogi OSM — pakiet mapy niedostępny, podkład uproszczony (tylko drogi)';
+  const parts=[['roads','drogi'],['places','miejscowości'],['building','budynki'],['water','woda'],['landuse','tereny']];
+  const missing=parts.filter(([id])=>!opHasLayer(id)).map(([,label])=>label);
+  return missing.length?`lokalny pakiet mapy OSM — niepełny, brak warstw: ${missing.join(', ')}`:'lokalny pakiet mapy OSM (drogi, nazwy, budynki, woda, tereny)';
 }
 // The status line always describes the basemap that is really active, including after leaving satellite/hybrid.
 function setOpStatus(extra='') {
@@ -498,6 +526,7 @@ function syncSatelliteAvailability() {
     const input=document.querySelector(`input[name="op-basemap"][value="${value}"]`);
     input.disabled=!ok;
     const label=input.closest('label');label.classList.toggle('op-unavailable',!ok);
+    label.dataset.title??=label.title;label.title=ok?'Dostawca zdjęć skonfigurowany: po wybraniu widoczny obszar mapy jest wysyłany do dostawcy.':label.dataset.title;
     const note=label.querySelector('small');if(note)note.textContent=ok?'dostawca skonfigurowany':'niedostępna';
   }
 }

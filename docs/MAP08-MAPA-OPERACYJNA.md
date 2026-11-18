@@ -108,15 +108,18 @@ Wnioski:
 
 | Zakres | Wynik |
 | --- | --- |
-| `npm test` (Node) | 172/172 |
-| `python -X utf8 -m unittest discover -s map05/tests -p test_*.py` | 98/98 |
+| `npm test` (Node) | 183/183 |
+| `python -X utf8 -m unittest discover -s map05/tests -p test_*.py` | patrz `map05/VERIFICATION.md` (aktualny wynik po przeglądzie T21) |
 | Chrome 157, 1440×900 / 1920×1080 / 1366×768 (`map08.mjs`, 20 scenariuszy, 40 sprawdzeń) | 40/40 w każdej rozdzielczości |
 | Firefox 160.0.1 (BiDi): MAP-06.1 (`firefox-bidi.mjs`) / MAP-08 (`firefox-map08.mjs`) | 9/9 i 15/15 (serwer i plik offline z pakietem, 1920×1080 i 1366×768) |
 | Hybryda → Drogowa, lokalny dostawca testowy | 11/11 |
 | Brak pakietu / pakiet uszkodzony | 10/10 |
+| Pakiet ucięty w sekcji danych (odrzucany przy otwarciu) / pakiet, który po otwarciu przestaje zwracać kafle (przełączenie na drogi) | 6/6 (`map08-packfail.mjs`) |
 | Zdarzenia sieciowe | 0 żądań poza loopback/`file:` w przebiegach offline |
 
 Scenariusze obowiązkowe z briefu: kilka ekip w różnych miejscowościach, jedna trasa z trzema wizytami, klaster wielu instalacji, wybór adresu z koszyka i z mapy, zmiana dnia, ponowne generowanie, brak internetu, punkt bez współrzędnych, przełączanie warstw, poprawność komunikatów podkładu — wszystkie w `map08.mjs`.
+
+Niezależny przegląd Codexa (T21, `evidence/2026-11-18-map08-codex/T21-REPORT.md`) potwierdził 3 × P2 i 3 × P3, wszystkie naprawione i pokryte testami: (P2) „Edytuj w planerze” w dużej mapie wychodzi teraz z widoku powiększonego; awaria WebGL nie zostawia nakładki; pakiet z samymi drogami jest opisywany jako niepełny i ma wyłączone przełączniki budynków/przyrody; ucięty pakiet jest odrzucany przy otwarciu, a pakiet, który po otwarciu przestaje działać, przełącza mapę na podkład uproszczony z komunikatem; (P3) filtr obwiedni w builderze zachowuje obiekty przecinające zasięg, `HEAD` ignoruje `Range`, dymek Satelita/Hybryda zgodny z dostępnością.
 
 Naprawione przy okazji: dwie usterki znalezione przez Codexa (zasięg `Coverage.near` na długości geograficznej; zerowy kod offsetu pierwszego wpisu katalogu PMTiles akceptowany przez oba dekodery) oraz niestabilny test workera przy równoległym uruchomieniu.
 
@@ -125,7 +128,7 @@ Naprawione przy okazji: dwie usterki znalezione przez Codexa (zasięg `Coverage.
 1. **Uprawnienia ORTO/satelity** — otwarte; bez decyzji właściciela warstwa pozostaje niedostępna.
 2. **Dystrybucja pakietu** (53 MB, ODbL share-alike): plik nie jest w repozytorium. Do decyzji: gdzie go publikować i kto go buduje. Pakiet nie zawiera współrzędnych adresów, ale zasięg budynków wyznacza obszary wokół zlokalizowanych adresów (promień 3 km).
 3. Multipolygony nie są składane; brak budynków poza promieniem 3 km; powyżej z14 używany jest overzoom.
-4. Geometria tras to dane lokalnego silnika (MAP-07B). Przy bardzo dużym zbliżeniu odcinek podąża za geometrią tej bazy, nie za mapą budynków; MAP-08 jej nie zmienia.
+4. Gałąź MAP-08 pochodzi z MAP-06 (`69aed04`) i nie zawiera optymalizatora z MAP-07B — przy scalaniu obu gałęzi trzeba osobno zweryfikować wspólny widok. Geometria tras to dane lokalnego silnika. Przy bardzo dużym zbliżeniu odcinek podąża za geometrią tej bazy, nie za mapą budynków; MAP-08 jej nie zmienia.
 5. Czas jazdy to szacunek z lokalnego silnika, bez ruchu drogowego.
 6. Firefox sprawdzono w trybie headless przez WebDriver BiDi; dotyk fizyczny, czytnik ekranu i tryb z oknem/GPU pozostają niesprawdzone.
 7. Zrzuty ekranu w repozytorium zawierają adresy testowe z planera; zrzut użytkownika `MAP-07_TEST-02_24-8-km.jpg` celowo nie jest commitowany.
