@@ -28,6 +28,8 @@ jobs:
         run: node --check map05/planner.mjs && node --check map05/tests/planner-ui.test.mjs
       - name: Run combined JavaScript regressions
         run: npm test --prefix map05
+      - name: Restore checksum-verified local OSM source assets (no network)
+        run: python -X utf8 map05/prepare_assets.py
       - name: Run MAP-05 Python regressions
         run: python -X utf8 -m unittest discover -s map05/tests -p 'test_*.py' -v
       - name: Run MAP-04 Python regressions
