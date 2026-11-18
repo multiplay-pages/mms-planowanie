@@ -204,6 +204,12 @@ Końcowy przegląd Codexa (T6) zgłosił 5 × P2 i 1 × P3 (popup z nieaktualnym
 
 Użytkownik zatwierdził: zmniejszenie pliku offline, przeniesienie kafli do Web Workera i warunkową publikację gałęzi (bez scalenia do `main` i bez wdrożenia). Claude Code zapakował duże bloki danych gzip+base64 (71,3 → 32,4 MB), przeniósł rozpakowanie, parsowanie i kodowanie kafli dróg do workera (offline: worker z `blob:`), dodał bezpieczne przejścia na mapę SVG i zmierzył PRZED/PO (3 + 3 przebiegi naprzemiennie w Chrome z GPU). Codex wykonał audyt przedpublikacyjny (T9: brak sekretów; otwarte sprawy praw do utrwalonych wyników GUGiK UUG/Geoapify i atrybucji — udokumentowane w `docs/ZRODLA-DANYCH-I-LICENCJE.md`), przegląd implementacji (T10: 2 × P2 i 1 × P3 — awaria workera po starcie, nieograniczone anulowania, tekst opisu mapy; naprawione) i re-check (T11: APPROVE). Dodano testy w Firefoksie (WebDriver BiDi) i dotykowe w Chrome. Szczegóły: `evidence/2026-11-18-map061/README.md`. Context7 i Notion nie były dostępne w tej sesji.
 
+## 18.11.2026 — MAP-08: przebudowa mapy operacyjnej (gałąź `map08-map-quality`)
+
+Użytkownik zlecił audyt i przebudowę samej mapy (jakość podkładu, czytelność, osobny duży widok), bez zmiany macierzy odległości, routingu ani modelu planu i bez łączenia z MAP-07A. Audyt wykazał, że słabość wynika głównie z danych (podkład tylko z wybranych klas dróg), a nie ze stylu; mapa zajmowała ok. 17% okna.
+
+Claude Code zbudował lokalny pakiet PMTiles z ekstraktów Geofabrik (drogi z hierarchią i nazwami, miejscowości, budynki, woda, tereny, kolej), własny czytnik w przeglądarce, dwa warianty stylu (Operational Light, Professional Navigation), widok „Duża mapa” z panelem ekip, klasteryzacją, szczegółami i legendą oraz uczciwy status podkładu (naprawa niespójności po Hybryda → Drogowa). Satelita/Hybryda pozostają niedostępne do decyzji właściciela (ORTO). Codex (T20) napisał testy potoku pakietu i znalazł dwie usterki (zasięg `Coverage.near`, zerowy offset w katalogu PMTiles) — naprawione. Pełny opis i pomiary: `docs/MAP08-MAPA-OPERACYJNA.md`.
+
 ## Co świadomie pozostaje ograniczeniem prototypu
 
 - 7 adresów pozostaje bez współrzędnych na wyraźne polecenie użytkownika.

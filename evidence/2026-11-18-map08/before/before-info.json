@@ -1,0 +1,102 @@
+{
+  "visits": 13,
+  "routes": 8,
+  "teams": [
+    [
+      "TEST-01",
+      3,
+      32.8
+    ],
+    [
+      "TEST-02",
+      3,
+      25.6
+    ],
+    [
+      "TEST-03",
+      2,
+      14.3
+    ],
+    [
+      "TEST-04",
+      3,
+      39.7
+    ],
+    [
+      "TEST-05",
+      2,
+      6.1
+    ]
+  ],
+  "first": [
+    17.6164817378619,
+    50.7491282196604
+  ],
+  "ids": [
+    [
+      "TEST-013",
+      "TEST-01",
+      "Lewin Brzeski"
+    ],
+    [
+      "TEST-049",
+      "TEST-01",
+      "Skorogoszcz"
+    ],
+    [
+      "TEST-017",
+      "TEST-01",
+      "Opole"
+    ],
+    [
+      "TEST-025",
+      "TEST-02",
+      "Białe Błoto"
+    ],
+    [
+      "TEST-062",
+      "TEST-02",
+      "Cieśle"
+    ],
+    [
+      "TEST-039",
+      "TEST-02",
+      "Sokołowice"
+    ],
+    [
+      "TEST-003",
+      "TEST-03",
+      "Knurów"
+    ],
+    [
+      "TEST-067",
+      "TEST-03",
+      "Rybnik"
+    ],
+    [
+      "TEST-037",
+      "TEST-04",
+      "Ligota Oleska"
+    ],
+    [
+      "TEST-085",
+      "TEST-04",
+      "Kucoby"
+    ],
+    [
+      "TEST-074",
+      "TEST-04",
+      "Chudoba"
+    ],
+    [
+      "TEST-061",
+      "TEST-05",
+      "Szum"
+    ],
+    [
+      "TEST-002",
+      "TEST-05",
+      "Wąsice"
+    ]
+  ]
+}

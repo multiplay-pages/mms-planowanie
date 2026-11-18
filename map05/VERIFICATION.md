@@ -2,6 +2,22 @@
 
 **STATUS HISTORYCZNY etapu „prawdziwa przeglądarka” (aktualny stan MAP-06 jest w sekcji poniżej): 10/10 scenariuszy runbooka PASS w prawdziwym Chrome 157 — zarówno modułowy widok przez `serve.py`, jak i zbudowany `planner-offline.html` przez `file://`. Wykryto i naprawiono 7 usterek, w tym P1 wizualne zasłonięcie ulic przy zbliżeniu. Testy: npm 86/86, Python map05 80/80, map04 24/24 — łącznie 190/190 PASS; build PASS. 0 żądań poza loopback/`file:`, 0 błędów konsoli. Nie testowano innych przeglądarek, trybu z oknem/GPU, urządzeń dotykowych ani czytnika ekranu. Prototyp nie jest gotowy produkcyjnie. Sekcje poniżej nowej są historyczne.**
 
+## 18.11.2026 — MAP-08 (przebudowa mapy operacyjnej, gałąź `map08-map-quality`)
+
+**Status: prototyp do odbioru wizualnego; nie scalono z `main`, nie wdrożono.** Pełny opis: `docs/MAP08-MAPA-OPERACYJNA.md`, dowody: `evidence/2026-11-18-map08/`.
+
+| Sprawdzenie | Wynik |
+| --- | --- |
+| `npm test` (map05) | **172/172 PASS** (punkt odniesienia MAP-06.1: 140) |
+| `unittest map05` | **98/98 PASS** (82 + 16 testów potoku pakietu od Codexa/T20 i regresje) |
+| Chrome 157: audyt 20 scenariuszy (40 sprawdzeń) w 1440×900, 1920×1080, 1366×768 | 40/40 w każdej rozdzielczości; 0 żądań zewnętrznych |
+| Firefox 160.0.1 (BiDi, headless): MAP-06.1 / MAP-08 | 9/9 / 15/15 (serwer i plik offline z pakietem) |
+| Hybryda → Drogowa (atrapa dostawcy na loopback) | 11/11; komunikat i warstwy zgodne z trybem |
+| Brak / uszkodzony pakiet | 10/10; tryb uproszczony z komunikatem |
+| Pomiary (Chrome, offline, `file://`) | offline bez pakietu 32,4 MB: mapa gotowa 3,85 s, sterta 95 MB; offline z pakietem 103,5 MB: 3,67 s, 52 MB; klatka p95 ≈ 17 ms w obu |
+
+Granice dowodów: Firefox headless przez BiDi (dotyk symulowany, brak GPU w oknie); brak czytnika ekranu; relacje wielokątowe OSM nie są składane; czas jazdy to szacunek lokalnego silnika. Wszystkie wartości z jednej maszyny (Windows 11, Chrome 157, Node 26).
+
 ## 18.11.2026 — MAP-06.1 (optymalizacja, worker kafli, Firefox)
 
 **Status: technicznie zatwierdzony prototyp — optymalizacja i odbiór użytkownika w toku.** Nie scalono z `main`. Pełny opis, tabela PRZED/PO i ograniczenia: `evidence/2026-11-18-map061/README.md`.

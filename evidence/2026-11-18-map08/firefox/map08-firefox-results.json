@@ -1,0 +1,97 @@
+{
+  "firefox": {
+    "version": "160.0.1"
+  },
+  "results": [
+    {
+      "id": "served-1",
+      "title": "Firefox served: mapa operacyjna startuje, pakiet mapy wczytany",
+      "status": "PASS",
+      "actual": "{\"facts\":{\"operational\":true,\"loaded\":true,\"zoom\":7.061661407098927,\"webgl\":true,\"svgPaths\":0},\"rich\":true}"
+    },
+    {
+      "id": "served-ws1920",
+      "title": "Firefox served: duża mapa 1920×1080",
+      "status": "PASS",
+      "actual": "{\"w\":1540,\"h\":907,\"fixed\":\"fixed\",\"overflow\":0,\"share\":0.67}"
+    },
+    {
+      "id": "served-ws1366",
+      "title": "Firefox served: duża mapa 1366×768",
+      "status": "PASS",
+      "actual": "{\"w\":986,\"h\":557,\"fixed\":\"fixed\",\"overflow\":0,\"share\":0.52}"
+    },
+    {
+      "id": "served-2",
+      "title": "Firefox served: warstwy podkładu przy skali ulicy",
+      "status": "PASS",
+      "actual": "{\"buildings\":269,\"roads\":70,\"streetLabels\":13,\"places\":1}"
+    },
+    {
+      "id": "served-3",
+      "title": "Firefox served: jedna trasa i powrót do wszystkich",
+      "status": "PASS",
+      "actual": "{\"id\":\"TEST-01\",\"n\":3,\"only\":true,\"sum\":\"3 wizyty · 32,8 km · ok. 45 min jazdy\",\"after\":13}"
+    },
+    {
+      "id": "served-4",
+      "title": "Firefox served: przełączenie wariantu stylu",
+      "status": "PASS",
+      "actual": "{\"a\":\"[\\\"match\\\",[\\\"get\\\",\\\"rank\\\"],0,\\\"#f4b777\\\",1,\\\"#\",\"b\":\"[\\\"match\\\",[\\\"get\\\",\\\"rank\\\"],0,\\\"#f08a5d\\\",1,\\\"#\",\"different\":true}"
+    },
+    {
+      "id": "served-5",
+      "title": "Firefox served: komunikat o podkładzie zgodny z trybem",
+      "status": "PASS",
+      "actual": "Podkład: Drogowa — lokalny pakiet mapy OSM (drogi, nazwy, budynki, woda, tereny), bez połączeń zewnętrznych. Z"
+    },
+    {
+      "id": "rich-offline-1",
+      "title": "Firefox rich-offline: mapa operacyjna startuje, pakiet mapy wczytany",
+      "status": "PASS",
+      "actual": "{\"facts\":{\"operational\":true,\"loaded\":true,\"zoom\":7.086879060570307,\"webgl\":true,\"svgPaths\":0},\"rich\":true}"
+    },
+    {
+      "id": "rich-offline-ws1920",
+      "title": "Firefox rich-offline: duża mapa 1920×1080",
+      "status": "PASS",
+      "actual": "{\"w\":1540,\"h\":907,\"fixed\":\"fixed\",\"overflow\":0,\"share\":0.67}"
+    },
+    {
+      "id": "rich-offline-ws1366",
+      "title": "Firefox rich-offline: duża mapa 1366×768",
+      "status": "PASS",
+      "actual": "{\"w\":986,\"h\":557,\"fixed\":\"fixed\",\"overflow\":0,\"share\":0.52}"
+    },
+    {
+      "id": "rich-offline-2",
+      "title": "Firefox rich-offline: warstwy podkładu przy skali ulicy",
+      "status": "PASS",
+      "actual": "{\"buildings\":269,\"roads\":70,\"streetLabels\":13,\"places\":1}"
+    },
+    {
+      "id": "rich-offline-3",
+      "title": "Firefox rich-offline: jedna trasa i powrót do wszystkich",
+      "status": "PASS",
+      "actual": "{\"id\":\"TEST-01\",\"n\":3,\"only\":true,\"sum\":\"3 wizyty · 32,8 km · ok. 45 min jazdy\",\"after\":13}"
+    },
+    {
+      "id": "rich-offline-4",
+      "title": "Firefox rich-offline: przełączenie wariantu stylu",
+      "status": "PASS",
+      "actual": "{\"a\":\"[\\\"match\\\",[\\\"get\\\",\\\"rank\\\"],0,\\\"#f4b777\\\",1,\\\"#\",\"b\":\"[\\\"match\\\",[\\\"get\\\",\\\"rank\\\"],0,\\\"#f08a5d\\\",1,\\\"#\",\"different\":true}"
+    },
+    {
+      "id": "rich-offline-5",
+      "title": "Firefox rich-offline: komunikat o podkładzie zgodny z trybem",
+      "status": "PASS",
+      "actual": "Podkład: Drogowa — lokalny pakiet mapy OSM (drogi, nazwy, budynki, woda, tereny), bez połączeń zewnętrznych. Z"
+    },
+    {
+      "id": "FIN",
+      "title": "Firefox: brak żądań zewnętrznych i błędów konsoli w całym przebiegu",
+      "status": "PASS",
+      "actual": "{\"external\":[],\"errors\":[]}"
+    }
+  ]
+}

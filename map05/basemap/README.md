@@ -21,3 +21,13 @@ OPO: 2 515 obiektów drogowych, 101 wodnych, 1 176 terenów zielonych i 316 kole
 Rzutowanie Web Mercator jest wspólne dla tła i znaczników; skala pozostaje jednakowa w obu osiach. Widok zawsze obejmuje wszystkie zlokalizowane punkty danego regionu, także gdy filtr lub dzień ukrywa część zleceń. Brak współrzędnych nie tworzy zastępczego markera.
 
 `download_osm.py` dokumentuje i odtwarza pobranie. To narzędzie dla wykonawcy, uruchamiane wyłącznie ręcznie, nie przez aplikację ani testy. Zapisuje małe wycinki pośrednie jako checkpoint, a następnie scala je do `data.json`. Ponowienie nie jest potrzebne do używania makiety. OSM może odmówić zbyt dużego pobrania albo być niedostępny. Pierwotne próby Overpass były niedostępne; aplikacja nie korzysta z tego endpointu.
+
+## Pakiet mapy MAP-08 (`map-pack.pmtiles`)
+
+Lokalny pakiet wektorowy PMTiles v3 (kafle MVT: drogi z nazwami, miejscowości, budynki, woda, użytki, kolej) zbudowany z ekstraktów Geofabrik (ODbL 1.0, © OpenStreetMap contributors). Plik (ok. 53 MB) nie jest w repozytorium; `map-pack.manifest.json` opisuje zakres, liczby kafli i SHA-256 (bez współrzędnych adresów).
+
+```text
+python -X utf8 map05/basemap/build_map_pack.py --help
+```
+
+Wymaga plików PBF w `public-pbf/` i około 25 minut. Aplikacja bez tego pliku działa w trybie uproszczonym (tylko drogi) i mówi o tym w komunikacie. Zob. `docs/MAP08-MAPA-OPERACYJNA.md`.
