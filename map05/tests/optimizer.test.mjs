@@ -161,3 +161,55 @@ test('moving an automatic visit out of a basket cannot create a new limit violat
     assert.ok(!b||(b.teamId==='TEST-02'&&b.start===1),`${variant}: B must stay between A and C or stay put`);
   }
 });
+
+// Synthetic road layer for the T16 regressions: every pair 1 km unless an edge says otherwise.
+function syntheticScenario() {
+  const located=createScenario(dataset,geocoding),addresses=located.addresses.filter(address=>address.coordinates);
+  const layer={schemaVersion:1,datasetId:located.datasetId,source:{provider:'LOCAL_OSM',profile:'shortest-distance',roadsSha256:'b'.repeat(64),engineSha256:'c'.repeat(64)},
+    points:addresses.map(address=>({addressId:address.id,coordinates:address.coordinates,snap:{status:'OK',distanceM:0,coordinates:address.coordinates}})),segments:['_sdpH_gs~B?_pR'],
+    routes:Object.fromEntries(addresses.map(from=>[from.id,Object.fromEntries(addresses.map(to=>[to.id,{status:'OK',distanceM:from.id===to.id?0:1000,estimatedDurationS:from.id===to.id?0:60,path:from.id===to.id?[]:[1]}]))]))};
+  const synthetic=createScenario(dataset,geocoding,layer);
+  for(const address of synthetic.addresses)address.city='Miasto '+address.id;
+  const edge=(from,to,meters)=>Object.assign(synthetic.routing.routes[from.addressId][to.addressId],meters===null?{status:'NO_PATH',distanceM:null,estimatedDurationS:null,path:[]}:{distanceM:meters,estimatedDurationS:60});
+  const seed=(...baskets)=>{
+    let plan=createPlan(synthetic);
+    for(const [team,orders] of baskets)for(const [start,{order,origin='MANUAL',confirmed=false}] of orders.entries()) {
+      plan=applyAction(synthetic,plan,{type:'ASSIGN',orderId:order.id,date:DATE,teamId:team,start});
+      if(confirmed)plan=applyAction(synthetic,plan,{type:'CONFIRM',orderId:order.id});
+      plan.assignments.find(row=>row.orderId===order.id).origin=origin;
+    }
+    return plan;
+  };
+  const mpl=synthetic.orders.filter(order=>order.ready&&order.type==='MPL'&&order.slotsRequired===1&&addresses.some(address=>address.id===order.addressId));
+  return {synthetic,edge,seed,mpl};
+}
+const row=(order,origin='MANUAL',confirmed=false)=>({order,origin,confirmed});
+
+test('two irreplaceable automatic bridges between protected visits: the current plan is the fallback, nothing breaks (Codex T16 P1)',()=>{
+  const {synthetic,edge,seed,mpl}=syntheticScenario(),[a,b,c,d,e,f]=mpl;
+  for(const [head,bridge,tail] of [[a,b,c],[d,e,f]]){edge(head,bridge,20000);edge(bridge,tail,20000);edge(head,tail,40000);edge(tail,bridge,null);}
+  edge(a,e,40000);edge(d,b,40000);
+  const base=seed(['TEST-02',[row(a,'MANUAL',true),row(b,'AUTO'),row(c)]],['TEST-04',[row(d,'MANUAL',true),row(e,'AUTO'),row(f)]]);
+  for(const team of ['TEST-02','TEST-04'])assert.deepEqual(assessBasket(synthetic,base,team,DATE).violations,[]);
+  for(const variant of Object.keys(VARIANTS))for(const budgetMs of [0,1000]) {
+    const result=proposeDayPlan(synthetic,base,DATE,{variant,orderIds:[b.id,e.id],budgetMs});
+    for(const team of synthetic.teams)assert.deepEqual(assessBasket(synthetic,result.plan,team.id,DATE).violations,[],`${variant}/${budgetMs} ${team.id}`);
+    assert.equal(evaluateDay(synthetic,result.plan,DATE,evaluateDay(synthetic,base,DATE)).invalid,false);
+    assert.ok([b,e].every(order=>result.plan.assignments.some(item=>item.orderId===order.id)),`${variant}/${budgetMs}: both bridges stay planned`);
+  }
+});
+
+test('a missing road leg cannot be moved from one basket to another unnoticed (Codex T16 P2)',()=>{
+  const {synthetic,edge,seed,mpl}=syntheticScenario(),[a,b,c,d,x]=mpl;
+  edge(a,b,20000);edge(b,c,20000);edge(a,c,null);edge(d,x,null);
+  // TEST-04 already has an unassessable leg (D -> X); TEST-02 is fully assessed with B as the only link between A and C.
+  const base=seed(['TEST-02',[row(a,'MANUAL',true),row(b,'AUTO'),row(c)]],['TEST-04',[row(d),row(x,'AUTO')]]);
+  assert.equal(evaluateDay(synthetic,base,DATE).gaps.has('TEST-04/legs'),true);
+  for(const variant of Object.keys(VARIANTS)) {
+    const result=proposeDayPlan(synthetic,base,DATE,{variant,orderIds:[b.id,x.id],budgetMs:1000});
+    const gaps=evaluateDay(synthetic,result.plan,DATE).gaps;
+    assert.equal(gaps.has('TEST-02/legs'),false,`${variant}: the assessed basket TEST-02 must not gain a missing leg`);
+    assert.equal(evaluateDay(synthetic,result.plan,DATE,evaluateDay(synthetic,base,DATE)).invalid,false,`${variant}: no basket gains an unassessable leg`);
+    assert.equal(result.plan.assignments.filter(item=>item.teamId==='TEST-02'&&item.date===DATE).length,3,`${variant}: TEST-02 keeps a link between A and C`);
+  }
+});

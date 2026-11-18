@@ -39,11 +39,11 @@ const withAdded=(plan,assignment)=>withAssignments(plan,[...plan.assignments,ass
 
 /** Aggregate figures of one day, shared by the optimizer, the UI comparison and the benchmark. */
 /**
- * `baseline` (optional) is {issueMap,unassessedBaskets} of the current plan. A candidate that introduces or worsens a limit issue in ANY basket
+ * `baseline` (optional) is {issueMap,gaps} of the current plan: limit issues and unassessable checks per basket. A gap moved from one basket to another counts as new. A candidate that introduces or worsens a limit issue in ANY basket
  * (also in a basket an order was moved out of, where removal can create a new long leg) is flagged `invalid`.
  */
 export function evaluateDay(scenario,plan,date,baseline=null) {
-  const issueMap=new Map(),rows=[],ageHist=[],totals={count:0,installs:0,ageSum:0,km:0,minutes:0,sumsq:0,sameTown:0,unassessedBaskets:0,violations:0};
+  const issueMap=new Map(),gaps=new Set(),rows=[],ageHist=[],totals={count:0,installs:0,ageSum:0,km:0,minutes:0,sumsq:0,sameTown:0,unassessedBaskets:0,violations:0};
   for(const team of scenario.teams) {
     const items=plan.assignments.filter(item=>item.teamId===team.id&&item.date===date);
     const assessment=assessBasket(scenario,plan,team.id,date);
@@ -57,12 +57,15 @@ export function evaluateDay(scenario,plan,date,baseline=null) {
     const towns=assessment.orders.map(id=>addressOf(scenario,orderOf(scenario,id)).city);
     for(let i=1;i<towns.length;i++)if(towns[i]===towns[i-1])totals.sameTown++;
     totals.violations+=assessment.violations.length;
+    if(orders.length>1&&assessment.distanceM===null)gaps.add(`${team.id}/legs`);
+    if(assessment.installationDistance.status==='UNASSESSED')gaps.add(`${team.id}/installationDistance`);
+    if(assessment.measurementExtra.status==='UNASSESSED')gaps.add(`${team.id}/measurementExtra`);
     for(const issue of assessment.issues)issueMap.set(`${team.id}/${issue.key}`,issue.excess);
     rows.push({teamId:team.id,orders:assessment.orders,visits:orders.length,distanceM:assessment.distanceM,estimatedDurationS:assessment.estimatedDurationS,violations:assessment.violations,checks:{installationDistance:assessment.installationDistance.status,measurementExtra:assessment.measurementExtra.status,windows:assessment.windows.status}});
   }
   for(let i=0;i<ageHist.length;i++)ageHist[i]??=0;
-  const invalid=baseline?([...issueMap].some(([key,excess])=>excess>(baseline.issueMap.get(key)??0))||totals.unassessedBaskets>baseline.unassessedBaskets):false;
-  return {date,teams:rows,...totals,ageHist,issueMap,invalid};
+  const invalid=baseline?([...issueMap].some(([key,excess])=>excess>(baseline.issueMap.get(key)??0))||[...gaps].some(key=>!baseline.gaps.has(key))):false;
+  return {date,teams:rows,...totals,ageHist,issueMap,gaps,invalid};
 }
 
 const better=(a,b,keys)=>{
@@ -130,7 +133,7 @@ export function proposeDayPlan(scenario,current,date,{variant='COVERAGE_FIRST',o
   const pool=rawPool.filter(order=>!assignedElsewhere.has(order.id)).sort((a,b)=>a.createdOn.localeCompare(b.createdOn)||a.id.localeCompare(b.id));
   let evaluations=0,truncated=false,iterations=0;
   // Baseline = limit issues of the CURRENT plan (before any order is released): removing a visit can create a new long leg, which must count as new.
-  const baseline={issueMap:before.issueMap,unassessedBaskets:before.unassessedBaskets};
+  const baseline={issueMap:before.issueMap,gaps:before.gaps};
   const evaluate=candidate=>{evaluations++;return evaluateDay(scenario,candidate,date,baseline);};
   const place=(base,order,position)=>{
     const assignment=proposalOf(order.id,position.teamId,date,position.start);
@@ -212,10 +215,23 @@ export function proposeDayPlan(scenario,current,date,{variant='COVERAGE_FIRST',o
     }
     return {plan,flexible,score:currentScore};
   };
+  // 2c. Start C: the current plan itself (its automatic visits of the scope stay where they are). It is the always-valid fallback:
+  // when construction and the generator both break a limit elsewhere (e.g. two irreplaceable bridge visits between protected ones),
+  // the proposal is the current plan, improved only by moves that introduce no new limit issue.
+  const fromCurrent=()=>({plan:withAssignments(clone(current),current.assignments.map(clone)),
+    flexible:new Set(current.assignments.filter(item=>item.date===date&&item.origin==='AUTO'&&!item.confirmed&&scope.has(item.orderId)).map(item=>item.orderId))});
+  const names=['CONSTRUCTION','MAP06_GENERATOR','CURRENT_PLAN'];
   const candidates=[improve(construct()),improve(fromGenerator())];
-  const chosen=candidates.reduce((best,item)=>better(item.score,best.score,keys)?item:best);
+  // Start C is only needed when it can differ: the day already has automatic visits in scope, or another start is invalid.
+  const current_=fromCurrent();
+  if(current_.flexible.size||candidates.some(item=>item.score.invalid))candidates.push(improve(current_));
+  else candidates.push(null);
+  const valid=candidates.filter(item=>item&&!item.score.invalid);
+  let chosen=(valid.length?valid:[candidates[2]??candidates[0]]).reduce((best,item)=>better(item.score,best.score,keys)?item:best);
+  let startedFrom=names[candidates.indexOf(chosen)];
+  // Last safety net: never return a plan that introduces a limit issue relative to the current one.
+  if(evaluateDay(scenario,chosen.plan,date,baseline).invalid){chosen={plan:withAssignments(clone(current),current.assignments.map(clone)),flexible:new Set(),score:before};startedFrom='CURRENT_PLAN_UNCHANGED';}
   plan=chosen.plan;const flexible=chosen.flexible;
-  const startedFrom=chosen===candidates[0]?'CONSTRUCTION':'MAP06_GENERATOR';
   validatePlan(scenario,plan);
   const after=evaluateDay(scenario,plan,date);
   const result={variant:spec.id,variantLabel:spec.label,hierarchy:spec.hierarchy,date,plan,before,after,pool:pool.map(order=>order.id),excluded,
@@ -287,7 +303,7 @@ function explainProposal(scenario,current,plan,date,{pool,flexible,keys,excluded
       ...[...blocked].map(([teamId,errors])=>({teamId,blocked:true,verdict:`niewykonalne: ${errors.slice(0,2).map(error=>error.count>1?`${error.message} (×${error.count})`:error.message).join(' / ')}`})),
     ];
     const basket=assessBasket(scenario,plan,own.teamId,date),windowLabel=slotText(scenario,own.start,order.slotsRequired);
-    const feasible=options.length+(chosen?0:1);
+    const feasible=new Set([...options.map(option=>option.teamId),own.teamId]).size;
     const nearest=others.slice().sort((x,y)=>x.figures.km-y.figures.km)[0];
     explanations[order.id]={orderId:order.id,status:'SCHEDULED',ageDays:ageDays(order,date),teamId:own.teamId,windowLabel,
       basket:{orders:basket.orders,distanceM:basket.distanceM,estimatedDurationS:basket.estimatedDurationS},
@@ -307,7 +323,7 @@ function explainProposal(scenario,current,plan,date,{pool,flexible,keys,excluded
     const older=youngestScheduled!==null&&age>youngestScheduled;
     let why;
     if(!qualified)why='Brak kwalifikowanej ekipy.';
-    else if(!errors.length)why='Wykonalne miejsce istnieje, lecz jego zajęcie nie poprawia hierarchii celów.';
+    else if(!errors.length)why='Wykonalne miejsce istnieje według reguł twardych, ale propozycja go nie użyła: jego zajęcie pogarsza ocenę dnia lub tworzy nowe naruszenie/niemożliwy do oceny odcinek w innym koszyku, albo wyszukiwanie zostało przerwane budżetem czasu.';
     else why=groups.slice(0,3).map(group=>`${group.message} (×${group.count})`).join('; ');
     let swap=null;
     if(oldestWaiting.has(order.id)&&qualified) {

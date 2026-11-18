@@ -181,7 +181,7 @@ Karta „Optymalizacja między koszykami” w planerze (serwer lub `planner-offl
 
 ```
 cd map05
-npm test                                   # 159 testów, w tym tests/optimizer.test.mjs
+npm test                                   # 162 testów, w tym tests/optimizer.test.mjs
 node benchmark-optimizer.mjs               # tabela MAP-06 / MAP-07A / MAP-07B (REPEATS=3 node ... dla mediany)
 node benchmark-optimizer.mjs --json out.json
 node benchmark-examples.mjs COVERAGE_FIRST # konkretne koszyki przed/po

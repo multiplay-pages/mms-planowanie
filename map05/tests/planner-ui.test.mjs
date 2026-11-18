@@ -497,3 +497,11 @@ test('a recomputation withdraws the old proposal at once and a day change before
   await waitFor(()=>!ui.$('#opt-run').disabled);
   assert.equal(ui.$('#opt-result').hidden,true);assert.match(ui.$('#opt-status').textContent,/zmienił się/);assert.equal(ui.saved.size,0);
 });
+test('choosing another variant after a computation withdraws the old proposal and its accept button (Codex T16)',async t=>{
+  const ui=await mount(t,{geocoding:uug,routing:realRoutes});
+  ui.change('#planning-date','2026-11-19');
+  ui.click('#opt-run');await waitFor(()=>!ui.$('#opt-result').hidden);
+  ui.change('#opt-variant','AGE_FIRST');
+  assert.equal(ui.$('#opt-result').hidden,true);assert.match(ui.$('#opt-status').textContent,/Zmieniono wariant/);
+  ui.click('#opt-accept');assert.equal(ui.$('#opt-dialog').open,false);assert.equal(ui.saved.size,0);
+});

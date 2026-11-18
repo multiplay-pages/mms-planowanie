@@ -616,12 +616,20 @@ function renderOptimizer() {
   const skipped=Object.values(result.explanations).filter(item=>item.status==='SKIPPED').sort((x,y)=>y.ageDays-x.ageDays||x.orderId.localeCompare(y.orderId));
   const excluded=Object.values(result.explanations).filter(item=>item.status==='EXCLUDED'),byReason=new Map();
   for(const item of excluded)byReason.set(item.reason,(byReason.get(item.reason)??0)+1);
-  $('opt-skipped').innerHTML=skipped.slice(0,12).map(item=>`<details><summary><span class="opt-badge skip">W KOLEJCE</span>${escapeText(item.orderId)} · ${item.ageDays} dni${item.olderThanScheduled?' · starsze niż najmłodsze zaplanowane':''}</summary><p class="small">${escapeText(item.reason)}</p>${item.swapTried?`<p class="small">Próba wymiany: ${escapeText(item.swapTried.verdict)}${item.swapTried.deltaM!==undefined?` (${item.swapTried.deltaM>=0?'+':''}${optKm(item.swapTried.deltaM)} dla dnia)`:''}.</p>`:''}${item.note?`<p class="small muted">${escapeText(item.note)}</p>`:''}${item.blockedBy.length?`<p class="small muted">Najstarsze zajmujące kwalifikowane sloty: ${item.blockedBy.map(blocker=>`${escapeText(blocker.id)} (${blocker.age} dni${blocker.protected?', chronione':''})`).join(', ')}.</p>`:''}</details>`).join('')+(skipped.length>12?`<p class="small muted">Jeszcze ${skipped.length-12} młodszych zleceń pozostaje w kolejce — pokazano powody dla 12 najstarszych, dla pozostałych szczegóły nie są wyświetlane.</p>`:'')+(byReason.size?`<p class="small muted">Poza obliczeniem: ${[...byReason].map(([reason,count])=>`${count} × ${escapeText(reason)}`).join('; ')}.</p>`:'');
+  $('opt-skipped').innerHTML=skipped.slice(0,12).map(item=>`<details><summary><span class="opt-badge skip">W KOLEJCE</span>${escapeText(item.orderId)} · ${item.ageDays} dni${item.olderThanScheduled?' · starsze niż najmłodsze zaplanowane':''}</summary><p class="small">${escapeText(item.reason)}</p>${item.swapTried?`<p class="small">Próba wymiany: ${escapeText(item.swapTried.verdict)}${item.swapTried.deltaM!==undefined?` (${item.swapTried.deltaM>=0?'+':''}${optKm(item.swapTried.deltaM)} dla dnia)`:''}.</p>`:''}${item.note?`<p class="small muted">${escapeText(item.note)}</p>`:''}${item.blockedBy.length?`<p class="small muted">Najstarsze zajmujące kwalifikowane sloty: ${item.blockedBy.map(blocker=>`${escapeText(blocker.id)} (${blocker.age} dni${blocker.protected?', chronione':''})`).join(', ')}.</p>`:''}</details>`).join('')+(skipped.length>12?`<p class="small muted">Jeszcze ${skipped.length-12} kolejnych zleceń pozostaje w kolejce — pokazano powody dla 12 najstarszych, dla pozostałych szczegóły nie są wyświetlane.</p>`:'')+(byReason.size?`<p class="small muted">Poza obliczeniem: ${[...byReason].map(([reason,count])=>`${count} × ${escapeText(reason)}`).join('; ')}.</p>`:'');
   $('opt-rules').innerHTML=[['Potwierdzone w dokumentacji (twarde)',RULE_STATUS.confirmed],['Założenia tej symulacji',RULE_STATUS.simulation],['Niezastosowane — czekają na zatwierdzenie',RULE_STATUS.notApplied]].map(([title,items])=>`<p class="small"><b>${title}</b></p><ul>${items.map(item=>`<li>${escapeText(item)}</li>`).join('')}</ul>`).join('');
   $('opt-result').hidden=false;
   setOptStatus(`Propozycja: wariant „${result.variantLabel}”, obliczona w ${result.elapsedMs} ms${result.truncated?' (przerwana budżetem czasu — wynik może być niepełny)':''}. To symulacja: plan nie został zmieniony.`);
 }
-$('opt-variant').addEventListener('change',syncOptimizer);
+$('opt-variant').addEventListener('change',()=>{
+  // A proposal belongs to the variant it was computed with: choosing another one withdraws it.
+  if(optProposal&&optProposal.result.variant!==$('opt-variant').value) {
+    optProposal=null;optPending=null;optState.view='current';
+    document.querySelector('input[name="opt-view"][value="current"]').checked=true;
+    $('opt-result').hidden=true;setOptStatus('Zmieniono wariant — poprzednia propozycja została wycofana. Oblicz ją ponownie.');updateOperationalMap();
+  }
+  syncOptimizer();
+});
 $('opt-run').addEventListener('click',()=>{
   if(!scenario.routing||optBusy)return;
   // Everything the result depends on is captured now; the previous proposal is withdrawn at once so it cannot be accepted meanwhile.

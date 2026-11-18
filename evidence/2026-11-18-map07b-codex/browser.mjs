@@ -9,6 +9,7 @@ import {setTimeout as delay} from 'node:timers/promises';
 const {chromium}=await import(pathToFileURL(path.join(process.env.LOCALAPPDATA,'mms-e2e/node_modules/playwright-core/index.mjs')).href);
 const origin='http://127.0.0.1:8782';
 const output=path.dirname(fileURLToPath(import.meta.url));
+const evidencePrefix=process.env.MMS_AUDIT_PREFIX??'';
 const days=['2026-11-18','2026-11-19','2026-11-20'];
 const variants=['COVERAGE_FIRST','AGE_FIRST','BALANCE_FIRST'];
 const clean=value=>String(value).replace(/file:\/\/\/[^\s)]+/g,'<local file>').replace(/C:\\Users\\[^\s)]+/ig,'<local path>');
@@ -153,7 +154,7 @@ async function audit(label,url) {
         layout.push({width,...metrics});
       }
       await page.locator('#opt-compare').scrollIntoViewIfNeeded();
-      await page.screenshot({path:path.join(output,`${label}-390.png`)});
+      await page.screenshot({path:path.join(output,`${evidencePrefix}${label}-390.png`)});
       await page.setViewportSize({width:1440,height:1000});
       assert.ok(layout.every(item=>item.doc<=1&&item.panel<=1),JSON.stringify(layout));
       return layout;
@@ -206,7 +207,7 @@ async function audit(label,url) {
       const afterRows=await rows(page);
       const stillOpen=await page.locator('#opt-dialog').isVisible();
       if(stillOpen){
-        await page.screenshot({path:path.join(output,`${label}-dialog-race.png`)});
+        await page.screenshot({path:path.join(output,`${evidencePrefix}${label}-dialog-race.png`)});
         await page.click('#opt-dialog-accept');
       }
       const saved=await snapshot(page);
@@ -221,7 +222,7 @@ async function audit(label,url) {
   await check('no external attempts',()=>assert.deepEqual(requests,[]));
   await check('no errors in console or page',()=>assert.deepEqual(errors,[]));
   await context.close();
-  await writeFile(path.join(output,`${label}-results.json`),JSON.stringify(evidence,null,2));
+  await writeFile(path.join(output,`${evidencePrefix}${label}-results.json`),JSON.stringify(evidence,null,2));
 }
 
 async function supplemental(label,url) {
@@ -302,7 +303,7 @@ async function supplemental(label,url) {
     const status=await page.textContent('#opt-status');
     assert.ok(!remains,JSON.stringify({remains,unchangedStatus:oldStatus===status,hierarchy,status}));
   });
-  await writeFile(path.join(output,`${label}-supplement.json`),JSON.stringify({checks,external,errors},null,2));
+  await writeFile(path.join(output,`${evidencePrefix}${label}-supplement.json`),JSON.stringify({checks,external,errors},null,2));
 }
 
 try {
