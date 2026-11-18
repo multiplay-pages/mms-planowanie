@@ -1,0 +1,38 @@
+// MAP-08 regression: after Hybrid -> Road the basemap message and the real layers must match the mode.
+// Needs: mock provider on 127.0.0.1:9911 and planner served with --allow-tile-origin http://127.0.0.1:9911 on :8766.
+import fs from 'node:fs'; import path from 'node:path'; import os from 'node:os';
+import { chromium } from 'playwright-core';
+import { CHROME, EVID } from './lib.mjs';
+const URL_ = process.argv[2] || 'http://127.0.0.1:8766/';
+const ctx = await chromium.launchPersistentContext(fs.mkdtempSync(path.join(os.tmpdir(), 'mms-m08h-')), { executablePath: CHROME, headless: true, viewport: { width: 1440, height: 900 } });
+const page = ctx.pages()[0]; const tileReq = []; const results = [];
+ctx.on('request', (r) => { if (r.url().startsWith('http://127.0.0.1:9911')) tileReq.push(r.url()); });
+const check = (id, ok, detail) => { results.push({ id, ok: !!ok, detail }); console.log(ok ? 'PASS' : 'FAIL', id, detail ?? ''); };
+await page.addInitScript(() => { localStorage.setItem('mms-map06-satellite-v1', JSON.stringify({ preset: 'custom', url: 'http://127.0.0.1:9911/{z}/{x}/{y}.png', attribution: '© Mock provider (test)', consent: true })); });
+await page.goto(URL_, { waitUntil: 'load' }); await page.waitForSelector('#op-map-shell:not([hidden])', { timeout: 120000 });
+const idle = () => page.waitForFunction(() => { const v = document.querySelector('#operational-map')?.operationalView; return v && v.map.loaded() && !v.map.isMoving(); }, null, { timeout: 60000 });
+await idle(); await page.click('#op-workspace'); await page.waitForTimeout(800); await idle();
+const status = () => page.textContent('#op-status');
+const vis = () => page.evaluate(() => { const m = document.querySelector('#operational-map').operationalView.map; const l = m.getStyle().layers.filter((x) => /sat|imagery|ortho/i.test(x.id)).map((x) => [x.id, m.getLayoutProperty(x.id, 'visibility') ?? 'visible']); return l; });
+check('H0 provider configured -> hybrid/satellite selectable', !(await page.locator('input[name="op-basemap"][value="hybrid"]').isDisabled()));
+check('H0b no imagery request before the user chooses it', tileReq.length === 0, `${tileReq.length} requests`);
+check('H1 road status at start', /^Podkład: Drogowa/.test(await status()), (await status()).slice(0, 60));
+await page.check('input[name="op-basemap"][value="hybrid"]'); await page.waitForTimeout(1500); await idle();
+const hy = await status();
+check('H2 hybrid status names Hybryda and the attribution', /^Podkład: Hybryda — © Mock provider/.test(hy), hy.slice(0, 90));
+check('H2c satellite raster layer present and visible in Hybrid', JSON.stringify(await vis()) === '[["satellite","visible"]]', JSON.stringify(await vis()));
+check('H2b imagery requested only now, from the configured provider', tileReq.length > 0, `${tileReq.length} requests`);
+await page.screenshot({ path: path.join(EVID, 'hybrid-on-1440.png') });
+await page.check('input[name="op-basemap"][value="road"]'); await page.waitForTimeout(1200); await idle();
+const rd = await status(); const before = tileReq.length; await page.waitForTimeout(1500);
+check('H3 AFTER Hybrid -> Road status says Drogowa (audit fix)', /^Podkład: Drogowa/.test(rd) && !/Hybryda|Satelita —/.test(rd), rd.slice(0, 90));
+check('H3b imagery layer is gone after returning to Road', (await vis()).every(([, v]) => v === 'none'), JSON.stringify(await vis()));
+check('H3c no further imagery requests in Road mode', tileReq.length === before);
+await page.screenshot({ path: path.join(EVID, 'hybrid-back-to-road-1440.png') });
+await page.check('input[name="op-basemap"][value="satellite"]'); await page.waitForTimeout(1200);
+check('H4 satellite status', /^Podkład: Satelita/.test(await status()));
+await page.check('input[name="op-basemap"][value="road"]'); await page.waitForTimeout(800);
+check('H5 Satellite -> Road status', /^Podkład: Drogowa/.test(await status()));
+const failed = results.filter((r) => !r.ok).length; console.log(`${results.length - failed} PASS / ${failed} FAIL`);
+fs.writeFileSync(path.join(EVID, 'hybrid-results.json'), JSON.stringify(results, null, 2));
+await ctx.close();

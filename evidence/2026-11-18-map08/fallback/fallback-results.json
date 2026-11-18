@@ -1,0 +1,52 @@
+[
+  {
+    "id": "missing-404: roads-only map starts",
+    "ok": true,
+    "detail": "rich=false"
+  },
+  {
+    "id": "missing-404: status says the pack is unavailable",
+    "ok": true,
+    "detail": "Podkład: Drogowa — lokalne drogi OSM — pakiet mapy niedostępny, podkład uproszczony (tylko drogi), bez połączeń zewnętrz"
+  },
+  {
+    "id": "missing-404: routes and visits still work",
+    "ok": true,
+    "detail": "13 visits"
+  },
+  {
+    "id": "missing-404: building/nature switches disabled (no data)",
+    "ok": true,
+    "detail": "[true,true]"
+  },
+  {
+    "id": "missing-404: no uncaught errors",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "id": "corrupt: roads-only map starts",
+    "ok": true,
+    "detail": "rich=false"
+  },
+  {
+    "id": "corrupt: status says the pack is unavailable",
+    "ok": true,
+    "detail": "Podkład: Drogowa — lokalne drogi OSM — pakiet mapy niedostępny, podkład uproszczony (tylko drogi), bez połączeń zewnętrz"
+  },
+  {
+    "id": "corrupt: routes and visits still work",
+    "ok": true,
+    "detail": "13 visits"
+  },
+  {
+    "id": "corrupt: building/nature switches disabled (no data)",
+    "ok": true,
+    "detail": "[true,true]"
+  },
+  {
+    "id": "corrupt: no uncaught errors",
+    "ok": true,
+    "detail": ""
+  }
+]

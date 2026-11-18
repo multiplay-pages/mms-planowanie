@@ -47,12 +47,16 @@ Mapa „plik → źródło → licencja”:
 | `basemap/regional-roads.json.gz`, `planner-data.json.gz` | j.w. | ODbL 1.0 | j.w. | j.w. |
 | `data/local-routes.json` | segmenty i geometria dróg OSM + obliczenia lokalne | ODbL 1.0 (baza pochodna) | © OpenStreetMap contributors (dodane do dokumentacji, plik nie ma własnego pola `license`) | `map05/local_routing.py`, `docs/ARCHITEKTURA.md` |
 | kafle MVT w przeglądarce | j.w. | ODbL 1.0 (wynik pochodny; nie zapisywany) | napis „© OpenStreetMap” w kontrolce atrybucji MapLibre | `map05/road-tiles.mjs`, `road-tile-worker.mjs` |
+| `basemap/map-pack.pmtiles` (MAP-08, nie w repo) | ekstrakty OSM Geofabrik (opolskie, śląskie, dolnośląskie, wielkopolskie) + `planner-compact.json` | ODbL 1.0 (baza pochodna, share-alike) | © OpenStreetMap contributors (kontrolka mapy, `map-pack.manifest.json`) | `python -X utf8 map05/basemap/build_map_pack.py` |
+| `planner-offline-rich.html` (nie w repo) | j.w. + pakiet osadzony base64 | ODbL dla danych | j.w. | `python -X utf8 map05/build_planner.py --rich` |
 | `planner-offline.html` | zawiera powyższe dane (gzip + base64) | ODbL dla danych, BSD-3-Clause i inne dla kodu — **licencje danych i kodu są odrębne** | atrybucja widoczna w mapie; pełne teksty licencji kodu osadzone w pliku | `python -X utf8 map05/build_planner.py` |
 
 Baza pochodna pozostaje na ODbL (share-alike) także wtedy, gdy kafle powstają dopiero w przeglądarce. Dane modyfikowalne i skrypty odtwarzające są publicznie w tym repozytorium.
 Uwaga: plik `local-routes.json` powinien zawierać własne pole licencji i atrybucji — to drobna zmiana metadanych, którą trzeba wprowadzić przez regenerację tego pliku w ramach osobnego, zatwierdzonego etapu (silnik tras jest chroniony).
 
 ## 5. Zdjęcia satelitarne i hybryda
+
+**MAP-08:** interfejs Satelita/Hybryda jest gotowy, ale wyłączony i oznaczony „niedostępna”, dopóki właściciel nie potwierdzi praw i nie skonfiguruje dostawcy. Żadnych zdjęć nie pobrano do repozytorium ani artefaktu offline. Porównanie opcji (GUGiK ORTO, dostawca komercyjny, własny hosting): `docs/MAP08-MAPA-OPERACYJNA.md`, sekcja 5.
 
 Domyślnie nie wdrożono żadnego dostawcy: funkcja jest opt-in (konfiguracja, zgoda, origin dopuszczony przy starcie serwera). 18.11.2026 sprawdzono technicznie (jedna krótka sesja w Chrome, nieklienckie lokalizacje: Opole centrum i okolice Brzeszcz), że preset „GUGiK ORTO” zwraca obrazy JPEG (HTTP 200) i że Satelita oraz Hybryda (zdjęcia + lokalne drogi i etykiety) się rysują; `Uruchom-planer.bat` dopuszcza ten origin. **Status: działa technicznie; warunki licencyjne usługi WMS niepotwierdzone (poniżej), więc nadal bez zatwierdzenia licencyjnego.**
 
@@ -68,5 +72,6 @@ Preset „GUGiK ORTO” (WMS `PZGIK/ORTO/WMS/StandardResolution`):
 2. Warunki GUGiK UUG dla trwałego zapisu i publikacji odpowiedzi oraz identyfikatorów TERYT/SIMC/ULIC (sekcja 2): zapytanie do GUGiK; informacja o źródle w interfejsie.
 3. Geoapify: atrybucja i warunki zapisu wyników (sekcja 3) — dodać atrybucję, usunąć wyniki z publikacji albo potwierdzić warunki u dostawcy.
 4. Warunki i atrybucja ORTO przed włączeniem zdjęć (sekcja 5).
+5. Sposób dystrybucji pakietu `map-pack.pmtiles` (ODbL share-alike; 53 MB, poza repozytorium) — kto go buduje i gdzie jest udostępniany.
 
 Pozycje 1–3 dotyczą danych, które od wcześniejszych etapów są w publicznym `main` za zgodą właściciela; nie zostały wprowadzone przez MAP-06. Gałąź MAP-06 dodaje wyłącznie kopie tych samych danych w zrzutach ekranu i artefakcie offline.

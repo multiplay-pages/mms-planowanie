@@ -201,3 +201,74 @@ class DeliveryTests(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
+
+class RangeTests(unittest.TestCase):
+    """HTTP Range handling for the local map pack, with a small temporary file and no sockets."""
+
+    def fetch(self, rng, file_bytes=bytes(range(100))):
+        import tempfile
+        with tempfile.TemporaryDirectory() as folder:
+            target = Path(folder) / 'pack.bin'
+            target.write_bytes(file_bytes)
+
+            class RangeHandler(QuietHandler):
+                def do_GET(self):
+                    self.send_ranged(target, body=True)
+
+            extra = f'Range: {rng}\r\n' if rng else ''
+            connection = LocalConnection(f'GET /x HTTP/1.0\r\nHost: localhost\r\n{extra}\r\n'.encode('ascii'))
+            RangeHandler(connection, ('127.0.0.1', 1), object())
+            head, body = connection.output.getvalue().split(b'\r\n\r\n', 1)
+            return head.decode('ascii'), body
+
+    def test_partial_and_suffix_ranges(self):
+        head, body = self.fetch('bytes=10-19')
+        self.assertIn('206', head.splitlines()[0]);self.assertIn('Content-Range: bytes 10-19/100', head)
+        self.assertEqual(body, bytes(range(10, 20)))
+        head, body = self.fetch('bytes=-5')
+        self.assertEqual(body, bytes(range(95, 100)));self.assertIn('bytes 95-99/100', head)
+        head, body = self.fetch('bytes=90-')
+        self.assertEqual(body, bytes(range(90, 100)))
+        head, body = self.fetch('bytes=95-500')
+        self.assertIn('bytes 95-99/100', head);self.assertEqual(len(body), 5)
+
+    def test_head_ignores_range_and_reports_the_whole_resource(self):
+        import tempfile
+        with tempfile.TemporaryDirectory() as folder:
+            target = Path(folder) / 'pack.bin'
+            target.write_bytes(bytes(10))
+
+            class HeadHandler(QuietHandler):
+                def do_HEAD(self):
+                    self.send_ranged(target, body=False)
+
+            connection = LocalConnection(b'HEAD /x HTTP/1.0\r\nHost: localhost\r\nRange: bytes=2-3\r\n\r\n')
+            HeadHandler(connection, ('127.0.0.1', 1), object())
+            head, body = connection.output.getvalue().split(b'\r\n\r\n', 1)
+        head = head.decode('ascii')
+        self.assertIn('200', head.splitlines()[0]);self.assertIn('Content-Length: 10', head);self.assertNotIn('Content-Range', head);self.assertEqual(body, b'')
+
+    def test_full_response_advertises_ranges(self):
+        head, body = self.fetch(None)
+        self.assertIn('200', head.splitlines()[0]);self.assertIn('Accept-Ranges: bytes', head);self.assertEqual(len(body), 100)
+
+    def test_unsatisfiable_or_malformed_ranges_are_rejected(self):
+        for value in ('bytes=100-120', 'bytes=50-40', 'bytes=-0', 'bytes=-', 'bytes=0-1,5-6', 'items=0-1', 'bytes=a-b'):
+            head, body = self.fetch(value)
+            self.assertIn('416', head.splitlines()[0], value)
+            self.assertNotIn(b'\x00\x01', body)
+
+
+class RichBuildTests(unittest.TestCase):
+    def test_rich_artifact_embeds_the_pack_under_the_csp_hash(self):
+        pack = ROOT / 'basemap' / 'map-pack.pmtiles'
+        rich = ROOT / 'planner-offline-rich.html'
+        if not pack.exists() or not rich.exists():
+            self.skipTest('local pack or rich artifact not built')
+        html = rich.read_text(encoding='utf-8')
+        match = re.search(r'<script id="map-pack-data" type="text/plain" data-encoding="base64">([^<]+)</script>', html)
+        self.assertIsNotNone(match)
+        self.assertEqual(base64.b64decode(match.group(1)), pack.read_bytes())
+        digest = base64.b64encode(hashlib.sha256(match.group(1).encode('utf-8')).digest()).decode('ascii')
+        self.assertIn(f"'sha256-{digest}'", html)

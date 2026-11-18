@@ -3,6 +3,9 @@
 import {hasLocation} from './locations.mjs';
 import {assessBasket,decodeRouteGeometry} from './routes.mjs';
 
+const OP_SHAPE_OF={MPL:'circle',BSA:'square',POMIAR:'diamond'};
+const formatKm=meters=>`${(meters/1000).toLocaleString('pl-PL',{minimumFractionDigits:1,maximumFractionDigits:1})} km`;
+
 // Okabe-Ito based palette: distinguishable for common colour-vision deficiencies.
 export const OPERATIONAL_TEAM_COLORS=['#0072B2','#E69F00','#009E73','#CC79A7','#D55E00','#56B4E9','#8C6D1F','#5D3A9B'];
 
@@ -20,10 +23,11 @@ const operationalCollection=features=>({type:'FeatureCollection',features});
  * @param options.showRoutes    draw known road geometry of basket legs
  * @param options.includeUnassigned predicate for queue orders (planner filters)
  * @param options.selectedId    currently selected order
+ * @param options.focusTeam     team whose route is emphasised; others are dimmed (null = all equal)
  */
 export function buildOperationalLayers(scenario,plan,date,options={}) {
   const hidden=new Set(options.hiddenTeams??[]),showRoutes=options.showRoutes!==false,showUnassigned=options.showUnassigned!==false;
-  const includeUnassigned=options.includeUnassigned??(()=>true),selectedId=options.selectedId??null;
+  const includeUnassigned=options.includeUnassigned??(()=>true),selectedId=options.selectedId??null,focusTeam=options.focusTeam??null;
   const addressOf=order=>scenario.addresses.find(address=>address.id===order.addressId);
   const orderOf=id=>scenario.orders.find(order=>order.id===id);
   const visits=[],routes=[],unassigned=[],gaps=[],teams=[];
@@ -32,13 +36,14 @@ export function buildOperationalLayers(scenario,plan,date,options={}) {
     const assessment=assessBasket(scenario,plan,team.id,date);
     const byOrder=new Map(plan.assignments.filter(a=>a.teamId===team.id&&a.date===date).map(a=>[a.orderId,a]));
     // Visit numbers follow the exact order used for the road assessment and the drawn route.
+    const unlocated=[];
     assessment.orders.forEach((orderId,index)=>{
       const order=orderOf(orderId),address=addressOf(order),assignment=byOrder.get(orderId);
-      if(!hasLocation(address)) {gaps.push({kind:'NO_LOCATION',teamId:team.id,orderId,message:`${orderId}: brak ustalonej pozycji — wizyta nie jest rysowana.`});return;}
+      if(!hasLocation(address)) {unlocated.push(orderId);gaps.push({kind:'NO_LOCATION',teamId:team.id,orderId,message:`${orderId}: brak ustalonej pozycji — wizyta nie jest rysowana.`});return;}
       if(!visible)return;
       const end=scenario.windows[assignment.start+(order.slotsRequired??1)-1];
       visits.push(operationalFeature({type:'Point',coordinates:address.coordinates},{
-        orderId,teamId:team.id,color,seq:index+1,label:String(index+1),type:order.type,kind:order.type==='POMIAR'?'measurement':'installation',
+        orderId,teamId:team.id,color,seq:index+1,label:String(index+1),type:order.type,shape:OP_SHAPE_OF[order.type]??'circle',kind:order.type==='POMIAR'?'measurement':'installation',
         window:`${scenario.windows[assignment.start][0]}–${end[1]}`,start:assignment.start,confirmed:assignment.confirmed,origin:assignment.origin,
         city:address.city,address:address.label,selected:orderId===selectedId,
       }));
@@ -50,10 +55,13 @@ export function buildOperationalLayers(scenario,plan,date,options={}) {
         let coordinates;
         // A corrupt or disconnected chain is reported, never replaced by a straight line.
         try {coordinates=decodeRouteGeometry(scenario.routing,leg);} catch {gaps.push({kind:'INVALID_GEOMETRY',teamId:team.id,from:leg.from,to:leg.to,message:`${team.id}: nieprawidłowa geometria ${leg.from} → ${leg.to} — pominięto.`});return;}
-        if(coordinates.length>=2)routes.push(operationalFeature({type:'LineString',coordinates},{teamId:team.id,color,from:leg.from,to:leg.to,seq:index+1,distanceM:leg.distanceM}));
+        if(coordinates.length>=2)routes.push(operationalFeature({type:'LineString',coordinates},{teamId:team.id,color,from:leg.from,to:leg.to,seq:index+1,distanceM:leg.distanceM,durationS:leg.estimatedDurationS??null,distanceLabel:formatKm(leg.distanceM),active:focusTeam===null||focusTeam===team.id,focused:focusTeam===team.id}));
       });
     } else if(assessment.orders.length>1)gaps.push({kind:'NO_ROUTING',teamId:team.id,message:`${team.id}: brak lokalnych wyników dróg — trasy nieocenione.`});
-    teams.push({teamId:team.id,color,visible,count:assessment.orders.length,orders:assessment.orders,distanceM:assessment.distanceM,estimatedDurationS:assessment.estimatedDurationS,
+    const knownLegs=assessment.legs.filter(leg=>leg.status==='OK');
+    teams.push({teamId:team.id,color,visible,focused:focusTeam===team.id,count:assessment.orders.length,orders:assessment.orders,unlocated,distanceM:assessment.distanceM,estimatedDurationS:assessment.estimatedDurationS,
+      legs:assessment.legs.map(leg=>({from:leg.from,to:leg.to,status:leg.status,distanceM:leg.status==='OK'?leg.distanceM:null,durationS:leg.status==='OK'?leg.estimatedDurationS??null:null})),
+      knownDistanceM:knownLegs.reduce((sum,leg)=>sum+leg.distanceM,0),knownDurationS:knownLegs.reduce((sum,leg)=>sum+(leg.estimatedDurationS??0),0),incomplete:knownLegs.length<assessment.legs.length,
       checks:{installationDistance:assessment.installationDistance.status,measurementExtra:assessment.measurementExtra.status,windows:assessment.windows.status},violations:assessment.violations});
   }
   const assigned=new Set(plan.assignments.map(a=>a.orderId));

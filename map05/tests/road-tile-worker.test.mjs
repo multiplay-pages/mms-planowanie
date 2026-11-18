@@ -18,7 +18,7 @@ const roads={encoding:'polyline5-indexed',categories:['primary','residential'],n
 const json=JSON.stringify({regions:{PLANNER:roads}});
 const tileXY=(lon,lat,z)=>{const s=Math.sin(lat*Math.PI/180);return [Math.floor((lon+180)/360*2**z),Math.floor((0.5-Math.log((1+s)/(1-s))/(4*Math.PI))*2**z)];};
 const [X,Y]=tileXY(18.64,50.21,14);
-const flush=async(n=8)=>{for(let i=0;i<n;i++)await new Promise(resolve=>setImmediate(resolve));};
+const flush=async(n=8)=>{for(let i=0;i<n;i++)await new Promise(resolve=>setTimeout(resolve,5));};
 
 // A service whose scheduler is driven by the test, so ordering and cancellation are deterministic.
 function manualService(options={}) {

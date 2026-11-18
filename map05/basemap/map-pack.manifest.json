@@ -1,0 +1,92 @@
+{
+  "schema": "mms-map-pack-1",
+  "file": "map-pack.pmtiles",
+  "bytes": 53287361,
+  "sha256": "49e097ad50b9a2983cf61fb9e08e374be80154f0132dcb3cc62cc51a8dc6d56f",
+  "tiles": 11001,
+  "uniqueTiles": 11001,
+  "minZoom": 5,
+  "maxZoom": 14,
+  "bounds": [
+    17.2,
+    49.9,
+    19.0,
+    51.5
+  ],
+  "detailRadiusKm": 3.0,
+  "coveragePoints": 102,
+  "sources": {
+    "roads": "basemap/planner-compact.json",
+    "regions": [
+      "opolskie-latest.osm.pbf",
+      "slaskie-latest.osm.pbf",
+      "dolnoslaskie-latest.osm.pbf",
+      "wielkopolskie-latest.osm.pbf"
+    ]
+  },
+  "attribution": "© OpenStreetMap contributors (ODbL 1.0)",
+  "license": "ODbL-1.0",
+  "features": {
+    "building": {
+      "14": 163959
+    },
+    "landuse": {
+      "9": 21648,
+      "10": 33153,
+      "11": 93275,
+      "12": 104023,
+      "13": 106209,
+      "14": 106453
+    },
+    "places": {
+      "5": 12,
+      "6": 12,
+      "7": 12,
+      "8": 85,
+      "9": 85,
+      "10": 85,
+      "11": 2311,
+      "12": 2311,
+      "13": 4311,
+      "14": 5222
+    },
+    "rail": {
+      "9": 3470,
+      "10": 3552,
+      "11": 3555,
+      "12": 3559,
+      "13": 3559,
+      "14": 3559
+    },
+    "roads": {
+      "5": 6236,
+      "6": 8125,
+      "7": 9609,
+      "8": 10587,
+      "9": 22120,
+      "10": 22446,
+      "11": 44420,
+      "12": 108395,
+      "13": 108400,
+      "14": 322441
+    },
+    "water": {
+      "8": 1108,
+      "9": 2815,
+      "10": 5860,
+      "11": 10502,
+      "12": 16852,
+      "13": 17115,
+      "14": 17243
+    },
+    "waterway": {
+      "9": 1342,
+      "10": 1387,
+      "11": 1400,
+      "12": 1861,
+      "13": 1861,
+      "14": 1861
+    }
+  },
+  "buildSeconds": 1477.7
+}

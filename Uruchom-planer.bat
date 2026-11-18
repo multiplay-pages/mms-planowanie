@@ -17,6 +17,11 @@ if not exist "map05\basemap\planner-compact.json" (
   %PY% -X utf8 map05\prepare_assets.py
 )
 
+if not exist "map05\basemap\map-pack.pmtiles" (
+  echo.
+  echo UWAGA: brak pliku map05\basemap\map-pack.pmtiles - mapa dziala w trybie uproszczonym ^(tylko drogi, bez nazw ulic i budynkow^).
+  echo Pelny podklad: skopiuj map-pack.pmtiles do map05\basemap\ ^(patrz docs\MAP08-MAPA-OPERACYJNA.md^) i odswiez strone.
+)
 echo.
 echo Planer: http://127.0.0.1:8765/   (zamknij to okno, aby zatrzymac serwer)
 echo Satelita/Hybryda: wybierz przycisk na mapie i zaznacz zgode w oknie Dostawca zdjec.
