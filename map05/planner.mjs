@@ -136,7 +136,9 @@ function renderPlanner() {
 function addressParts(address) {
   const place=`${address.postcode??''} ${address.city??''}`.trim(),lead=`${place}, `;
   const street=address.label?.startsWith(lead)?address.label.slice(lead.length):address.label??'';
-  return {street:street||address.label||'',place};
+  // Villages without street names are addressed by number only: lead with the town so the line is meaningful.
+  const line=street||address.label||'';
+  return {street:/^\d/.test(line)&&address.city?`${address.city} ${line}`:line,place};
 }
 
 function renderOrderDetails() {

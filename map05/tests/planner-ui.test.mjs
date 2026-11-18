@@ -306,6 +306,17 @@ test('the full street address is prominent in basket cards, the layer list and t
   assert.ok(ui.$('#order-details .address-card .address-street').textContent.length>0);
   assert.equal(ui.$('#order-details .address-card .address-slot'),null);
 });
+test('addresses without a street name lead with the town, others keep the street line',async t=>{
+  const scenario=modelApi.createScenario(dataset,uug),bare=scenario.addresses.find(a=>/^\d/.test(a.label.slice(`${a.postcode} ${a.city}, `.length))),withStreet=scenario.addresses.find(a=>/^(ul\.|al\.|pl\.)/.test(a.label.slice(`${a.postcode} ${a.city}, `.length)));
+  assert.ok(bare&&withStreet);
+  const order=id=>scenario.orders.find(o=>o.addressId===id&&o.ready);
+  const ui=await mount(t,{geocoding:uug,saved:new Map()});
+  const ob=order(bare.id)??scenario.orders.find(o=>o.addressId===bare.id),ow=order(withStreet.id)??scenario.orders.find(o=>o.addressId===withStreet.id);
+  ui.click(`#queue-list button[data-order="${ob.id}"]`);
+  assert.equal(ui.$('#order-details .address-street').textContent,`${bare.city} ${bare.label.slice(`${bare.postcode} ${bare.city}, `.length)}`);
+  ui.click(`#queue-list button[data-order="${ow.id}"]`);
+  assert.equal(ui.$('#order-details .address-street').textContent,withStreet.label.slice(`${withStreet.postcode} ${withStreet.city}, `.length));
+});
 test('operational map panel follows the plan for every basket and keeps keyboard focus on a visit',async t=>{
   const updates=[],fits=[];
   const fakeView=()=>({ready:Promise.resolve(),update:layers=>updates.push(layers),fit:bounds=>fits.push(bounds),flyTo(){},setRoadsVisible(){},setBasemap(){},destroy(){},resize(){}});
