@@ -14,6 +14,7 @@ FILES = {
     '/planner-model.mjs': ('planner-model.mjs', 'text/javascript; charset=utf-8'),
     '/locations.mjs': ('locations.mjs', 'text/javascript; charset=utf-8'),
     '/routes.mjs': ('routes.mjs', 'text/javascript; charset=utf-8'),
+    '/optimizer.mjs': ('optimizer.mjs', 'text/javascript; charset=utf-8'),
     '/planner-map.mjs': ('planner-map.mjs', 'text/javascript; charset=utf-8'),
     '/operational-map.mjs': ('operational-map.mjs', 'text/javascript; charset=utf-8'),
     '/road-tiles.mjs': ('road-tiles.mjs', 'text/javascript; charset=utf-8'),

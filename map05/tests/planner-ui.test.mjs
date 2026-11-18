@@ -6,6 +6,7 @@ import {gzipSync} from 'node:zlib';
 import vm from 'node:vm';
 import {Window} from 'happy-dom';
 import * as modelApi from '../planner-model.mjs';
+import * as optimizerApi from '../optimizer.mjs';
 import * as mapApi from '../map.mjs';
 import * as locationApi from '../locations.mjs';
 import * as roadApi from '../routes.mjs';
@@ -15,6 +16,7 @@ import * as embeddedApi from '../embedded-data.mjs';
 import * as tileClientApi from '../road-tile-client.mjs';
 import {validateSatelliteConfig,SATELLITE_PRESETS} from '../maplibre-view.mjs';
 import {roadFixture} from './road-fixture.mjs';
+const realRoutes=await readFile(new URL('../data/local-routes.json',import.meta.url),'utf8').then(JSON.parse);
 const [markup,source,dataset,basemap,geocoding,uug]=await Promise.all([
   readFile(new URL('../planner.html',import.meta.url),'utf8'),
   readFile(new URL('../planner.mjs',import.meta.url),'utf8'),
@@ -35,7 +37,7 @@ async function mount(t,options={}) {
   if(options.Worker)window.happyDOM.setURL('http://localhost/map05/planner.html');
   if(options.createOperationalMapView)window.HTMLCanvasElement.prototype.getContext=function(type){return /webgl/.test(type)?{}:null;};
   const mapAdapter=options.createOperationalMapView??(()=>{throw Error('MapLibre is not available in DOM tests');});
-  vm.runInContext(source.replace(/^import[^\n]*\n/gm,''),vm.createContext({document:window.document,fetch:deny,localStorage:storage,URL,Blob,Intl,console,...modelApi,...mapApi,...locationApi,...roadApi,...plannerMapApi,...operationalApi,...embeddedApi,...tileClientApi,atob,Response,DecompressionStream,Uint8Array,Worker:options.Worker,createOperationalMapView:mapAdapter,validateSatelliteConfig,SATELLITE_PRESETS,maplibregl:options.createOperationalMapView?{setWorkerUrl(){}}:undefined}),{timeout:10000});
+  vm.runInContext(source.replace(/^import[^\n]*\n/gm,''),vm.createContext({document:window.document,fetch:deny,setTimeout,performance,localStorage:storage,URL,Blob,Intl,console,...modelApi,...optimizerApi,...mapApi,...locationApi,...roadApi,...plannerMapApi,...operationalApi,...embeddedApi,...tileClientApi,atob,Response,DecompressionStream,Uint8Array,Worker:options.Worker,createOperationalMapView:mapAdapter,validateSatelliteConfig,SATELLITE_PRESETS,maplibregl:options.createOperationalMapView?{setWorkerUrl(){}}:undefined}),{timeout:10000});
   await new Promise(resolve=>setImmediate(resolve));
   const $=s=>window.document.querySelector(s),all=s=>[...window.document.querySelectorAll(s)];
   const click=s=>{assert.ok($(s),s);$(s).dispatchEvent(new window.MouseEvent('click',{bubbles:true,cancelable:true}));};
@@ -422,4 +424,61 @@ test('without the Worker API the SVG map stays and the operational map is never 
   for(let i=0;i<5;i++)await new Promise(resolve=>setImmediate(resolve));
   assert.equal(created,0);assert.equal(ui.$('#op-map-shell').hidden,true);
   assert.ok(ui.all('#planner-map .map-ground').length>0);
+});
+
+// MAP-07B: the optimisation is a simulation; the plan changes only after a conscious acceptance and the change can be undone.
+const waitFor=async(test,limit=20000)=>{const started=Date.now();while(!test()){if(Date.now()-started>limit)throw Error('Timed out waiting for the optimiser');await new Promise(resolve=>setTimeout(resolve,25));}};
+test('optimisation proposal is a simulation: nothing is saved until it is accepted, and acceptance can be undone',async t=>{
+  const ui=await mount(t,{geocoding:uug,routing:realRoutes});
+  ui.change('#planning-date','2026-11-19');
+  const planned=()=>JSON.parse([...ui.saved.values()][0]??'{"assignments":[]}').assignments.length;
+  assert.equal(ui.$('#opt-result').hidden,true);assert.equal(ui.$('#opt-run').disabled,false);
+  assert.match(ui.$('#opt-hierarchy').textContent,/niezatwierdzona/);
+  ui.click('#opt-run');
+  await waitFor(()=>!ui.$('#opt-result').hidden);
+  assert.equal(planned(),0,'the proposal must not touch the stored plan');
+  assert.equal(ui.$('#undo').disabled,true);
+  assert.equal(ui.all('#opt-compare tr').length,7);assert.equal(ui.all('#opt-baskets .opt-basket').length,5);
+  assert.match(ui.$('#opt-status').textContent,/symulacja: plan nie został zmieniony/);
+  assert.ok(ui.all('#opt-explain details').length>=10&&ui.all('#opt-skipped details').length>=5);
+  assert.match(ui.$('#opt-explain').textContent,/Rozważono 5 koszyków/);
+  assert.match(ui.$('#opt-rules').textContent,/Potwierdzone w dokumentacji/);
+  // Cancel keeps the plan; the dialog states what will change.
+  ui.click('#opt-accept');assert.equal(ui.$('#opt-dialog').open,true);assert.match(ui.$('#opt-dialog-text').textContent,/potwierdzone i ręczne przydziały pozostają/);
+  ui.click('#opt-dialog-cancel');assert.equal(planned(),0);
+  ui.click('#opt-accept');ui.click('#opt-dialog-accept');
+  const accepted=planned();assert.ok(accepted>=10,'accepted proposal is stored as a normal plan');
+  assert.equal(ui.$('#undo').disabled,false);assert.equal(ui.$('#opt-result').hidden,true);assert.match(ui.$('#opt-status').textContent,/zastosowana/);
+  assert.match(ui.$('#message').textContent,/Zastosowano propozycję optymalizacji/);
+  ui.click('#undo');assert.equal(planned(),0);
+});
+test('rejecting or invalidating a proposal leaves the plan alone',async t=>{
+  const ui=await mount(t,{geocoding:uug,routing:realRoutes});
+  ui.change('#planning-date','2026-11-18');ui.change('#opt-variant','AGE_FIRST');
+  assert.match(ui.$('#opt-hierarchy').textContent,/starszeństwo/);
+  ui.click('#opt-run');await waitFor(()=>!ui.$('#opt-result').hidden);
+  ui.click('#opt-reject');assert.equal(ui.$('#opt-result').hidden,true);assert.equal(ui.saved.size,0);assert.match(ui.$('#opt-status').textContent,/odrzucona/);
+  ui.click('#opt-run');await waitFor(()=>!ui.$('#opt-result').hidden);
+  ui.change('#planning-date','2026-11-19');
+  assert.equal(ui.$('#opt-result').hidden,true,'a day change withdraws the proposal');assert.match(ui.$('#opt-status').textContent,/wycofana/);
+  assert.equal(ui.saved.size,0);
+});
+test('without local road data the optimiser is disabled instead of guessing distances',async t=>{
+  const ui=await mount(t);
+  assert.equal(ui.$('#opt-run').disabled,true);assert.match(ui.$('#opt-status').textContent,/wymaga lokalnej oceny dróg/);
+});
+test('the map previews the proposal on demand without changing the plan, with a visible simulation banner',async t=>{
+  const updates=[],fakeView=()=>({ready:Promise.resolve(),update:layers=>updates.push(layers),fit(){},flyTo(){},setRoadsVisible(){},setBasemap(){},destroy(){},resize(){}});
+  const regional={regions:{PLANNER:{encoding:'polyline5-indexed',categories:['primary'],names:[''],bounds:[17.2,49.9,19,51.5],features:[]}}};
+  const ui=await mount(t,{geocoding:uug,routing:realRoutes,basemap:regional,Worker:recordingWorker(),createOperationalMapView:fakeView});
+  for(let i=0;i<5;i++)await new Promise(resolve=>setImmediate(resolve));
+  ui.change('#planning-date','2026-11-19');
+  ui.click('#opt-run');await waitFor(()=>!ui.$('#opt-result').hidden);
+  assert.equal(updates.at(-1).visits.features.length,0,'the default map view is still the current plan');
+  const radio=value=>{const node=ui.$(`input[name="opt-view"][value="${value}"]`);node.checked=true;node.dispatchEvent(new ui.window.Event('change',{bubbles:true}));};
+  radio('proposal');
+  assert.ok(updates.at(-1).visits.features.length>=10,'proposal visits are drawn');
+  assert.match(ui.$('#op-layers').textContent,/PODGLĄD PROPOZYCJI/);assert.equal(ui.saved.size,0);
+  radio('current');
+  assert.equal(updates.at(-1).visits.features.length,0);assert.doesNotMatch(ui.$('#op-layers').textContent,/PODGLĄD PROPOZYCJI/);
 });

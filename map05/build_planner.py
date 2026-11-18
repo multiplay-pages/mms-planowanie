@@ -87,7 +87,7 @@ def build():
         raise ValueError('Road snapshot or engine changed. Rebuild local routes first.')
     vendor = maplibre_bundle()
     css = vendor['css'] + '\n' + (ROOT / 'planner.css').read_text(encoding='utf-8')
-    body = strip_modules(['locations.mjs', 'routes.mjs', 'planner-model.mjs', 'map.mjs', 'planner-map.mjs', 'operational-map.mjs', 'embedded-data.mjs', 'road-tiles.mjs', 'road-tile-client.mjs', 'maplibre-view.mjs', 'planner.mjs'])
+    body = strip_modules(['locations.mjs', 'routes.mjs', 'planner-model.mjs', 'optimizer.mjs', 'map.mjs', 'planner-map.mjs', 'operational-map.mjs', 'embedded-data.mjs', 'road-tiles.mjs', 'road-tile-client.mjs', 'maplibre-view.mjs', 'planner.mjs'])
     # The road-tile Web Worker is a classic script started from a blob: URL (works from file://).
     tile_worker = '(function(){\n"use strict";\n' + strip_modules(['routes.mjs', 'embedded-data.mjs', 'road-tiles.mjs', 'road-tile-worker.mjs']) + '\n})();'
     script = '(function(){\n"use strict";\n' + body + '\n})();'
