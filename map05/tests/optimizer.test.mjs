@@ -138,3 +138,26 @@ test('the modules still concatenate into the single offline script scope without
   const body=parts.map(part=>part.replace(/^export (function|const|class|async function) /gm,'$1 ').replace(/^import[^\n]*\n/gm,'')).join('\n');
   assert.doesNotThrow(()=>new vm.Script('(function(){"use strict";\n'+body+'\n})();'));
 });
+
+test('moving an automatic visit out of a basket cannot create a new limit violation in the basket it leaves (Codex T15 P1)',()=>{
+  // A (confirmed) -> B (automatic) -> C (manual) in TEST-02: both legs within 30 km but the direct A -> C beyond it, so B must not leave (the 30 km chain is measured between consecutive installations).
+  const leg=(a,b)=>routes.routes[a.addressId]?.[b.addressId]?.distanceM??null;
+  const mpl=scenario.orders.filter(order=>order.ready&&order.type==='MPL'&&order.slotsRequired===1&&scenario.routing.points.some(p=>p.addressId===order.addressId&&p.snap.status==='OK'));
+  let triple=null;
+  for(const a of mpl){for(const b of mpl){if(a===b||a.addressId===b.addressId)continue;const ab=leg(a,b);if(ab===null||ab>29000||ab<10000)continue;
+    for(const c of mpl){if(c===a||c===b||c.addressId===a.addressId||c.addressId===b.addressId)continue;const bc=leg(b,c),ac=leg(a,c);if(bc!==null&&bc>10000&&bc<=29000&&ac!==null&&ac>30000){triple=[a,b,c];break;}}
+    if(triple)break;}if(triple)break;}
+  assert.ok(triple,'the frozen data contains a chain A-B-C with A->C over 30 km');
+  const [A,B,C]=triple;let plan=createPlan(scenario);
+  plan=applyAction(scenario,plan,{type:'ASSIGN',orderId:A.id,teamId:'TEST-02',date:DATE,start:0});
+  plan={...plan,assignments:[...plan.assignments,{orderId:B.id,teamId:'TEST-02',date:DATE,start:1,origin:'AUTO',confirmed:false}]};
+  plan=applyAction(scenario,plan,{type:'ASSIGN',orderId:C.id,teamId:'TEST-02',date:DATE,start:2});
+  plan=applyAction(scenario,plan,{type:'CONFIRM',orderId:A.id});
+  assert.deepEqual(assessBasket(scenario,plan,'TEST-02',DATE).violations,[]);
+  for(const variant of Object.keys(VARIANTS)) {
+    const result=proposeDayPlan(scenario,plan,DATE,{variant,orderIds:[B.id],budgetMs:4000});
+    for(const team of scenario.teams)assert.deepEqual(assessBasket(scenario,result.plan,team.id,DATE).violations,[],`${variant} ${team.id}`);
+    const b=result.plan.assignments.find(item=>item.orderId===B.id);
+    assert.ok(!b||(b.teamId==='TEST-02'&&b.start===1),`${variant}: B must stay between A and C or stay put`);
+  }
+});

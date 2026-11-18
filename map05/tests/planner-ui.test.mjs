@@ -482,3 +482,18 @@ test('the map previews the proposal on demand without changing the plan, with a 
   radio('current');
   assert.equal(updates.at(-1).visits.features.length,0);assert.doesNotMatch(ui.$('#op-layers').textContent,/PODGLĄD PROPOZYCJI/);
 });
+test('a recomputation withdraws the old proposal at once and a day change before the computation starts discards the result (Codex T15 P2)',async t=>{
+  const ui=await mount(t,{geocoding:uug,routing:realRoutes});
+  ui.change('#planning-date','2026-11-19');
+  ui.click('#opt-run');await waitFor(()=>!ui.$('#opt-result').hidden);
+  // Second run with another variant: the stale result is hidden immediately, so it cannot be accepted while the new one is computed.
+  ui.change('#opt-variant','AGE_FIRST');ui.click('#opt-run');
+  assert.equal(ui.$('#opt-result').hidden,true);assert.equal(ui.$('#opt-run').disabled,true);assert.equal(ui.$('#opt-variant').disabled,true);
+  ui.click('#opt-run');ui.click('#opt-accept');assert.equal(ui.$('#opt-dialog').open,false,'nothing to accept while computing');
+  await waitFor(()=>!ui.$('#opt-result').hidden);
+  assert.match(ui.$('#opt-status').textContent,/Starszeństwo najpierw/);assert.equal(ui.$('#opt-run').disabled,false);
+  // The day changes between the click and the computation: the result must not be built for the new day.
+  ui.click('#opt-reject');ui.click('#opt-run');ui.change('#planning-date','2026-11-20');
+  await waitFor(()=>!ui.$('#opt-run').disabled);
+  assert.equal(ui.$('#opt-result').hidden,true);assert.match(ui.$('#opt-status').textContent,/zmienił się/);assert.equal(ui.saved.size,0);
+});

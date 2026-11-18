@@ -561,7 +561,7 @@ $('satellite-form').addEventListener('submit',event=>{
 
 // MAP-07B: simulation of cross-basket optimisation. The proposal is a separate plan object; it never replaces `plan`
 // until the user accepts it in the dialog, and it is never persisted.
-const optState={view:'current'};let optProposal=null,optApplied=false;
+const optState={view:'current'};let optProposal=null,optApplied=false,optBusy=false,optPending=null;
 const previewPlan=()=>optProposal&&optState.view==='proposal'&&optProposal.base===plan&&optProposal.date===state.date?optProposal.result.plan:plan;
 const optKm=m=>m===null||m===undefined?'—':`${(m/1000).toLocaleString('pl-PL',{maximumFractionDigits:1})} km`;
 const optMin=s=>`${Math.round(s/60)} min`;
@@ -580,7 +580,7 @@ function syncOptimizer() {
     $('opt-result').hidden=true;
     setOptStatus(optApplied?'Propozycja została zastosowana do planu. Można ją cofnąć przyciskiem „Cofnij zmianę”.':'Plan lub dzień zmienił się — poprzednia propozycja została wycofana. Oblicz ją ponownie.');optApplied=false;
   }
-  $('opt-run').disabled=!scenario.routing;
+  $('opt-run').disabled=!scenario.routing||optBusy;
   if(!scenario.routing)setOptStatus('Optymalizacja wymaga lokalnej oceny dróg, której nie wczytano.',true);
 }
 function optOrderLabel(id) {const order=orderById(id);return `${id} (${escapeText(addressFor(order).city)})`;}
@@ -623,17 +623,22 @@ function renderOptimizer() {
 }
 $('opt-variant').addEventListener('change',syncOptimizer);
 $('opt-run').addEventListener('click',()=>{
-  if(!scenario.routing)return;
-  $('opt-run').disabled=true;setOptStatus('Obliczanie propozycji… (do kilku sekund)');
+  if(!scenario.routing||optBusy)return;
+  // Everything the result depends on is captured now; the previous proposal is withdrawn at once so it cannot be accepted meanwhile.
+  optBusy=true;
+  const base=plan,date=state.date,variant=$('opt-variant').value;
+  optProposal=null;optPending=null;optState.view='current';
+  document.querySelector('input[name="opt-view"][value="current"]').checked=true;
+  $('opt-result').hidden=true;updateOperationalMap();
+  $('opt-run').disabled=true;$('opt-variant').disabled=true;setOptStatus('Obliczanie propozycji… (do kilku sekund)');
   setTimeout(()=>{
     try {
-      const base=plan,date=state.date;
-      const result=proposeDayPlan(scenario,base,date,{variant:$('opt-variant').value,budgetMs:3000});
-      optProposal={result,base,date};optState.view='current';
-      document.querySelector('input[name="opt-view"][value="current"]').checked=true;
+      if(plan!==base||state.date!==date){setOptStatus('Plan lub dzień zmienił się przed rozpoczęciem obliczeń — wynik odrzucono. Oblicz ponownie.');return;}
+      const result=proposeDayPlan(scenario,base,date,{variant,budgetMs:3000});
+      optProposal={result,base,date};
       renderOptimizer();updateOperationalMap();
     } catch(error) {optProposal=null;$('opt-result').hidden=true;setOptStatus(`Nie udało się obliczyć propozycji: ${error.message}`,true);}
-    finally {$('opt-run').disabled=!scenario.routing;}
+    finally {optBusy=false;$('opt-run').disabled=!scenario.routing;$('opt-variant').disabled=false;}
   },30);
 });
 document.querySelectorAll('input[name="opt-view"]').forEach(input=>input.addEventListener('change',()=>{
@@ -648,12 +653,12 @@ $('opt-accept').addEventListener('click',()=>{
   if(!optProposal||optProposal.base!==plan||optProposal.date!==state.date){setOptStatus('Plan zmienił się po obliczeniu propozycji. Oblicz ją ponownie.',true);return;}
   const {result}=optProposal,added=result.changes.filter(c=>c.type==='ADDED').length,moved=result.changes.filter(c=>c.type==='MOVED').length,removed=result.changes.filter(c=>c.type==='REMOVED').length;
   $('opt-dialog-text').textContent=`Dzień ${optProposal.date}: ${added} nowych, ${moved} przeniesionych, ${removed} usuniętych wizyt. Zaplanowane zlecenia ${result.before.count} → ${result.after.count}, odległość koszyków ${optKm(result.before.km)} → ${optKm(result.after.km)}. Zamienione zostaną tylko automatyczne, niepotwierdzone propozycje tego dnia; potwierdzone i ręczne przydziały pozostają. Zmianę można cofnąć przyciskiem „Cofnij zmianę”.`;
-  $('opt-dialog').showModal();
+  optPending=optProposal;$('opt-dialog').showModal();
 });
 $('opt-dialog-cancel').addEventListener('click',()=>{$('opt-dialog').close();$('opt-accept').focus();});
 $('opt-dialog-accept').addEventListener('click',()=>{
   $('opt-dialog').close();
-  if(!optProposal||optProposal.base!==plan||optProposal.date!==state.date){setOptStatus('Plan zmienił się po obliczeniu propozycji. Oblicz ją ponownie.',true);return;}
+  if(!optProposal||optProposal!==optPending||optProposal.base!==plan||optProposal.date!==state.date){setOptStatus('Plan zmienił się po obliczeniu propozycji. Oblicz ją ponownie.',true);return;}
   const next=optProposal.result.plan,summary=optProposal.result;
   if(!protectedPreserved(plan,next)){setOptStatus('Propozycja naruszałaby potwierdzony lub ręczny przydział i została odrzucona.',true);return;}
   try {

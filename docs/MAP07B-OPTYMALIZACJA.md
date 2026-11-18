@@ -84,9 +84,9 @@ Definicje: „najstarsze N” = N najstarszych kwalifikujących się zleceń, gd
 
 - Obliczenia na wątku głównym (do ~1 s/dzień); rozwiązanie docelowe: Web Worker.
 - Przeszukiwanie lokalne nie gwarantuje optimum; zakres to jeden dzień naraz (kolejność dni wpływa na wynik).
-- Wykonano przegląd Codex (zob. `evidence/2026-11-18-map07b-codex/`, jeśli dołączony) i testy Chrome; fizyczny dotyk, Safari/Edge, czytnik ekranu i Firefox dla panelu MAP-07B nie były testowane.
+- Niezależny przegląd Codex (T15, `evidence/2026-11-18-map07b-codex/`) wykrył na 7b5427b: **P1** — przeniesienie zlecenia automatycznego z koszyka mogło stworzyć nowe naruszenie 30 km w koszyku źródłowym (A→B→C po 20 km, A potwierdzone, C ręczne; po usunięciu B powstawało A→C = 40 km) oraz **2 × P2** — okno 30 ms między ponownym obliczeniem a akceptacją starej propozycji i zmiana dnia przed uruchomieniem obliczeń. Naprawione: kandydat jest porównywany z limitami sprzed usunięcia we WSZYSTKICH koszykach (`evaluateDay(...,baseline).invalid`), poprzednia propozycja jest wycofywana od razu, parametry obliczenia są przechwytywane przy kliknięciu, a akceptacja wymaga tej samej propozycji, którą pokazano w oknie. Testy regresyjne dla każdego z trzech przypadków. Po poprawce wymagany jest re-check Codex; fizyczny dotyk, Safari/Edge, czytnik ekranu i Firefox dla panelu MAP-07B nie były testowane.
 - Bez zmiany schematu planu v1, `datasetId`, ID zleceń, silnika tras, reguł generatora MAP-06 i fixture MAP-04.
 
 ## 9. Testy
 
-`npm test` w `map05`: 157/157 (w tym 11 testów optymalizatora i 4 testy panelu w DOM); `unittest map05` 82/82; `unittest map04` 24/24. Chrome 157 (GPU): 26/26 w trybie serwera i 26/26 z pliku offline (`evidence/2026-11-18-map07b/chrome/`). Test „offline bundle” kompiluje konkatenację modułów (wykrył i zabezpiecza kolizję nazw, która psuła tylko `planner-offline.html`).
+`npm test` w `map05`: 159/159 (w tym 12 testów optymalizatora i 5 testów panelu w DOM); `unittest map05` 82/82; `unittest map04` 24/24. Chrome 157 (GPU): 26/26 w trybie serwera i 26/26 z pliku offline (`evidence/2026-11-18-map07b/chrome/`). Test „offline bundle” kompiluje konkatenację modułów (wykrył i zabezpiecza kolizję nazw, która psuła tylko `planner-offline.html`).

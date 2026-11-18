@@ -38,8 +38,12 @@ const without=(plan,orderId)=>withAssignments(plan,plan.assignments.filter(item=
 const withAdded=(plan,assignment)=>withAssignments(plan,[...plan.assignments,assignment]);
 
 /** Aggregate figures of one day, shared by the optimizer, the UI comparison and the benchmark. */
-export function evaluateDay(scenario,plan,date) {
-  const rows=[],ageHist=[],totals={count:0,installs:0,ageSum:0,km:0,minutes:0,sumsq:0,sameTown:0,unassessedBaskets:0,violations:0};
+/**
+ * `baseline` (optional) is the issueMap of the protected-only plan. A candidate that introduces or worsens a limit issue in ANY basket
+ * (also in a basket an order was moved out of, where removal can create a new long leg) is flagged `invalid`.
+ */
+export function evaluateDay(scenario,plan,date,baseline=null) {
+  const issueMap=new Map(),rows=[],ageHist=[],totals={count:0,installs:0,ageSum:0,km:0,minutes:0,sumsq:0,sameTown:0,unassessedBaskets:0,violations:0};
   for(const team of scenario.teams) {
     const items=plan.assignments.filter(item=>item.teamId===team.id&&item.date===date);
     const assessment=assessBasket(scenario,plan,team.id,date);
@@ -53,13 +57,17 @@ export function evaluateDay(scenario,plan,date) {
     const towns=orders.map(order=>addressOf(scenario,order).city);
     for(let i=1;i<towns.length;i++)if(towns[i]===towns[i-1])totals.sameTown++;
     totals.violations+=assessment.violations.length;
+    for(const issue of assessment.issues)issueMap.set(`${team.id}/${issue.key}`,issue.excess);
     rows.push({teamId:team.id,orders:assessment.orders,visits:orders.length,distanceM:assessment.distanceM,estimatedDurationS:assessment.estimatedDurationS,violations:assessment.violations,checks:{installationDistance:assessment.installationDistance.status,measurementExtra:assessment.measurementExtra.status,windows:assessment.windows.status}});
   }
   for(let i=0;i<ageHist.length;i++)ageHist[i]??=0;
-  return {date,teams:rows,...totals,ageHist};
+  const invalid=baseline?[...issueMap].some(([key,excess])=>excess>(baseline.get(key)??0)):false;
+  return {date,teams:rows,...totals,ageHist,issueMap,invalid};
 }
 
 const better=(a,b,keys)=>{
+  if(a.invalid)return false;
+  if(b.invalid)return true;
   for(const key of keys) {
     if(key==='seniority') {
       // Counts of planned orders per age (days waiting), compared from the oldest age downward.
@@ -100,10 +108,6 @@ export function eligibility(scenario,plan,date,orderIds=null) {
   return {pool,excluded};
 }
 
-function scoreFor(scenario,plan,date) {
-  return evaluateDay(scenario,plan,date);
-}
-
 function summariseErrors(errors) {
   const groups=new Map();
   for(const error of errors){const key=error.kind+':'+error.message;groups.set(key,(groups.get(key)??0)+1);}
@@ -125,7 +129,9 @@ export function proposeDayPlan(scenario,current,date,{variant='COVERAGE_FIRST',o
   const assignedElsewhere=new Set(plan.assignments.map(item=>item.orderId));
   const pool=rawPool.filter(order=>!assignedElsewhere.has(order.id)).sort((a,b)=>a.createdOn.localeCompare(b.createdOn)||a.id.localeCompare(b.id));
   let evaluations=0,truncated=false,iterations=0;
-  const evaluate=candidate=>{evaluations++;return scoreFor(scenario,candidate,date);};
+  // Baseline = limit issues of the CURRENT plan (before any order is released): removing a visit can create a new long leg, which must count as new.
+  const baseline=before.issueMap;
+  const evaluate=candidate=>{evaluations++;return evaluateDay(scenario,candidate,date,baseline);};
   const place=(base,order,position)=>{
     const assignment=proposalOf(order.id,position.teamId,date,position.start);
     if(placementError(scenario,base,assignment))return null;
@@ -140,6 +146,7 @@ export function proposeDayPlan(scenario,current,date,{variant='COVERAGE_FIRST',o
       for(const position of positionsFor(scenario,order)) {
         const trial=place(built,order,position);if(!trial)continue;
         const score=evaluate(trial.plan);
+        if(score.invalid)continue;
         if(!best||better(score,best.score,keys))best={...trial,score};
       }
       if(best){built=best.plan;flexible.add(order.id);}
@@ -214,7 +221,7 @@ export function proposeDayPlan(scenario,current,date,{variant='COVERAGE_FIRST',o
   const result={variant:spec.id,variantLabel:spec.label,hierarchy:spec.hierarchy,date,plan,before,after,pool:pool.map(order=>order.id),excluded,
     startedFrom,evaluations,iterations,truncated,elapsedMs:Math.round(nowMs()-started),ruleStatus:RULE_STATUS,simulation:true};
   result.changes=diffPlans(scenario,current,plan,date);
-  result.explanations=explainProposal(scenario,current,plan,date,{pool,flexible,keys,excluded});
+  result.explanations=explainProposal(scenario,current,plan,date,{pool,flexible,keys,excluded,baseline});
   return result;
 }
 
@@ -253,7 +260,7 @@ function describeDifference(difference) {
   return `${difference.better?'lepsze':'gorsze'} pod względem: ${label}${detail}`;
 }
 
-function explainProposal(scenario,current,plan,date,{pool,flexible,keys,excluded}) {
+function explainProposal(scenario,current,plan,date,{pool,flexible,keys,excluded,baseline}) {
   const explanations={},scheduled=pool.filter(order=>flexible.has(order.id)),waiting=pool.filter(order=>!flexible.has(order.id));
   const youngestScheduled=scheduled.length?Math.min(...scheduled.map(order=>ageDays(order,date))):null;
   const total=evaluateDay(scenario,plan,date);
@@ -266,7 +273,8 @@ function explainProposal(scenario,current,plan,date,{pool,flexible,keys,excluded
       for(let start=0;start+order.slotsRequired<=scenario.windows.length;start++) {
         const assignment=proposalOf(order.id,team.id,date,start),error=placementError(scenario,base,assignment);
         if(error){errors.push(error);continue;}
-        const figures=evaluateDay(scenario,withAdded(base,assignment),date);
+        const figures=evaluateDay(scenario,withAdded(base,assignment),date,baseline);
+        if(figures.invalid){errors.push({kind:'road',message:'Zmiana tworzy naruszenie limitu w koszyku źródłowym lub docelowym.'});continue;}
         if(!bestOption||better(figures,bestOption.figures,keys))bestOption={start,figures};
       }
       if(bestOption)options.push({teamId:team.id,start:bestOption.start,windowLabel:slotText(scenario,bestOption.start,order.slotsRequired),figures:bestOption.figures,chosen:team.id===own.teamId&&bestOption.start===own.start});
@@ -310,7 +318,8 @@ function explainProposal(scenario,current,plan,date,{pool,flexible,keys,excluded
           if(position.teamId!==own.teamId)continue;
           const candidate=proposalOf(order.id,position.teamId,date,position.start);
           if(placementError(scenario,base,candidate))continue;
-          const figures=evaluateDay(scenario,withAdded(base,candidate),date);
+          const figures=evaluateDay(scenario,withAdded(base,candidate),date,baseline);
+          if(figures.invalid)continue;
           if(!bestHere||better(figures,bestHere.figures,keys))bestHere={figures,position};
         }
         if(bestHere&&(!swap||better(bestHere.figures,swap.figures,keys)))swap={victimId:victim.id,victimAge:ageDays(victim,date),figures:bestHere.figures,position:bestHere.position};

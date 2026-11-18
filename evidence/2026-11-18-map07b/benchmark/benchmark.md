@@ -2,31 +2,31 @@
 
 | Wariant | Zaplanowane (inst.+pom.) | Najstarsze w planie | Dni oczekiwania | km | min dojazdu | Puste sloty / nieuzasadnione | Odch. std. obciążenia | Naruszenia | Chronione bez zmian | Czas [ms] |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| MAP-06 (obecny generator) | 40 (40+0) | 30/40 | 585 | 388 | 597 | 1 / 0 | 0.083 | 0 | tak | 103 |
-| MAP-07A (tylko kolejność w koszykach) | 40 (40+0) | 30/40 | 585 | 353.3 | 538 | 1 / 0 | 0.083 | 0 | tak | 119 |
-| MAP-07B · Starszeństwo najpierw | 39 (37+2) | 33/40 | 583 | 254.1 | 408 | 2 / 0 | 0.113 | 0 | tak | 4710 |
-| MAP-07B · Liczba i czas oczekiwania, potem km | 41 (40+1) | 31/40 | 612 | 304.5 | 474 | 0 / 0 | 0 | 0 | tak | 4957 |
-| MAP-07B · Równomierność przed kilometrami | 41 (40+1) | 31/40 | 612 | 304.5 | 474 | 0 / 0 | 0 | 0 | tak | 4217 |
+| MAP-06 (obecny generator) | 40 (40+0) | 30/40 | 585 | 388 | 597 | 1 / 0 | 0.083 | 0 | tak | 142 |
+| MAP-07A (tylko kolejność w koszykach) | 40 (40+0) | 30/40 | 585 | 353.3 | 538 | 1 / 0 | 0.083 | 0 | tak | 105 |
+| MAP-07B · Starszeństwo najpierw | 39 (37+2) | 33/40 | 583 | 254.1 | 408 | 2 / 0 | 0.113 | 0 | tak | 3971 |
+| MAP-07B · Liczba i czas oczekiwania, potem km | 41 (40+1) | 31/40 | 612 | 304.5 | 474 | 0 / 0 | 0 | 0 | tak | 3934 |
+| MAP-07B · Równomierność przed kilometrami | 41 (40+1) | 31/40 | 612 | 304.5 | 474 | 0 / 0 | 0 | 0 | tak | 4077 |
 
 ### PROTECTED: Z chronionymi przydziałami (1 potwierdzony, 2 ręczne)
 
 | Wariant | Zaplanowane (inst.+pom.) | Najstarsze w planie | Dni oczekiwania | km | min dojazdu | Puste sloty / nieuzasadnione | Odch. std. obciążenia | Naruszenia | Chronione bez zmian | Czas [ms] |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| MAP-06 (obecny generator) | 39 (38+1) | 27/36 | 576 | 362.5 | 559 | 2 / 0 | 0.166 | 0 | tak | 109 |
+| MAP-06 (obecny generator) | 39 (38+1) | 27/36 | 576 | 362.5 | 559 | 2 / 0 | 0.166 | 0 | tak | 106 |
 | MAP-07A (tylko kolejność w koszykach) | 39 (38+1) | 27/36 | 576 | 349.9 | 551 | 2 / 0 | 0.166 | 0 | tak | 105 |
-| MAP-07B · Starszeństwo najpierw | 39 (37+2) | 28/36 | 590 | 259.9 | 406 | 2 / 0 | 0.166 | 0 | tak | 3318 |
-| MAP-07B · Liczba i czas oczekiwania, potem km | 39 (37+2) | 26/36 | 581 | 326.4 | 522 | 2 / 0 | 0.166 | 0 | tak | 2993 |
-| MAP-07B · Równomierność przed kilometrami | 39 (37+2) | 26/36 | 581 | 326.4 | 522 | 2 / 0 | 0.166 | 0 | tak | 2923 |
+| MAP-07B · Starszeństwo najpierw | 39 (37+2) | 28/36 | 590 | 259.9 | 406 | 2 / 0 | 0.166 | 0 | tak | 3101 |
+| MAP-07B · Liczba i czas oczekiwania, potem km | 39 (37+2) | 26/36 | 581 | 326.4 | 522 | 2 / 0 | 0.166 | 0 | tak | 2882 |
+| MAP-07B · Równomierność przed kilometrami | 39 (37+2) | 26/36 | 581 | 326.4 | 522 | 2 / 0 | 0.166 | 0 | tak | 2771 |
 
 ### REDUCED: Ograniczona dostępność (19.11: ekipy 2 i 4 bez okna 3, ekipa 5 wyłączona)
 
 | Wariant | Zaplanowane (inst.+pom.) | Najstarsze w planie | Dni oczekiwania | km | min dojazdu | Puste sloty / nieuzasadnione | Odch. std. obciążenia | Naruszenia | Chronione bez zmian | Czas [ms] |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| MAP-06 (obecny generator) | 36 (36+0) | 27/36 | 535 | 315.7 | 491 | 0 / 0 | 0 | 0 | tak | 94 |
-| MAP-07A (tylko kolejność w koszykach) | 36 (36+0) | 27/36 | 535 | 290.1 | 445 | 0 / 0 | 0 | 0 | tak | 105 |
-| MAP-07B · Starszeństwo najpierw | 36 (34+2) | 28/36 | 553 | 275.8 | 424 | 0 / 0 | 0 | 0 | tak | 3235 |
-| MAP-07B · Liczba i czas oczekiwania, potem km | 36 (35+1) | 28/36 | 556 | 258.6 | 416 | 0 / 0 | 0 | 0 | tak | 3289 |
-| MAP-07B · Równomierność przed kilometrami | 36 (35+1) | 28/36 | 556 | 258.6 | 416 | 0 / 0 | 0 | 0 | tak | 3401 |
+| MAP-06 (obecny generator) | 36 (36+0) | 27/36 | 535 | 315.7 | 491 | 0 / 0 | 0 | 0 | tak | 93 |
+| MAP-07A (tylko kolejność w koszykach) | 36 (36+0) | 27/36 | 535 | 290.1 | 445 | 0 / 0 | 0 | 0 | tak | 100 |
+| MAP-07B · Starszeństwo najpierw | 36 (34+2) | 28/36 | 553 | 275.8 | 424 | 0 / 0 | 0 | 0 | tak | 3385 |
+| MAP-07B · Liczba i czas oczekiwania, potem km | 36 (35+1) | 28/36 | 556 | 258.6 | 416 | 0 / 0 | 0 | 0 | tak | 3683 |
+| MAP-07B · Równomierność przed kilometrami | 36 (35+1) | 28/36 | 556 | 258.6 | 416 | 0 / 0 | 0 | 0 | tak | 3375 |
 
 
 Najdłuższy odcinek w koszykach (EMPTY): MAP-06 vs MAP-07B AGE_FIRST
