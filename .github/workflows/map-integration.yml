@@ -1,0 +1,54 @@
+name: MAP-07B-MAP-08 integration checks
+on:
+  push:
+    branches: [map07b08-integration]
+  pull_request:
+    branches: [main]
+permissions:
+  contents: write
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: map05/package-lock.json
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: npm ci --prefix map05
+      - name: Check JS syntax
+        run: node --check map05/planner.mjs && node --check map05/tests/planner-ui.test.mjs
+      - name: Run combined JavaScript regressions
+        run: npm test --prefix map05
+      - name: Run MAP-05 Python regressions
+        run: python -X utf8 -m unittest discover -s map05/tests -p 'test_*.py' -v
+      - name: Run MAP-04 Python regressions
+        run: python -X utf8 -m unittest discover -s map04/tests -p 'test_*.py' -v
+      - name: Rebuild integrated offline artifact
+        run: python -X utf8 map05/build_planner.py
+      - name: Validate generated artifact
+        run: |
+          test -s map05/planner-offline.html
+          grep -q 'PODGLĄD PROPOZYCJI' map05/planner-offline.html
+          grep -q 'op-workspace' map05/planner-offline.html
+          wc -c map05/planner-offline.html
+      - name: Commit rebuilt offline artifact only on integration branch
+        if: github.event_name == 'push' && github.ref == 'refs/heads/map07b08-integration'
+        run: |
+          git add map05/planner-offline.html
+          if git diff --cached --quiet; then
+            echo 'Integrated offline artifact already up-to-date'
+          else
+            git config user.name 'github-actions[bot]'
+            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+            git commit -m 'build: regenerate MAP-07B + MAP-08 offline planner'
+            git push origin HEAD:map07b08-integration
+          fi
