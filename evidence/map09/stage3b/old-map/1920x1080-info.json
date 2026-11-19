@@ -1,0 +1,12 @@
+{
+  "status": "Podkład: Drogowa — lokalne drogi OSM — pakiet mapy niedostępny, podkład uproszczony (tylko drogi), bez połączeń zewnętrznych. Zdjęcia satelitarne są niedostępne, dopóki właściciel nie potwierdzi praw i nie skonfiguruje dostawcy.",
+  "box": {
+    "x": 542.671875,
+    "y": 164.46875,
+    "width": 825.515625,
+    "height": 751
+  },
+  "external": [],
+  "errors": [],
+  "pageErrors": []
+}

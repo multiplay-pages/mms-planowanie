@@ -87,7 +87,7 @@ export function overlayLayers({font = null} = {}) {
     {id: 'demo-route', type: 'line', source: 'demo-routes', layout: {'line-cap': 'round', 'line-join': 'round'},
       paint: {'line-color': ['get', 'color'], 'line-width': ['interpolate', ['linear'], ['zoom'], 5, 3, 12, 6, 17, 9]}},
     {id: 'demo-points', type: 'symbol', source: 'demo-points',
-      layout: {'icon-image': ['get', 'icon'], 'icon-size': ['interpolate', ['linear'], ['zoom'], 4, 0.5, 12, 0.8, 17, 1], 'icon-allow-overlap': true, 'icon-ignore-placement': true,
+      layout: {'icon-image': ['get', 'icon'], 'icon-size': ['interpolate', ['linear'], ['zoom'], 4, 0.95, 12, 1, 17, 1.1], 'icon-allow-overlap': true, 'icon-ignore-placement': true,
         ...(font ? {'text-field': ['to-string', ['get', 'seq']], 'text-font': font, 'text-size': 13, 'text-allow-overlap': true, 'text-ignore-placement': true} : {})},
       paint: font ? {'text-color': '#ffffff'} : {}},
   ];

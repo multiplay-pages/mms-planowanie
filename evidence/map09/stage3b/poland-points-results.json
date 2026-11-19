@@ -1,0 +1,14 @@
+[
+  {
+    "id": "V-positron",
+    "name": "1366×768, widok Polski (positron): punkty widoczne",
+    "status": "PASS",
+    "evidence": "{\"pts\":11,\"zoom\":5.498668098982764,\"expr\":\"[\\\"interpolate\\\",[\\\"linear\\\"],[\\\"zoom\\\"],4,0.95,12,1,17,1.1]\"}"
+  },
+  {
+    "id": "V-liberty",
+    "name": "1366×768, widok Polski (liberty): punkty widoczne",
+    "status": "PASS",
+    "evidence": "{\"pts\":11,\"zoom\":5.498668098982766,\"expr\":\"[\\\"interpolate\\\",[\\\"linear\\\"],[\\\"zoom\\\"],4,0.95,12,1,17,1.1]\"}"
+  }
+]

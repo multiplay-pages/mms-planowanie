@@ -1,0 +1,14 @@
+[
+  {
+    "id": "B-1920x1080",
+    "name": "baseline MAP-08 bez pakietu (1920×1080) uchwycony lokalnie",
+    "status": "PASS",
+    "evidence": "{\"status\":\"Podkład: Drogowa — lokalne drogi OSM — pakiet mapy niedostępny, podkład uproszczony (tylko drogi), bez połączeń zewnętrznych. Zdjęcia satelitarne są niedostępne, dopóki właściciel nie potwierdzi praw i nie skonfiguruje dostawcy.\",\"external\":0}"
+  },
+  {
+    "id": "B-1366x768",
+    "name": "baseline MAP-08 bez pakietu (1366×768) uchwycony lokalnie",
+    "status": "PASS",
+    "evidence": "{\"status\":\"Podkład: Drogowa — lokalne drogi OSM — pakiet mapy niedostępny, podkład uproszczony (tylko drogi), bez połączeń zewnętrznych. Zdjęcia satelitarne są niedostępne, dopóki właściciel nie potwierdzi praw i nie skonfiguruje dostawcy.\",\"external\":0}"
+  }
+]

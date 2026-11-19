@@ -1,0 +1,2604 @@
+{
+  "sessions": [
+    {
+      "tag": "v1920x1080",
+      "preConsentExternal": 0,
+      "views": {
+        "positron/polska": {
+          "transportation": 42,
+          "streetNameFeatures": 0,
+          "streetNames": [],
+          "buildings": 0,
+          "places": 90,
+          "placeNames": [
+            "Deutschland",
+            "Belarus",
+            "Polska",
+            "Česko",
+            "Berlin",
+            "Minsk",
+            "Vilnius",
+            "Praha",
+            "Warszawa",
+            "Hamburg",
+            "Lübeck",
+            "Kiel"
+          ],
+          "water": 172,
+          "landuse": 15,
+          "layerCount": 58,
+          "zoom": 6.111735937384274,
+          "center": [
+            19.110000000000014,
+            52.015166646456805
+          ],
+          "points": 11
+        },
+        "positron/warszawa": {
+          "transportation": 18085,
+          "streetNameFeatures": 16,
+          "streetNames": [
+            "Jagiellońska",
+            "Łodygowa",
+            "Poznańska",
+            "Górczewska",
+            "Aleja Obrońców Grodna",
+            "Aleja Prymasa Tysiąclecia",
+            "Wał Miedzeszyński",
+            "Żołnierska",
+            "Marsa",
+            "Bronisława Czecha",
+            "Cyrulików",
+            "Aleje Jerozolimskie"
+          ],
+          "buildings": 0,
+          "places": 30,
+          "placeNames": [
+            "Warszawa",
+            "Klaudyn",
+            "Macierzysz",
+            "Szeligi",
+            "Blizne Łaszczyńskiego",
+            "Babice Nowe",
+            "Lubiczów",
+            "Latchorzew",
+            "Kwirynów",
+            "Janów",
+            "Reguły",
+            "Opacz-Kolonia"
+          ],
+          "water": 237,
+          "landuse": 40,
+          "layerCount": 58,
+          "zoom": 12,
+          "center": [
+            21.012200000000007,
+            52.22970000000001
+          ],
+          "points": 1
+        },
+        "positron/gdansk": {
+          "transportation": 6273,
+          "streetNameFeatures": 12,
+          "streetNames": [
+            "Aleja Kazimierza Jagiellończyka",
+            "Aleja Grunwaldzka",
+            "Aleja Armii Krajowej",
+            "Świętokrzyska",
+            "Majora Henryka Sucharskiego",
+            "Elbląska",
+            "Główna",
+            "Południowa Obwodnica Gdańska",
+            "Gdańska"
+          ],
+          "buildings": 0,
+          "places": 40,
+          "placeNames": [
+            "Gdańsk",
+            "Otomin",
+            "Bogatka",
+            "Przejazdowo",
+            "Wiślinka",
+            "Kowale",
+            "Krępiec",
+            "Bystra",
+            "Dziewięć Włók",
+            "Matarnia",
+            "Wrzeszcz Dolny",
+            "Wrzeszcz Górny"
+          ],
+          "water": 356,
+          "landuse": 38,
+          "layerCount": 58,
+          "zoom": 12,
+          "center": [
+            18.646600000000035,
+            54.352000000000004
+          ],
+          "points": 1
+        },
+        "positron/krakow": {
+          "transportation": 11449,
+          "streetNameFeatures": 7,
+          "streetNames": [
+            "Krakowska",
+            "Stanisława Kmity",
+            "Pasternik",
+            "Opolska",
+            "Aleja 29 Listopada",
+            "Igołomska",
+            "Kocmyrzowska"
+          ],
+          "buildings": 0,
+          "places": 68,
+          "placeNames": [
+            "Kraków",
+            "Balice",
+            "Szczyglice",
+            "Rząska",
+            "Zabierzów",
+            "Zielonki",
+            "Batowice",
+            "Dziekanowice",
+            "Raciborowice",
+            "Piekary",
+            "Kryspinów",
+            "Budzyń"
+          ],
+          "water": 314,
+          "landuse": 29,
+          "layerCount": 58,
+          "zoom": 12,
+          "center": [
+            19.944999999999936,
+            50.06469999999999
+          ],
+          "points": 1
+        },
+        "positron/wroclaw": {
+          "transportation": 8216,
+          "streetNameFeatures": 12,
+          "streetNames": [
+            "Kosmonautów",
+            "Lotnicza",
+            "Pełczyńska",
+            "Wschodnia Obwodnica Wrocławia",
+            "Autostradowa Obwodnica Wrocławia",
+            "Klecińska",
+            "Opolska",
+            "Strachocińska",
+            "Wrocławska"
+          ],
+          "buildings": 0,
+          "places": 78,
+          "placeNames": [
+            "Wrocław",
+            "Wilczyce",
+            "Kiełczów",
+            "Mokronos Dolny",
+            "Smolec",
+            "Mokronos Górny",
+            "Krzeptów",
+            "Mokry Dwór",
+            "Kamieniec Wrocławski",
+            "Trestno",
+            "Łany",
+            "Dobrzykowice"
+          ],
+          "water": 456,
+          "landuse": 36,
+          "layerCount": 58,
+          "zoom": 12,
+          "center": [
+            17.0385,
+            51.10790000000003
+          ],
+          "points": 1
+        },
+        "positron/opole": {
+          "transportation": 2066,
+          "streetNameFeatures": 30,
+          "streetNames": [
+            "Wrocławska",
+            "Budowlanych",
+            "Partyzancka",
+            "Niemodlińska",
+            "Prószkowska",
+            "Fabryczna",
+            "Ozimska",
+            "Częstochowska",
+            "Północna",
+            "Luboszycka",
+            "Oleska",
+            "Wiejska"
+          ],
+          "buildings": 8,
+          "places": 13,
+          "placeNames": [
+            "Opole",
+            "Zakrzów",
+            "Gosławice",
+            "Osiedle Zawada",
+            "Szczepanowice",
+            "Stare Miasto",
+            "Zaodrze",
+            "Półwieś",
+            "Nadodrze",
+            "Armii Krajowej",
+            "Śródmieście",
+            "Malinka"
+          ],
+          "water": 57,
+          "landuse": 20,
+          "layerCount": 58,
+          "zoom": 13.5,
+          "center": [
+            17.921299999999974,
+            50.675099999999986
+          ],
+          "points": 4
+        },
+        "positron/knurow": {
+          "transportation": 558,
+          "streetNameFeatures": 19,
+          "streetNames": [
+            "Autostrada Bursztynowa",
+            "Rybnicka",
+            "Zwycięstwa",
+            "Niepodległości",
+            "Dworcowa",
+            "Knurowska",
+            "Główna",
+            "Krywałdzka",
+            "26 Stycznia",
+            "1 Maja",
+            "Szpitalna",
+            "Jęczmienna"
+          ],
+          "buildings": 8,
+          "places": 7,
+          "placeNames": [
+            "Knurów",
+            "Kuźnia Nieborowska",
+            "Nieborowice",
+            "Gierałtowice",
+            "Mysia Góra",
+            "Krywałd",
+            "Beksza"
+          ],
+          "water": 70,
+          "landuse": 31,
+          "layerCount": 58,
+          "zoom": 13.5,
+          "center": [
+            18.66669999999999,
+            50.2167
+          ],
+          "points": 3
+        },
+        "positron/opole@16.2": {
+          "transportation": 278,
+          "streetNameFeatures": 34,
+          "streetNames": [
+            "Budowlanych",
+            "Nysy Łużyckiej",
+            "Batalionów Chłopskich",
+            "Luboszycka",
+            "Książąt Opolskich",
+            "Plac Konstytucji 3 Maja",
+            "Sądowa",
+            "Henryka Sienkiewicza",
+            "Janusza Kusocińskiego",
+            "Tatrzańska",
+            "Zakopiańska",
+            "Huculska"
+          ],
+          "buildings": 42,
+          "places": 2,
+          "placeNames": [
+            "Dzielnica Górska",
+            "Dzielnica Generalska"
+          ],
+          "water": 5,
+          "landuse": 8,
+          "layerCount": 58,
+          "zoom": 16.2,
+          "center": [
+            17.921299999999974,
+            50.675099999999986
+          ],
+          "points": 1
+        },
+        "positron/knurow@16.2": {
+          "transportation": 69,
+          "streetNameFeatures": 7,
+          "streetNames": [
+            "Niepodległości",
+            "Spółdzielcza",
+            "Pocztowa",
+            "Kopalniana"
+          ],
+          "buildings": 16,
+          "places": 0,
+          "placeNames": [],
+          "water": 2,
+          "landuse": 20,
+          "layerCount": 58,
+          "zoom": 16.2,
+          "center": [
+            18.66669999999999,
+            50.2167
+          ],
+          "points": 2
+        },
+        "liberty/polska": {
+          "transportation": 56,
+          "streetNameFeatures": 0,
+          "streetNames": [],
+          "buildings": 0,
+          "places": 90,
+          "placeNames": [
+            "Deutschland",
+            "Belarus",
+            "Polska",
+            "Česko",
+            "Berlin",
+            "Minsk",
+            "Vilnius",
+            "Praha",
+            "Warszawa",
+            "Hamburg",
+            "Lübeck",
+            "Kiel"
+          ],
+          "water": 172,
+          "landuse": 15,
+          "layerCount": 114,
+          "zoom": 6.111735937384274,
+          "center": [
+            19.110000000000014,
+            52.015166646456805
+          ],
+          "points": 11
+        },
+        "liberty/warszawa": {
+          "transportation": 20364,
+          "streetNameFeatures": 16,
+          "streetNames": [
+            "Jagiellońska",
+            "Łodygowa",
+            "Poznańska",
+            "Górczewska",
+            "Aleja Obrońców Grodna",
+            "Aleja Prymasa Tysiąclecia",
+            "Wał Miedzeszyński",
+            "Żołnierska",
+            "Marsa",
+            "Bronisława Czecha",
+            "Cyrulików",
+            "Aleje Jerozolimskie"
+          ],
+          "buildings": 0,
+          "places": 30,
+          "placeNames": [
+            "Warszawa",
+            "Klaudyn",
+            "Macierzysz",
+            "Szeligi",
+            "Blizne Łaszczyńskiego",
+            "Babice Nowe",
+            "Lubiczów",
+            "Latchorzew",
+            "Kwirynów",
+            "Janów",
+            "Reguły",
+            "Opacz-Kolonia"
+          ],
+          "water": 237,
+          "landuse": 475,
+          "layerCount": 114,
+          "zoom": 12,
+          "center": [
+            21.012200000000007,
+            52.22970000000001
+          ],
+          "points": 1
+        },
+        "liberty/gdansk": {
+          "transportation": 7050,
+          "streetNameFeatures": 12,
+          "streetNames": [
+            "Aleja Kazimierza Jagiellończyka",
+            "Aleja Grunwaldzka",
+            "Aleja Armii Krajowej",
+            "Świętokrzyska",
+            "Majora Henryka Sucharskiego",
+            "Elbląska",
+            "Główna",
+            "Południowa Obwodnica Gdańska",
+            "Gdańska"
+          ],
+          "buildings": 0,
+          "places": 40,
+          "placeNames": [
+            "Gdańsk",
+            "Otomin",
+            "Bogatka",
+            "Przejazdowo",
+            "Wiślinka",
+            "Kowale",
+            "Krępiec",
+            "Bystra",
+            "Dziewięć Włók",
+            "Matarnia",
+            "Wrzeszcz Dolny",
+            "Wrzeszcz Górny"
+          ],
+          "water": 356,
+          "landuse": 336,
+          "layerCount": 114,
+          "zoom": 12,
+          "center": [
+            18.646600000000035,
+            54.352000000000004
+          ],
+          "points": 1
+        },
+        "liberty/krakow": {
+          "transportation": 13415,
+          "streetNameFeatures": 7,
+          "streetNames": [
+            "Krakowska",
+            "Stanisława Kmity",
+            "Pasternik",
+            "Opolska",
+            "Aleja 29 Listopada",
+            "Igołomska",
+            "Kocmyrzowska"
+          ],
+          "buildings": 0,
+          "places": 68,
+          "placeNames": [
+            "Kraków",
+            "Balice",
+            "Szczyglice",
+            "Rząska",
+            "Zabierzów",
+            "Zielonki",
+            "Batowice",
+            "Dziekanowice",
+            "Raciborowice",
+            "Piekary",
+            "Kryspinów",
+            "Budzyń"
+          ],
+          "water": 314,
+          "landuse": 447,
+          "layerCount": 114,
+          "zoom": 12,
+          "center": [
+            19.944999999999936,
+            50.06469999999999
+          ],
+          "points": 1
+        },
+        "liberty/wroclaw": {
+          "transportation": 9100,
+          "streetNameFeatures": 12,
+          "streetNames": [
+            "Kosmonautów",
+            "Lotnicza",
+            "Pełczyńska",
+            "Wschodnia Obwodnica Wrocławia",
+            "Autostradowa Obwodnica Wrocławia",
+            "Klecińska",
+            "Opolska",
+            "Strachocińska",
+            "Wrocławska"
+          ],
+          "buildings": 0,
+          "places": 78,
+          "placeNames": [
+            "Wrocław",
+            "Wilczyce",
+            "Kiełczów",
+            "Mokronos Dolny",
+            "Smolec",
+            "Mokronos Górny",
+            "Krzeptów",
+            "Mokry Dwór",
+            "Kamieniec Wrocławski",
+            "Trestno",
+            "Łany",
+            "Dobrzykowice"
+          ],
+          "water": 456,
+          "landuse": 572,
+          "layerCount": 114,
+          "zoom": 12,
+          "center": [
+            17.0385,
+            51.10790000000003
+          ],
+          "points": 1
+        },
+        "liberty/opole": {
+          "transportation": 2843,
+          "streetNameFeatures": 30,
+          "streetNames": [
+            "Wrocławska",
+            "Budowlanych",
+            "Partyzancka",
+            "Niemodlińska",
+            "Prószkowska",
+            "Fabryczna",
+            "Ozimska",
+            "Częstochowska",
+            "Północna",
+            "Luboszycka",
+            "Oleska",
+            "Wiejska"
+          ],
+          "buildings": 8,
+          "places": 13,
+          "placeNames": [
+            "Opole",
+            "Zakrzów",
+            "Gosławice",
+            "Osiedle Zawada",
+            "Szczepanowice",
+            "Stare Miasto",
+            "Zaodrze",
+            "Półwieś",
+            "Nadodrze",
+            "Armii Krajowej",
+            "Śródmieście",
+            "Malinka"
+          ],
+          "water": 57,
+          "landuse": 236,
+          "layerCount": 114,
+          "zoom": 13.5,
+          "center": [
+            17.921299999999974,
+            50.675099999999986
+          ],
+          "points": 4
+        },
+        "liberty/knurow": {
+          "transportation": 772,
+          "streetNameFeatures": 19,
+          "streetNames": [
+            "Autostrada Bursztynowa",
+            "Rybnicka",
+            "Zwycięstwa",
+            "Niepodległości",
+            "Dworcowa",
+            "Knurowska",
+            "Główna",
+            "Krywałdzka",
+            "26 Stycznia",
+            "1 Maja",
+            "Szpitalna",
+            "Jęczmienna"
+          ],
+          "buildings": 8,
+          "places": 7,
+          "placeNames": [
+            "Knurów",
+            "Kuźnia Nieborowska",
+            "Nieborowice",
+            "Gierałtowice",
+            "Mysia Góra",
+            "Krywałd",
+            "Beksza"
+          ],
+          "water": 70,
+          "landuse": 155,
+          "layerCount": 114,
+          "zoom": 13.5,
+          "center": [
+            18.66669999999999,
+            50.2167
+          ],
+          "points": 3
+        },
+        "liberty/opole@16.2": {
+          "transportation": 405,
+          "streetNameFeatures": 34,
+          "streetNames": [
+            "Budowlanych",
+            "Nysy Łużyckiej",
+            "Batalionów Chłopskich",
+            "Luboszycka",
+            "Książąt Opolskich",
+            "Plac Konstytucji 3 Maja",
+            "Sądowa",
+            "Henryka Sienkiewicza",
+            "Janusza Kusocińskiego",
+            "Tatrzańska",
+            "Zakopiańska",
+            "Huculska"
+          ],
+          "buildings": 42,
+          "places": 2,
+          "placeNames": [
+            "Dzielnica Górska",
+            "Dzielnica Generalska"
+          ],
+          "water": 5,
+          "landuse": 39,
+          "layerCount": 114,
+          "zoom": 16.2,
+          "center": [
+            17.921299999999974,
+            50.675099999999986
+          ],
+          "points": 1
+        },
+        "liberty/knurow@16.2": {
+          "transportation": 110,
+          "streetNameFeatures": 7,
+          "streetNames": [
+            "Niepodległości",
+            "Spółdzielcza",
+            "Pocztowa",
+            "Kopalniana"
+          ],
+          "buildings": 16,
+          "places": 0,
+          "placeNames": [],
+          "water": 2,
+          "landuse": 37,
+          "layerCount": 114,
+          "zoom": 16.2,
+          "center": [
+            18.66669999999999,
+            50.2167
+          ],
+          "points": 2
+        }
+      },
+      "mapBox": {
+        "w": 1920,
+        "h": 981,
+        "vh": 1080,
+        "vw": 1920
+      },
+      "styleDiff": {
+        "polska": {
+          "fractionDifferent": 0.1447677752293578,
+          "meanAbsDiff": 9.547456889228679
+        },
+        "opole": {
+          "fractionDifferent": 0.26464598199116546,
+          "meanAbsDiff": 10.761910677879714
+        },
+        "street": {
+          "fractionDifferent": 0.2594015460414543,
+          "meanAbsDiff": 13.508441464208857
+        }
+      },
+      "log": {
+        "console": [
+          {
+            "type": "warning",
+            "text": "Image \"mpl\" could not be loaded. Please make sure you have added the image before it is needed with map.addImage(), resolved it with map.setMissingStyleImageResolver(), or included it in a \"sprite\" property in your style."
+          },
+          {
+            "type": "warning",
+            "text": "Image \"bsa\" could not be loaded. Please make sure you have added the image before it is needed with map.addImage(), resolved it with map.setMissingStyleImageResolver(), or included it in a \"sprite\" property in your style."
+          },
+          {
+            "type": "warning",
+            "text": "Image \"pomiar\" could not be loaded. Please make sure you have added the image before it is needed with map.addImage(), resolved it with map.setMissingStyleImageResolver(), or included it in a \"sprite\" property in your style."
+          },
+          {
+            "type": "warning",
+            "text": "layers[highway-shield-us-interstate].filter[1]: Expected value to be of type number, but found null instead. Falling back to false."
+          },
+          {
+            "type": "warning",
+            "text": "layers[highway-shield-non-us].filter[1]: Expected value to be of type number, but found null instead. Falling back to false."
+          },
+          {
+            "type": "warning",
+            "text": "layers[road_shield_us].filter[1]: Expected value to be of type number, but found null instead. Falling back to false."
+          },
+          {
+            "type": "warning",
+            "text": "layers[road_shield_us].filter[1]: Expected value to be of type number, but found null instead. Falling back to false."
+          },
+          {
+            "type": "warning",
+            "text": "layers[highway-shield-us-interstate].filter[1]: Expected value to be of type number, but found null instead. Falling back to false."
+          },
+          {
+            "type": "warning",
+            "text": "layers[highway-shield-non-us].filter[1]: Expected value to be of type number, but found null instead. Falling back to false."
+          },
+          {
+            "type": "warning",
+            "text": "Image \"gate\" could not be loaded. Please make sure you have added the image before it is needed with map.addImage(), resolved it with map.setMissingStyleImageResolver(), or included it in a \"sprite\" property in your style."
+          },
+          {
+            "type": "warning",
+            "text": "Image \"lift_gate\" could not be loaded. Please make sure you have added the image before it is needed with map.addImage(), resolved it with map.setMissingStyleImageResolver(), or included it in a \"sprite\" property in your style."
+          },
+          {
+            "type": "warning",
+            "text": "Image \"atm\" could not be loaded. Please make sure you have added the image before it is needed with map.addImage(), resolved it with map.setMissingStyleImageResolver(), or included it in a \"sprite\" property in your style."
+          },
+          {
+            "type": "warning",
+            "text": "Image \"office\" could not be loaded. Please make sure you have added the image before it is needed with map.addImage(), resolved it with map.setMissingStyleImageResolver(), or included it in a \"sprite\" property in your style."
+          },
+          {
+            "type": "warning",
+            "text": "Image \"brownfield\" could not be loaded. Please make sure you have added the image before it is needed with map.addImage(), resolved it with map.setMissingStyleImageResolver(), or included it in a \"sprite\" property in your style."
+          },
+          {
+            "type": "warning",
+            "text": "Image \"bicycle_parking\" could not be loaded. Please make sure you have added the image before it is needed with map.addImage(), resolved it with map.setMissingStyleImageResolver(), or included it in a \"sprite\" property in your style."
+          },
+          {
+            "type": "warning",
+            "text": "Image \"cycle_barrier\" could not be loaded. Please make sure you have added the image before it is needed with map.addImage(), resolved it with map.setMissingStyleImageResolver(), or included it in a \"sprite\" property in your style."
+          },
+          {
+            "type": "warning",
+            "text": "Image \"cycling\" could not be loaded. Please make sure you have added the image before it is needed with map.addImage(), resolved it with map.setMissingStyleImageResolver(), or included it in a \"sprite\" property in your style."
+          },
+          {
+            "type": "warning",
+            "text": "Image \"recycling\" could not be loaded. Please make sure you have added the image before it is needed with map.addImage(), resolved it with map.setMissingStyleImageResolver(), or included it in a \"sprite\" property in your style."
+          },
+          {
+            "type": "warning",
+            "text": "Image \"sports_centre\" could not be loaded. Please make sure you have added the image before it is needed with map.addImage(), resolved it with map.setMissingStyleImageResolver(), or included it in a \"sprite\" property in your style."
+          },
+          {
+            "type": "warning",
+            "text": "Image \"bollard\" could not be loaded. Please make sure you have added the image before it is needed with map.addImage(), resolved it with map.setMissingStyleImageResolver(), or included it in a \"sprite\" property in your style."
+          },
+          {
+            "type": "warning",
+            "text": "Image \"swimming_pool\" could not be loaded. Please make sure you have added the image before it is needed with map.addImage(), resolved it with map.setMissingStyleImageResolver(), or included it in a \"sprite\" property in your style."
+          },
+          {
+            "type": "warning",
+            "text": "layers[road_shield_us].filter[1]: Expected value to be of type number, but found null instead. Falling back to false."
+          },
+          {
+            "type": "warning",
+            "text": "layers[highway-shield-us-interstate].filter[1]: Expected value to be of type number, but found null instead. Falling back to false."
+          },
+          {
+            "type": "warning",
+            "text": "layers[highway-shield-non-us].filter[1]: Expected value to be of type number, but found null instead. Falling back to false."
+          },
+          {
+            "type": "warning",
+            "text": "layers[road_shield_us].filter[1]: Expected value to be of type number, but found null instead. Falling back to false."
+          },
+          {
+            "type": "warning",
+            "text": "layers[highway-shield-us-interstate].filter[1]: Expected value to be of type number, but found null instead. Falling back to false."
+          },
+          {
+            "type": "warning",
+            "text": "layers[highway-shield-non-us].filter[1]: Expected value to be of type number, but found null instead. Falling back to false."
+          },
+          {
+            "type": "warning",
+            "text": "layers[road_shield_us].filter[1]: Expected value to be of type number, but found null instead. Falling back to false."
+          },
+          {
+            "type": "warning",
+            "text": "layers[highway-shield-us-interstate].filter[1]: Expected value to be of type number, but found null instead. Falling back to false."
+          },
+          {
+            "type": "warning",
+            "text": "layers[highway-shield-non-us].filter[1]: Expected value to be of type number, but found null instead. Falling back to false."
+          },
+          {
+            "type": "warning",
+            "text": "layers[road_shield_us].filter[1]: Expected value to be of type number, but found null instead. Falling back to false."
+          },
+          {
+            "type": "warning",
+            "text": "layers[highway-shield-us-interstate].filter[1]: Expected value to be of type number, but found null instead. Falling back to false."
+          },
+          {
+            "type": "warning",
+            "text": "layers[highway-shield-non-us].filter[1]: Expected value to be of type number, but found null instead. Falling back to false."
+          },
+          {
+            "type": "warning",
+            "text": "layers[road_shield_us].filter[1]: Expected value to be of type number, but found null instead. Falling back to false."
+          },
+          {
+            "type": "warning",
+            "text": "layers[highway-shield-us-interstate].filter[1]: Expected value to be of type number, but found null instead. Falling back to false."
+          },
+          {
+            "type": "warning",
+            "text": "layers[highway-shield-non-us].filter[1]: Expected value to be of type number, but found null instead. Falling back to false."
+          },
+          {
+            "type": "warning",
+            "text": "layers[road_shield_us].filter[1]: Expected value to be of type number, but found null instead. Falling back to false."
+          },
+          {
+            "type": "warning",
+            "text": "layers[highway-shield-us-interstate].filter[1]: Expected value to be of type number, but found null instead. Falling back to false."
+          },
+          {
+            "type": "warning",
+            "text": "layers[highway-shield-non-us].filter[1]: Expected value to be of type number, but found null instead. Falling back to false."
+          },
+          {
+            "type": "warning",
+            "text": "layers[road_shield_us].filter[1]: Expected value to be of type number, but found null instead. Falling back to false."
+          },
+          {
+            "type": "warning",
+            "text": "layers[highway-shield-us-interstate].filter[1]: Expected value to be of type number, but found null instead. Falling back to false."
+          },
+          {
+            "type": "warning",
+            "text": "layers[highway-shield-non-us].filter[1]: Expected value to be of type number, but found null instead. Falling back to false."
+          }
+        ],
+        "pageErrors": [],
+        "failed": [
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1128/654.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1128/653.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/8/142/86.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/8/141/86.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/8/142/85.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/8/142/87.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/8/141/85.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/8/141/87.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/8/143/86.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/8/143/85.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/8/143/87.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/9/284/173.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/9/283/173.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/9/284/172.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/9/285/173.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/9/283/172.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/9/285/172.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/570/346.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/570/347.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/568/346.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/568/347.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/569/346.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/569/347.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/567/346.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/567/347.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1135/693.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1135/694.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1139/693.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1139/694.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1121/683.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1120/683.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1122/683.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1119/683.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1122/684.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1122/685.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/561/342.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/560/342.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/560/343.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/562/342.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/559/342.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/559/343.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/563/342.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/562/343.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/563/343.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1125/688.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1125/687.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1126/688.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1124/688.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1126/687.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1125/689.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1124/687.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1126/689.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1124/689.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1127/688.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1127/687.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1123/688.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1127/689.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1123/687.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1123/689.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/13/4503/2755.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/13/4504/2755.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/13/4502/2755.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/13/4505/2755.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1130/691.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1129/691.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1130/693.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1129/693.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1131/692.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1128/692.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1131/691.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1128/691.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1131/693.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1128/693.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/12/2258/1385.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/12/2258/1384.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/12/2251/1377.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/12/2252/1376.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/12/2251/1376.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/12/2250/1377.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/12/2250/1376.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/563/344.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/564/344.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/562/344.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/562/345.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/565/344.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/12/2260/1385.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/12/2260/1384.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/12/2259/1385.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/12/2259/1384.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/12/2261/1385.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/12/2261/1384.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/13/4518/2770.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/13/4518/2771.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/13/4518/2769.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/8/141/86.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/8/140/86.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/8/141/87.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/8/141/85.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/8/142/86.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/8/140/87.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/8/140/85.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/8/142/87.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/8/142/85.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/8/139/86.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/8/139/87.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/8/139/85.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/7/69/42.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/565/327.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/564/327.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/565/326.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/564/326.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/566/327.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/566/326.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/563/327.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/563/326.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1130/655.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1129/655.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1131/655.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1128/655.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/7/69/42.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/7/70/42.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/7/70/41.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/7/71/42.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/7/71/41.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/7/69/41.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/7/72/42.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/7/72/41.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/8/142/86.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/8/141/86.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/8/142/85.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/8/141/85.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/8/142/87.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/8/141/87.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/8/143/86.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/8/143/85.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/8/143/87.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/9/284/173.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/9/284/172.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/9/283/173.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/9/283/172.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/9/285/173.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/9/284/174.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/9/285/172.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/9/283/174.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/9/285/174.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/9/282/173.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/9/282/172.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/9/282/174.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/568/345.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/569/345.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/567/345.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/570/346.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/570/347.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/566/346.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/570/345.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/566/347.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/566/345.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/560/342.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/560/341.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/561/342.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/559/342.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/561/341.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/559/341.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1120/683.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1121/683.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/562/343.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/563/345.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/564/346.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/563/346.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/565/345.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/565/346.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1130/692.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1129/692.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1130/693.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1130/691.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1129/693.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1129/691.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1131/692.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1128/692.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1131/693.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1131/691.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1128/693.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1128/691.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/12/2258/1385.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/12/2258/1384.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/12/2252/1377.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/12/2251/1377.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/12/2252/1376.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/12/2251/1376.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/12/2250/1377.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/12/2250/1376.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/13/4503/2755.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/13/4504/2755.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/13/4502/2755.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/13/4505/2755.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/563/344.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/564/344.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/562/344.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/562/345.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/565/345.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/563/345.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/563/344.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/564/344.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/562/344.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/562/345.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/565/344.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1124/689.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/12/2252/1378.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/12/2251/1378.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/12/2253/1378.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/12/2250/1378.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/9/281/171.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/9/282/171.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/9/280/171.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1132/668.pbf",
+            "error": "net::ERR_INTERNET_DISCONNECTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1132/667.pbf",
+            "error": "net::ERR_INTERNET_DISCONNECTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1133/668.pbf",
+            "error": "net::ERR_INTERNET_DISCONNECTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1133/667.pbf",
+            "error": "net::ERR_INTERNET_DISCONNECTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1131/668.pbf",
+            "error": "net::ERR_INTERNET_DISCONNECTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1131/667.pbf",
+            "error": "net::ERR_INTERNET_DISCONNECTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1134/668.pbf",
+            "error": "net::ERR_INTERNET_DISCONNECTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1134/667.pbf",
+            "error": "net::ERR_INTERNET_DISCONNECTED"
+          }
+        ],
+        "external": [
+          "https://tiles.openfreemap.org"
+        ],
+        "requestTotal": 690
+      },
+      "providerRequests": {
+        "total": 683,
+        "styles": 2,
+        "tiles": 650,
+        "fonts": 13,
+        "sprites": 2
+      }
+    },
+    {
+      "tag": "v1366x768",
+      "preConsentExternal": 0,
+      "views": {
+        "positron/polska": {
+          "transportation": 6,
+          "streetNameFeatures": 0,
+          "streetNames": [],
+          "buildings": 0,
+          "places": 52,
+          "placeNames": [
+            "Deutschland",
+            "Polska",
+            "Belarus",
+            "Česko",
+            "Slovensko",
+            "Praha",
+            "Warszawa",
+            "Berlin",
+            "Minsk",
+            "Vilnius",
+            "Nürnberg",
+            "Frankfurt am Main"
+          ],
+          "water": 24,
+          "landuse": 5,
+          "layerCount": 58,
+          "zoom": 5.498668098982764,
+          "center": [
+            19.110000000000014,
+            52.015166646456805
+          ],
+          "points": 11
+        },
+        "positron/opole": {
+          "transportation": 1411,
+          "streetNameFeatures": 16,
+          "streetNames": [
+            "Budowlanych",
+            "Partyzancka",
+            "Wrocławska",
+            "Fabryczna",
+            "Ozimska",
+            "Luboszycka",
+            "Oleska",
+            "Wiejska",
+            "Piastowska",
+            "Głogowska",
+            "1 Maja",
+            "Kazimierza Sosnkowskiego"
+          ],
+          "buildings": 6,
+          "places": 8,
+          "placeNames": [
+            "Opole",
+            "Stare Miasto",
+            "Zaodrze",
+            "Półwieś",
+            "Nadodrze",
+            "Armii Krajowej",
+            "Śródmieście",
+            "Chabry"
+          ],
+          "water": 31,
+          "landuse": 10,
+          "layerCount": 58,
+          "zoom": 13.5,
+          "center": [
+            17.921299999999974,
+            50.675099999999986
+          ],
+          "points": 4
+        },
+        "positron/knurow": {
+          "transportation": 311,
+          "streetNameFeatures": 11,
+          "streetNames": [
+            "Zwycięstwa",
+            "Niepodległości",
+            "Autostrada Bursztynowa",
+            "Dworcowa",
+            "Krywałdzka",
+            "Rybnicka",
+            "26 Stycznia",
+            "1 Maja",
+            "Szpitalna",
+            "Thomasa Woodrowa Wilsona"
+          ],
+          "buildings": 4,
+          "places": 2,
+          "placeNames": [
+            "Knurów",
+            "Krywałd"
+          ],
+          "water": 48,
+          "landuse": 19,
+          "layerCount": 58,
+          "zoom": 13.5,
+          "center": [
+            18.66669999999999,
+            50.2167
+          ],
+          "points": 3
+        },
+        "positron/opole@16.2": {
+          "transportation": 202,
+          "streetNameFeatures": 18,
+          "streetNames": [
+            "Budowlanych",
+            "Nysy Łużyckiej",
+            "Batalionów Chłopskich",
+            "Luboszycka",
+            "Książąt Opolskich",
+            "Plac Konstytucji 3 Maja",
+            "Tatrzańska",
+            "Podhalańska",
+            "Karpacka",
+            "Księcia Józefa Poniatowskiego"
+          ],
+          "buildings": 23,
+          "places": 1,
+          "placeNames": [
+            "Dzielnica Górska"
+          ],
+          "water": 3,
+          "landuse": 2,
+          "layerCount": 58,
+          "zoom": 16.2,
+          "center": [
+            17.921299999999974,
+            50.675099999999986
+          ],
+          "points": 1
+        },
+        "positron/knurow@16.2": {
+          "transportation": 38,
+          "streetNameFeatures": 1,
+          "streetNames": [
+            "Niepodległości"
+          ],
+          "buildings": 5,
+          "places": 0,
+          "placeNames": [],
+          "water": 1,
+          "landuse": 12,
+          "layerCount": 58,
+          "zoom": 16.2,
+          "center": [
+            18.66669999999999,
+            50.2167
+          ],
+          "points": 0
+        },
+        "liberty/polska": {
+          "transportation": 12,
+          "streetNameFeatures": 0,
+          "streetNames": [],
+          "buildings": 0,
+          "places": 52,
+          "placeNames": [
+            "Deutschland",
+            "Polska",
+            "Belarus",
+            "Česko",
+            "Slovensko",
+            "Praha",
+            "Warszawa",
+            "Berlin",
+            "Minsk",
+            "Vilnius",
+            "Nürnberg",
+            "Frankfurt am Main"
+          ],
+          "water": 24,
+          "landuse": 5,
+          "layerCount": 114,
+          "zoom": 5.498668098982764,
+          "center": [
+            19.110000000000014,
+            52.015166646456805
+          ],
+          "points": 11
+        },
+        "liberty/opole": {
+          "transportation": 1931,
+          "streetNameFeatures": 16,
+          "streetNames": [
+            "Budowlanych",
+            "Partyzancka",
+            "Wrocławska",
+            "Fabryczna",
+            "Ozimska",
+            "Luboszycka",
+            "Oleska",
+            "Wiejska",
+            "Piastowska",
+            "Głogowska",
+            "1 Maja",
+            "Kazimierza Sosnkowskiego"
+          ],
+          "buildings": 6,
+          "places": 8,
+          "placeNames": [
+            "Opole",
+            "Stare Miasto",
+            "Zaodrze",
+            "Półwieś",
+            "Nadodrze",
+            "Armii Krajowej",
+            "Śródmieście",
+            "Chabry"
+          ],
+          "water": 31,
+          "landuse": 125,
+          "layerCount": 114,
+          "zoom": 13.5,
+          "center": [
+            17.921299999999974,
+            50.675099999999986
+          ],
+          "points": 4
+        },
+        "liberty/knurow": {
+          "transportation": 420,
+          "streetNameFeatures": 11,
+          "streetNames": [
+            "Zwycięstwa",
+            "Niepodległości",
+            "Autostrada Bursztynowa",
+            "Dworcowa",
+            "Krywałdzka",
+            "Rybnicka",
+            "26 Stycznia",
+            "1 Maja",
+            "Szpitalna",
+            "Thomasa Woodrowa Wilsona"
+          ],
+          "buildings": 4,
+          "places": 2,
+          "placeNames": [
+            "Knurów",
+            "Krywałd"
+          ],
+          "water": 48,
+          "landuse": 89,
+          "layerCount": 114,
+          "zoom": 13.5,
+          "center": [
+            18.66669999999999,
+            50.2167
+          ],
+          "points": 3
+        },
+        "liberty/opole@16.2": {
+          "transportation": 292,
+          "streetNameFeatures": 18,
+          "streetNames": [
+            "Budowlanych",
+            "Nysy Łużyckiej",
+            "Batalionów Chłopskich",
+            "Luboszycka",
+            "Książąt Opolskich",
+            "Plac Konstytucji 3 Maja",
+            "Tatrzańska",
+            "Podhalańska",
+            "Karpacka",
+            "Księcia Józefa Poniatowskiego"
+          ],
+          "buildings": 23,
+          "places": 1,
+          "placeNames": [
+            "Dzielnica Górska"
+          ],
+          "water": 3,
+          "landuse": 17,
+          "layerCount": 114,
+          "zoom": 16.2,
+          "center": [
+            17.921299999999974,
+            50.675099999999986
+          ],
+          "points": 1
+        },
+        "liberty/knurow@16.2": {
+          "transportation": 58,
+          "streetNameFeatures": 1,
+          "streetNames": [
+            "Niepodległości"
+          ],
+          "buildings": 5,
+          "places": 0,
+          "placeNames": [],
+          "water": 1,
+          "landuse": 18,
+          "layerCount": 114,
+          "zoom": 16.2,
+          "center": [
+            18.66669999999999,
+            50.2167
+          ],
+          "points": 0
+        }
+      },
+      "mapBox": {
+        "w": 1366,
+        "h": 658,
+        "vh": 768,
+        "vw": 1366
+      },
+      "styleDiff": {
+        "polska": {
+          "fractionDifferent": 0.1645898881654777,
+          "meanAbsDiff": 14.15945134478825
+        },
+        "opole": {
+          "fractionDifferent": 0.30519187208231163,
+          "meanAbsDiff": 12.011740473891185
+        },
+        "street": {
+          "fractionDifferent": 0.20523726452669477,
+          "meanAbsDiff": 13.050954873086582
+        }
+      },
+      "log": {
+        "console": [
+          {
+            "type": "warning",
+            "text": "Image \"mpl\" could not be loaded. Please make sure you have added the image before it is needed with map.addImage(), resolved it with map.setMissingStyleImageResolver(), or included it in a \"sprite\" property in your style."
+          },
+          {
+            "type": "warning",
+            "text": "Image \"bsa\" could not be loaded. Please make sure you have added the image before it is needed with map.addImage(), resolved it with map.setMissingStyleImageResolver(), or included it in a \"sprite\" property in your style."
+          },
+          {
+            "type": "warning",
+            "text": "Image \"pomiar\" could not be loaded. Please make sure you have added the image before it is needed with map.addImage(), resolved it with map.setMissingStyleImageResolver(), or included it in a \"sprite\" property in your style."
+          },
+          {
+            "type": "warning",
+            "text": "layers[road_shield_us].filter[1]: Expected value to be of type number, but found null instead. Falling back to false."
+          },
+          {
+            "type": "warning",
+            "text": "layers[highway-shield-us-interstate].filter[1]: Expected value to be of type number, but found null instead. Falling back to false."
+          },
+          {
+            "type": "warning",
+            "text": "layers[highway-shield-non-us].filter[1]: Expected value to be of type number, but found null instead. Falling back to false."
+          },
+          {
+            "type": "warning",
+            "text": "layers[road_shield_us].filter[1]: Expected value to be of type number, but found null instead. Falling back to false."
+          },
+          {
+            "type": "warning",
+            "text": "layers[highway-shield-us-interstate].filter[1]: Expected value to be of type number, but found null instead. Falling back to false."
+          },
+          {
+            "type": "warning",
+            "text": "layers[highway-shield-non-us].filter[1]: Expected value to be of type number, but found null instead. Falling back to false."
+          },
+          {
+            "type": "warning",
+            "text": "Image \"gate\" could not be loaded. Please make sure you have added the image before it is needed with map.addImage(), resolved it with map.setMissingStyleImageResolver(), or included it in a \"sprite\" property in your style."
+          },
+          {
+            "type": "warning",
+            "text": "Image \"lift_gate\" could not be loaded. Please make sure you have added the image before it is needed with map.addImage(), resolved it with map.setMissingStyleImageResolver(), or included it in a \"sprite\" property in your style."
+          },
+          {
+            "type": "warning",
+            "text": "Image \"sports_centre\" could not be loaded. Please make sure you have added the image before it is needed with map.addImage(), resolved it with map.setMissingStyleImageResolver(), or included it in a \"sprite\" property in your style."
+          },
+          {
+            "type": "warning",
+            "text": "Image \"office\" could not be loaded. Please make sure you have added the image before it is needed with map.addImage(), resolved it with map.setMissingStyleImageResolver(), or included it in a \"sprite\" property in your style."
+          },
+          {
+            "type": "warning",
+            "text": "Image \"recycling\" could not be loaded. Please make sure you have added the image before it is needed with map.addImage(), resolved it with map.setMissingStyleImageResolver(), or included it in a \"sprite\" property in your style."
+          },
+          {
+            "type": "warning",
+            "text": "Image \"bollard\" could not be loaded. Please make sure you have added the image before it is needed with map.addImage(), resolved it with map.setMissingStyleImageResolver(), or included it in a \"sprite\" property in your style."
+          },
+          {
+            "type": "warning",
+            "text": "Image \"atm\" could not be loaded. Please make sure you have added the image before it is needed with map.addImage(), resolved it with map.setMissingStyleImageResolver(), or included it in a \"sprite\" property in your style."
+          }
+        ],
+        "pageErrors": [],
+        "failed": [
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/564/345.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/564/346.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/565/345.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/565/346.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/563/345.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/563/346.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1129/691.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1130/691.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1128/692.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1128/691.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1131/691.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1128/693.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1129/693.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1130/693.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1131/692.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1131/693.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1129/692.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1130/692.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/12/2258/1385.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/12/2258/1384.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/563/345.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/564/344.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/562/345.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/564/345.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/563/344.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/562/344.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1124/688.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1124/689.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1126/689.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1125/689.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1127/688.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1127/689.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1126/688.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1125/688.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/9/282/172.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/9/281/172.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/9/282/173.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/9/281/173.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/13/4520/2769.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/13/4521/2769.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/13/4519/2769.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/14/9041/5540.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/14/9041/5540.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/14/9041/5540.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/14/9042/5541.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/14/9040/5541.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/14/9042/5540.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/14/9040/5540.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/13/4520/2770.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/13/4521/2770.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/563/345.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/563/346.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/564/345.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/564/346.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/565/345.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/565/346.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1129/691.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1130/691.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1128/692.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1128/691.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1131/691.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1128/693.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1129/693.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1130/693.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1131/692.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1131/693.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1130/692.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/9/282/172.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/9/281/172.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/562/344.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/562/345.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1127/688.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1127/689.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1126/688.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1125/688.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1126/689.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1125/689.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/564/346.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/565/346.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/564/345.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/565/345.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/563/346.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/563/345.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1130/691.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1129/691.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1130/693.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1129/693.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1128/692.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1131/691.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1131/693.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1128/691.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1128/693.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1131/692.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1130/692.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1129/692.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1130/693.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1129/693.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1131/692.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/11/1131/693.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/565/346.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/564/346.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/565/345.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/566/346.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/10/566/345.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/9/282/173.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/9/282/172.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/9/283/173.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/9/281/173.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/9/283/172.pbf",
+            "error": "net::ERR_ABORTED"
+          },
+          {
+            "url": "https://tiles.openfreemap.org/planet/20261115_080022_pt/9/281/172.pbf",
+            "error": "net::ERR_ABORTED"
+          }
+        ],
+        "external": [
+          "https://tiles.openfreemap.org"
+        ],
+        "requestTotal": 275
+      },
+      "providerRequests": {
+        "total": 268,
+        "styles": 2,
+        "tiles": 235,
+        "fonts": 13,
+        "sprites": 2
+      }
+    }
+  ]
+}
