@@ -1,0 +1,144 @@
+{
+  "total": 565,
+  "toProvider": 558,
+  "origins": [
+    "https://tiles.openfreemap.org"
+  ],
+  "bad": [
+    {
+      "why": "unexpected-path",
+      "method": "GET",
+      "url": "https://tiles.openfreemap.org/natural_earth/ne2sr/6/35/21.png",
+      "hasBody": false,
+      "referer": null,
+      "cookie": null,
+      "authorization": null
+    },
+    {
+      "why": "unexpected-path",
+      "method": "GET",
+      "url": "https://tiles.openfreemap.org/natural_earth/ne2sr/6/34/21.png",
+      "hasBody": false,
+      "referer": null,
+      "cookie": null,
+      "authorization": null
+    },
+    {
+      "why": "unexpected-path",
+      "method": "GET",
+      "url": "https://tiles.openfreemap.org/natural_earth/ne2sr/6/36/21.png",
+      "hasBody": false,
+      "referer": null,
+      "cookie": null,
+      "authorization": null
+    },
+    {
+      "why": "unexpected-path",
+      "method": "GET",
+      "url": "https://tiles.openfreemap.org/natural_earth/ne2sr/6/35/20.png",
+      "hasBody": false,
+      "referer": null,
+      "cookie": null,
+      "authorization": null
+    },
+    {
+      "why": "unexpected-path",
+      "method": "GET",
+      "url": "https://tiles.openfreemap.org/natural_earth/ne2sr/6/35/22.png",
+      "hasBody": false,
+      "referer": null,
+      "cookie": null,
+      "authorization": null
+    },
+    {
+      "why": "unexpected-path",
+      "method": "GET",
+      "url": "https://tiles.openfreemap.org/natural_earth/ne2sr/6/34/20.png",
+      "hasBody": false,
+      "referer": null,
+      "cookie": null,
+      "authorization": null
+    },
+    {
+      "why": "unexpected-path",
+      "method": "GET",
+      "url": "https://tiles.openfreemap.org/natural_earth/ne2sr/6/34/22.png",
+      "hasBody": false,
+      "referer": null,
+      "cookie": null,
+      "authorization": null
+    },
+    {
+      "why": "unexpected-path",
+      "method": "GET",
+      "url": "https://tiles.openfreemap.org/natural_earth/ne2sr/6/36/20.png",
+      "hasBody": false,
+      "referer": null,
+      "cookie": null,
+      "authorization": null
+    },
+    {
+      "why": "unexpected-path",
+      "method": "GET",
+      "url": "https://tiles.openfreemap.org/natural_earth/ne2sr/6/36/22.png",
+      "hasBody": false,
+      "referer": null,
+      "cookie": null,
+      "authorization": null
+    },
+    {
+      "why": "unexpected-path",
+      "method": "GET",
+      "url": "https://tiles.openfreemap.org/natural_earth/ne2sr/6/33/21.png",
+      "hasBody": false,
+      "referer": null,
+      "cookie": null,
+      "authorization": null
+    },
+    {
+      "why": "unexpected-path",
+      "method": "GET",
+      "url": "https://tiles.openfreemap.org/natural_earth/ne2sr/6/33/20.png",
+      "hasBody": false,
+      "referer": null,
+      "cookie": null,
+      "authorization": null
+    },
+    {
+      "why": "unexpected-path",
+      "method": "GET",
+      "url": "https://tiles.openfreemap.org/natural_earth/ne2sr/6/33/22.png",
+      "hasBody": false,
+      "referer": null,
+      "cookie": null,
+      "authorization": null
+    },
+    {
+      "why": "unexpected-path",
+      "method": "GET",
+      "url": "https://tiles.openfreemap.org/natural_earth/ne2sr/6/37/21.png",
+      "hasBody": false,
+      "referer": null,
+      "cookie": null,
+      "authorization": null
+    },
+    {
+      "why": "unexpected-path",
+      "method": "GET",
+      "url": "https://tiles.openfreemap.org/natural_earth/ne2sr/6/37/20.png",
+      "hasBody": false,
+      "referer": null,
+      "cookie": null,
+      "authorization": null
+    },
+    {
+      "why": "unexpected-path",
+      "method": "GET",
+      "url": "https://tiles.openfreemap.org/natural_earth/ne2sr/6/37/22.png",
+      "hasBody": false,
+      "referer": null,
+      "cookie": null,
+      "authorization": null
+    }
+  ]
+}

@@ -1,0 +1,170 @@
+[
+  {
+    "id": "L0-light-1366x768",
+    "name": "mapa zajmuje większość okna po włączeniu online (light-1366x768)",
+    "status": "PASS",
+    "evidence": "{\"w\":1366,\"h\":641,\"vh\":768,\"vw\":1366}"
+  },
+  {
+    "id": "W1-positron",
+    "name": "widok Polski (positron) pokazuje kraj ze szczegółowym podkładem",
+    "status": "PASS",
+    "evidence": "{\"transportation\":6,\"places\":54,\"placeNames\":[\"Deutschland\",\"Polska\",\"Belarus\",\"Česko\",\"Slovensko\",\"Praha\",\"Warszawa\",\"Berlin\",\"Minsk\",\"Vilnius\",\"Nürnberg\",\"Frankfurt am Main\"],\"water\":24,\"zoom\":5.457890961078519}"
+  },
+  {
+    "id": "W1-liberty",
+    "name": "widok Polski (liberty) pokazuje kraj ze szczegółowym podkładem",
+    "status": "PASS",
+    "evidence": "{\"transportation\":12,\"places\":54,\"placeNames\":[\"Deutschland\",\"Polska\",\"Belarus\",\"Česko\",\"Slovensko\",\"Praha\",\"Warszawa\",\"Berlin\",\"Minsk\",\"Vilnius\",\"Nürnberg\",\"Frankfurt am Main\"],\"water\":24,\"zoom\":5.457890961078519}"
+  },
+  {
+    "id": "C-warszawa-positron",
+    "name": "warszawa osiągalne przyciskiem: środek i zoom zgodne z presetem, mapa szczegółowa (positron)",
+    "status": "PASS",
+    "evidence": "{\"roads\":11744,\"places\":5,\"streets\":9,\"buildings\":0,\"points\":1}"
+  },
+  {
+    "id": "C-warszawa-liberty",
+    "name": "warszawa osiągalne przyciskiem: środek i zoom zgodne z presetem, mapa szczegółowa (liberty)",
+    "status": "PASS",
+    "evidence": "{\"roads\":13256,\"places\":5,\"streets\":9,\"buildings\":0,\"points\":1}"
+  },
+  {
+    "id": "C-opole-positron",
+    "name": "opole osiągalne przyciskiem: środek i zoom zgodne z presetem, mapa szczegółowa (positron)",
+    "status": "PASS",
+    "evidence": "{\"roads\":1395,\"places\":8,\"streets\":16,\"buildings\":6,\"points\":4}"
+  },
+  {
+    "id": "C-opole-liberty",
+    "name": "opole osiągalne przyciskiem: środek i zoom zgodne z presetem, mapa szczegółowa (liberty)",
+    "status": "PASS",
+    "evidence": "{\"roads\":1906,\"places\":8,\"streets\":16,\"buildings\":6,\"points\":4}"
+  },
+  {
+    "id": "C-knurow-positron",
+    "name": "knurow osiągalne przyciskiem: środek i zoom zgodne z presetem, mapa szczegółowa (positron)",
+    "status": "PASS",
+    "evidence": "{\"roads\":306,\"places\":2,\"streets\":11,\"buildings\":3,\"points\":3}"
+  },
+  {
+    "id": "C-knurow-liberty",
+    "name": "knurow osiągalne przyciskiem: środek i zoom zgodne z presetem, mapa szczegółowa (liberty)",
+    "status": "PASS",
+    "evidence": "{\"roads\":410,\"places\":2,\"streets\":11,\"buildings\":3,\"points\":3}"
+  },
+  {
+    "id": "T-opole-positron",
+    "name": "opole z16.2 (positron): nazwy ulic i budynki",
+    "status": "PASS",
+    "evidence": "{\"streetNames\":[\"Budowlanych\",\"Nysy Łużyckiej\",\"Batalionów Chłopskich\",\"Luboszycka\",\"Książąt Opolskich\",\"Plac Konstytucji 3 Maja\"],\"streetNameFeatures\":18,\"buildings\":23}"
+  },
+  {
+    "id": "T-opole-liberty",
+    "name": "opole z16.2 (liberty): nazwy ulic i budynki",
+    "status": "PASS",
+    "evidence": "{\"streetNames\":[\"Budowlanych\",\"Nysy Łużyckiej\",\"Batalionów Chłopskich\",\"Luboszycka\",\"Książąt Opolskich\",\"Plac Konstytucji 3 Maja\"],\"streetNameFeatures\":18,\"buildings\":23}"
+  },
+  {
+    "id": "T-knurow-positron",
+    "name": "knurow z16.2 (positron): nazwy ulic i budynki",
+    "status": "PASS",
+    "evidence": "{\"streetNames\":[\"Niepodległości\"],\"streetNameFeatures\":1,\"buildings\":5}"
+  },
+  {
+    "id": "T-knurow-liberty",
+    "name": "knurow z16.2 (liberty): nazwy ulic i budynki",
+    "status": "PASS",
+    "evidence": "{\"streetNames\":[\"Niepodległości\"],\"streetNameFeatures\":1,\"buildings\":5}"
+  },
+  {
+    "id": "D1",
+    "name": "Positron i Liberty różnią się wizualnie",
+    "status": "PASS",
+    "evidence": "{\"polska\":{\"fractionDifferent\":0.17028092543906734,\"meanAbsDiff\":14.644445104304905},\"opole\":{\"fractionDifferent\":0.30638552042813777,\"meanAbsDiff\":12.047569721236874},\"street\":{\"fractionDifferent\":0.20457945697037253,\"meanAbsDiff\":13.072249010018966}}"
+  },
+  {
+    "id": "P1",
+    "name": "po 6 przełączeniach stylu punkty MPL/BSA/POMIAR i trasa są zachowane, bez duplikatów warstw",
+    "status": "PASS",
+    "evidence": "{\"before\":{\"pts\":4,\"layers\":[\"demo-route-casing\",\"demo-route\",\"demo-points\"],\"styleLoads\":4},\"sample\":{\"pts\":4,\"overlay\":true,\"demoLayers\":3,\"sources\":2}}"
+  },
+  {
+    "id": "P2",
+    "name": "wszystkie trzy typy punktów widoczne na mapie (Opole)",
+    "status": "PASS",
+    "evidence": "[\"BSA\",\"MPL\",\"POMIAR\"]"
+  },
+  {
+    "id": "I1",
+    "name": "kliknięcie punktu po zmianach stylu otwiera dymek",
+    "status": "PASS",
+    "evidence": "{\"n\":1,\"text\":\"MPL · wizyta 4 · OpoleSYN-OPO-4 — punkt syntetyczny, nie jest zleceniem.×\"}"
+  },
+  {
+    "id": "L1",
+    "name": "brak zdublowanych elementów mapy po przełączeniach",
+    "status": "PASS",
+    "evidence": "{\"canvas\":1,\"scale\":1,\"nav\":1,\"mapDivs\":1}"
+  },
+  {
+    "id": "Z1",
+    "name": "zoom +/−, pan przeciągnięciem i „Dopasuj punkty” działają",
+    "status": "PASS",
+    "evidence": "{\"z0\":13.5,\"z1\":14.5,\"c0\":[17.9213000000002,50.67510000000064],\"c1\":[17.933548704130544,50.67199501193713],\"fit\":{\"z\":8.95828669304032,\"pts\":7}}"
+  },
+  {
+    "id": "Z2",
+    "name": "zmiana rozmiaru okna dopasowuje mapę",
+    "status": "PASS",
+    "evidence": "{\"canvas\":[1100,562],\"box\":[1100,562],\"pts\":7}"
+  },
+  {
+    "id": "L2",
+    "name": "układ mieści się w oknie (viewport = fullPage)",
+    "status": "PASS",
+    "evidence": "{\"scroll\":[1366,768],\"inner\":[1366,768]}"
+  },
+  {
+    "id": "N4",
+    "name": "konsola: brak błędów; Network: brak nieudanych żądań",
+    "status": "PASS",
+    "evidence": "{\"maplibreNonTileErrors\":[],\"errors\":[],\"pageErrors\":[],\"realFailed\":[],\"abortedByViewChange\":177}"
+  },
+  {
+    "id": "O1",
+    "name": "internet wyłączony po załadowaniu: aplikacja mówi, że część kafli/mapy jest niedostępna",
+    "status": "PASS",
+    "evidence": "{\"status\":\"Mapa online: część kafli nie wczytała się (6). Sprawdź połączenie z internetem.\",\"warn\":true,\"tileErrors\":6,\"overlay\":true}"
+  },
+  {
+    "id": "N1",
+    "name": "cała sesja: jedyny origin poza 127.0.0.1 to tiles.openfreemap.org",
+    "status": "PASS",
+    "evidence": "[\"https://tiles.openfreemap.org\"]"
+  },
+  {
+    "id": "N2",
+    "name": "cała sesja (558 żądań): tylko GET bez ciała, bez Referer/cookie/Authorization, bez query-stringa, ścieżki tylko style/kafle/czcionki/sprity, bez nazw punktów w ścieżce",
+    "status": "FAIL",
+    "evidence": "{\"bad\":[{\"why\":\"unexpected-path\",\"method\":\"GET\",\"url\":\"https://tiles.openfreemap.org/natural_earth/ne2sr/6/35/21.png\",\"hasBody\":false,\"referer\":null,\"cookie\":null,\"authorization\":null},{\"why\":\"unexpected-path\",\"method\":\"GET\",\"url\":\"https://tiles.openfreemap.org/natural_earth/ne2sr/6/34/21.png\",\"hasBody\":false,\"referer\":null,\"cookie\":null,\"authorization\":null},{\"why\":\"unexpected-path\",\"method\":\"GET\",\"url\":\"https://tiles.openfreemap.org/natural_earth/ne2sr/6/36/21.png\",\"hasBody\":false,\"referer\":null,\"cookie\":null,\"authorization\":null}]}"
+  },
+  {
+    "id": "N3",
+    "name": "przed kliknięciem zgody: 0 żądań poza 127.0.0.1",
+    "status": "PASS",
+    "evidence": "0"
+  },
+  {
+    "id": "O2",
+    "name": "bez internetu: komunikat „mapa online niedostępna”, bez udawania podkładu, przycisk ponowienia",
+    "status": "PASS",
+    "evidence": "{\"status\":\"Mapa online jest niedostępna: Failed to fetch. Punkty i trasa demonstracyjna działają lokalnie, podkład mapy nie jest wyświetlany.\",\"retry\":true,\"overlay\":true,\"online\":true}"
+  },
+  {
+    "id": "O3",
+    "name": "po powrocie sieci „Spróbuj ponownie” przywraca mapę",
+    "status": "PASS",
+    "evidence": "{\"styleLoaded\":true,\"status\":\"Mapa online: działa · styl Positron · zoom 5.2\"}"
+  }
+]

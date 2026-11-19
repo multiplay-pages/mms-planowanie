@@ -1,0 +1,86 @@
+[
+  {
+    "id": "R1a",
+    "name": "pierwszy styl: błąd HTTP 500 → komunikat „niedostępna”, retry, nakładka lokalna",
+    "status": "PASS",
+    "evidence": "{\"active\":null,\"requested\":\"positron\",\"pending\":false,\"failed\":\"positron\",\"radio\":\"positron\",\"retryVisible\":true,\"status\":\"Mapa online jest niedostępna: HTTP 500. Punkty i trasa demonstracyjna działają lokalnie, podkład mapy nie jest wyświetlany.\",\"overlay\":true,\"styleLoads\":1}"
+  },
+  {
+    "id": "R1b",
+    "name": "po „Spróbuj ponownie” mapa wraca (styl Positron aktywny, retry ukryty)",
+    "status": "PASS",
+    "evidence": "{\"active\":\"positron\",\"requested\":\"positron\",\"pending\":false,\"failed\":null,\"radio\":\"positron\",\"retryVisible\":false,\"status\":\"Mapa online: styl Positron wczytany.\",\"overlay\":true,\"styleLoads\":2}"
+  },
+  {
+    "id": "R1c",
+    "name": "fokus po ponowieniu trafia na wybrany styl (przewidywalny)",
+    "status": "PASS",
+    "evidence": "style:positron"
+  },
+  {
+    "id": "R2",
+    "name": "drugi styl: niepoprawny JSON → zostaje Positron, radio cofnięte, retry, bez fałszywego „działa”",
+    "status": "PASS",
+    "evidence": "{\"active\":\"positron\",\"requested\":\"positron\",\"pending\":false,\"failed\":\"liberty\",\"radio\":\"positron\",\"retryVisible\":true,\"status\":\"Nie udało się wczytać stylu Liberty (Expected property name or '}' in JSON at position 1 (line 1 column 2)). Nadal wyświetlany jest styl Positron.\",\"overlay\":true,\"styleLoads\":2}"
+  },
+  {
+    "id": "R3",
+    "name": "drugi styl: styl bez wymaganych pól (version 7) → zostaje Positron, radio cofnięte, retry, bez fałszywego „działa”",
+    "status": "PASS",
+    "evidence": "{\"active\":\"positron\",\"requested\":\"positron\",\"pending\":false,\"failed\":\"liberty\",\"radio\":\"positron\",\"retryVisible\":true,\"status\":\"Nie udało się wczytać stylu Liberty (niepoprawny styl). Nadal wyświetlany jest styl Positron.\",\"overlay\":true,\"styleLoads\":2}"
+  },
+  {
+    "id": "R4",
+    "name": "drugi styl: błąd HTTP 503 → zostaje Positron, radio cofnięte, retry, bez fałszywego „działa”",
+    "status": "PASS",
+    "evidence": "{\"active\":\"positron\",\"requested\":\"positron\",\"pending\":false,\"failed\":\"liberty\",\"radio\":\"positron\",\"retryVisible\":true,\"status\":\"Nie udało się wczytać stylu Liberty (HTTP 503). Nadal wyświetlany jest styl Positron.\",\"overlay\":true,\"styleLoads\":2}"
+  },
+  {
+    "id": "R5",
+    "name": "drugi styl: brak odpowiedzi → limit czasu, Positron zachowany, retry",
+    "status": "PASS",
+    "evidence": "{\"active\":\"positron\",\"requested\":\"positron\",\"pending\":false,\"failed\":\"liberty\",\"radio\":\"positron\",\"retryVisible\":true,\"status\":\"Nie udało się wczytać stylu Liberty (przekroczono czas oczekiwania). Nadal wyświetlany jest styl Positron.\",\"overlay\":true,\"styleLoads\":2}"
+  },
+  {
+    "id": "R6",
+    "name": "szybkie Positron→Liberty→Positron: wynik = Positron, spóźniony Liberty ignorowany, radio/stan/mapa zgodne",
+    "status": "PASS",
+    "evidence": "{\"active\":\"positron\",\"requested\":\"positron\",\"pending\":false,\"failed\":null,\"radio\":\"positron\",\"retryVisible\":false,\"status\":\"Mapa online: działa · styl Positron · zoom 5.2\",\"overlay\":true,\"styleLoads\":3,\"loadsDelta\":1}"
+  },
+  {
+    "id": "R7",
+    "name": "odpowiedzi w odwrotnej kolejności: wygrywa ostatni wybór (Liberty)",
+    "status": "PASS",
+    "evidence": "{\"active\":\"liberty\",\"requested\":\"liberty\",\"pending\":false,\"failed\":null,\"radio\":\"liberty\",\"retryVisible\":false,\"status\":\"Mapa online: działa · styl Liberty · zoom 5.2\",\"overlay\":true,\"styleLoads\":2}"
+  },
+  {
+    "id": "R8",
+    "name": "spóźniony błąd porzuconego wyboru nie pokazuje komunikatu ani retry",
+    "status": "PASS",
+    "evidence": "{\"active\":\"positron\",\"requested\":\"positron\",\"pending\":false,\"failed\":null,\"radio\":\"positron\",\"retryVisible\":false,\"status\":\"Mapa online: działa · styl Positron · zoom 5.2\",\"overlay\":true,\"styleLoads\":3}"
+  },
+  {
+    "id": "R9",
+    "name": "7 szybkich przełączeń: stan końcowy spójny (Liberty), 3 warstwy nakładki, brak duplikatów",
+    "status": "PASS",
+    "evidence": "{\"active\":\"liberty\",\"requested\":\"liberty\",\"pending\":false,\"failed\":null,\"radio\":\"liberty\",\"retryVisible\":false,\"status\":\"Mapa online: działa · styl Liberty · zoom 5.2\",\"overlay\":true,\"styleLoads\":3,\"layers\":3}"
+  },
+  {
+    "id": "R10",
+    "name": "wizyta wybierana z listy (klawiatura) otwiera dymek",
+    "status": "PASS",
+    "evidence": "BSA · wizyta 2 · OpoleSYN-OPO-2 — punkt syntetyczny, nie jest zleceniem.×"
+  },
+  {
+    "id": "R11",
+    "name": "wszystkie żądania do dostawcy obsłużone przez mocki; żadne inne żądanie zewnętrzne nie wyszło",
+    "status": "PASS",
+    "evidence": "{\"handled\":26,\"unmocked\":[]}"
+  },
+  {
+    "id": "R12",
+    "name": "brak wyjątków strony w trakcie testów wyścigów",
+    "status": "PASS",
+    "evidence": "[]"
+  }
+]
