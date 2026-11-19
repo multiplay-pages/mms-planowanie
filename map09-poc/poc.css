@@ -1,6 +1,7 @@
 :root { color-scheme: light; font-family: "Segoe UI", system-ui, sans-serif; }
 * { box-sizing: border-box; }
-html, body { height: 100%; margin: 0; }
+html { height: 100%; }
+body { margin: 0; min-height: 100%; }
 body { display: flex; flex-direction: column; background: #f4f5f7; color: #1f2933; } /* flex, not grid: the hidden consent panel must not shift rows */
 .bar, .consent, .status { flex: 0 0 auto; }
 .bar { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; padding: 8px 12px; background: #fff; border-bottom: 1px solid #d5dae0; }
@@ -25,10 +26,12 @@ button.primary:hover { background: #0e7048; }
 .consent[hidden] { display: none; }
 .consent p { margin: 0 0 6px; }
 .consent code { background: #f3e6b0; padding: 0 4px; border-radius: 3px; }
-#map { position: relative; flex: 1 1 0; min-height: 0; width: 100%; background: #e8ecef; }
+#map { position: relative; flex: 1 1 0; min-height: 260px; width: 100%; background: #e8ecef; }
 .status { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 16px; padding: 6px 12px; background: #fff; border-top: 1px solid #d5dae0; font-size: 12px; }
 .status.warn #status { color: #8a1c1c; font-weight: 600; }
 .status.ok #status { color: #0b5d3b; }
 .attr a { color: #1a5aa8; }
 .popup-title { font-weight: 600; }
 .popup-note { color: #5b6672; font-size: 12px; }
+.pick { display: inline-flex; gap: 4px; align-items: center; font-size: 13px; }
+.pick select { font: inherit; font-size: 13px; padding: 4px 6px; }

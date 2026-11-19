@@ -15,6 +15,9 @@ export const PLACES = {
   wroclaw: {label: 'Wrocław', center: [17.0385, 51.1079], zoom: 12},
 };
 
+// Image ids are prefixed so they cannot collide with images of a provider sprite.
+export const ICON_PREFIX = 'map09-';
+
 export const KINDS = {
   MPL: {shape: 'circle', fill: '#005a8d'},
   BSA: {shape: 'square', fill: '#b35c00'},
@@ -24,7 +27,7 @@ export const KINDS = {
 const point = (id, kind, seq, city, route, coordinates) => ({
   type: 'Feature',
   geometry: {type: 'Point', coordinates},
-  properties: {id, kind, seq, city, route, icon: kind.toLowerCase(), synthetic: true},
+  properties: {id, kind, seq, city, route, icon: `${ICON_PREFIX}${kind.toLowerCase()}`, synthetic: true},
 });
 
 // Visits are numbered per route (1..n), like the MAP-08 operational map. Opole and Knurów have a short route each.
@@ -61,7 +64,7 @@ export function syntheticRoutes() {
 
 export const OVERLAY_SOURCES = {'demo-points': 'demo-points', 'demo-routes': 'demo-routes'};
 export const OVERLAY_LAYER_IDS = ['demo-route-casing', 'demo-route', 'demo-points'];
-export const ICON_NAMES = ['mpl', 'bsa', 'pomiar'];
+export const ICON_NAMES = ['mpl', 'bsa', 'pomiar'].map((name) => `${ICON_PREFIX}${name}`);
 
 /** A bold font that the basemap style's own glyph server certainly serves, so numbers never depend on a font we invented. */
 export function pickFont(style) {

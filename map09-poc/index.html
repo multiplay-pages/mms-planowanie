@@ -21,6 +21,7 @@
       <button type="button" data-place="krakow">Kraków</button>
       <button type="button" data-place="wroclaw">Wrocław</button>
       <button type="button" id="fit-points">Dopasuj punkty</button>
+      <label class="pick">Punkt: <select id="point-pick"><option value="">wybierz…</option></select></label>
     </div>
     <fieldset class="group styles"><legend>Styl</legend>
       <label><input type="radio" name="style" value="positron" checked>Positron <small>(operacyjny, jasny)</small></label>
@@ -31,7 +32,7 @@
     </div>
   </header>
   <section id="consent" class="consent" aria-live="polite">
-    <p><strong>Mapa online jest wyłączona.</strong> Do czasu kliknięcia poniżej demonstrator nie wysyła żadnych żądań poza ten komputer.</p>
+    <p><strong>Mapa online jest wyłączona.</strong> Do czasu kliknięcia poniżej demonstrator nie wysyła automatycznych żądań poza ten komputer (odnośniki atrybucji w stopce otwierają osobne karty dopiero po kliknięciu).</p>
     <p>Włączenie połączy przeglądarkę z <code>tiles.openfreemap.org</code> (styl, kafle wektorowe, czcionki, sprite). Dostawca zobaczy adres IP, nagłówki przeglądarki i współrzędne kafli widocznego obszaru. Punkty i trasa są rysowane lokalnie i nigdy nie są wysyłane.</p>
     <button type="button" id="enable-online" class="primary">Włącz mapę online (OpenFreeMap)</button>
   </section>

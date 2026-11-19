@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {mergeOverlay, emptyBasemapStyle, pickFont, overlayLayers, OVERLAY_LAYER_IDS, syntheticPoints, syntheticRoutes, PLACES, POLAND_BOUNDS} from '../overlay.mjs';
+import {ICON_PREFIX, ICON_NAMES, mergeOverlay, emptyBasemapStyle, pickFont, overlayLayers, OVERLAY_LAYER_IDS, syntheticPoints, syntheticRoutes, PLACES, POLAND_BOUNDS} from '../overlay.mjs';
 
 const providerStyle = () => ({
   version: 8, glyphs: 'https://tiles.openfreemap.org/fonts/{fontstack}/{range}.pbf', sprite: 'https://tiles.openfreemap.org/sprites/ofm_f384/ofm',
@@ -53,4 +53,11 @@ test('camera presets cover all of Poland and the requested towns; nothing restri
   for (const key of ['polska', 'opole', 'knurow', 'warszawa', 'gdansk', 'krakow', 'wroclaw']) assert.ok(PLACES[key], key);
   const [[w, s], [e, n]] = POLAND_BOUNDS;
   assert.ok(w <= 14.2 && e >= 24.1 && s <= 49.0 && n >= 54.8);
+});
+
+test('overlay image ids are prefixed so a provider sprite can never shadow them', () => {
+  assert.ok(ICON_PREFIX.length > 0);
+  assert.ok(ICON_NAMES.every((name) => name.startsWith(ICON_PREFIX)));
+  const used = new Set(syntheticPoints().features.map((f) => f.properties.icon));
+  assert.deepEqual([...used].sort(), [...ICON_NAMES].sort());
 });

@@ -67,9 +67,26 @@ node map09-poc/qa/old-map.mjs                  # baseline: bieżący planer bez 
 | — | Pomiary wydajności (FPS, czas pierwszego renderu, bajty na sesję) | **NOT RUN** | — |
 | — | Odpowiedzi OpenFreeMap przy dużym ruchu / długi czas pracy | **NOT RUN** | — |
 | — | Odczyt stron Notion (źródła prawdy), Polityka prywatności OpenFreeMap | **NOT RUN / niezweryfikowane** | Notion zwrócił pustą powłokę |
-| — | Niezależny przegląd kodu (Codex T30) | **w toku** — patrz `evidence/map09/codex-T30-REPORT.md`, jeśli jest | — |
+| R1–R12 | Odporność przełączania stylów (zamockowany dostawca, **bez ruchu zewnętrznego**): błąd HTTP 500/503, niepoprawny JSON, styl bez pól, limit czasu, A→B→A, odwrotna kolejność odpowiedzi, spóźniony błąd porzuconego wyboru, 7 szybkich przełączeń, wybór wizyty z listy (klawiatura) | **PASS** (14/14; mutacja wyłączająca strażnika numeru żądania → R6/R8 FAIL, więc testy nie są puste) | `evidence/map09/stage3c/style-race-results.json` |
+| LIGHT | Ponowna weryfikacja poprawek na prawdziwym OpenFreeMap (1366×768; Polska, Opole, Knurów, Warszawa; 558 żądań) | **PASS** 28/29; N2 FAIL → rekwalifikacja (niżej) | `evidence/map09/stage3c/`, `stage3c-light-run.log` |
+| T30 | Niezależny przegląd kodu (Codex), `8c8d9e5` | **wykonany**: 0×P1, 3×P2, 3×P3 — naprawione (sekcja 3a) | `evidence/map09/codex-T30-REPORT.md` |
 
-Łącznie ostatni pełny przebieg: **39/39 PASS** (+2 PASS lekki test widoku Polski, +2 PASS baseline).
+Ostatni pełny przebieg (kod sprzed poprawek T30, `8c8d9e5`): **39/39 PASS**. Po poprawkach: 14/14 (mock) + 28/29 w przebiegu LIGHT na prawdziwym dostawcy (jedyny FAIL = N2, patrz niżej) + 5/5 offline-smoke z twardą blokadą sieci. Pełnego przebiegu 1920×1080 po poprawkach **nie powtarzano** (NOT RUN) — ścieżka renderowania podkładu nie została zmieniona, zmieniono tylko sposób wczytania stylu i układ nagłówka.
+
+### 3a. Przegląd niezależny (Codex T30) i poprawki
+
+| Ustalenie | Poprawka |
+| --- | --- |
+| P2-1 błąd kolejnego stylu nie kończył oczekiwania i mógł pokazać „działa · Liberty” nad Positronem | Jeden właściciel transakcji (`applyStyle`): własny `fetch` stylu z numerem żądania, walidacją (`version 8`, `layers`, `sources`) i limitem czasu 20 s; stan rozdziela `requested` i `active`; po błędzie zostaje poprzedni styl, radio wraca, jest „Spróbuj ponownie”; bez stylu — jawnie lokalne tło + nakładka (R1–R5) |
+| P2-2 wyścigi A→B→A, diff bez zmian, spóźnione odpowiedzi | `setStyle(obiekt, {diff:false})` (zawsze `style.load`, brak wspólnego pola kontrolera MapLibre); tylko najnowsze żądanie zmienia stan/mapę; poprzednie anulowane `AbortController` (R6–R9) |
+| P2-3 QA prywatności węższe niż wniosek | N2 = audyt **całej sesji** z pełnymi rekordami (metoda, pełny URL, ciało, `Referer`, cookie/Authorization, query-string, dozwolone ścieżki); S2 z twardą blokadą sieci; wniosek zawężony: „w audytowanych sesjach żądania do dostawcy to GET bez ciała/Referera/cookie, a ścieżki zawierają wyłącznie style/kafle/czcionki/sprity/Natural Earth” (nie: „żadne dane nigdy nie wychodzą”) |
+| P3-4 progi i filtr błędów | Test C sprawdza środek i zoom presetu; ERR_ABORTED uznawane za oczekiwane tylko dla kafli `.pbf`; N4 asertuje brak błędów MapLibre innych niż kafle; Knurów nadal test obecności (nie czytelności) |
+| P3-5 klawiatura/fokus/niskie okno | Lista „Punkt” (select) otwiera dymek wizyty bez myszy (R10); fokus po włączeniu/ponowieniu na wybranym stylu (R1c); `min-height: 260px` mapy |
+| P3-6 kolizja ID ikon ze sprite’em | Prefiks `map09-` ikon + test jednostkowy |
+
+**N2 w przebiegu LIGHT — FAIL, rekwalifikacja po fakcie.** Audyt nie znał ścieżki `natural_earth/ne2sr/{z}/{x}/{y}.png` (rastrowy relief używany przez Liberty na niskich zoomach). 15 z 558 żądań; pozostałe kryteria bez odchyleń. Lista ścieżek rozszerzona po zaobserwowaniu, przebieg nie był powtarzany; wynik „FAIL” zostaje w plikach (`N2-reclassification.md`).
+
+**Liczba żądań do dostawcy (uczciwie):** pełny przebieg 951 + LIGHT 558 + dwa wcześniejsze przebiegi iteracyjne i lekki test (niezliczone, razem rzędu 1–1,5 tys.) = **ok. 3–3,5 tys.**, czyli więcej niż ~2000 z pierwszej zgody; użytkownik wyraził dodatkową zgodę na jeden lekki przebieg (szacowany na ~300, faktycznie 558). Bez pobierania hurtowego, w ruchu zbliżonym do ręcznego przeglądania.
 
 ### Błędy znalezione przez własne testy i naprawione
 
@@ -116,7 +133,7 @@ Koszty mapy są oddzielone od silnika routingu: podkład niczego nie zmienia w t
 
 ## 7. Checkpoint
 
-- **Zrobione:** diagnoza (kod), izolowany demonstrator, testy jednostkowe (6 JS + 8 Python), QA w Chrome (39/39 PASS, z zastrzeżeniami wyżej), baseline MAP-08, analiza wariantu lokalnego (Codex).
-- **Pozostało:** ocena wizualna użytkownika; wynik przeglądu Codex T30; ewentualna lokalizacja etykiet na polskie; decyzja A/B; Draft PR (nie gotowy do merge).
+- **Zrobione:** diagnoza (kod), izolowany demonstrator, testy jednostkowe (7 JS + 8 Python), QA w Chrome (pełny 39/39 przed T30; po T30: 14/14 mock + 28/29 LIGHT + 5/5 offline), baseline MAP-08, analiza wariantu lokalnego i niezależny przegląd (Codex), poprawki P2/P3.
+- **Pozostało:** ocena wizualna użytkownika; ewentualna lokalizacja etykiet na polskie; decyzja A/B; pełny przebieg 1920×1080 po poprawkach (NOT RUN — wymaga zgody na ok. 1 tys. żądań); ponowny przegląd Codex poprawek (nie zlecony); Draft PR (nie gotowy do merge).
 - **Status:** STOP — nie integrowano z planerem; `main` nietknięty.
 - **Jedna konkretna następna czynność:** uruchom `python -X utf8 map09-poc/serve_poc.py`, otwórz `http://127.0.0.1:8765/`, kliknij „Włącz mapę online”, porównaj Positron/Liberty w Polsce, Opolu i Knurowie i napisz: akceptuję jakość / chcę poprawek.

@@ -41,10 +41,11 @@ export async function launch({width = 1920, height = 1080, args = []} = {}) {
     executablePath: CHROME, headless: !process.env.HEADED, viewport: {width, height}, deviceScaleFactor: 1,
     args: ['--no-first-run', '--no-default-browser-check', '--use-angle=swiftshader', '--enable-unsafe-swiftshader', ...args],
   });
-  const log = {console: [], pageErrors: [], requests: [], failed: [], external: []};
+  const log = {console: [], pageErrors: [], requests: [], failed: [], external: [], full: []};
   ctx.on('request', (r) => {
     const u = r.url();
     log.requests.push({method: r.method(), url: u.length > 220 ? `${u.slice(0, 220)}…` : u});
+    log.full.push(r.allHeaders().then((headers) => ({method: r.method(), url: u, hasBody: r.postData() != null, referer: headers.referer ?? null, cookie: headers.cookie ?? null, authorization: headers.authorization ?? null})).catch(() => ({method: r.method(), url: u, hasBody: null, referer: null, cookie: null, authorization: null})));
     if (!/^(http:\/\/127\.0\.0\.1:\d+\/|data:|blob:|about:)/.test(u)) log.external.push(u);
   });
   ctx.on('requestfailed', (r) => log.failed.push({url: r.url(), error: r.failure()?.errorText}));
@@ -77,4 +78,25 @@ export const results = [];
 export function check(id, name, status, evidence) {
   results.push({id, name, status, evidence});
   console.log(`${status.padEnd(8)} ${id} ${name}${evidence ? ` — ${evidence}` : ''}`);
+}
+
+/** Privacy evidence over the WHOLE session: every request to the provider, full URL, method, body, Referer, cookies. */
+export async function providerAudit(log, provider = 'https://tiles.openfreemap.org') {
+  const all = await Promise.all(log.full);
+  const toProvider = all.filter((r) => r.url.startsWith(provider));
+  const allowedPath = /^\/(styles\/(positron|liberty)|planet(\/[^/]+\/\d+\/\d+\/\d+\.pbf)?|natural_earth\/ne2sr\/\d+\/\d+\/\d+\.png|fonts\/[^/]+\/\d+-\d+\.pbf|sprites\/[^/]+\/[^/]+(@2x)?\.(json|png))$/;
+  const synthetic = /SYN-|demo-|map09|opole|knur|MPL|BSA|POMIAR/i;
+  const bad = [];
+  for (const r of toProvider) {
+    const u = new URL(r.url);
+    if (r.method !== 'GET') bad.push({why: 'method', ...r});
+    if (r.hasBody) bad.push({why: 'body', ...r});
+    if (r.referer) bad.push({why: 'referer', ...r});
+    if (r.cookie || r.authorization) bad.push({why: 'credentials', ...r});
+    if (u.search) bad.push({why: 'query-string', ...r});
+    if (!allowedPath.test(u.pathname)) bad.push({why: 'unexpected-path', ...r});
+    if (synthetic.test(decodeURIComponent(u.pathname))) bad.push({why: 'synthetic-name-in-path', ...r});
+  }
+  const origins = [...new Set(all.filter((r) => !/^(http:\/\/127\.0\.0\.1:\d+\/|data:|blob:|about:)/.test(r.url)).map((r) => new URL(r.url).origin))];
+  return {total: all.length, toProvider: toProvider.length, origins, bad};
 }
