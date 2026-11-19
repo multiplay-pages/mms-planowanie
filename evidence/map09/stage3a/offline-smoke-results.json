@@ -1,0 +1,32 @@
+[
+  {
+    "id": "S1",
+    "name": "strona i mapa startują bez sieci",
+    "status": "PASS",
+    "evidence": "overlay layers present=true"
+  },
+  {
+    "id": "S2",
+    "name": "przed zgodą żadne żądanie nie opuszcza 127.0.0.1",
+    "status": "PASS",
+    "evidence": "external=0 "
+  },
+  {
+    "id": "S3",
+    "name": "przed zgodą widoczny komunikat o wyłączonej mapie online",
+    "status": "PASS",
+    "evidence": "Mapa online: wyłączona."
+  },
+  {
+    "id": "S4",
+    "name": "brak błędów konsoli i wyjątków strony",
+    "status": "PASS",
+    "evidence": "{\"pageErrors\":[],\"console\":[]}"
+  },
+  {
+    "id": "S5",
+    "name": "układ mieści się w oknie 1366×768 (bez przewijania strony)",
+    "status": "PASS",
+    "evidence": "{\"body\":[1366,768],\"inner\":[1366,768]}"
+  }
+]

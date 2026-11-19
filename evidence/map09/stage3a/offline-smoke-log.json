@@ -1,0 +1,48 @@
+{
+  "console": [
+    {
+      "type": "warning",
+      "text": "Image \"mpl\" could not be loaded. Please make sure you have added the image before it is needed with map.addImage(), resolved it with map.setMissingStyleImageResolver(), or included it in a \"sprite\" property in your style."
+    },
+    {
+      "type": "warning",
+      "text": "Image \"bsa\" could not be loaded. Please make sure you have added the image before it is needed with map.addImage(), resolved it with map.setMissingStyleImageResolver(), or included it in a \"sprite\" property in your style."
+    },
+    {
+      "type": "warning",
+      "text": "Image \"pomiar\" could not be loaded. Please make sure you have added the image before it is needed with map.addImage(), resolved it with map.setMissingStyleImageResolver(), or included it in a \"sprite\" property in your style."
+    }
+  ],
+  "pageErrors": [],
+  "requests": [
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8765/"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8765/vendor/maplibre-gl/maplibre-gl.css"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8765/poc.css"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8765/poc.mjs"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8765/vendor/maplibre-gl/maplibre-gl.mjs"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8765/overlay.mjs"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8765/vendor/maplibre-gl/maplibre-gl-worker.mjs?v=6.19.0"
+    }
+  ],
+  "failed": []
+}

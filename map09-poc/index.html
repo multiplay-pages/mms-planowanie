@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'self' https://tiles.openfreemap.org; img-src 'self' data: blob: https://tiles.openfreemap.org; script-src 'self'; style-src 'self'; worker-src 'self' blob:; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <link rel="icon" href="data:,">
+  <title>MAP-09 — demonstrator mapy Polski (dane syntetyczne)</title>
+  <link rel="stylesheet" href="./vendor/maplibre-gl/maplibre-gl.css">
+  <link rel="stylesheet" href="./poc.css">
+</head>
+<body>
+  <header class="bar">
+    <div class="title"><strong>MAP-09</strong> demonstrator mapy Polski <span class="tag">dane syntetyczne · nie jest połączony z planerem</span></div>
+    <div class="group" role="group" aria-label="Widok">
+      <button type="button" data-place="polska" class="primary">Polska</button>
+      <button type="button" data-place="opole">Opole</button>
+      <button type="button" data-place="knurow">Knurów</button>
+      <button type="button" data-place="warszawa">Warszawa</button>
+      <button type="button" data-place="gdansk">Gdańsk</button>
+      <button type="button" data-place="krakow">Kraków</button>
+      <button type="button" data-place="wroclaw">Wrocław</button>
+      <button type="button" id="fit-points">Dopasuj punkty</button>
+    </div>
+    <fieldset class="group styles"><legend>Styl</legend>
+      <label><input type="radio" name="style" value="positron" checked>Positron <small>(operacyjny, jasny)</small></label>
+      <label><input type="radio" name="style" value="liberty">Liberty <small>(nawigacyjny)</small></label>
+    </fieldset>
+    <div class="group legend" aria-label="Legenda">
+      <span class="key mpl"></span>MPL <span class="key bsa"></span>BSA <span class="key pomiar"></span>POMIAR <span class="key route"></span>trasa (syntetyczna linia, nie droga)
+    </div>
+  </header>
+  <section id="consent" class="consent" aria-live="polite">
+    <p><strong>Mapa online jest wyłączona.</strong> Do czasu kliknięcia poniżej demonstrator nie wysyła żadnych żądań poza ten komputer.</p>
+    <p>Włączenie połączy przeglądarkę z <code>tiles.openfreemap.org</code> (styl, kafle wektorowe, czcionki, sprite). Dostawca zobaczy adres IP, nagłówki przeglądarki i współrzędne kafli widocznego obszaru. Punkty i trasa są rysowane lokalnie i nigdy nie są wysyłane.</p>
+    <button type="button" id="enable-online" class="primary">Włącz mapę online (OpenFreeMap)</button>
+  </section>
+  <main id="map" aria-label="Mapa"></main>
+  <footer class="status">
+    <span><span id="status" role="status" aria-live="polite">Mapa online: wyłączona.</span> <button type="button" id="retry" hidden>Spróbuj ponownie</button></span>
+    <span id="attribution" class="attr">Podkład po włączeniu: <a href="https://openfreemap.org" rel="noreferrer noopener" target="_blank">OpenFreeMap</a> © <a href="https://openmaptiles.org" rel="noreferrer noopener" target="_blank">OpenMapTiles</a>, dane © <a href="https://www.openstreetmap.org/copyright" rel="noreferrer noopener" target="_blank">współtwórcy OpenStreetMap</a> (ODbL).</span>
+  </footer>
+  <script type="module" src="./poc.mjs"></script>
+</body>
+</html>

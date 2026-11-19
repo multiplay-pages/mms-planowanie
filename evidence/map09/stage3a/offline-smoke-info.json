@@ -1,0 +1,27 @@
+{
+  "overlay": true,
+  "rendered": 0,
+  "consentVisible": true,
+  "status": "Mapa online: wyłączona.",
+  "online": false,
+  "layout": {
+    "body": [
+      1366,
+      768
+    ],
+    "inner": [
+      1366,
+      768
+    ]
+  },
+  "mapBox": {
+    "x": 0,
+    "y": 194,
+    "width": 1366,
+    "height": 545,
+    "top": 194,
+    "right": 1366,
+    "bottom": 739,
+    "left": 0
+  }
+}
