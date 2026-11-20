@@ -1,0 +1,52 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["task_id", "round", "status", "summary", "files_changed", "commands_run", "acceptance", "sandbox_probes", "open_issues"],
+  "properties": {
+    "task_id": { "type": "string" },
+    "round": { "type": "integer" },
+    "status": { "type": "string", "enum": ["completed", "partial", "blocked"] },
+    "summary": { "type": "string" },
+    "files_changed": { "type": "array", "items": { "type": "string" } },
+    "commands_run": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["command", "exit_code", "result"],
+        "properties": {
+          "command": { "type": "string" },
+          "exit_code": { "type": "integer" },
+          "result": { "type": "string" }
+        }
+      }
+    },
+    "acceptance": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["criterion", "met", "evidence"],
+        "properties": {
+          "criterion": { "type": "string" },
+          "met": { "type": "boolean" },
+          "evidence": { "type": "string" }
+        }
+      }
+    },
+    "sandbox_probes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["probe", "outcome", "detail"],
+        "properties": {
+          "probe": { "type": "string" },
+          "outcome": { "type": "string", "enum": ["allowed", "denied", "error", "not_run"] },
+          "detail": { "type": "string" }
+        }
+      }
+    },
+    "open_issues": { "type": "array", "items": { "type": "string" } }
+  }
+}
