@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
-import {mergeGeocoding,hasLocation,locationLabel,summarizeLocations} from '../locations.mjs';
+import {mergeGeocoding,hasLocation,locationLabel,summarizeLocations,locationReasonText} from '../locations.mjs';
 import {createScenario,createPlan,applyAction,restorePlan} from '../planner-model.mjs';
 
 const dataset=JSON.parse(await readFile(new URL('../data/addresses.json',import.meta.url),'utf8'));
@@ -78,4 +78,26 @@ test('GUGiK provider rules reject forged street numbers and ambiguous postal not
   ]) {const bad=clone(uug);mutate(bad);assert.throws(()=>mergeGeocoding(dataset,bad),/lokalizac|dopasowa/);}
   const lowAggregate=clone(uug);lowAggregate.records[0].candidate.confidence.overall=.444;
   assert.ok(hasLocation(mergeGeocoding(dataset,lowAggregate)[0]),'UUG scores are not Geoapify scores');
+});
+
+const fallbackReasonText='Wymagana weryfikacja wyniku';
+
+test('locationReasonText describes every reason code used by Geoapify and GUGiK',()=>{
+  const codes=new Set([layer,uug].flatMap(({records})=>records.flatMap(({reasons})=>reasons)));
+  assert.ok(codes.size>0,'geocoding layers must contain reason codes');
+  for(const code of codes) {
+    const text=locationReasonText(code);
+    assert.match(text,/\S/,`expected a non-empty description for ${code}`);
+    assert.notEqual(text,fallbackReasonText,`missing description for ${code}`);
+  }
+});
+
+test('locationReasonText returns the fallback for unknown and missing codes',()=>{
+  assert.equal(locationReasonText('UNKNOWN_CODE'),fallbackReasonText);
+  assert.equal(locationReasonText(undefined),fallbackReasonText);
+});
+
+test('locationReasonText preserves the coordinator text for POSTCODE_DIFFERENCE',()=>{
+  assert.equal(locationReasonText('POSTCODE_DIFFERENCE'),
+    'Różny kod pocztowy usługi — zachowano kod źródłowy');
 });
