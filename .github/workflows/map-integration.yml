@@ -5,15 +5,17 @@ on:
   pull_request:
     branches: [main]
 permissions:
-  contents: write
+  contents: read
 jobs:
   verify:
     runs-on: ubuntu-latest
     timeout-minutes: 25
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@v4
         with:
-          persist-credentials: true
+          persist-credentials: false
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
@@ -63,8 +65,33 @@ jobs:
           done
           curl -fsS http://127.0.0.1:8765/ -o /dev/null
           node evidence/2026-11-18-integration/integration-browser.mjs
-      - name: Commit rebuilt offline artifact only on integration branch
+      - name: Upload rebuilt offline artifact (integration branch only)
         if: github.event_name == 'push' && github.ref == 'refs/heads/map07b08-integration'
+        uses: actions/upload-artifact@v4
+        with:
+          name: planner-offline
+          path: map05/planner-offline.html
+          retention-days: 1
+          if-no-files-found: error
+  publish-artifact:
+    needs: verify
+    if: github.event_name == 'push' && github.ref == 'refs/heads/map07b08-integration'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    concurrency:
+      group: publish-artifact-map07b08-integration
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/download-artifact@v4
+        with:
+          name: planner-offline
+          path: map05
+      - name: Commit rebuilt offline artifact only on integration branch
         run: |
           git add map05/planner-offline.html
           if git diff --cached --quiet; then
